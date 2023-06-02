@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "953071706523",
+    "firebase_url": "https://mathrangers-default-rtdb.firebaseio.com",
     "project_id": "mathrangers",
     "storage_bucket": "mathrangers.appspot.com"
   },
