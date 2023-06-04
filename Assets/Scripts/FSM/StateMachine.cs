@@ -4,32 +4,33 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    protected IState state;
+    public IState state;
 
-    protected bool isRunning;
+    private bool isRunning;
 
-    public bool isRunning
+    public bool IsRunning
     {
         get {return this.isRunning; }
         set { this.isRunning = value; }
     }
 
-    public StateMachine(IState state)
+    public virtual void Initialize(IState state)
     {
         this.state = state;
         this.isRunning = true;
         this.state.OnEnter();
     }
 
-    Update()
+    void Update()
     {
+
         if(this.state == null || this.isRunning == false)
             return;
 
         this.state.OnUpdate();
     }
 
-    public SetState(IState state)
+    public void SetState(IState state)
     {
         if(this.isRunning == false)
             return;
