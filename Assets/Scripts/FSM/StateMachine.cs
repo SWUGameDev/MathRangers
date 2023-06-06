@@ -18,6 +18,9 @@ public abstract class StateMachine<T> : MonoBehaviour
 
     public virtual void Initialize(string stateName)
     {
+        if(!this.states.ContainsKey(stateName))
+            return;
+
         this.currentState = this.states[stateName];
         this.isRunning = true;
         this.currentState.OnEnter();
@@ -37,7 +40,21 @@ public abstract class StateMachine<T> : MonoBehaviour
         if(this.currentState == null || this.isRunning == false)
             return;
 
+        if(!this.states.ContainsKey(stateName))
+            return;
+
         this.currentState.OnExit();
+        this.currentState = this.states[stateName];
+        this.currentState.OnEnter();
+    }
+
+    public void AddState(string stateName,State<T> state)
+    {
+        if(this.currentState == null || this.isRunning == false)
+            return;
+
+        this.currentState.OnExit();
+        this.states[stateName] = state;
         this.currentState = this.states[stateName];
         this.currentState.OnEnter();
     }
