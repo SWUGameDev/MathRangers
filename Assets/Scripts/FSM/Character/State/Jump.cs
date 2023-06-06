@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : IState
+public class Jump : State<CharacterStateMachine>
 {
-    private CharacterStateMachine stateMachine;
-
-    public Jump(CharacterStateMachine stateMachine)
-    {
-        this.stateMachine = stateMachine;
-    }
-    public void OnEnter()
-    {
-        this.stateMachine.Character.Jump();
-        this.stateMachine.SetState(new Idle(this.stateMachine));
-    }
-    public void OnUpdate()
+    public Jump(CharacterStateMachine stateMachine):base(stateMachine)
     {
 
     }
-    public void OnExit()
+    public override void OnEnter()
     {
+        base.stateMachine.Character.Jump();
 
     }
+
+    public override void OnUpdate()
+    {
+        if(base.stateMachine.Character.CheckGroundCollision())
+            this.stateMachine.SetState("Idle");
+    }
+    
 }

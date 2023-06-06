@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStateMachine : StateMachine
+public class CharacterStateMachine : StateMachine<CharacterStateMachine>
 {
     private Character character;
 
@@ -11,10 +11,18 @@ public class CharacterStateMachine : StateMachine
         get {return this.character; }
     }
 
-    public void Initialize(IState state,Character character)
+    private void Awake() {
+        base.states = new Dictionary<string, State<CharacterStateMachine>>{
+            {"Idle",new Idle(this)},
+            {"Jump", new Jump(this)},
+            {"Move", new Move(this)}
+        };
+    }
+
+    public void Initialize(string stateName,Character character)
     {
+        base.Initialize(stateName);
         this.character = character;
-        base.Initialize(state);
     }
     
 }

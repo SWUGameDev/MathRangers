@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : IState
+public class Move : State<CharacterStateMachine>
 {
-    private CharacterStateMachine stateMachine;
-
-    public Move(CharacterStateMachine stateMachine)
+    public Move(CharacterStateMachine stateMachine):base(stateMachine)
     {
-        this.stateMachine = stateMachine;
     }
-    public void OnEnter()
-    {
 
-    }
-    public void OnUpdate()
+    public override void OnUpdate()
     {
         this.stateMachine.Character.Move();
         if(Input.GetAxis("Horizontal")==0)
-            this.stateMachine.SetState(new Idle(this.stateMachine));
+            this.stateMachine.SetState("Idle");
     }
-    public void OnExit()
-    {
-
-    }
+    
 }

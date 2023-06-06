@@ -2,27 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Idle : IState
+public class Idle : State<CharacterStateMachine>
 {
-    private CharacterStateMachine stateMachine;
 
-    public Idle(CharacterStateMachine stateMachine)
-    {
-        this.stateMachine = stateMachine;
-    }
-    public void OnEnter()
+    public Idle(CharacterStateMachine stateMachine) : base(stateMachine)
     {
 
     }
-    public void OnUpdate()
+    public override void OnUpdate()
     {
         if(Input.GetAxis("Horizontal")!=0)
-            this.stateMachine.SetState(new Move(this.stateMachine));
+            this.stateMachine.SetState("Move");
         else if(Input.GetKeyDown(KeyCode.Space))
-            this.stateMachine.SetState(new Jump(this.stateMachine));
-    }
-    public void OnExit()
-    {
-
+            this.stateMachine.SetState("Jump");
     }
 }

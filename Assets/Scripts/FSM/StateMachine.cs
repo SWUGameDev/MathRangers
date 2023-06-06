@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StateMachine : MonoBehaviour
+using StateName = System.String;
+public abstract class StateMachine<T> : MonoBehaviour
 {
-    public IState state;
+    public State<T> currentState;
+    protected Dictionary<StateName,State<T>> states;
 
     private bool isRunning;
 
@@ -14,29 +16,29 @@ public abstract class StateMachine : MonoBehaviour
         set { this.isRunning = value; }
     }
 
-    public virtual void Initialize(IState state)
+    public virtual void Initialize(string stateName)
     {
-        this.state = state;
+        this.currentState = this.states[stateName];
         this.isRunning = true;
-        this.state.OnEnter();
+        this.currentState.OnEnter();
     }
 
     void Update()
     {
 
-        if(this.state == null || this.isRunning == false)
+        if(this.currentState == null || this.isRunning == false)
             return;
 
-        this.state.OnUpdate();
+        this.currentState.OnUpdate();
     }
 
-    public void SetState(IState state)
+    public void SetState(string stateName)
     {
-        if(this.isRunning == false)
+        if(this.currentState == null || this.isRunning == false)
             return;
 
-        this.state.OnExit();
-        this.state = state;
-        this.state.OnEnter();
+        this.currentState.OnExit();
+        this.currentState = this.states[stateName];
+        this.currentState.OnEnter();
     }
 }
