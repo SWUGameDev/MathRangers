@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using StateName = System.String;
-public abstract class StateMachine<T> : MonoBehaviour
+public abstract class StateMachine<T> : MonoBehaviour where T : StateMachine<T>
 {
     public State<T> currentState;
     protected Dictionary<StateName,State<T>> states;
