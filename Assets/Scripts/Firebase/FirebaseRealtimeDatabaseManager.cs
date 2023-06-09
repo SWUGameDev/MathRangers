@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 using Firebase.Database;
-using System.Threading.Tasks;
-
 public partial class FirebaseRealtimeDatabaseManager 
 {
     private DatabaseReference databaseReference;
@@ -32,4 +30,28 @@ public partial class FirebaseRealtimeDatabaseManager
         });
     }
 
+    private async void ReadData<T>(string key,Action<T> action)
+    {
+        try
+        {
+            DataSnapshot snapshot = await databaseReference.Child(key).GetValueAsync();
+
+            if (snapshot != null && snapshot.Exists)
+            {
+                string deserializedData = snapshot.GetRawJsonValue();
+                T data =  JsonUtility.FromJson<T>(deserializedData);
+                action.Invoke(data);
+            }
+            else
+            {
+                Debug.Log("Data not found");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error retrieving data: " + e.Message);
+        }
+    }
+
 }
+

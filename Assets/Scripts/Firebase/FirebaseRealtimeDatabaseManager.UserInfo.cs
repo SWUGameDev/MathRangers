@@ -1,4 +1,4 @@
-
+using System;
 public partial class FirebaseRealtimeDatabaseManager 
 {
     public void UploadUserInfo(string userUID, string serializedUserInfo)
@@ -6,9 +6,9 @@ public partial class FirebaseRealtimeDatabaseManager
         this.WriteData<UserInfo>($"{FirebaseRealtimeDatabaseManager.userInfoRootKey}/{userUID}",serializedUserInfo);
     }
 
-    public UserInfo LoadUserInfo(string userUID)
+    public void LoadUserInfo(string userUID,Action<UserInfo> onCompleted)
     {
-        return new UserInfo();
+        this.ReadData<UserInfo>($"{FirebaseRealtimeDatabaseManager.userInfoRootKey}/{userUID}",onCompleted);
     }
 
 }

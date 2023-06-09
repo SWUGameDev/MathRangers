@@ -7,10 +7,10 @@ using UnityEngine;
 public class UserInfo
 {
     [SerializeField]
-    string _email;
+    public string email;
 
     [SerializeField]
-    string _nickname;
+    public string nickname;
 
     public UserInfo()
     {
@@ -19,7 +19,7 @@ public class UserInfo
     
     public UserInfo(string email,string nickname)
     {
-        this._email = email;
-        this._nickname = nickname;
+        this.email = email;
+        this.nickname = nickname;
     }
 }
