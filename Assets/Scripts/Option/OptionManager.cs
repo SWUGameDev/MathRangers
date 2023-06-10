@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject optionsPanel;
+
+    public void OptionsPanelOpen()
     {
-        
+        optionsPanel.SetActive(true);   
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OptionsPanelClose()
     {
-        
+        optionsPanel.SetActive(false);
     }
 
     public void BackgroundSoundOn()
