@@ -17,7 +17,7 @@ public class WJ_DisplayText : MonoBehaviour
     {
         
     }
-
+    
     /// <summary>
     /// 현재 문제풀이 상태를 UI에 표시
     /// </summary>
