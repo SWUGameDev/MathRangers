@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TexDrawLib;
 using WjChallenge;
 
 public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
@@ -16,9 +17,9 @@ public class WJ_Sample : MonoBehaviour
     [SerializeField] GameObject         panel_question;         //문제 패널(진단,학습)
 
     [SerializeField] Text   textDescription;        //문제 설명 텍스트
-    [SerializeField] Text   textEquation;           //문제 텍스트(※TextDraw로 변경 필요)
+    [SerializeField] TEXDraw   textEquation;           //문제 텍스트(※TextDraw로 변경 필요)
     [SerializeField] Button[]           btAnsr = new Button[4]; //정답 버튼들
-    Text[]                textAnsr;                  //정답 버튼들 텍스트(※TextDraw로 변경 필요)
+    TEXDraw[]                textAnsr;                  //정답 버튼들 텍스트(※TextDraw로 변경 필요)
 
     [Header("Status")]
     int     currentQuestionIndex;
@@ -31,10 +32,10 @@ public class WJ_Sample : MonoBehaviour
 
     private void Awake()
     {
-        textAnsr = new Text[btAnsr.Length];
+        textAnsr = new TEXDraw[btAnsr.Length];
         for (int i = 0; i < btAnsr.Length; ++i)
 
-            textAnsr[i] = btAnsr[i].GetComponentInChildren<Text>();
+            textAnsr[i] = btAnsr[i].GetComponentInChildren<TEXDraw>();
 
         wj_displayText.SetState("대기중", "", "", "");
     }
