@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OptionManager : MonoBehaviour
 {
     public GameObject optionsPanel;
+    public GameObject blackScreen;
 
     // 음악 재생 관리
     public AudioSource backgroundAudioSource;
@@ -17,12 +18,14 @@ public class OptionManager : MonoBehaviour
 
     public void OptionsPanelOpen()
     {
-        optionsPanel.SetActive(true);   
+        optionsPanel.SetActive(true); 
+        blackScreen.SetActive(true);
     }
 
     public void OptionsPanelClose()
     {
         optionsPanel.SetActive(false);
+        blackScreen.SetActive(false);
     }
 
     public void ToggleEffects()
