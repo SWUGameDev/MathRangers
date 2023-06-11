@@ -49,6 +49,10 @@ MonoBehaviour:
     m_Key: Key_Login
     m_Metadata:
       m_Items: []
+  - m_Id: 2100134899867648
+    m_Key: Key_TouchToStart
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

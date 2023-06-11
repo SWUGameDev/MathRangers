@@ -51,6 +51,10 @@ MonoBehaviour:
     m_Localized: Register
     m_Metadata:
       m_Items: []
+  - m_Id: 2100134899867648
+    m_Localized: Touch To Start
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
