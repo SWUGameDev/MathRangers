@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class LoginUIManager : MonoBehaviourSingleton<LoginUIManager>
+public partial class LoginUIManager : MonoBehaviour
 {
+    public static LoginUIManager Instance;
 
-    void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         this.waitForSeconds = new WaitForSeconds(this.popupTime);
 
         this.noticeObjectPool = new ObjectPool(this.noticePrefab,1,"Notice");
+
+        LoginUIManager.Instance = this;
     }
 
 }
