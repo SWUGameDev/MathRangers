@@ -7,6 +7,14 @@ public class OptionManager : MonoBehaviour
 {
     public GameObject optionsPanel;
 
+    // 음악 재생 관리
+    public AudioSource backgroundAudioSource;
+    public AudioSource effectsAudioSource;
+
+    private bool isEffectsMuted = false;
+    private bool isBackgroundMuted = false;
+    private bool isAllMuted = false;
+
     public void OptionsPanelOpen()
     {
         optionsPanel.SetActive(true);   
@@ -17,13 +25,25 @@ public class OptionManager : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
-    public void BackgroundSoundOn()
+    public void ToggleEffects()
     {
-        AudioListener.volume = 1;
+        isEffectsMuted = !isEffectsMuted;
+        effectsAudioSource.mute = isEffectsMuted;
     }
 
-    public void BackgroundSoundOff()
+    public void ToggleBackground()
     {
-        AudioListener.volume = 0;
+        isBackgroundMuted = !isBackgroundMuted;
+        backgroundAudioSource.mute = isBackgroundMuted;
+    }
+
+    public void ToggleEffectsAndMusic()
+    {
+        isAllMuted = !isAllMuted;
+
+        isEffectsMuted = isAllMuted;
+        isBackgroundMuted = isAllMuted; 
+        backgroundAudioSource.mute = isBackgroundMuted;
+        effectsAudioSource.mute = isEffectsMuted;
     }
 }

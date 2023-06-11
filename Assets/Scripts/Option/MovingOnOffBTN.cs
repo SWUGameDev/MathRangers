@@ -39,6 +39,7 @@ public class MovingOnOffBTN : MonoBehaviour
         // 각 버튼에 클릭 이벤트 핸들러 연결
         for (int i = 0; i < buttonCount; i++)
         {
+
             int index = i; // 클로저를 사용하여 인덱스 변수를 보존
             toggleButtons[i].onClick.AddListener(() => ToggleButton(index));
         }
