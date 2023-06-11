@@ -18,15 +18,28 @@ public partial class AuthManager : MonoBehaviour
     }
     public void login()
     {
+        if(!this.IsEmailValid(emailField.text))
+        {
+            LoginUIManager.Instance.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
+            return;
+        }
+
+        if(!this.IsPasswordValid(passwordField.text))
+        {
+            LoginUIManager.Instance.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            return;
+        }
+
         auth.SignInWithEmailAndPasswordAsync(emailField.text, passwordField.text).ContinueWith(
             task => {
                 if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
                 {
-                    Debug.Log(emailField.text + " 로 로그인 하셨습니다.");
+                    Firebase.Auth.AuthResult result = task.Result;
+                    Debug.Log($"{emailField.text} 로 로그인 하셨습니다. {result.User.UserId}");
                 }
                 else
                 {
-                    Debug.Log("로그인에 실패하셨습니다.");
+                    LoginUIManager.Instance.PopUpMessage($"로그인이 실패하였습니다.\n{task.Exception}");
                 }
             }
         );
@@ -35,13 +48,13 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsEmailValid(emailField.text))
         {
-            Debug.Log("이메일 형식이 잘못되었습니다.");
+            LoginUIManager.Instance.PopUpMessage("이메일 형식이 잘못되었습니다.");
             return;
         }
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            Debug.Log("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            LoginUIManager.Instance.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
             return;
         }
 
