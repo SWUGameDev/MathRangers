@@ -28,14 +28,15 @@ ObjectPool 생성자 함수 입니다.
         this.obj = obj;
         this.parent = parent;
         for(int index = 0;index<count;++index)
-            this.CreateObject();
+            this.objectQueue.Enqueue(this.CreateObject());
     }
 
-    private void CreateObject()
+    private GameObject CreateObject()
     {
         var newObj = GameObject.Instantiate(this.obj);
         newObj.transform.SetParent(this.parent);
         newObj.gameObject.SetActive(false);
+        return newObj;
     }
 
     public GameObject GetObject()
@@ -56,7 +57,7 @@ ObjectPool 생성자 함수 입니다.
     {
         obj.SetActive(false);
         obj.transform.SetParent(this.parent);
-        Instance.poolingObjectQueue.Enqueue(obj);
+        this.objectQueue.Enqueue(obj);
     }
 
 }
