@@ -55,6 +55,26 @@ MonoBehaviour:
     m_Localized: Touch To Start
     m_Metadata:
       m_Items: []
+  - m_Id: 2134209228431360
+    m_Localized: Welcome to Math Ranger!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134636648980480
+    m_Localized: '*Letters and numbers: 4 to 16 characters / 2 to 8 double-byte characters'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134804433723392
+    m_Localized: Please enter your nickname.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134924315320320
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2135159578025984
+    m_Localized: Nickname can be changed free of charge only once.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

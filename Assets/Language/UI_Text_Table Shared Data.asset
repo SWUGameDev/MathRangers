@@ -53,6 +53,26 @@ MonoBehaviour:
     m_Key: Key_TouchToStart
     m_Metadata:
       m_Items: []
+  - m_Id: 2134209228431360
+    m_Key: Key_Welcome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134636648980480
+    m_Key: Key_NicknameLimitNotice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134804433723392
+    m_Key: Key_NicknameNotice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134924315320320
+    m_Key: Key_Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2135159578025984
+    m_Key: key_NicknameNotice
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
