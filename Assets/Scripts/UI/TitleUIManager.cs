@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Localization.Settings;
+
 
 public class TitleUIManager : MonoBehaviour
 {
@@ -15,16 +15,15 @@ public class TitleUIManager : MonoBehaviour
 
     [SerializeField] private List<Button> languageButtons;
 
-    private bool isChanging = false; 
-
     private bool isChanged = false;
 
     private void Awake() {
 
-        if(PlayerPrefs.HasKey("SelectedLanguage"))
+        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
         {
             this.SetTouchToStartUI(true);
-            this.StartCoroutine(this.ChangeLocalizationSetting(PlayerPrefs.GetInt("SelectedLanguage")));
+            int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
+            LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
         }else{
             this.SetTouchToStartUI(false);
         }
@@ -32,22 +31,12 @@ public class TitleUIManager : MonoBehaviour
 
     public void SelectLanguageButton(int index)
     {
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
-        if(this.isChanging == false)    
-            this.StartCoroutine(this.ChangeLocalizationSetting(index));
+        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.ChangeSceneBeforeFirstSelectedLanguage);
     }
 
-    private IEnumerator ChangeLocalizationSetting(int selectedLanguageIndex)
+    private void IsLanguageSelectedComplete()
     {
-        this.isChanging = true;
-
-        yield return LocalizationSettings.InitializationOperation;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[selectedLanguageIndex];
-        PlayerPrefs.SetInt("SelectedLanguage",selectedLanguageIndex);
-
-        this.isChanging = false;
         this.isChanged = true;
-        this.SetTouchToStartUI(true);
     }
 
     public void ChangeScene()
@@ -55,6 +44,11 @@ public class TitleUIManager : MonoBehaviour
         if(this.isChanged == false)
             return;
 
+        SceneManager.LoadScene(this.sceneName);
+    }
+
+    private void ChangeSceneBeforeFirstSelectedLanguage()
+    {
         SceneManager.LoadScene(this.sceneName);
     }
 
