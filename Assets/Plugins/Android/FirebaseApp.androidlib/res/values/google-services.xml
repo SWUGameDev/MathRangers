@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://mathrangers-default-rtdb.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">953071706523</string>
+  <string name="google_storage_bucket" translatable="false">mathrangers.appspot.com</string>
+  <string name="project_id" translatable="false">mathrangers</string>
+  <string name="google_api_key" translatable="false">AIzaSyCkIM1o5kx9dx3Pfkuz4zjkJQ3cRj8Wj94</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCkIM1o5kx9dx3Pfkuz4zjkJQ3cRj8Wj94</string>
+  <string name="google_app_id" translatable="false">1:953071706523:android:7672d7b96b191bf847013e</string>
+  <string name="default_web_client_id" translatable="false">953071706523-i8d2nmep2g11r3liltpq53ku42v0k51f.apps.googleusercontent.com</string>
+</resources>
