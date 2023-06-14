@@ -53,5 +53,18 @@ public partial class FirebaseRealtimeDatabaseManager
         }
     }
 
+    private async void FetchScoresByOrder(string rootKey,string chidKey,int limitCount,Action<DataSnapshot> OnCompleted)
+    {
+        DatabaseReference scoresRef = databaseReference.Child(rootKey);
+        Query query = scoresRef.OrderByChild(chidKey).LimitToFirst(limitCount);
+
+        DataSnapshot snapshot = await query.GetValueAsync();
+
+        if (snapshot != null && snapshot.HasChildren)
+        {
+            OnCompleted.Invoke(snapshot);
+        }
+    }
+
 }
 
