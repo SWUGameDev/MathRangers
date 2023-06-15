@@ -16,7 +16,7 @@ public partial class FirebaseRealtimeDatabaseManager
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    private void WriteData<T>(string key, string value)
+    private void WriteData<T>(string key, string value,Action onCompleted = null)
     {
         this.databaseReference.Child(key).SetRawJsonValueAsync(value).ContinueWith(task =>
         {
@@ -26,6 +26,7 @@ public partial class FirebaseRealtimeDatabaseManager
             }else if(task.IsCompleted)
             {
                 Debug.Log("Upload Complete");
+                onCompleted?.Invoke();
             }
         });
     }
