@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBackgroundImage: {fileID: 6545873277741955671}
   rankBackgroundImage: {fileID: 6545873279275709674}
-  rankTextt: {fileID: 6545873277832231789}
+  rankText: {fileID: 6545873277832231789}
   userIconImage: {fileID: 6545873278212997553}
   userName: {fileID: 6545873277962216887}
   userScore: {fileID: 6545873277897923060}
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.81317735, b: 0.15566039, a: 1}
+  m_Color: {r: 0.4745098, g: 0.4745098, b: 0.4745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

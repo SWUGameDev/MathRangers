@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class RankingItemController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class RankingItemController : MonoBehaviour
     
     [SerializeField] private Image rankBackgroundImage;
 
-    [SerializeField] private TMP_Text rankTextt;
+    [SerializeField] private TMP_Text rankText;
 
     [SerializeField] private Image userIconImage;
 
@@ -18,9 +19,22 @@ public class RankingItemController : MonoBehaviour
 
     [SerializeField] private TMP_Text userScore;
 
-    public RankingItemController()
+    public void InitializeRankingItemController(int rank,UserRankInfo userRankInfo)
     {
+        this.rankText.text = rank.ToString();
+        this.userName.text = userRankInfo.nickname;
+        string formattedNumber = string.Concat(userRankInfo.score.Reverse().Select((c, index) => index > 0 && index % 3 == 0 ? c.ToString() + "," : c.ToString()).Reverse());
+        this.userScore.text = formattedNumber;
+    }
 
+    public void SetItemBackGroundImage(Color color)
+    {
+        this.itemBackgroundImage.color = color;
+    }
+
+    public void SetRankBackGroundImage(Color color)
+    {
+        this.rankBackgroundImage.color = color;
     }
 
 }
