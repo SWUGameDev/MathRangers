@@ -353,6 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cb5f1a3c5c7b2489896ee6f411b46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsPanel: {fileID: 0}
+  blackScreen: {fileID: 0}
+  backgroundAudioSource: {fileID: 0}
+  effectsAudioSource: {fileID: 0}
 --- !u!4 &92949157
 Transform:
   m_ObjectHideFlags: 0
