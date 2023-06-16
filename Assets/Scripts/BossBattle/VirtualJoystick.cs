@@ -9,7 +9,6 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField]
     private RectTransform lever;
     private RectTransform rectTransform;
-    //public GameObject player;
 
     [SerializeField, Range(0f, 30f)]
     private float leverRange = 25f;
@@ -25,43 +24,31 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void Update()
     {
-        //playerPos = player.transform.position;
         if (isInput)
         {
-            InputControlVector();
+            PlayerMovement.Instance.OnPlayerMove(inputVector);
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //var inputDir = eventData.position -rectTransform.anchoredPosition - new Vector2(rectTransform.rect.width, rectTransform.rect.height);
-        //var clampedDir = inputDir.magnitude < leverRange ?
-            //inputDir : inputDir.normalized * leverRange;
+        var inputDir = eventData.position -rectTransform.anchoredPosition - new Vector2(rectTransform.rect.width, rectTransform.rect.height);
+        var clampedDir = inputDir.magnitude < leverRange ? inputDir : inputDir.normalized * leverRange;
 
-        //lever.anchoredPosition = clampedDir;
+        lever.anchoredPosition = clampedDir;
 
-        ControlJoystickLever(eventData);  // 추가
         isInput = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        //var inputDir = eventData.position - rectTransform.anchoredPosition - new Vector2(rectTransform.rect.width, rectTransform.rect.height);
-        //var clampedDir = inputDir.magnitude < leverRange ? inputDir : inputDir.normalized * leverRange;
-        //Debug.Log(clampedDir.x + " " + clampedDir.y);
-
-        //lever.anchoredPosition = clampedDir;
-
-        //Vector3 moveDirection = new Vector3(clampedDir.x, clampedDir.y, clampedDir.y).normalized;
-        //Vector3 movePosition = playerPos + moveDirection * moveSpeed * Time.deltaTime;
-        //player.transform.position = movePosition;
-        ControlJoystickLever(eventData);    // 추가
-        isInput = false;    // 추가
+        ControlJoystickLever(eventData);    
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         lever.anchoredPosition = Vector2.zero;
+        isInput = false;  
     }
 
     public void ControlJoystickLever(PointerEventData eventData)
@@ -70,10 +57,5 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         var clampedDir = inputDir.magnitude < leverRange ? inputDir : inputDir.normalized * leverRange;
         lever.anchoredPosition = clampedDir;
         inputVector = clampedDir / leverRange;
-    }
-    private void InputControlVector()
-    {
-        //Debug.Log(inputDirection.x + " / " + inputDirection.y);
-        // 캐릭터에게 입력벡터를 전달
     }
 }

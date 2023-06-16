@@ -6,32 +6,38 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private RectTransform lever;
-    [SerializeField]
-    float speed = 10f;
+    private static PlayerMovement instance = null;
 
-    float distance = 10;
-    Vector3 vPos;
-    Vector3 vDist;
-    Vector3 mousePosition;
-    Vector3 vDir;
-    public void Update()
+    private void Awake()
     {
-        Vector3 vPos = transform.position; // 현재 포지션
-
+        if(null == instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    void OnMouseDrag()
+    public static PlayerMovement Instance
     {
-        Debug.Log("Drag!!");
-        mousePosition = new Vector3(Input.mousePosition.x,
-Input.mousePosition.y, distance);
-        vDist = mousePosition - vPos;
-        vDir = vDist.normalized; // 방향
-        
-        transform.position += vDir * speed * Time.deltaTime;
-        //Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //transform.position = objPosition;
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
+    [SerializeField]
+    float playerSpeed = 10f;
+
+    public void OnPlayerMove(Vector2 vdir)
+    {
+        transform.position += new Vector3(vdir.x, vdir.y, 0f) * playerSpeed * Time.deltaTime;
     }
 }
