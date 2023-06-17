@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Firebase.Database;
+using System.Threading.Tasks;
 public partial class FirebaseRealtimeDatabaseManager 
 {
     private DatabaseReference databaseReference;
@@ -26,12 +27,28 @@ public partial class FirebaseRealtimeDatabaseManager
             }else if(task.IsCompleted)
             {
                 Debug.Log("Upload Complete");
+
                 onCompleted?.Invoke();
             }
         });
     }
 
-    private async void ReadData<T>(string key,Action<T> action)
+    private void WriteDataUsingMainTread<T>(string key, string value,Action onCompleted = null)
+    {
+        this.databaseReference.Child(key).SetRawJsonValueAsync(value).ContinueWith(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError("Data write encountered an error: " + task.Exception);
+            }else if(task.IsCompleted)
+            {
+                Debug.Log("Upload Complete");
+                onCompleted?.Invoke();
+            }
+        },TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    private async void ReadData<T>(string key,Action<T> OnCompleted = null)
     {
         try
         {
@@ -41,7 +58,7 @@ public partial class FirebaseRealtimeDatabaseManager
             {
                 string deserializedData = snapshot.GetRawJsonValue();
                 T data =  JsonUtility.FromJson<T>(deserializedData);
-                action.Invoke(data);
+                OnCompleted?.Invoke(data);
             }
             else
             {
@@ -54,7 +71,7 @@ public partial class FirebaseRealtimeDatabaseManager
         }
     }
 
-    private async void FetchScoresByOrder(string rootKey,string chidKey,int limitCount,Action<DataSnapshot> OnCompleted)
+    private async void FetchScoresByOrder(string rootKey,string chidKey,int limitCount,Action<DataSnapshot> OnCompleted = null)
     {
         DatabaseReference scoresRef = databaseReference.Child(rootKey);
         Query query = scoresRef.OrderByChild(chidKey).LimitToFirst(limitCount);
@@ -63,7 +80,7 @@ public partial class FirebaseRealtimeDatabaseManager
 
         if (snapshot != null && snapshot.HasChildren)
         {
-            OnCompleted.Invoke(snapshot);
+            OnCompleted?.Invoke(snapshot);
         }
     }
 

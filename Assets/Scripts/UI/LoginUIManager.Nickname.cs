@@ -43,7 +43,7 @@ public partial class LoginUIManager : MonoBehaviour
         {
             UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
             string serializedData = JsonUtility.ToJson(userInfo);
-            FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(this.userId,serializedData,this.ChangeScene);
+            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.ChangeScene);
             this.isChecked = true;
         }
     }
