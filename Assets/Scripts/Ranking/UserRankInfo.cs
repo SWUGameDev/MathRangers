@@ -4,7 +4,7 @@ public class UserRankInfo
     public string iconURL;
     public string nickname;
 
-    public string score;
+    public long score;
 
     public string team;
 }

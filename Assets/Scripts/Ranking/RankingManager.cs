@@ -37,6 +37,7 @@ public class RankingManager : MonoBehaviour
             UserRankInfo score = JsonUtility.FromJson<UserRankInfo>(json);
             infos.Add(score);
         }
+        infos.Sort((x, y) => y.score.CompareTo(x.score));
         this.CreateRankingItem(infos);
     }
 
@@ -71,6 +72,6 @@ public class RankingManager : MonoBehaviour
     {
         return;
 
-        rankingItemController.SetRankBackGroundImage(this.myRankHighlightBackgroundColor);
+        //rankingItemController.SetRankBackGroundImage(this.myRankHighlightBackgroundColor);
     }
 }

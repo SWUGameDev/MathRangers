@@ -23,7 +23,7 @@ public class RankingItemController : MonoBehaviour
     {
         this.rankText.text = rank.ToString();
         this.userName.text = userRankInfo.nickname;
-        string formattedNumber = string.Concat(userRankInfo.score.Reverse().Select((c, index) => index > 0 && index % 3 == 0 ? c.ToString() + "," : c.ToString()).Reverse());
+        string formattedNumber =  userRankInfo.score.ToString("N0");
         this.userScore.text = formattedNumber;
     }
 
