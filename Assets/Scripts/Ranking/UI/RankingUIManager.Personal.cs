@@ -54,10 +54,13 @@ public partial class RankingUIManager : MonoBehaviour
 
     private void SetMyRankBackgroundColor(UserRankInfo rankInfo,RankingUIItem rankingItemController)
     {
-        return;
+        string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
+        
+        if(userId == null)
+            return;
 
-        // TODO : 내정보로 가져오기
-        //rankingItemController.SetRankBackGroundImage(this.myRankHighlightBackgroundColor);
+        if(userId == rankInfo.UID)
+            rankingItemController.SetItemBackGroundImage(this.myRankHighlightBackgroundColor);
     }
     
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Firebase.Database;
+using Firebase.Auth;
 using System.Threading.Tasks;
 public partial class FirebaseRealtimeDatabaseManager 
 {
@@ -15,6 +16,20 @@ public partial class FirebaseRealtimeDatabaseManager
     private FirebaseRealtimeDatabaseManager()
     {
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+    }
+
+    public string GetCurrentUserId()
+    {
+        FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        return currentUser.UserId;
+    }
+
+    private void RefreshReferenceKeepSynced(string referenceName) {
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference(referenceName);
+        if(reference == null)
+            return;
+        reference.KeepSynced(false);
+        reference.KeepSynced(true);
     }
 
     private void WriteData<T>(string key, string value,Action onCompleted = null)

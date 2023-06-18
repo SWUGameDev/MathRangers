@@ -32,6 +32,8 @@ public partial class RankingUIManager : MonoBehaviour
         int rank = 0;
         foreach(var infos in teamRackingInfos)
         {
+            if(this.teamRackingUIItems.ContainsKey(infos.Key) == false)
+                continue;
             this.teamRackingUIItems[infos.Key]?.SetTeamRankBackGroundColor(this.rankBackgroundColors[rank]);
             this.teamRackingUIItems[infos.Key]?.SetTeamRankText((++rank).ToString());
         }

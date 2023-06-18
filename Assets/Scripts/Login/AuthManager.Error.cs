@@ -22,8 +22,11 @@ public partial class AuthManager: MonoBehaviour {
                     case AuthError.InvalidEmail :
                         LoginUIManager.Instance.PopUpMessage("! 맞지 않는 아이디 형식입니다.");
                         break;
+                    case AuthError.UserNotFound :
+                        LoginUIManager.Instance.PopUpMessage("! 찾을 수 없는 아이디입니다.\n회원가입을 진행해주세요.");
+                        break;
                     default: 
-                        LoginUIManager.Instance.PopUpMessage($"! Error Error code {firebaseException.ErrorCode}");
+                        LoginUIManager.Instance.PopUpMessage($"! Error Error code {((AuthError)firebaseException.ErrorCode).ToString()}");
                         break;        
                 }    
             }
