@@ -6,10 +6,12 @@ using totalScore = System.Int64;
 using System.Linq;
 public partial class RankingUIManager : MonoBehaviour
 {
+    [Header("Team Tab UI")]
+
     [SerializeField] private List<GameObject> teamRankingPanels;
 
     private Dictionary<TeamName,TeamRackingUIItem> teamRackingUIItems;
-    public void initializeTeamRankSettings()
+    private void initializeTeamRankSettings()
     {
         this.teamRackingUIItems = new Dictionary<TeamName, TeamRackingUIItem>();
 
@@ -20,14 +22,20 @@ public partial class RankingUIManager : MonoBehaviour
         }
     }
 
-    public void SetTeamRankUI(IOrderedEnumerable<KeyValuePair<TeamName, totalScore>> teamRackingInfos)
+    public bool SetTeamRankUI(IOrderedEnumerable<KeyValuePair<TeamName, totalScore>> teamRackingInfos)
     {
+        this.initializeTeamRankSettings();
+
+        if(teamRackingInfos == null)
+            return false;
+        
         int rank = 0;
         foreach(var infos in teamRackingInfos)
         {
-            //TODO : Background Color 설정
+            this.teamRackingUIItems[infos.Key]?.SetTeamRankBackGroundColor(this.rankBackgroundColors[rank]);
             this.teamRackingUIItems[infos.Key]?.SetTeamRankText((++rank).ToString());
         }
+        return true;
     }
 
 }

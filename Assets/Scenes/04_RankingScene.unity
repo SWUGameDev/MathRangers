@@ -359,11 +359,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149805250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1154.0591, y: -515.9393, z: 2.901771}
+  m_LocalPosition: {x: -966.24896, y: -758.3953, z: 8.268141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 524464600}
+  m_Father: {fileID: 302613482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &149805252
@@ -378,14 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6392889b5ad2c4aafb7ca4e5144679ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankItemPrefab: {fileID: 6545873277741955674, guid: 23038ad1bf7ed4163b6fd6ce1b2f4b7d, type: 3}
   itemCount: 10
-  personalContentParentTransform: {fileID: 1729313320}
-  rankBackgroundColors:
-  - {r: 1, g: 0.8156863, b: 0.15686275, a: 1}
-  - {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  - {r: 0.6156863, g: 0.5176471, b: 0.25882354, a: 1}
-  myRankHighlightBackgroundColor: {r: 0.83137256, g: 0.6039216, b: 0.39607844, a: 1}
   rankingUIManager: {fileID: 524464601}
 --- !u!1 &238531640
 GameObject:
@@ -560,6 +553,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 524464601}
+        m_TargetAssemblyTypeName: RankingUIManager, Assembly-CSharp
+        m_MethodName: InitializePersonalTabUISettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &299519200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +616,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 299519200}
+--- !u!1 &302613481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302613482}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &302613482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302613481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 149805251}
+  - {fileID: 524464600}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501039101
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,14 +755,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524464599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1154.0591, y: 515.9393, z: -2.901771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 187.81012, y: -242.45605, z: 5.3663697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 149805251}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Children: []
+  m_Father: {fileID: 302613482}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &524464601
 MonoBehaviour:
@@ -738,19 +775,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbd8f47ae5674628bd851c5b03bab4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankPanelUIs:
-  - rankListButton: {fileID: 1717967850}
+  rankPanels:
+  - tabName: Team
+    tabOrder: 0
+    rankListButton: {fileID: 1717967850}
     rankListPanel: {fileID: 644762721}
-  - rankListButton: {fileID: 299519199}
+    isUIInitialized: 0
+  - tabName: Personal
+    tabOrder: 1
+    rankListButton: {fileID: 299519199}
     rankListPanel: {fileID: 1475731952}
-  - rankListButton: {fileID: 1241814182}
+    isUIInitialized: 0
+  - tabName: Friend
+    tabOrder: 2
+    rankListButton: {fileID: 1241814182}
     rankListPanel: {fileID: 1671583023}
+    isUIInitialized: 0
   colorOption:
     activatedColor: {r: 0.8745098, g: 0.8745098, b: 0.8745098, a: 1}
     unActivatedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   OnActivatedButtonChanged:
     m_PersistentCalls:
       m_Calls: []
+  rankingManager: {fileID: 149805252}
+  rankItemPrefab: {fileID: 6545873277741955674, guid: 23038ad1bf7ed4163b6fd6ce1b2f4b7d, type: 3}
+  personalContentParentTransform: {fileID: 1729313320}
+  rankBackgroundColors:
+  - {r: 1, g: 0.8156863, b: 0.15686275, a: 1}
+  - {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  - {r: 0.6156863, g: 0.5176471, b: 0.25882354, a: 1}
+  myRankHighlightBackgroundColor: {r: 0.83137256, g: 0.6039216, b: 0.39607844, a: 1}
   teamRankingPanels:
   - {fileID: 711788763}
   - {fileID: 1878299234}
@@ -2232,6 +2286,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1241814181}
         m_TargetAssemblyTypeName: RankingGroupButton, Assembly-CSharp
         m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 524464601}
+        m_TargetAssemblyTypeName: RankingUIManager, Assembly-CSharp
+        m_MethodName: InitializeFriendTabUISettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3761,6 +3827,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1717967853}
         m_TargetAssemblyTypeName: RankingGroupButton, Assembly-CSharp
         m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 524464601}
+        m_TargetAssemblyTypeName: RankingUIManager, Assembly-CSharp
+        m_MethodName: InitializeTeamTabUISettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

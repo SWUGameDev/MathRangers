@@ -8,21 +8,11 @@ using System.Linq;
 
 public partial class RankingManager : MonoBehaviour
 {
-    [SerializeField] private GameObject rankItemPrefab;
-
     [SerializeField] private int itemCount;
-
-    private List<RankingUIItem> rankingItems;
-
-
-    [SerializeField] private Transform personalContentParentTransform;
-
-    [SerializeField] private Color[] rankBackgroundColors;
-
-    [SerializeField] private Color myRankHighlightBackgroundColor;
 
     [SerializeField] private RankingUIManager rankingUIManager;
 
+    private List<UserRankInfo> infos;
 
     private void Awake() {
         this.LoadRankingData();
@@ -35,20 +25,21 @@ public partial class RankingManager : MonoBehaviour
 
     private void GetInfo(DataSnapshot dataSnapshot)
     {
-        List<UserRankInfo> infos = new List<UserRankInfo>();
+        this.infos = new List<UserRankInfo>();
         foreach (var childSnapshot in dataSnapshot.Children)
         {
             string json = childSnapshot.GetRawJsonValue();
             UserRankInfo score = JsonUtility.FromJson<UserRankInfo>(json);
             infos.Add(score);
         }
-        this.InitializeRankingDataByInfos(infos);
+        this.SetUISettings();
     }
 
-    private void InitializeRankingDataByInfos(List<UserRankInfo> infos)
+    private void SetUISettings()
     {
-        this.OrderByUserScore(infos);
-        this.CalculateTotalSumByTeams(infos);
+        this.rankingUIManager.SetTeamRankUI(this.CalculateTotalSumByTeams());
+
+        this.rankingUIManager.CreatePersonalRankingItem(this.OrderByUserScore());
     }
 
 }

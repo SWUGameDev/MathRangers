@@ -9,8 +9,13 @@ using System.Linq;
 public partial class RankingManager : MonoBehaviour
 {
 
-    private void CalculateTotalSumByTeams(List<UserRankInfo> infos)
+    private IOrderedEnumerable<KeyValuePair<TeamName, totalScore>> CalculateTotalSumByTeams()
     {
+        if(this.infos==null)
+        {
+            this.LoadRankingData();
+            return null;
+        }
         Dictionary<TeamName, totalScore> nameScoreSum = new Dictionary<TeamName, totalScore>();
         foreach (var  user in infos)
         {
@@ -24,8 +29,8 @@ public partial class RankingManager : MonoBehaviour
             }
         }
         var sortedNameScoreSum = nameScoreSum.OrderByDescending(pair => pair.Value);
-
-        this.rankingUIManager.SetTeamRankUI(sortedNameScoreSum);
+    
+        return sortedNameScoreSum;
     }
 
 }
