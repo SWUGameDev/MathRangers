@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Firebase.Database;
 using UnityEngine;
+using TeamName = System.String;
+using totalScore = System.Int64;
+using System.Linq;
 
-public class RankingManager : MonoBehaviour
+public partial class RankingManager : MonoBehaviour
 {
     [SerializeField] private GameObject rankItemPrefab;
 
     [SerializeField] private int itemCount;
 
-    private List<RankingItemController> rankingItemControllers;
+    private List<RankingUIItem> rankingItems;
 
 
-    [SerializeField] private Transform[] contentParentTransforms;
+    [SerializeField] private Transform personalContentParentTransform;
 
     [SerializeField] private Color[] rankBackgroundColors;
 
     [SerializeField] private Color myRankHighlightBackgroundColor;
+
+    [SerializeField] private RankingUIManager rankingUIManager;
 
 
     private void Awake() {
@@ -37,41 +42,13 @@ public class RankingManager : MonoBehaviour
             UserRankInfo score = JsonUtility.FromJson<UserRankInfo>(json);
             infos.Add(score);
         }
-        infos.Sort((x, y) => y.score.CompareTo(x.score));
-        this.CreateRankingItem(infos);
+        this.InitializeRankingDataByInfos(infos);
     }
 
-    private void CreateRankingItem(List<UserRankInfo> infos)
+    private void InitializeRankingDataByInfos(List<UserRankInfo> infos)
     {
-        Transform parent = this.contentParentTransforms[1];
-        this.rankingItemControllers = new List<RankingItemController>();
-
-        for(int index = 0;index<infos.Count;index++)
-        {
-            GameObject item = GameObject.Instantiate<GameObject>(this.rankItemPrefab);
-            item.transform.SetParent(this.contentParentTransforms[1]);
-            RankingItemController controller = item.GetComponent<RankingItemController>();
-
-            controller.InitializeRankingItemController(index+1,infos[index]);
-            this.SetRankBackgroundColor(index,controller);
-            this.SetMyRankBackgroundColor(infos[index],controller);
-
-            this.rankingItemControllers.Add(controller) ;
-        }
+        this.OrderByUserScore(infos);
+        this.CalculateTotalSumByTeams(infos);
     }
 
-    private void SetRankBackgroundColor(int index,RankingItemController rankingItemController)
-    {
-        if(index>2)
-            return;
-        
-        rankingItemController.SetRankBackGroundImage(this.rankBackgroundColors[index]);
-    }
-
-    private void SetMyRankBackgroundColor(UserRankInfo rankInfo,RankingItemController rankingItemController)
-    {
-        return;
-
-        //rankingItemController.SetRankBackGroundImage(this.myRankHighlightBackgroundColor);
-    }
 }

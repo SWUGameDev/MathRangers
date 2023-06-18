@@ -12,11 +12,14 @@ public class RankingGroupButton : MonoBehaviour, IGroupButton
 
     private RankingUIManager rankingUIManager;
 
+    private GameObject currentTargetPanel;
+
     private int index;
 
-    public void InitializeRankingGroupButton(int index,ColorOption colorOption,RankingUIManager rankingUIManager)
+    public void InitializeRankingGroupButton(int index,GameObject currentTargetPanel,ColorOption colorOption,RankingUIManager rankingUIManager)
     {
         this.index = index;
+        this.currentTargetPanel = currentTargetPanel;
         this.colorOption = colorOption;
         this.rankingUIManager = rankingUIManager;
     }
@@ -24,10 +27,15 @@ public class RankingGroupButton : MonoBehaviour, IGroupButton
     public void OnActivatedButtonChanged(int activatedIndex)
     {
         if(this.index != activatedIndex)
+        {
             this.buttonImage.color = this.colorOption.unActivatedColor;
+            if(this.currentTargetPanel.activeSelf == true)
+                this.currentTargetPanel?.SetActive(false);
+        }
         else
         {
             this.buttonImage.color = this.colorOption.activatedColor;
+            this.currentTargetPanel?.SetActive(true);
         }
     }
 

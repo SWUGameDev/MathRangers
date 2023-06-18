@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class RankingItemController : MonoBehaviour
+public class RankingUIItem : MonoBehaviour
 {
     [SerializeField] private Image itemBackgroundImage;
     
