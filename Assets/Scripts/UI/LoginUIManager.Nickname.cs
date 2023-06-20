@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text.RegularExpressions;
 
@@ -29,7 +30,6 @@ public partial class LoginUIManager : MonoBehaviour
 
     public void ConfirmNickname()
     {
-        //TODO : 비동기로 수동하기
         if(this.isChecked)
             return;
 
@@ -43,11 +43,14 @@ public partial class LoginUIManager : MonoBehaviour
         {
             UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
             string serializedData = JsonUtility.ToJson(userInfo);
-            FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(this.userId,serializedData);
+            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.ChangeScene);
             this.isChecked = true;
-
-            // Change Scene
         }
+    }
+
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene("03_MainScene");
     }
 
     private bool IsNicknameValid(string nickname)
