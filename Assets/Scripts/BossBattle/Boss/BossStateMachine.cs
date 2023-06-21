@@ -5,6 +5,12 @@ using UnityEngine;
 public class BossStateMachine : StateMachine<BossStateMachine>
 {
     private Boss boss;
+
+    public Boss Boss{
+        get {
+            return this.boss;
+        }
+    }
     private void Awake() {
         base.states = new Dictionary<string, State<BossStateMachine>>{
             {"Idle",new BossIdle(this)},

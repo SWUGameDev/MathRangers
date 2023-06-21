@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossIdle : BossState
 {
+    private float elapsedTime = 0f;
+
+    private float escapeTime = 1f;
     public BossIdle(BossStateMachine stateMachine) : base(stateMachine)
     {
 
@@ -15,10 +18,19 @@ public class BossIdle : BossState
     public override void OnUpdate()
     {
         base.OnUpdate();
+
+        this.elapsedTime += Time.deltaTime;
+
+        if(this.elapsedTime >= this.escapeTime)
+        {
+            this.stateMachine.SetState("Move");
+        }
     }
     public override void OnExit()
     {
         base.OnExit();
+
+        this.elapsedTime = 0f;
     }
 
 }
