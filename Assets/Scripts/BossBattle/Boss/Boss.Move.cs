@@ -8,6 +8,8 @@ public partial class Boss : MonoBehaviour
 
     [SerializeField] private float bossMoveSpeed;
 
+    [SerializeField] private float minDistance = 0.1f;
+
     public GameObject Target
     {
         get{
@@ -17,6 +19,9 @@ public partial class Boss : MonoBehaviour
     public void FollowTarget()
     {
         if(this.target == null)
+            return;
+
+        if(Vector2.Distance(this.target.transform.position , this.transform.position)< this.minDistance)
             return;
 
         Vector3 direction = this.target.transform.position - this.transform.position;
