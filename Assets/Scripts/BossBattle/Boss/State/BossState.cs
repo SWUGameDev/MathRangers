@@ -17,6 +17,11 @@ public class BossState : State<BossStateMachine>
     {
         base.OnUpdate();
     }
+
+    public override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+    }
     public override void OnExit()
     {
         base.OnExit();

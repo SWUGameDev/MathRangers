@@ -8,6 +8,6 @@ public partial class Boss : MonoBehaviour
 
     public void PlayAttackEffect()
     {
-        this.bossAnimator.SetTrigger("Attack");
+
     }
 }
