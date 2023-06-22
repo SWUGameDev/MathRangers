@@ -15,7 +15,15 @@ public abstract class State<T>
     {
 
     }
+    virtual public void OnFixedUpdate()
+    {
+
+    }
     virtual public void OnUpdate()
+    {
+
+    }
+    virtual public void OnLateUpdate()
     {
 
     }
