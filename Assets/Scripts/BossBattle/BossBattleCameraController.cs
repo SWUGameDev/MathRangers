@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class BossBattleCameraController : MonoBehaviour
 {
-    public float cameraSpeed = 5.0f;
-
-    public GameObject player;
+    [SerializeField] Transform player;
+    [SerializeField] float smoothing = 0.2f;
+    [SerializeField] Vector2 minCameraBoundary;
+    [SerializeField] Vector2 maxCameraBoundary;
 
     private void Update()
     {
-        Vector3 dir = player.transform.position - this.transform.position;
-        Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
-        this.transform.Translate(moveVector);
+        Vector3 targetPos = new Vector3(player.position.x, player.position.y, this.transform.position.z);
 
-        // 모서리에 갔을 경우
-        // LateUpdate()
+        targetPos.x = Mathf.Clamp(targetPos.x, minCameraBoundary.x, maxCameraBoundary.x);
+        targetPos.y = Mathf.Clamp(targetPos.y, minCameraBoundary.y, maxCameraBoundary.y);
+
+        transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
     }
+
+
 }
