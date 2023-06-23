@@ -13,5 +13,8 @@ public class BossBattleCameraController : MonoBehaviour
         Vector3 dir = player.transform.position - this.transform.position;
         Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
         this.transform.Translate(moveVector);
+
+        // 모서리에 갔을 경우
+        // LateUpdate()
     }
 }
