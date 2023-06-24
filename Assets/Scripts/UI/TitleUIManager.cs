@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleUIManager : MonoBehaviour
 {
-    [SerializeField] private string sceneName = GlobalSettings.LOGIN_SCENE_NAME;
+    [SerializeField] private string sceneName = GlobalSettings.MAIN_SCENE_NAME;
 
     [SerializeField] private GameObject touchText;
     [SerializeField] private GameObject languageSelectPanel;
@@ -19,6 +19,19 @@ public class TitleUIManager : MonoBehaviour
 
     private void Awake() {
 
+    }
+
+    private void Start() {
+        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == null)
+        {
+            this.SetLanguagePanelActive();
+        }else{
+
+        }
+    }
+
+    private void SetLanguagePanelActive()
+    {
         if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
         {
             this.SetTouchToStartUI(true);
@@ -41,9 +54,6 @@ public class TitleUIManager : MonoBehaviour
 
     public void ChangeScene()
     {
-        if(this.isChanged == false)
-            return;
-
         SceneManager.LoadScene(this.sceneName);
     }
 
