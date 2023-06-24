@@ -24,12 +24,10 @@ public partial class Boss : MonoBehaviour
     void Update()
     {
         Debug.Log(this.bossStateMachine.currentState);
-
-        RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, this.boxCollider2D.size,0,Vector2.zero);
-        if(hit.collider != null && hit.collider.tag == "Player")
-        {
-            Boss.OnPlayerAttacked?.Invoke();
-        }
     }
 
+    void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject.tag == "Player")
+            Boss.OnPlayerAttacked?.Invoke();
+    }
 }

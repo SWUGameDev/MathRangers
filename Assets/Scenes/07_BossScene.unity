@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 24513043}
   - component: {fileID: 24513045}
   - component: {fileID: 24513047}
+  - component: {fileID: 24513048}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -251,6 +252,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.97, y: 1.03}
   m_EdgeRadius: 0
+--- !u!50 &24513048
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24513042}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &115341390
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +514,7 @@ GameObject:
   - component: {fileID: 210544690}
   - component: {fileID: 210544693}
   - component: {fileID: 210544694}
+  - component: {fileID: 210544695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -606,6 +629,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
+--- !u!50 &210544695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210544689}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &262893611
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52494b9e98f9ece4f91b485c7c2fd5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 210544694}
   lever: {fileID: 2139983092}
   leverRange: 25
 --- !u!1 &393731247
