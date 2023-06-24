@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -13,13 +14,14 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField, Range(0f, 30f)]
     private float leverRange = 25f;
 
-    private Vector2 inputVector;  
+    private Vector2 inputVector;
+    private Vector2 joystickSize;
     private bool isInput;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        
+        joystickSize = new Vector2(rectTransform.rect.width, rectTransform.rect.height);
     }
 
     public void Update()
@@ -32,11 +34,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        var inputDir = eventData.position -rectTransform.anchoredPosition - new Vector2(rectTransform.rect.width, rectTransform.rect.height);
-        var clampedDir = inputDir.magnitude < leverRange ? inputDir : inputDir.normalized * leverRange;
-
-        lever.anchoredPosition = clampedDir;
-
+        ControlJoystickLever(eventData);
         isInput = true;
     }
 
@@ -53,7 +51,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void ControlJoystickLever(PointerEventData eventData)
     {
-        var inputDir = eventData.position - rectTransform.anchoredPosition - new Vector2(rectTransform.rect.width, rectTransform.rect.height);
+        var inputDir = eventData.position - rectTransform.anchoredPosition - joystickSize;
         var clampedDir = inputDir.magnitude < leverRange ? inputDir : inputDir.normalized * leverRange;
         lever.anchoredPosition = clampedDir;
         inputVector = clampedDir / leverRange;
