@@ -7,59 +7,63 @@ using UnityEngine.SceneManagement;
 
 public class TitleUIManager : MonoBehaviour
 {
-    [SerializeField] private string sceneName = GlobalSettings.MAIN_SCENE_NAME;
-
     [SerializeField] private GameObject touchText;
     [SerializeField] private GameObject languageSelectPanel;
+
+    [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject changeSceneButton;
 
     [SerializeField] private List<Button> languageButtons;
 
-    private bool isChanged = false;
-
-    private void Awake() {
-
-    }
-
     private void Start() {
-        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == null)
+
+        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == "")
         {
             this.SetLanguagePanelActive();
         }else{
-
+            this.SetTouchToStartUI(true);
         }
     }
 
     private void SetLanguagePanelActive()
     {
-        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
+        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))// 이미 존재한다면
         {
-            this.SetTouchToStartUI(true);
+            this.SetLoginPanelActive(true);
+        
             int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
             LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
         }else{
-            this.SetTouchToStartUI(false);
+            this.languageSelectPanel.SetActive(true);
         }
+    }
+
+    private void SetLoginPanelActive(bool isActive)
+    {
+        this.touchText.SetActive(!isActive);
+        this.changeSceneButton.SetActive(!isActive);
+        this.languageSelectPanel.SetActive(!isActive);
+        this.loginPanel.SetActive(isActive);
     }
 
     public void SelectLanguageButton(int index)
     {
-        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.ChangeSceneBeforeFirstSelectedLanguage);
+        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.ChangeSceneToLoginScene);
     }
 
     private void IsLanguageSelectedComplete()
     {
-        this.isChanged = true;
+        this.SetLoginPanelActive(true);
     }
 
-    public void ChangeScene()
+    public void ChangeSceneToMainScene()
     {
-        SceneManager.LoadScene(this.sceneName);
+        SceneManager.LoadScene("03_MainScene");
     }
 
-    private void ChangeSceneBeforeFirstSelectedLanguage()
+    public void ChangeSceneToLoginScene()
     {
-        SceneManager.LoadScene(this.sceneName);
+        SceneManager.LoadScene("02_LoginScene");
     }
 
     private void SetTouchToStartUI(bool isActive)

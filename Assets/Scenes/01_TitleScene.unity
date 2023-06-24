@@ -461,7 +461,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 65142929}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1108874323}
+        m_TargetAssemblyTypeName: TitleUIManager, Assembly-CSharp
+        m_MethodName: ChangeSceneToLoginScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &65142929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2015,9 +2027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50c8f9afda7c4ab6b3ae05953ba1a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 03_MainScene
   touchText: {fileID: 881633346}
   languageSelectPanel: {fileID: 392427022}
+  loginPanel: {fileID: 554103277}
   changeSceneButton: {fileID: 462743062}
   languageButtons:
   - {fileID: 313116818}

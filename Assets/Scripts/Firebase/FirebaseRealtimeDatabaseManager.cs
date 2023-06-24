@@ -28,10 +28,16 @@ public partial class FirebaseRealtimeDatabaseManager
 
     }
 
+    /*
+    GetCurrentUserId
+
+    현재 로그인된 유저의 고유 값인 UserId 를 반환합니다. 
+    만약 현재 유저가 없다면 빈 문자열을 반환합니다.
+    */
     public string GetCurrentUserId()
     {
         FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
-        return currentUser.UserId;
+        return currentUser == null ? "" : currentUser.UserId;
     }
 
     private void RefreshReferenceKeepSynced(string referenceName) {
