@@ -18,6 +18,16 @@ public partial class FirebaseRealtimeDatabaseManager
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    public void Logout()
+    {
+        FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+        if(auth != null) {
+            Debug.Log($"Log Out -- Auth Email : {auth.CurrentUser.Email}");
+            auth?.SignOut();
+        }
+
+    }
+
     public string GetCurrentUserId()
     {
         FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;

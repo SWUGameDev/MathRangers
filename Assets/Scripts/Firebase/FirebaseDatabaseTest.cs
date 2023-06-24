@@ -5,6 +5,12 @@ using UnityEditor;
 
 public class FirebaseDatabaseTest : MonoBehaviour
 {
+    [MenuItem("Firebase/Logout")]
+    static void LogOut()
+    {
+        FirebaseRealtimeDatabaseManager.Instance.Logout();
+    }
+
     [MenuItem("Firebase/Upload")]
     static void UploadTest()
     {
