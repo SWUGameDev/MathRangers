@@ -11,26 +11,27 @@ public partial class RankingManager : MonoBehaviour
 
     private IOrderedEnumerable<KeyValuePair<TeamName, totalScore>> CalculateTotalSumByTeams()
     {
-        if(this.infos==null)
+        if(this.infos == null)
         {
             this.LoadRankingData();
             return null;
         }
-        Dictionary<TeamName, totalScore> nameScoreSum = new Dictionary<TeamName, totalScore>();
-        foreach (var  user in infos)
+
+        Dictionary<TeamName, totalScore> TotalScoreByTeamDictionary = new Dictionary<TeamName, totalScore>();
+        foreach (var user in infos)
         {
-            if (nameScoreSum.ContainsKey(user.team))
+            if (TotalScoreByTeamDictionary.ContainsKey(user.team))
             {
-                nameScoreSum[user.team] += user.score;
+                TotalScoreByTeamDictionary[user.team] += user.score;
             }
             else
             {
-                nameScoreSum[user.team] = user.score;
+                TotalScoreByTeamDictionary[user.team] = user.score;
             }
         }
-        var sortedNameScoreSum = nameScoreSum.OrderByDescending(pair => pair.Value);
+        var sortedScoreByTeams = TotalScoreByTeamDictionary.OrderByDescending(pair => pair.Value);
     
-        return sortedNameScoreSum;
+        return sortedScoreByTeams;
     }
 
 }

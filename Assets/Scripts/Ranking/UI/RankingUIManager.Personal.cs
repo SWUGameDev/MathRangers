@@ -20,6 +20,10 @@ public partial class RankingUIManager : MonoBehaviour
 
     [SerializeField] private Color myRankHighlightBackgroundColor;
 
+    private string userId = ""; 
+
+    private bool isCurrentUserChecked = false;
+
     public bool CreatePersonalRankingItem(List<UserRankInfo> infos)
     {
         if(infos == null)
@@ -36,9 +40,10 @@ public partial class RankingUIManager : MonoBehaviour
 
             controller.InitializeRankingItemController(index+1,infos[index]);
             this.SetRankBackgroundColor(index,controller);
-            this.SetMyRankBackgroundColor(infos[index],controller);
+            if(this.isCurrentUserChecked)
+                this.SetMyRankBackgroundColor(infos[index],controller);
 
-            this.rankingItems.Add(controller) ;
+            this.rankingItems.Add(controller);
         }
 
         return true;
@@ -54,13 +59,18 @@ public partial class RankingUIManager : MonoBehaviour
 
     private void SetMyRankBackgroundColor(UserRankInfo rankInfo,RankingUIItem rankingItemController)
     {
-        string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
+        if(this.userId == "")
+            this.userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         
-        if(userId == null)
+        if(this.userId == null)
             return;
 
-        if(userId == rankInfo.UID)
+        if(this.userId == rankInfo.UID)
+        {
             rankingItemController.SetItemBackGroundImage(this.myRankHighlightBackgroundColor);
+            this.isCurrentUserChecked = true;
+        }
+        
     }
     
 }
