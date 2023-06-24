@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using Firebase.Database;
+using Firebase.Auth;
+using System.Threading.Tasks;
 public partial class FirebaseRealtimeDatabaseManager 
 {
     private DatabaseReference databaseReference;
@@ -16,7 +18,21 @@ public partial class FirebaseRealtimeDatabaseManager
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    private void WriteData<T>(string key, string value)
+    public string GetCurrentUserId()
+    {
+        FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        return currentUser.UserId;
+    }
+
+    private void RefreshReferenceKeepSynced(string referenceName) {
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference(referenceName);
+        if(reference == null)
+            return;
+        reference.KeepSynced(false);
+        reference.KeepSynced(true);
+    }
+
+    private void WriteData<T>(string key, string value,Action onCompleted = null)
     {
         this.databaseReference.Child(key).SetRawJsonValueAsync(value).ContinueWith(task =>
         {
@@ -26,11 +42,28 @@ public partial class FirebaseRealtimeDatabaseManager
             }else if(task.IsCompleted)
             {
                 Debug.Log("Upload Complete");
+
+                onCompleted?.Invoke();
             }
         });
     }
 
-    private async void ReadData<T>(string key,Action<T> action)
+    private void WriteDataUsingMainTread<T>(string key, string value,Action onCompleted = null)
+    {
+        this.databaseReference.Child(key).SetRawJsonValueAsync(value).ContinueWith(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError("Data write encountered an error: " + task.Exception);
+            }else if(task.IsCompleted)
+            {
+                Debug.Log("Upload Complete");
+                onCompleted?.Invoke();
+            }
+        },TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    private async void ReadData<T>(string key,Action<T> OnCompleted = null)
     {
         try
         {
@@ -40,7 +73,7 @@ public partial class FirebaseRealtimeDatabaseManager
             {
                 string deserializedData = snapshot.GetRawJsonValue();
                 T data =  JsonUtility.FromJson<T>(deserializedData);
-                action.Invoke(data);
+                OnCompleted?.Invoke(data);
             }
             else
             {
@@ -50,6 +83,18 @@ public partial class FirebaseRealtimeDatabaseManager
         catch (System.Exception e)
         {
             Debug.LogError("Error retrieving data: " + e.Message);
+        }
+    }
+
+    private async void FetchScoresByOrder(string rootKey,string chidKey,int limitCount,Action<DataSnapshot> OnCompleted = null)
+    {
+        DatabaseReference scoresRef = databaseReference.Child(rootKey);
+
+        DataSnapshot snapshot = await scoresRef.GetValueAsync();
+
+        if (snapshot != null && snapshot.HasChildren)
+        {
+            OnCompleted?.Invoke(snapshot);
         }
     }
 

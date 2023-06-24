@@ -6,6 +6,7 @@ using Firebase;
 using UnityEngine.UI;
 using TMPro;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public partial class AuthManager : MonoBehaviour
 { 
@@ -39,7 +40,8 @@ public partial class AuthManager : MonoBehaviour
                     if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
                 {
                     Firebase.Auth.AuthResult result = task.Result;
-                    Debug.Log(emailField.text + "로 로그인되었습니다. \n");                    
+                    Debug.Log(emailField.text + "로 로그인되었습니다. \n");    
+                    SceneManager.LoadScene("03_MainScene");             
                 }
                 else if (task.IsFaulted)
                 {

@@ -32,8 +32,23 @@ public abstract class StateMachine<T> : MonoBehaviour where T : StateMachine<T>
         if(this.currentState == null || this.isRunning == false)
             return;
 
-        this.currentState.OnUpdate();
+        this.currentState?.OnUpdate();
     }
+
+    private void FixedUpdate() {
+        if(this.currentState == null || this.IsRunning == false)
+            return;
+
+        this.currentState?.OnFixedUpdate();;
+    } 
+
+
+    private void LateUpdate() {
+        if(this.currentState == null || this.IsRunning == false)
+            return;
+
+        this.currentState?.OnLateUpdate();;
+    } 
 
     public void SetState(string stateName)
     {
