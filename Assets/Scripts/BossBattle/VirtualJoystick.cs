@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,6 +19,8 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Vector2 joystickSize;
     private bool isInput;
 
+    public static event Action<Vector2> OnProcessInput;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -28,7 +31,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         if (isInput)
         {
-            PlayerMovement.Instance.OnPlayerMove(inputVector);
+            OnProcessInput?.Invoke(inputVector);
         }
     }
 
