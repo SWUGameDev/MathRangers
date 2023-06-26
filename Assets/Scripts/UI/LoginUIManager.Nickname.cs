@@ -34,6 +34,7 @@ public partial class LoginUIManager : MonoBehaviour
             return;
 
         string nickName = nicknameInputField.text;
+
         if(!IsNicknameValid(nickName))
         {
             LoginUIManager.Instance.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
@@ -43,14 +44,14 @@ public partial class LoginUIManager : MonoBehaviour
         {
             UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
             string serializedData = JsonUtility.ToJson(userInfo);
-            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.ChangeScene);
+            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
             this.isChecked = true;
         }
     }
 
-    private void ChangeScene()
+    private void LoadDiagnosticScene()
     {
-        SceneManager.LoadScene("03_MainScene");
+        SceneManager.LoadScene("04_DiagnosticScene");
     }
 
     private bool IsNicknameValid(string nickname)

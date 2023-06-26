@@ -37,11 +37,14 @@ public partial class AuthManager : MonoBehaviour
         auth.SignInWithEmailAndPasswordAsync(emailField.text, passwordField.text).ContinueWith(
             task =>
             {
-                    if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
+                if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
                 {
                     Firebase.Auth.AuthResult result = task.Result;
                     Debug.Log(emailField.text + "로 로그인되었습니다. \n");    
-                    SceneManager.LoadScene("03_MainScene");             
+
+                    FirebaseRealtimeDatabaseManager.Instance.LoadUserInfo(result.User.UserId, this.OnSignInCompleted);
+
+                    
                 }
                 else if (task.IsFaulted)
                 {
@@ -49,6 +52,16 @@ public partial class AuthManager : MonoBehaviour
                 }
             },TaskScheduler.FromCurrentSynchronizationContext()
         );
+    }
+
+    private void OnSignInCompleted(UserInfo userInfo)
+    {
+        if(userInfo == null)
+        {
+            SceneManager.LoadScene("03_NicknameSettingScene");   
+        }else{
+            SceneManager.LoadScene("03_MainScene");   
+        }
     }
     public void register() {
 
@@ -70,8 +83,10 @@ public partial class AuthManager : MonoBehaviour
                 if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
                 {
                     Firebase.Auth.AuthResult result = task.Result;  
+
                     Debug.Log(emailField.text + $"로 회원가입되었습니다.");
-                    LoginUIManager.Instance.InitializeNicknameSettingPanel(result.User.UserId);
+
+                    SceneManager.LoadScene("01_TitleScene");
                 }
                 else if (task.IsFaulted)
                 {

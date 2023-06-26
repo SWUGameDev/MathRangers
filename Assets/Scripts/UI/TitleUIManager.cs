@@ -27,12 +27,14 @@ public class TitleUIManager : MonoBehaviour
 
     private void SetLanguagePanelActive()
     {
-        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))// 이미 존재한다면
+        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
         {
-            this.SetLoginPanelActive(true);
+            // 키 값이 있더라도 로그인 되어 있지않으면 매번 진행함
+            
+            // this.SetLoginPanelActive(true);
         
-            int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
-            LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
+            // int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
+            // LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
         }else{
             this.languageSelectPanel.SetActive(true);
         }

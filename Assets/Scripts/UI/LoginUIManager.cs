@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class LoginUIManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public partial class LoginUIManager : MonoBehaviour
         this.noticeObjectPool = new ObjectPool(this.noticePrefab,1,"Notice");
 
         LoginUIManager.Instance = this;
+    }
+
+    public void LoadSignupScene()
+    {
+        SceneManager.LoadScene("03_SignupScene");
     }
 
 }
