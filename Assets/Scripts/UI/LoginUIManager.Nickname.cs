@@ -41,12 +41,27 @@ public partial class LoginUIManager : MonoBehaviour
             return;    
         }
 
-        {
-            UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
-            string serializedData = JsonUtility.ToJson(userInfo);
-            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
-            this.isChecked = true;
-        }
+        FirebaseRealtimeDatabaseManager.Instance.CheckDuplicateNickname(nickName,OnNicknameCheckFailed,OnNicknameCheckDuplicated,OnNicknameCheckCompleted);
+    }
+
+    private void OnNicknameCheckFailed()
+    {
+        LoginUIManager.Instance.PopUpMessage("! [Error] Can't Access to Firebase Service");
+        this.isChecked = true;
+    }
+
+    private void OnNicknameCheckCompleted(string nickName)
+    {
+        UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
+        string serializedData = JsonUtility.ToJson(userInfo);
+        FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
+        this.isChecked = true;
+    }
+
+    private void OnNicknameCheckDuplicated(string nickName)
+    {
+        LoginUIManager.Instance.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
+        this.isChecked = true;
     }
 
     private void LoadDiagnosticScene()

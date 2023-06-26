@@ -114,5 +114,29 @@ public partial class FirebaseRealtimeDatabaseManager
         }
     }
 
+    private void CheckDuplicatedValue(string key,string orderChildKey,string valueToCheck,Action OnFailed = null,Action<string> OnIsDuplicated = null ,Action<string> OnIsNotDuplicated = null)
+    {
+        var query = this.databaseReference.Child(key).OrderByChild(orderChildKey).EqualTo(valueToCheck);
+
+        query.ValueChanged += (object sender, ValueChangedEventArgs args) =>
+        {
+            if (args.DatabaseError != null)
+            {
+                OnFailed?.Invoke();
+            }
+            else if (args.Snapshot != null)
+            {
+                if (args.Snapshot.HasChildren)
+                {
+                    OnIsDuplicated?.Invoke(valueToCheck);
+                }
+                else
+                {
+                    OnIsNotDuplicated?.Invoke(valueToCheck);
+                }
+            }
+        };
+    }
+
 }
 
