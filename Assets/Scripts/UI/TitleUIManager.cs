@@ -15,31 +15,6 @@ public class TitleUIManager : MonoBehaviour
 
     [SerializeField] private List<Button> languageButtons;
 
-    private void Start() {
-
-        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == "")
-        {
-            this.SetLanguagePanelActive();
-        }else{
-            this.SetTouchToStartUI(true);
-        }
-    }
-
-    private void SetLanguagePanelActive()
-    {
-        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
-        {
-            // 키 값이 있더라도 로그인 되어 있지않으면 매번 진행함
-            
-            // this.SetLoginPanelActive(true);
-        
-            // int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
-            // LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
-        }else{
-            this.languageSelectPanel.SetActive(true);
-        }
-    }
-
     private void SetLoginPanelActive(bool isActive)
     {
         this.touchText.SetActive(!isActive);
@@ -48,9 +23,31 @@ public class TitleUIManager : MonoBehaviour
         this.loginPanel.SetActive(isActive);
     }
 
+    private void SetLanguageSelectPanelActive(bool isActive)
+    {
+        this.languageSelectPanel.SetActive(isActive);
+        this.touchText.SetActive(!isActive);
+        this.changeSceneButton.SetActive(!isActive);
+    }
+
+    public void OnTouchToStartClicked()
+    {
+        if(IsAutoLogined())
+        {
+            this.ChangeSceneToMainScene();
+        }else{
+            this.SetLanguageSelectPanelActive(true);
+        }
+    }
+
+    private bool IsAutoLogined()
+    {
+        return FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == "" && !PlayerPrefs.HasKey("NicknameSettingCompleted") && !PlayerPrefs.HasKey("DiagnosticCompleted");
+    }
+
     public void SelectLanguageButton(int index)
     {
-        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.ChangeSceneToLoginScene);
+        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.SetLoginPanelActive);
     }
 
     private void IsLanguageSelectedComplete()
@@ -63,16 +60,19 @@ public class TitleUIManager : MonoBehaviour
         SceneManager.LoadScene("03_MainScene");
     }
 
+    private void SetLoginPanelActive()
+    {
+        this.SetLoginPanelActive(true);
+    }
+
     public void ChangeSceneToLoginScene()
     {
         SceneManager.LoadScene("02_LoginScene");
     }
 
-    private void SetTouchToStartUI(bool isActive)
+    public void ChangeSceneToSignUpScene()
     {
-        this.touchText.SetActive(isActive);
-        this.changeSceneButton.SetActive(isActive);
-        this.languageSelectPanel.SetActive(!isActive);
+        SceneManager.LoadScene("03_SignupScene");
     }
 
 }

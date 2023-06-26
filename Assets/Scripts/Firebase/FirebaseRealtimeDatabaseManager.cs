@@ -22,7 +22,6 @@ public partial class FirebaseRealtimeDatabaseManager
     {
         FirebaseAuth auth = FirebaseAuth.DefaultInstance;
         if(auth != null) {
-            Debug.Log($"Log Out -- Auth Email : {auth.CurrentUser.Email}");
             auth?.SignOut();
         }
 

@@ -66,6 +66,8 @@ public partial class LoginUIManager : MonoBehaviour
 
     private void LoadDiagnosticScene()
     {
+        PlayerPrefs.SetInt("NicknameSettingCompleted",1);
+        
         SceneManager.LoadScene("04_DiagnosticScene");
     }
 

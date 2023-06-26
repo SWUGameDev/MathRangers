@@ -59,7 +59,13 @@ public partial class AuthManager : MonoBehaviour
         if(userInfo == null)
         {
             SceneManager.LoadScene("03_NicknameSettingScene");   
-        }else{
+        }
+        else if(!PlayerPrefs.HasKey("DiagnosticCompleted"))
+        {
+            SceneManager.LoadScene("04_DiagnosticScene");  
+        }
+        else
+        {
             SceneManager.LoadScene("03_MainScene");   
         }
     }

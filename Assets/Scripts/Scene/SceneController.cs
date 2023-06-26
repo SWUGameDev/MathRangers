@@ -14,4 +14,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("04_RankingScene");
     }
+
+    public void LoadLoginScene()
+    {
+        SceneManager.LoadScene("02_LoginScene");
+    }
 }
