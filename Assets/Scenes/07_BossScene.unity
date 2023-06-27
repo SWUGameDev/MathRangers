@@ -665,6 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 699873179175281351, guid: 50f044a07fcf979449939eab967f06ba, type: 3}
   attackInterval: 0.5
+  monster: {fileID: 24513042}
 --- !u!1 &262893611
 GameObject:
   m_ObjectHideFlags: 0
