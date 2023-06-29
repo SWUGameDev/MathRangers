@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
 
@@ -15,7 +16,7 @@ public class DiagnosticManager : MonoBehaviour
     [SerializeField] GameObject         panel_diag_chooseDiff;  //난이도 선택 패널
     [SerializeField] GameObject         panel_question;         //문제 패널(진단,학습)
 
-    [SerializeField] Text   textDescription;        //문제 설명 텍스트
+    [SerializeField] TMP_Text   textDescription;        //문제 설명 텍스트
     [SerializeField] TEXDraw   textEquation;           //문제 텍스트(※TextDraw로 변경 필요)
     [SerializeField] Button[]           btAnsr = new Button[4]; //정답 버튼들
     TEXDraw[]                textAnsr;                  //정답 버튼들 텍스트(※TextDraw로 변경 필요)
@@ -25,9 +26,9 @@ public class DiagnosticManager : MonoBehaviour
     bool    isSolvingQuestion;
     float   questionSolveTime;
 
-    [Header("For Debug")]
-    [SerializeField] WJ_DisplayText     wj_displayText;         //텍스트 표시용(필수X)
-    [SerializeField] Button             getLearningButton;      //문제 받아오기 버튼
+    //[Header("For Debug")]
+    //[SerializeField] WJ_DisplayText     wj_displayText;         //텍스트 표시용(필수X)
+    //[SerializeField] Button             getLearningButton;      //문제 받아오기 버튼
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class DiagnosticManager : MonoBehaviour
 
             textAnsr[i] = btAnsr[i].GetComponentInChildren<TEXDraw>();
 
-        wj_displayText.SetState("대기중", "", "", "");
+        //wj_displayText.SetState("대기중", "", "", "");
     }
 
     private void OnEnable()
@@ -69,6 +70,7 @@ public class DiagnosticManager : MonoBehaviour
     /// <summary>
     /// 진단평가 문제 받아오기
     /// </summary>
+    public GameObject diagnosticEndPanel;
     private void GetDiagnosis()
     {
         switch (wj_conn.cDiagnotics.data.prgsCd)
@@ -78,13 +80,14 @@ public class DiagnosticManager : MonoBehaviour
                             wj_conn.cDiagnotics.data.qstCn, 
                             wj_conn.cDiagnotics.data.qstCransr, 
                             wj_conn.cDiagnotics.data.qstWransr);
-                wj_displayText.SetState("진단평가 중", "", "", "");
+                //wj_displayText.SetState("진단평가 중", "", "", "");
                 break;
             case "E":
                 Debug.Log("진단평가 끝! 학습 단계로 넘어갑니다.");
-                wj_displayText.SetState("진단평가 완료", "", "", "");
+                //wj_displayText.SetState("진단평가 완료", "", "", "");
                 currentStatus = CurrentStatus.LEARNING;
-                getLearningButton.interactable = true;
+                //getLearningButton.interactable = true;
+                diagnosticEndPanel.SetActive(true);
                 break;
         }
     }
@@ -162,9 +165,9 @@ public class DiagnosticManager : MonoBehaviour
 
                 wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+                //wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+                this.DisplayAnswer(isCorrect,_idx);
 
-                panel_question.SetActive(false);
                 questionSolveTime = 0;
                 break;
 
@@ -177,12 +180,12 @@ public class DiagnosticManager : MonoBehaviour
 
                 wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+                //wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
 
                 if (currentQuestionIndex >= 8) 
                 {
                     panel_question.SetActive(false);
-                    wj_displayText.SetState("문제풀이 완료", "", "", "");
+                    //wj_displayText.SetState("문제풀이 완료", "", "", "");
                 }
                 else GetLearning(currentQuestionIndex);
 
@@ -191,11 +194,42 @@ public class DiagnosticManager : MonoBehaviour
         }
     }
 
+    public Image characterImage;
+    public Image OXImage;
+    public Sprite[] characterAnswerImages;
+    public Sprite[] OXImages;
+
+    private void DisplayAnswer(bool isCorrect,int index)
+    {
+        this.OXImage.gameObject.SetActive(true);
+
+        if(isCorrect)
+        {
+            this.OXImage.sprite = this.OXImages[0];
+            this.characterImage.sprite = this.characterAnswerImages[1];
+        }else{
+            this.OXImage.sprite = this.OXImages[1];
+            this.characterImage.sprite = this.characterAnswerImages[2];
+        }
+        this.StartCoroutine(this.Pass(isCorrect,index));
+    }
+
+    private IEnumerator Pass(bool isCorrect,int index)
+    {
+        yield return new WaitForSeconds(0.7f);
+        this.characterImage.sprite = this.characterAnswerImages[0];
+        this.OXImage.gameObject.SetActive(false);
+        panel_question.SetActive(false);
+
+        wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
+    }
+
+
     public void DisplayCurrentState(string state, string myAnswer, string isCorrect, string svTime)
     {
-        if (wj_displayText == null) return;
-
-        wj_displayText.SetState(state, myAnswer, isCorrect, svTime);
+        //if (wj_displayText == null) return;
+        Debug.Log($"DisplayCurrentState {state}");
+        //wj_displayText.SetState(state, myAnswer, isCorrect, svTime);
     }
 
     #region Unity ButtonEvent
@@ -207,7 +241,7 @@ public class DiagnosticManager : MonoBehaviour
     public void ButtonEvent_GetLearning()
     {
         wj_conn.Learning_GetQuestion();
-        wj_displayText.SetState("문제풀이 중", "-", "-", "-");
+        //wj_displayText.SetState("문제풀이 중", "-", "-", "-");
     }
     #endregion
 }
