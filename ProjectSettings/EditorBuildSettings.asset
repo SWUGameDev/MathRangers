@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02_LoginScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/03_MainScene.unity
+    guid: 8233867ed52762b4abe1715d146103ad
+  - enabled: 1
+    path: Assets/Scenes/04_RankingScene.unity
+    guid: 7c58b3f93c06a47149d898f3257f7e95
+  - enabled: 1
+    path: Assets/Scenes/05_LofiRoom.unity
+    guid: 1e0963f2cfe86d24b848048ceb5a039d
+  - enabled: 1
+    path: Assets/Scenes/07_BossScene.unity
+    guid: 9132de0ad4a2e914cb509929769d9ad0
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a089fa641726947c1873ddd2efe08403, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: a239c7eba959845998e25e9e5cd9c3a9, type: 2}
