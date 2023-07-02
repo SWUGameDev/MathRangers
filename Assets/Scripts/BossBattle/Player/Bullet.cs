@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private AutoAttackSystem autoAttackSystem;
 
-    // 오토액션에 대해 들고잇어야함
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -42,10 +42,6 @@ public class Bullet : MonoBehaviour
         time += Time.deltaTime;
         if (time >= timeInterval)
         {
-            Debug.Log("디버그");
-            // 총알을 오브젝트 풀로 반환?
-            // ReturnObject로 하고 싶은데.?
-            // gameObject.SetActive(false);
             this.autoAttackSystem.GetBulletPool().ReturnObject(this.gameObject);
             time = 0f;
         }

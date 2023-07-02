@@ -21,6 +21,6 @@ public class Player : MonoBehaviour
 
     private void OnProcessInput(Vector2 vdir)
     {
-        transform.position += new Vector3(vdir.x, vdir.y, 0f) * playerSpeed * Time.deltaTime;
+        transform.position += new Vector3(vdir.x, 0f, 0f) * playerSpeed * Time.deltaTime;
     }
 }
