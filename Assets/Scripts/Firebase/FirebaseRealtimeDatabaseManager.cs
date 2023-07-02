@@ -39,6 +39,12 @@ public partial class FirebaseRealtimeDatabaseManager
         return currentUser == null ? "" : currentUser.UserId;
     }
 
+        public string GetCurrentUserEmail()
+    {
+        FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        return currentUser == null ? "" : currentUser.Email;
+    }
+
     private void RefreshReferenceKeepSynced(string referenceName) {
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference(referenceName);
         if(reference == null)

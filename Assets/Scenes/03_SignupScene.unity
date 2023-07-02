@@ -794,7 +794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 576229586}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: LoadTitleScene
+        m_MethodName: LoadLoginScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2329,7 +2329,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nicknameSettingPanel: {fileID: 0}
   nicknameInputField: {fileID: 0}
-  emailField: {fileID: 1815539265}
   noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
   canvasTransform: {fileID: 2015069514}
   popupTime: 1.8

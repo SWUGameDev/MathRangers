@@ -13,9 +13,7 @@ public partial class LoginUIManager : MonoBehaviour
 
     [SerializeField] private TMP_InputField nicknameInputField;
 
-    [SerializeField] TMP_InputField emailField;
-
-    private readonly string nicknamePattern = @"^([a-zA-Z0-9]{4,16}|[\u0080-\uFFFF]{2,8})$";
+    private readonly string nicknamePattern = @"^[\w가-힣]{1,8}$";
     
     private string userId;
 
@@ -23,7 +21,6 @@ public partial class LoginUIManager : MonoBehaviour
 
     public void InitializeNicknameSettingPanel(string userId)
     {
-        Debug.Log($"[InitializeNicknameSettingPanel]{userId}");
         this.nicknameSettingPanel.SetActive(true);
         this.userId = userId;
     }
@@ -52,7 +49,7 @@ public partial class LoginUIManager : MonoBehaviour
 
     private void OnNicknameCheckCompleted(string nickName)
     {
-        UserInfo userInfo = new UserInfo(this.emailField.text,nickName);
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName);
         string serializedData = JsonUtility.ToJson(userInfo);
         FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
         this.isChecked = true;

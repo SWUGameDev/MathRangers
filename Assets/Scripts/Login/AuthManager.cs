@@ -40,9 +40,10 @@ public partial class AuthManager : MonoBehaviour
                 if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
                 {
                     Firebase.Auth.AuthResult result = task.Result;
-                    Debug.Log(emailField.text + "로 로그인되었습니다. \n");    
 
-                    FirebaseRealtimeDatabaseManager.Instance.LoadUserInfo(result.User.UserId, this.OnSignInCompleted);
+                    Debug.Log(emailField.text + "로 로그인되었습니다. \n"); 
+
+                    this.OnSignInCompleted();   
                     
                 }
                 else if (task.IsFaulted)
@@ -53,9 +54,9 @@ public partial class AuthManager : MonoBehaviour
         );
     }
 
-    private void OnSignInCompleted(UserInfo userInfo)
+    private void OnSignInCompleted()
     {
-        if(userInfo == null && !PlayerPrefs.HasKey("NicknameSettingCompleted"))
+        if(!PlayerPrefs.HasKey("NicknameSettingCompleted"))
         {
             SceneManager.LoadScene("03_NicknameSettingScene");   
         }
@@ -91,7 +92,7 @@ public partial class AuthManager : MonoBehaviour
 
                     Debug.Log(emailField.text + $"로 회원가입되었습니다.");
 
-                    SceneManager.LoadScene("01_TitleScene");
+                    SceneManager.LoadScene("03_NicknameSettingScene");
                 }
                 else if (task.IsFaulted)
                 {

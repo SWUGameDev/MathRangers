@@ -15,6 +15,8 @@ public class TitleUIManager : MonoBehaviour
 
     [SerializeField] private List<Button> languageButtons;
 
+    [SerializeField] private SceneController sceneController;
+
     private void SetLoginPanelActive(bool isActive)
     {
         this.touchText.SetActive(!isActive);
@@ -32,17 +34,21 @@ public class TitleUIManager : MonoBehaviour
 
     public void OnTouchToStartClicked()
     {
-        if(IsAutoLogined())
+        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() != "")
         {
-            this.ChangeSceneToMainScene();
+            if(!PlayerPrefs.HasKey("NicknameSettingCompleted"))
+            {
+                this.sceneController.LoadNicknameSettingScene();
+            }else if(!PlayerPrefs.HasKey("DiagnosticCompleted"))
+            {
+                this.sceneController.LoadDiagnosticScene();
+            }else{
+                this.sceneController.LoadMainScene();
+            }
+            
         }else{
             this.SetLanguageSelectPanelActive(true);
         }
-    }
-
-    private bool IsAutoLogined()
-    {
-        return FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() == "" && !PlayerPrefs.HasKey("NicknameSettingCompleted") && !PlayerPrefs.HasKey("DiagnosticCompleted");
     }
 
     public void SelectLanguageButton(int index)
@@ -55,24 +61,11 @@ public class TitleUIManager : MonoBehaviour
         this.SetLoginPanelActive(true);
     }
 
-    public void ChangeSceneToMainScene()
-    {
-        SceneManager.LoadScene("03_MainScene");
-    }
 
     private void SetLoginPanelActive()
     {
         this.SetLoginPanelActive(true);
     }
 
-    public void ChangeSceneToLoginScene()
-    {
-        SceneManager.LoadScene("02_LoginScene");
-    }
-
-    public void ChangeSceneToSignUpScene()
-    {
-        SceneManager.LoadScene("03_SignupScene");
-    }
 
 }
