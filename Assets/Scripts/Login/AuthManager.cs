@@ -43,7 +43,6 @@ public partial class AuthManager : MonoBehaviour
                     Debug.Log(emailField.text + "로 로그인되었습니다. \n");    
 
                     FirebaseRealtimeDatabaseManager.Instance.LoadUserInfo(result.User.UserId, this.OnSignInCompleted);
-
                     
                 }
                 else if (task.IsFaulted)
@@ -56,7 +55,7 @@ public partial class AuthManager : MonoBehaviour
 
     private void OnSignInCompleted(UserInfo userInfo)
     {
-        if(userInfo == null)
+        if(userInfo == null && !PlayerPrefs.HasKey("NicknameSettingCompleted"))
         {
             SceneManager.LoadScene("03_NicknameSettingScene");   
         }

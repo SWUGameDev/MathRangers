@@ -80,13 +80,11 @@ public class DiagnosticManager : MonoBehaviour
                             wj_conn.cDiagnotics.data.qstCn, 
                             wj_conn.cDiagnotics.data.qstCransr, 
                             wj_conn.cDiagnotics.data.qstWransr);
-                //wj_displayText.SetState("진단평가 중", "", "", "");
                 break;
             case "E":
                 Debug.Log("진단평가 끝! 학습 단계로 넘어갑니다.");
-                //wj_displayText.SetState("진단평가 완료", "", "", "");
+                PlayerPrefs.SetInt("DiagnosticCompleted",1);
                 currentStatus = CurrentStatus.LEARNING;
-                //getLearningButton.interactable = true;
                 diagnosticEndPanel.SetActive(true);
                 break;
         }
@@ -196,12 +194,13 @@ public class DiagnosticManager : MonoBehaviour
 
     public Image characterImage;
     public Image OXImage;
+    public Image OXBackgroundImage;
     public Sprite[] characterAnswerImages;
     public Sprite[] OXImages;
 
     private void DisplayAnswer(bool isCorrect,int index)
     {
-        this.OXImage.gameObject.SetActive(true);
+        this.OXBackgroundImage.gameObject.SetActive(true);
 
         if(isCorrect)
         {
@@ -218,7 +217,7 @@ public class DiagnosticManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         this.characterImage.sprite = this.characterAnswerImages[0];
-        this.OXImage.gameObject.SetActive(false);
+        this.OXBackgroundImage.gameObject.SetActive(false);
         panel_question.SetActive(false);
 
         wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
