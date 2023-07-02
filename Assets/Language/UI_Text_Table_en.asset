@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Localized: Nickname can be changed free of charge only once.
     m_Metadata:
       m_Items: []
+  - m_Id: 7512490521911296
+    m_Localized: Please Sign up!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
