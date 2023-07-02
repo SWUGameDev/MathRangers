@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03_SignupScene.unity
     guid: d4389b82623ec4dc8967649afc71e038
+  - enabled: 1
+    path: Assets/Scenes/04_DiagnosticScene.unity
+    guid: 2acadd3554c9c415da095ae5f63bbb3f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a089fa641726947c1873ddd2efe08403, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: a239c7eba959845998e25e9e5cd9c3a9, type: 2}
