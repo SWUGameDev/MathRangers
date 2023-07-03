@@ -73,6 +73,10 @@ MonoBehaviour:
     m_Key: key_NicknameNotice
     m_Metadata:
       m_Items: []
+  - m_Id: 7512490521911296
+    m_Key: Key_SignUpNotice
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

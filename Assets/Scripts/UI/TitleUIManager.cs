@@ -7,56 +7,65 @@ using UnityEngine.SceneManagement;
 
 public class TitleUIManager : MonoBehaviour
 {
-    [SerializeField] private string sceneName = GlobalSettings.LOGIN_SCENE_NAME;
-
     [SerializeField] private GameObject touchText;
     [SerializeField] private GameObject languageSelectPanel;
+
+    [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject changeSceneButton;
 
     [SerializeField] private List<Button> languageButtons;
 
-    private bool isChanged = false;
+    [SerializeField] private SceneController sceneController;
 
-    private void Awake() {
+    private void SetLoginPanelActive(bool isActive)
+    {
+        this.touchText.SetActive(!isActive);
+        this.changeSceneButton.SetActive(!isActive);
+        this.languageSelectPanel.SetActive(!isActive);
+        this.loginPanel.SetActive(isActive);
+    }
 
-        if(PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey))
+    private void SetLanguageSelectPanelActive(bool isActive)
+    {
+        this.languageSelectPanel.SetActive(isActive);
+        this.touchText.SetActive(!isActive);
+        this.changeSceneButton.SetActive(!isActive);
+    }
+
+    public void OnTouchToStartClicked()
+    {
+        if(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId() != "")
         {
-            this.SetTouchToStartUI(true);
-            int selectedLanguageIndex = PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey);
-            LocalizationManager.Instance.ChangeLocalizationSetting(selectedLanguageIndex,this.IsLanguageSelectedComplete);
+            if(!PlayerPrefs.HasKey("NicknameSettingCompleted"))
+            {
+                this.sceneController.LoadNicknameSettingScene();
+            }else if(!PlayerPrefs.HasKey("DiagnosticCompleted"))
+            {
+                this.sceneController.LoadDiagnosticScene();
+            }else{
+                this.sceneController.LoadMainScene();
+            }
+            
         }else{
-            this.SetTouchToStartUI(false);
+            this.SetLanguageSelectPanelActive(true);
         }
     }
 
     public void SelectLanguageButton(int index)
     {
-        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.ChangeSceneBeforeFirstSelectedLanguage);
+        LocalizationManager.Instance.ChangeLocalizationSetting(index,this.SetLoginPanelActive);
     }
 
     private void IsLanguageSelectedComplete()
     {
-        this.isChanged = true;
+        this.SetLoginPanelActive(true);
     }
 
-    public void ChangeScene()
+
+    private void SetLoginPanelActive()
     {
-        if(this.isChanged == false)
-            return;
-
-        SceneManager.LoadScene(this.sceneName);
+        this.SetLoginPanelActive(true);
     }
 
-    private void ChangeSceneBeforeFirstSelectedLanguage()
-    {
-        SceneManager.LoadScene(this.sceneName);
-    }
-
-    private void SetTouchToStartUI(bool isActive)
-    {
-        this.touchText.SetActive(isActive);
-        this.changeSceneButton.SetActive(isActive);
-        this.languageSelectPanel.SetActive(!isActive);
-    }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TexDrawLib;
 using WjChallenge;
 
-public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
+
 public class WJ_Sample : MonoBehaviour
 {
     [SerializeField] WJ_Connector       wj_conn;
@@ -161,9 +161,9 @@ public class WJ_Sample : MonoBehaviour
 
                 isSolvingQuestion = false;
 
-                wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
-
                 wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+
+                this.DisplayAnswer(isCorrect,_idx);
 
                 panel_question.SetActive(false);
                 questionSolveTime = 0;
@@ -190,6 +190,35 @@ public class WJ_Sample : MonoBehaviour
                 questionSolveTime = 0;
                 break;
         }
+    }
+
+    public Image characterImage;
+    public Image OXImage;
+    public Image[] characterAnswerImages;
+    public Image[] OXImages;
+
+    private void DisplayAnswer(bool isCorrect,int index)
+    {
+        this.OXImage.gameObject.SetActive(true);
+
+        if(isCorrect)
+        {
+            this.OXImage = this.OXImages[0];
+            this.characterImage = this.characterAnswerImages[1];
+        }else{
+            this.OXImage = this.OXImages[1];
+            this.characterImage = this.characterAnswerImages[2];
+        }
+        this.StartCoroutine(this.Pass(isCorrect,index));
+    }
+
+    private IEnumerator Pass(bool isCorrect,int index)
+    {
+        yield return new WaitForSeconds(0.7f);
+        this.characterImage = this.characterAnswerImages[0];
+        this.OXImage.gameObject.SetActive(false);
+
+        wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
     }
 
     public void DisplayCurrentState(string state, string myAnswer, string isCorrect, string svTime)

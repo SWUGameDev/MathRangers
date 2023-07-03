@@ -18,10 +18,31 @@ public partial class FirebaseRealtimeDatabaseManager
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    public void Logout()
+    {
+        FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+        if(auth != null) {
+            auth?.SignOut();
+        }
+
+    }
+
+    /*
+    GetCurrentUserId
+
+    현재 로그인된 유저의 고유 값인 UserId 를 반환합니다. 
+    만약 현재 유저가 없다면 빈 문자열을 반환합니다.
+    */
     public string GetCurrentUserId()
     {
         FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
-        return currentUser.UserId;
+        return currentUser == null ? "" : currentUser.UserId;
+    }
+
+        public string GetCurrentUserEmail()
+    {
+        FirebaseUser currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        return currentUser == null ? "" : currentUser.Email;
     }
 
     private void RefreshReferenceKeepSynced(string referenceName) {
@@ -96,6 +117,30 @@ public partial class FirebaseRealtimeDatabaseManager
         {
             OnCompleted?.Invoke(snapshot);
         }
+    }
+
+    private void CheckDuplicatedValue(string key,string orderChildKey,string valueToCheck,Action OnFailed = null,Action<string> OnIsDuplicated = null ,Action<string> OnIsNotDuplicated = null)
+    {
+        var query = this.databaseReference.Child(key).OrderByChild(orderChildKey).EqualTo(valueToCheck);
+
+        query.ValueChanged += (object sender, ValueChangedEventArgs args) =>
+        {
+            if (args.DatabaseError != null)
+            {
+                OnFailed?.Invoke();
+            }
+            else if (args.Snapshot != null)
+            {
+                if (args.Snapshot.HasChildren)
+                {
+                    OnIsDuplicated?.Invoke(valueToCheck);
+                }
+                else
+                {
+                    OnIsNotDuplicated?.Invoke(valueToCheck);
+                }
+            }
+        };
     }
 
 }
