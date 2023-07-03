@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -13,6 +14,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float jumpForce = 350f;
     private bool isJumping;
+    private bool isTriggerBoss;
+
+    public static event Action OnBossDamage;
+
     private void Awake()
     {
         VirtualJoystick.OnProcessInput += OnProcessInput;
@@ -22,7 +27,17 @@ public class Player : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody2D>();
         isJumping = false;
+        isTriggerBoss = false;
     }
+
+    private void Update()
+    {
+        if(isTriggerBoss == true)
+        {
+            OnBossDamage?.Invoke();
+        }
+    }
+
     private void OnDestroy()
     {
         VirtualJoystick.OnProcessInput -= OnProcessInput;
@@ -53,25 +68,19 @@ public class Player : MonoBehaviour
 
     }
 
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("콜리전 스테이");
-        if (collision.transform.name == "Boss")
-        {
-            Debug.Log("보z스");
-        }
+        Debug.Log("보스 닿는중");
+        OnBossDamage?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("보스");
-
+        isTriggerBoss = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("보스 닿는중");
-
+        isTriggerBoss = false;   
     }
 }
