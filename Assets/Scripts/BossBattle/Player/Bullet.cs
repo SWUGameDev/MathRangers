@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
     {
         startPosition = transform.position;
 
-        
          Vector3 monsterDir = autoAttackSystem.monster.transform.position - transform.position;
 
         monsterDir = monsterDir == Vector3.zero ? Vector3.up : monsterDir;
@@ -32,7 +31,6 @@ public class Bullet : MonoBehaviour
     public void Initialized(AutoAttackSystem autoAttackSystem)
     {
         this.autoAttackSystem = autoAttackSystem;
-
     }
 
     private void Update()
