@@ -39,4 +39,14 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("03_SignupScene");
     }
+
+    public void LoaBossScene()
+    {
+        SceneManager.LoadScene("07_BossScene");
+    }
+
+    public void LoadShopScene()
+    {
+        SceneManager.LoadScene("06_ShopScene");
+    }
 }
