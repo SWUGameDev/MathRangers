@@ -14,6 +14,7 @@ public class ItemUIInfo : MonoBehaviour
     [SerializeField] private GameObject SelectedPanel;
 
     private void Awake() {
+
         this.itemInfo = this.transform.GetComponent<ItemInfo>();
 
         this.itemButton.onClick.AddListener(()=>{
