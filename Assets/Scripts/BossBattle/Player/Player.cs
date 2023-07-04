@@ -63,14 +63,10 @@ public class Player : MonoBehaviour
         { 
             isJumping = false; 
         }
-
-        Debug.Log("콜리전");
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("보스 닿는중");
         OnBossDamage?.Invoke();
     }
 
