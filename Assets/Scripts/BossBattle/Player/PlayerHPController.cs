@@ -10,12 +10,12 @@ public class PlayerHPController : MonoBehaviour
     [SerializeField] private float playerHp;
     private float playerHpFull = 500;
 
-    public Color fullHealthColor = new Color(0f, 1f, 0f);
-    public Color lowHealthColor = new Color(1f, 1f, 0f);
-    public Color criticalHealthColor = new Color(1f, 0f, 0f);
+    Color fullHealthColor = new Color(0f, 1f, 0f);
+    Color lowHealthColor = new Color(1f, 1f, 0f);
+    Color criticalHealthColor = new Color(1f, 0f, 0f);
 
-    public float lowHealthThreshold = 0.5f;
-    public float criticalHealthThreshold = 0.25f;
+    float lowHealthThreshold = 0.5f;
+    float criticalHealthThreshold = 0.25f;
 
     private void Awake()
     {
