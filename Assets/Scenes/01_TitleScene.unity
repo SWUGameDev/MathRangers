@@ -462,9 +462,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108874323}
-        m_TargetAssemblyTypeName: TitleUIManager, Assembly-CSharp
-        m_MethodName: ChangeSceneToLoginScene
+      - m_Target: {fileID: 1904614614}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadLoginScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1852,9 +1852,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108874323}
-        m_TargetAssemblyTypeName: TitleUIManager, Assembly-CSharp
-        m_MethodName: ChangeSceneToSignUpScene
+      - m_Target: {fileID: 1904614614}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadSignupScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

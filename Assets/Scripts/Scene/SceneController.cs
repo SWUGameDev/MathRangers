@@ -30,8 +30,13 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("03_NicknameSettingScene");
     }
 
-        public void LoadDiagnosticScene()
+    public void LoadDiagnosticScene()
     {
         SceneManager.LoadScene("04_DiagnosticScene");
+    }
+
+    public void LoadSignupScene()
+    {
+        SceneManager.LoadScene("03_SignupScene");
     }
 }
