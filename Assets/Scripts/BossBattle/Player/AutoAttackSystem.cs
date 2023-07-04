@@ -22,16 +22,16 @@ public class AutoAttackSystem : MonoBehaviour
     
     private void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= attackInterval)
-        {
-            CreateBullet();
-            timer = 0f;
-        }
+        //timer += Time.deltaTime;
+        //
+        //if (timer >= attackInterval)
+        //{
+        //    CreateBullet();
+        //    timer = 0f;
+        //}
     }
 
-    private void CreateBullet()
+    public void CreateBullet()
     {
         GameObject bulletObj = bulletPool.GetObject();
 
