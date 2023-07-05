@@ -16,6 +16,26 @@ public partial class Boss : MonoBehaviour
             return this.target;
         }
     }
+
+    public void TurnToTarget() {
+
+        if(this.target == null)
+            return;
+
+        Vector2 currentDirection = (this.target.transform.position - this.transform.position).normalized.x < 0 ? Vector2.left : Vector2.right; 
+        
+        if(this.direction == currentDirection)
+            return;
+        
+        if(this.direction == Vector2.left)
+        {
+            this.transform.localEulerAngles = new Vector3(0,180,0);
+        }else if(this.direction == Vector2.right)
+        {
+            this.transform.localEulerAngles = Vector3.zero;
+        }
+
+    }
     public void FollowTarget()
     {
         if(this.target == null)

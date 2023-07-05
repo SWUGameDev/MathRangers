@@ -19,7 +19,6 @@ public class BossMove : BossState
     {
         base.OnUpdate();
 
-        this.stateMachine.Boss.FollowTarget();
 
         this.elapsedTime += Time.deltaTime;
 
