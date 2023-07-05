@@ -17,7 +17,7 @@ public partial class Boss : MonoBehaviour
         }
     }
 
-    public void TurnToTarget() {
+    private void TurnToTarget() {
 
         if(this.target == null)
             return;
@@ -36,17 +36,38 @@ public partial class Boss : MonoBehaviour
         }
 
     }
-    public void FollowTarget()
+
+    [SerializeField] private int maxRushCount = 3;
+
+    private YieldInstruction rushWaitForSeconds = new WaitForSeconds(1.5f);
+
+    public IEnumerator RushToTarget()
+    {
+        for(int index = 0;index<this.maxRushCount;index++)
+        {
+            Vector3 targetPosition = new Vector3(this.target.transform.position.x,-1,this.target.transform.position.z);
+
+            yield return this.RushToTargetPosition(targetPosition);
+
+            yield return this.rushWaitForSeconds;
+        }
+    }
+
+    
+
+    public IEnumerator RushToTargetPosition(Vector3 targetPosition)
     {
         if(this.target == null)
-            return;
+            yield break;
 
-        if(Vector2.Distance(this.target.transform.position , this.transform.position)< this.minDistance)
-            return;
+        while(Vector2.Distance(targetPosition, this.transform.position) > this.minDistance)
+        {
+            Vector3 direction = (targetPosition - this.transform.position).normalized;
+    
+            transform.position += direction * this.bossMoveSpeed * Time.deltaTime;
 
-        Vector3 direction = this.target.transform.position - this.transform.position;
-        direction.Normalize(); 
+            yield return null;
+        }
 
-        transform.position += direction * this.bossMoveSpeed * Time.deltaTime;
     }
 }

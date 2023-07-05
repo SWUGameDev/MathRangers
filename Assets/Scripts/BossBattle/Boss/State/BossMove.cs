@@ -24,7 +24,7 @@ public class BossMove : BossState
 
         if(this.elapsedTime >= this.escapeTime)
         {
-            this.stateMachine.SetState("Attack");
+            this.stateMachine.SetState("Rush");
         }
     }
     public override void OnExit()
