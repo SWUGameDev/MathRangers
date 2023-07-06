@@ -11,6 +11,7 @@ public partial class Boss : MonoBehaviour
 
     [SerializeField] public Transform spawnPoint;
 
+
     private Vector2 direction = Vector2.left;
 
     public static UnityEvent OnPlayerAttacked;

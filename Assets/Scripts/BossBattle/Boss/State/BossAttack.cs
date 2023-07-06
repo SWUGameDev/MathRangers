@@ -15,7 +15,6 @@ public class BossAttack : BossState
     {
         base.OnEnter();
 
-        this.stateMachine.Boss.PlayAttackEffect();
     }
     public override void OnUpdate()
     {
