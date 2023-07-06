@@ -19,6 +19,11 @@ public class BossRush : BossState
     public override void OnUpdate()
     {
         base.OnUpdate();
+
+        if(!this.stateMachine.Boss.isRushRunning)
+        {
+            this.stateMachine.SetState("Call");
+        }
     }
     public override void OnExit()
     {

@@ -9,6 +9,8 @@ public partial class Boss : MonoBehaviour
 
     [SerializeField] private BoxCollider2D boxCollider2D;
 
+    [SerializeField] public Transform spawnPoint;
+
     private Vector2 direction = Vector2.left;
 
     public static UnityEvent OnPlayerAttacked;

@@ -26,6 +26,8 @@ public partial class Boss : MonoBehaviour
         
         if(this.direction == currentDirection)
             return;
+
+        this.direction = currentDirection;
         
         if(this.direction == Vector2.left)
         {
@@ -41,8 +43,14 @@ public partial class Boss : MonoBehaviour
 
     private YieldInstruction rushWaitForSeconds = new WaitForSeconds(1.5f);
 
+    public bool isRushRunning {get; private set;}
+
+    public bool isMoveToTargetPosition {get; private set;}
+
     public IEnumerator RushToTarget()
     {
+        this.isRushRunning = true;
+
         for(int index = 0;index<this.maxRushCount;index++)
         {
             Vector3 targetPosition = new Vector3(this.target.transform.position.x,-1,this.target.transform.position.z);
@@ -51,23 +59,30 @@ public partial class Boss : MonoBehaviour
 
             yield return this.rushWaitForSeconds;
         }
+
+        this.isRushRunning = false;
     }
 
     
 
     public IEnumerator RushToTargetPosition(Vector3 targetPosition)
     {
+        this.isMoveToTargetPosition = false;
+
         if(this.target == null)
             yield break;
 
         while(Vector2.Distance(targetPosition, this.transform.position) > this.minDistance)
         {
+
             Vector3 direction = (targetPosition - this.transform.position).normalized;
     
             transform.position += direction * this.bossMoveSpeed * Time.deltaTime;
 
             yield return null;
         }
+
+        this.isMoveToTargetPosition = true;
 
     }
 }
