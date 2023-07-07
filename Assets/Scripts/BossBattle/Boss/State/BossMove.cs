@@ -24,7 +24,21 @@ public class BossMove : BossState
 
         if(this.elapsedTime >= this.escapeTime)
         {
-            this.stateMachine.SetState("Rush");
+            int randomIndex = Random.Range(0,3);
+
+            switch (randomIndex)
+            {
+                case 0:
+                    this.stateMachine.SetState("Rush");
+                    break;
+                case 1:
+                    this.stateMachine.SetState("Swing");
+                    break;
+                case 2:
+                    this.stateMachine.SetState("Call");
+                    break;
+            }
+            
         }
     }
     public override void OnExit()

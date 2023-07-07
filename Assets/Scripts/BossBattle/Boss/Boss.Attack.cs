@@ -12,16 +12,24 @@ public partial class Boss : MonoBehaviour
 
     public bool isAttacked {get; private set;}
 
-    public IEnumerator SwingWeapon()
+    public IEnumerator Swing(int count)
     {
         this.isAttacked = true;
 
+        for(int i = 0;i < count; i ++)
+        {
+            yield return this.SwingWeapon();
+        }
+        
+        this.isAttacked = false;
+    }
+
+    private IEnumerator SwingWeapon()
+    {
         this.weapon.SetActive(true);
 
         yield return this.waitForSeconds;
 
         this.weapon.SetActive(false);
-
-        this.isAttacked = false;
     }
 }

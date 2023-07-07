@@ -22,7 +22,7 @@ public class BossRush : BossState
 
         if(!this.stateMachine.Boss.isRushRunning)
         {
-            this.stateMachine.SetState("Call");
+            this.stateMachine.SetState("Move");
         }
     }
     public override void OnExit()

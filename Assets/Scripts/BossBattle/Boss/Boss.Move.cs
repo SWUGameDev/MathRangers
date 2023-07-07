@@ -63,6 +63,27 @@ public partial class Boss : MonoBehaviour
         this.isRushRunning = false;
     }
 
+    public IEnumerator RushToTargetRange(float distance)
+    {
+        this.isMoveToTargetPosition = false;
+
+        if(this.target == null)
+            yield break;
+
+        while(Vector2.Distance(this.target.transform.position, this.transform.position) > distance)
+        {
+
+            Vector3 direction = (this.target.transform.position - this.transform.position).normalized;
+    
+            transform.position += direction * this.bossMoveSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+
+        this.isMoveToTargetPosition = true;
+
+    }
+
     
 
     public IEnumerator RushToTargetPosition(Vector3 targetPosition)
