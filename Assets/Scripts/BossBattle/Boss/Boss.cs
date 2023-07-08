@@ -15,9 +15,16 @@ public partial class Boss : MonoBehaviour
     private Vector2 direction = Vector2.left;
 
     public static UnityEvent OnPlayerAttacked;
+
+    public static UnityEvent<GameObject> OnBossAttacked;
+
+    [SerializeField] BossSceneUIManager bossSceneUIManager;
+
     private void Awake() {
 
         Boss.OnPlayerAttacked = new UnityEvent();
+
+        Boss.OnBossAttacked = new UnityEvent<GameObject>();
 
         this.bossStateMachine = this.gameObject.AddComponent<BossStateMachine>();
 
@@ -27,6 +34,8 @@ public partial class Boss : MonoBehaviour
     void Start()
     {
         this.bossStateMachine.Initialize("Idle",this);
+
+        Player.onAttackSucceeded.AddListener(this.PlayDamageEffect);
     }
 
     void Update()
@@ -36,8 +45,24 @@ public partial class Boss : MonoBehaviour
         this.TurnToTarget();
     }
 
-    void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag == "Player")
-            Boss.OnPlayerAttacked?.Invoke();
+    void OnDestroy()
+    {
+        Player.onAttackSucceeded.RemoveListener(this.PlayDamageEffect);
     }
+
+    void OnTriggerStay2D(Collider2D other) {
+
+        if(other.gameObject.tag == "Player")
+        {
+            Boss.OnPlayerAttacked?.Invoke();
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other) {
+
+        if(other.gameObject.tag == "Bullet")
+        {
+            Boss.OnBossAttacked?.Invoke(other.gameObject);
+        }
+    }
+    
 }

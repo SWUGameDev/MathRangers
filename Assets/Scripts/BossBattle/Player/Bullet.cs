@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector3 startPosition;
     Rigidbody2D rigid;
 
-    private AutoAttackSystem autoAttackSystem;
+    private Player player;
 
 
     private void Awake()
@@ -24,15 +24,15 @@ public class Bullet : MonoBehaviour
 
         startPosition = transform.position;
 
-         Vector3 monsterDir = autoAttackSystem.monster.transform.position - transform.position;
+        Vector3 monsterDir = player.monster.transform.position - transform.position;
 
         monsterDir = monsterDir == Vector3.zero ? Vector3.up : monsterDir;
         rigid.velocity = monsterDir.normalized * bulletSpeed;
     }
 
-    public void Initialized(AutoAttackSystem autoAttackSystem)
+    public void Initialized(Player player)
     {
-        this.autoAttackSystem = autoAttackSystem;
+        this.player = player;
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
         time += Time.deltaTime;
         if (time >= timeInterval)
         {
-            this.autoAttackSystem.GetBulletPool().ReturnObject(this.gameObject);
+            this.player.GetBulletPool().ReturnObject(this.gameObject);
             time = 0f;
         }
     }
