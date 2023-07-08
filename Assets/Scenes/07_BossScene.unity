@@ -365,7 +365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 24513042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8199de31b3a456fa3f40d69657a3a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5697ed41b88e46b4a96f0ecf25deac3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 8215979522088800937, guid: b13f06383ec5b3044a46fd16ebe52ae1, type: 3}
@@ -801,7 +801,6 @@ GameObject:
   - component: {fileID: 210544693}
   - component: {fileID: 210544695}
   - component: {fileID: 210544694}
-  - component: {fileID: 210544697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -943,21 +942,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &210544697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210544689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eecb1373d9d8984396dceb30c240358, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHpGage: {fileID: 393731249}
-  fillImage: {fileID: 24111028}
-  playerHp: 10
 --- !u!1 &216560746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,8 +4388,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AutoAttackSystem, Assembly-CSharp
+      - m_Target: {fileID: 210544694}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: CreateBullet
         m_Mode: 1
         m_Arguments:
@@ -5129,6 +5113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 393731249}
   damage: 0.01
+  fillImage: {fileID: 24111028}
 --- !u!1 &1943355776
 GameObject:
   m_ObjectHideFlags: 0

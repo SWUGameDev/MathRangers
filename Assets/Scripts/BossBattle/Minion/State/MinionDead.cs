@@ -11,9 +11,11 @@ public class MinionDead : MinionState
 
     public override void OnEnter()
     {
+        Debug.Log("dead");
         base.OnEnter();
-
-        this.stateMachine.Minion.minionManager.GetMinionPool().ReturnObject(this.stateMachine.Minion.gameObject);
+        this.stateMachine.SetState("Idle");
+        this.stateMachine.Minion.minionHp = this.stateMachine.Minion.GetMaxHp();
+        this.stateMachine.Minion.minionCreator.GetMinionPool().ReturnObject(this.stateMachine.Minion.gameObject);
     }
 
     public override void OnUpdate()
