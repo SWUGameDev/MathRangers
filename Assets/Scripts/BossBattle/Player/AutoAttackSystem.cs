@@ -19,18 +19,6 @@ public class AutoAttackSystem : MonoBehaviour
         firePoint = transform;
     }
 
-    
-    private void Update()
-    {
-        //timer += Time.deltaTime;
-        //
-        //if (timer >= attackInterval)
-        //{
-        //    CreateBullet();
-        //    timer = 0f;
-        //}
-    }
-
     public void CreateBullet()
     {
         GameObject bulletObj = bulletPool.GetObject();

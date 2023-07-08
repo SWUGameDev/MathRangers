@@ -19,18 +19,14 @@ public class PlayerHPController : MonoBehaviour
 
     private void Awake()
     {
-        Player.OnBossDamage += OnBossDamage;
+        Player.OnDamaged += OnBossDamage;
         playerHp = playerHpFull;
         fillImage.color = fullHealthColor;
     }
 
-    private void Update()
-    {
-        // Debug.Log(playerHpGage.value);
-    }
     private void OnDestroy()
     {
-        Player.OnBossDamage -= OnBossDamage;
+        Player.OnDamaged -= OnBossDamage;
     }
 
     private void OnBossDamage()
