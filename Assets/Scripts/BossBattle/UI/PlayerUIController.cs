@@ -25,6 +25,7 @@ public class PlayerUIController : MonoBehaviour
 
     private void ChangePlayerHpValue()
     {
+        // TO DO : 플레이어 hp 만들기
         if(this.slider.value<0)
             return;
 
