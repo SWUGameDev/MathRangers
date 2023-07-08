@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private bool isJumping;
     private bool isTriggerBoss;
 
-    public static event Action OnBossDamage;
+    public static event Action OnDamaged;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     {
         if(isTriggerBoss == true)
         {
-            OnBossDamage?.Invoke();
+            OnDamaged?.Invoke();
         }
     }
 
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        OnBossDamage?.Invoke();
+        OnDamaged?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
