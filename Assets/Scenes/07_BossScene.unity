@@ -207,9 +207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718923787}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: LoadMainScene
+      - m_Target: {fileID: 329476672}
+        m_TargetAssemblyTypeName: BossSceneStop, Assembly-CSharp
+        m_MethodName: ExitGameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1383,6 +1383,7 @@ MonoBehaviour:
   stopPanel: {fileID: 578382511}
   backSpace: {fileID: 1615810916}
   headerText: {fileID: 546727466}
+  sceneController: {fileID: 1718923787}
 --- !u!1 &333942954
 GameObject:
   m_ObjectHideFlags: 0
