@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1982917306736640
-    m_Localized: '*Please enter at least 5 characters, at least one letter and one
+    m_Localized: '*Please enter at least 6 characters, at least one letter and one
       number.'
     m_Metadata:
       m_Items: []
