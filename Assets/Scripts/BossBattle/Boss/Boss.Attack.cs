@@ -18,6 +18,8 @@ public partial class Boss : MonoBehaviour
 
         for(int i = 0;i < count; i ++)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_SWING);
+
             yield return this.SwingWeapon();
         }
         
@@ -31,5 +33,10 @@ public partial class Boss : MonoBehaviour
         yield return this.waitForSeconds;
 
         this.weapon.SetActive(false);
+    }
+
+    public MinionCreator GetMinionCreator()
+    {
+        return this.minionCreator;
     }
 }

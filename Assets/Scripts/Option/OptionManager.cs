@@ -8,10 +8,6 @@ public class OptionManager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject blackScreen;
 
-    // 음악 재생 관리
-    public AudioSource backgroundAudioSource;
-    public AudioSource effectsAudioSource;
-
     private bool isEffectsMuted = false;
     private bool isBackgroundMuted = false;
     private bool isAllMuted = false;
@@ -31,13 +27,15 @@ public class OptionManager : MonoBehaviour
     public void ToggleEffects()
     {
         isEffectsMuted = !isEffectsMuted;
-        effectsAudioSource.mute = isEffectsMuted;
+
+        SoundManager.Instance.SetEffectAudioSourceMute(isEffectsMuted);
     }
 
     public void ToggleBackground()
     {
         isBackgroundMuted = !isBackgroundMuted;
-        backgroundAudioSource.mute = isBackgroundMuted;
+        
+        SoundManager.Instance.SetBackgroundAudioSourceMute(isBackgroundMuted);
     }
 
     public void ToggleEffectsAndMusic()
@@ -46,7 +44,7 @@ public class OptionManager : MonoBehaviour
 
         isEffectsMuted = isAllMuted;
         isBackgroundMuted = isAllMuted; 
-        backgroundAudioSource.mute = isBackgroundMuted;
-        effectsAudioSource.mute = isEffectsMuted;
+        SoundManager.Instance.SetBackgroundAudioSourceMute(isBackgroundMuted);
+        SoundManager.Instance.SetEffectAudioSourceMute(isEffectsMuted);
     }
 }

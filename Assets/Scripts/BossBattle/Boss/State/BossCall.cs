@@ -11,6 +11,8 @@ public class BossCall : BossState
 
     private bool isTimerRunning = false;
 
+    private bool isCalled = false;
+
     public BossCall(BossStateMachine stateMachine) : base(stateMachine)
     {
 
@@ -28,7 +30,13 @@ public class BossCall : BossState
 
         if(this.stateMachine.Boss.isMoveToTargetPosition)
         {
-            //TODO : Minion Call 로직 추가
+            if(this.isCalled == false)
+            {
+                this.stateMachine.Boss.GetMinionCreator().CreateMinion();
+                this.isCalled = true;
+            }
+            
+
             this.isTimerRunning = true;
         }
 
@@ -42,6 +50,10 @@ public class BossCall : BossState
     public override void OnExit()
     {
         base.OnExit();
+
+        this.isCalled = false;
+
+        this.isTimerRunning = false;
 
         this.elapsedTime = 0;
     }

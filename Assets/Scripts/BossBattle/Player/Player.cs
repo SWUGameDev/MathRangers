@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour
+public partial class Player : MonoBehaviour
 {
     [SerializeField]
     float playerSpeed = 15f;
@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         VirtualJoystick.OnProcessInput += OnProcessInput;
+
+        Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
     }
 
     private void Start()
@@ -28,6 +30,11 @@ public class Player : MonoBehaviour
         this.rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         isTriggerBoss = false;
+
+        bulletPool = new ObjectPool(bulletPrefab, 10, "BulletPool");
+        firePoint = transform;
+
+        Boss.OnBossAttacked.AddListener(this.OnBulletTriggered);
     }
 
     private void Update()
@@ -36,11 +43,16 @@ public class Player : MonoBehaviour
         {
             OnDamaged?.Invoke();
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            this.CreateBullet();
     }
 
     private void OnDestroy()
     {
         VirtualJoystick.OnProcessInput -= OnProcessInput;
+
+        Boss.OnBossAttacked.RemoveListener(this.OnBulletTriggered);
     }
 
     private void OnProcessInput(Vector2 vdir)
@@ -48,10 +60,14 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(vdir.x, 0f, 0f) * playerSpeed * Time.deltaTime;
     }
 
+
+
     public void Jump()
     {
         if (isJumping == false)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
+            
             isJumping = true;
             this.rb.AddForce(transform.up * this.jumpForce);
         }

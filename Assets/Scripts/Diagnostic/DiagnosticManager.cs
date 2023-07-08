@@ -204,9 +204,13 @@ public class DiagnosticManager : MonoBehaviour
 
         if(isCorrect)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_O);
+
             this.OXImage.sprite = this.OXImages[0];
             this.characterImage.sprite = this.characterAnswerImages[1];
         }else{
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_X);
+            
             this.OXImage.sprite = this.OXImages[1];
             this.characterImage.sprite = this.characterAnswerImages[2];
         }

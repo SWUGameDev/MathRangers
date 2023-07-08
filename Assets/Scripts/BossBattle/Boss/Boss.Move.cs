@@ -53,6 +53,8 @@ public partial class Boss : MonoBehaviour
 
         for(int index = 0;index<this.maxRushCount;index++)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_RUSH);
+
             Vector3 targetPosition = new Vector3(this.target.transform.position.x,-1,this.target.transform.position.z);
 
             yield return this.RushToTargetPosition(targetPosition);
