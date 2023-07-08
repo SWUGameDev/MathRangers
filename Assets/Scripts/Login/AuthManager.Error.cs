@@ -42,8 +42,11 @@ public partial class AuthManager: MonoBehaviour {
                     case AuthError.EmailAlreadyInUse : 
                         LoginUIManager.Instance.PopUpMessage("! 이미 회원가입 된 이메일 입니다.");
                         break;
+                    case AuthError.WeakPassword:
+                        LoginUIManager.Instance.PopUpMessage("! 비밀번호는 6글자 이상이여야 합니다.");
+                        break;
                     default: 
-                        LoginUIManager.Instance.PopUpMessage($"! Error Error code {firebaseException.ErrorCode}");
+                        LoginUIManager.Instance.PopUpMessage($"! Error Error code {firebaseException.ErrorCode.ToString() }");
                         break;    
                 }    
             }
