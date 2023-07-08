@@ -27,16 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
-  - m_GUID: 3bfb6286c2fcf4b40bf05cc7d5452b06
-    m_Address: Korean (ko)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-  - m_GUID: 59ca1b1e1913841b4ba13338d93f45d8
-    m_Address: English (en) 1
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:
