@@ -16,9 +16,4 @@ public partial class LoginUIManager : MonoBehaviour
         LoginUIManager.Instance = this;
     }
 
-    public void LoadSignupScene()
-    {
-        SceneManager.LoadScene("03_SignupScene");
-    }
-
 }
