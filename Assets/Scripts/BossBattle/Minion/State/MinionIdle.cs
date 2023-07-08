@@ -26,6 +26,11 @@ public class MinionIdle : MinionState
         {
             this.stateMachine.SetState("Move");
         }
+
+        if (this.stateMachine.Minion.minionHp == 0)
+        {
+            this.stateMachine.SetState("Dead");
+        }
     }
     public override void OnExit()
     {

@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public partial class Player : MonoBehaviour
 {
-    [SerializeField]
-    float playerSpeed = 15f;
-
+    [SerializeField] float playerSpeed = 15f;    
+    [SerializeField] private float jumpForce = 350f;
+    [SerializeField] private Slider slider;
+    [SerializeField] private BossSceneStop bossSceneStop;
     private Rigidbody2D rb;
-    [SerializeField]
-    private float jumpForce = 350f;
+
     private bool isJumping;
     private bool isTriggerBoss;
 
@@ -23,6 +24,7 @@ public partial class Player : MonoBehaviour
         VirtualJoystick.OnProcessInput += OnProcessInput;
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
+
     }
 
     private void Start()
@@ -46,6 +48,11 @@ public partial class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
             this.CreateBullet();
+
+        if(this.slider.value <= 0)
+        {
+            bossSceneStop.GameEnd();
+        }
     }
 
     private void OnDestroy()

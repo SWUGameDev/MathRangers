@@ -12,8 +12,9 @@ public class Minion : MonoBehaviour
     public Vector3 targetDirection;
     public bool isTriggerTarget;
     public float minionHp;
-    public static event Action OnMinionAttacked;
-    public MinionManager minionManager;
+    //public static event Action OnMinionAttacked;
+    public MinionCreator minionCreator;
+    private float maxHp = 1;
 
     public GameObject Target
     {
@@ -28,9 +29,16 @@ public class Minion : MonoBehaviour
         target = GameObject.Find("Player");
         boss = GameObject.Find("Boss");
         this.minionStateMachine = this.gameObject.AddComponent<MinionStateMachine>();
-        this.minionManager = boss.GetComponent<MinionManager>();
-
-        OnMinionAttacked += MinionHpDecrease;
+        if (boss != null)
+        {
+            this.minionCreator = boss.GetComponent<MinionCreator>();
+        }
+        else
+        {
+            Debug.LogError("Boss object not found!");
+        }
+        //OnMinionAttacked += MinionHpDecrease;
+        minionHp = maxHp;
     }
 
     private void Start()
@@ -41,13 +49,12 @@ public class Minion : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(this.minionStateMachine.currentState);
         this.DirectionToTarget();
     }
 
     private void OnDestroy()
     {
-        OnMinionAttacked-= MinionHpDecrease;
+        //OnMinionAttacked-= MinionHpDecrease;
     }
 
     private void DirectionToTarget()
@@ -59,27 +66,31 @@ public class Minion : MonoBehaviour
     {
         this.transform.position += direction * this.minionMoveSpeed * Time.deltaTime;
     }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            // 여기서 setstate 해야하는지?
-            OnMinionAttacked?.Invoke();
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("플레이어");
-
             this.isTriggerTarget = !this.isTriggerTarget;
         }
+
+        if (collision.gameObject.tag == "Bullet")
+        {
+            // 여기서 setstate 해야하는지?
+            Debug.Log($"{this.transform.gameObject.name}, ontriggerenter");
+            //OnMinionAttacked?.Invoke();
+            this.minionHp--;
+        }
+
     }
     void MinionHpDecrease()
     {
         // TO DO : - 플레이어의 공격력으로 수정
-        minionHp--;
+        
+    }
+
+    public float GetMaxHp()
+    {
+        return this.maxHp;
     }
 }
