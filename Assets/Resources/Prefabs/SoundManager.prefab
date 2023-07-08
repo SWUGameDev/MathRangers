@@ -181,8 +181,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundAudioSource: {fileID: 5369862697446042640}
   effectsAudioSource: {fileID: 5369862698219727297}
-  backgroundAudioClipArray: []
-  effectAudioClipArray: []
+  backgroundAudioClipArray:
+  - backgroundAudioType: 0
+    audioClip: {fileID: 8300000, guid: 8908065bd539c924c88f105417442ddc, type: 3}
+  - backgroundAudioType: 1
+    audioClip: {fileID: 8300000, guid: 27919b6a459b042b4a91ad139ff2d6a8, type: 3}
+  effectAudioClipArray:
+  - effectAudioType: 0
+    audioClip: {fileID: 8300000, guid: ef2d3c79a61fe4a17bbb3aa432e4976a, type: 3}
+  - effectAudioType: 2
+    audioClip: {fileID: 8300000, guid: 4c5126fa8a40b465ea9d36b5f38649cc, type: 3}
+  - effectAudioType: 1
+    audioClip: {fileID: 8300000, guid: 384803f0fffd24f68ab560d66d87f718, type: 3}
+  - effectAudioType: 3
+    audioClip: {fileID: 8300000, guid: dee79705fcce54dccbc5e165c2a639cb, type: 3}
+  - effectAudioType: 4
+    audioClip: {fileID: 8300000, guid: 1589787a5221e41509e16fe6fe40b604, type: 3}
+  - effectAudioType: 5
+    audioClip: {fileID: 8300000, guid: 97db7cb637332412eb8a668e5c15f611, type: 3}
+  - effectAudioType: 6
+    audioClip: {fileID: 8300000, guid: cf8995a5712b540d280cb4eeec3ca2c5, type: 3}
+  - effectAudioType: 7
+    audioClip: {fileID: 8300000, guid: 84d9878527c6846b4a22ff23a468ba9e, type: 3}
+  - effectAudioType: 8
+    audioClip: {fileID: 8300000, guid: 5964031bc208a4e3ba6f3e8164071ef1, type: 3}
 --- !u!1 &5369862698219727299
 GameObject:
   m_ObjectHideFlags: 0

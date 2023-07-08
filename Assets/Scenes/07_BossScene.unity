@@ -303,6 +303,7 @@ MonoBehaviour:
   weapon: {fileID: 1154012714}
   boxCollider2D: {fileID: 24513047}
   spawnPoint: {fileID: 802758985}
+  minionCreator: {fileID: 24513049}
   target: {fileID: 210544689}
   bossMoveSpeed: 10
   minDistance: 0.1
@@ -363,7 +364,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 24513042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92729f18c108183409f43740eb8cb559, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a8199de31b3a456fa3f40d69657a3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 3076469033017113035, guid: b13f06383ec5b3044a46fd16ebe52ae1, type: 3}
@@ -1882,6 +1883,63 @@ Transform:
   m_Father: {fileID: 1384430108}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &770021506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467480, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369862697934467481, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
 --- !u!1 &802758984
 GameObject:
   m_ObjectHideFlags: 0

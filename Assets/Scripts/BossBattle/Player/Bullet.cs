@@ -20,6 +20,8 @@ public class Bullet : MonoBehaviour
 
     public void Shot()
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_PLAYER_ATTACK);
+
         startPosition = transform.position;
 
          Vector3 monsterDir = autoAttackSystem.monster.transform.position - transform.position;

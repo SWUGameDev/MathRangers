@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     {
         if (isJumping == false)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
+            
             isJumping = true;
             this.rb.AddForce(transform.up * this.jumpForce);
         }

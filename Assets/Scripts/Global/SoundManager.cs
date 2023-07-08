@@ -51,7 +51,7 @@ public class SoundManager : MonoBehaviourSingleton<SoundManager>
 
     public void PlayAffectSoundOneShot(effectsAudioSourceType type)
     {
-        if(this.backgroundAudioClipDictionary == null)
+        if(this.effectAudioDictionary == null)
             this.ChangeSFXArrayToDictionary();
 
         this.effectsAudioSource.PlayOneShot(this.effectAudioDictionary[type]);
@@ -62,7 +62,8 @@ public class SoundManager : MonoBehaviourSingleton<SoundManager>
         if(this.backgroundAudioClipDictionary == null)
             this.ChangeBGMArrayToDictionary();
         
-        this.effectsAudioSource.clip = this.backgroundAudioClipDictionary[type];
+        this.backgroundAudioSource.clip = this.backgroundAudioClipDictionary[type];
+        this.backgroundAudioSource.Play();
     }
 
     public void SetEffectAudioSourceMute(bool isEffectsMuted)

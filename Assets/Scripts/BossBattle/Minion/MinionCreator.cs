@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinionCreater : MonoBehaviour
+public class MinionCreator : MonoBehaviour
 {
     public GameObject minionPrefab;
     private ObjectPool minionPool;
     //private Vector3[] minionPosArr = new Vector3[15];
     public Transform[] minionTransformArr = new Transform[15];
     public GameObject boss;
-    private int randomIndex;
     void Start()
     {
 
@@ -31,17 +30,12 @@ public class MinionCreater : MonoBehaviour
         //minionPosArr[14] = new Vector3(-3.17f, 2.81f);
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            CreateMinion();
-        }
-    }
-
     public void CreateMinion()
     {
-        randomIndex = Random.Range(5, 15);
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_SWING);
+
+        int randomIndex = Random.Range(5, 15);
+
         for(int i = 0; i < randomIndex; i++)
         {
             GameObject minionObj = minionPool.GetObject();
