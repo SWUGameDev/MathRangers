@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class LoginUIManager
+public class NoticeMessageUIManager : MonoBehaviour
 {
+    private void Awake()
+    {
+        this.waitForSeconds = new WaitForSeconds(this.popupTime);
+
+        this.noticeObjectPool = new ObjectPool(this.noticePrefab,1,"Notice");
+    }
+
     [Header("Notice Message")]
 
     [SerializeField] private GameObject noticePrefab;
@@ -35,5 +42,4 @@ public partial class LoginUIManager
         yield return this.waitForSeconds;
         this.noticeObjectPool.ReturnObject(notice);
     }
-
 }

@@ -2252,6 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20ddbb532ee5468eae4ad9edd89345b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noticeMessageUIManager: {fileID: 2147133270}
   emailField: {fileID: 1441428576}
   passwordField: {fileID: 1841357366}
 --- !u!1 &1321552535
@@ -3822,7 +3823,7 @@ GameObject:
   - component: {fileID: 2147133269}
   - component: {fileID: 2147133270}
   m_Layer: 0
-  m_Name: LoginUIManager
+  m_Name: NoticeMessageUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3852,12 +3853,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2147133267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2a1548db1f7443b86d57689c5ac263, type: 3}
+  m_Script: {fileID: 11500000, guid: 49158766999f446e0a3970310ccff9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nicknameSettingPanel: {fileID: 0}
-  nicknameInputField: {fileID: 0}
   noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
   canvasTransform: {fileID: 2102638540}
-  popupTime: 1.8
+  popupTime: 1
   noticePosition: {x: 0, y: -250}

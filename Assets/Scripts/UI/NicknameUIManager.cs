@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text.RegularExpressions;
 
-public partial class LoginUIManager : MonoBehaviour
+public partial class NicknameUIManager : MonoBehaviour
 {
     [Header("Nickname")]
 
-    [SerializeField] private GameObject nicknameSettingPanel;
+    [SerializeField] private NoticeMessageUIManager noticeMessageUIManager;
 
     [SerializeField] private TMP_InputField nicknameInputField;
 
@@ -18,12 +18,6 @@ public partial class LoginUIManager : MonoBehaviour
     private string userId;
 
     private bool isChecked = false;
-
-    public void InitializeNicknameSettingPanel(string userId)
-    {
-        this.nicknameSettingPanel.SetActive(true);
-        this.userId = userId;
-    }
 
     public void ConfirmNickname()
     {
@@ -34,7 +28,7 @@ public partial class LoginUIManager : MonoBehaviour
 
         if(!IsNicknameValid(nickName))
         {
-            LoginUIManager.Instance.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
+            this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
             return;    
         }
 
@@ -43,7 +37,7 @@ public partial class LoginUIManager : MonoBehaviour
 
     private void OnNicknameCheckFailed()
     {
-        LoginUIManager.Instance.PopUpMessage("! [Error] Can't Access to Firebase Service");
+        this.noticeMessageUIManager.PopUpMessage("! [Error] Can't Access to Firebase Service");
         this.isChecked = true;
     }
 
@@ -57,7 +51,7 @@ public partial class LoginUIManager : MonoBehaviour
 
     private void OnNicknameCheckDuplicated(string nickName)
     {
-        LoginUIManager.Instance.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
+        this.noticeMessageUIManager.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
         this.isChecked = true;
     }
 

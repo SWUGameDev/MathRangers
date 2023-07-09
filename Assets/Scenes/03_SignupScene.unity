@@ -2307,32 +2307,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1649535005}
-  - component: {fileID: 1649535004}
+  - component: {fileID: 1649535006}
   m_Layer: 0
-  m_Name: LoginUIManager
+  m_Name: NoticeMessageUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1649535004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649535003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2a1548db1f7443b86d57689c5ac263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nicknameSettingPanel: {fileID: 0}
-  nicknameInputField: {fileID: 0}
-  noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
-  canvasTransform: {fileID: 2015069514}
-  popupTime: 1.8
-  noticePosition: {x: 0, y: -250}
 --- !u!4 &1649535005
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,6 +2330,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1649535006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649535003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49158766999f446e0a3970310ccff9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
+  canvasTransform: {fileID: 2015069514}
+  popupTime: 1
+  noticePosition: {x: 0, y: -250}
 --- !u!1 &1815539260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,6 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20ddbb532ee5468eae4ad9edd89345b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noticeMessageUIManager: {fileID: 1649535006}
   emailField: {fileID: 1815539265}
   passwordField: {fileID: 1641615084}
 --- !u!4 &1946419108
