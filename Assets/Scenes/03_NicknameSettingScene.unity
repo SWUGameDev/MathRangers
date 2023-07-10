@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
   canvasTransform: {fileID: 1057198739}
-  popupTime: 1
+  popupTime: 1.5
   noticePosition: {x: 0, y: -250}
 --- !u!4 &58333027
 Transform:
