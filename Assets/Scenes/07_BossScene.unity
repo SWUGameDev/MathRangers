@@ -922,6 +922,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185736164}
   m_CullTransparentMesh: 1
+--- !u!1 &187350431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187350432}
+  m_Layer: 0
+  m_Name: BossBattleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187350432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187350431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &210544689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,6 +4280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d04189b0b2a4e5faa7656611a50c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitTimeText: {fileID: 1784011382}
+  limitTimeSeconds: 300
   damagePrefab: {fileID: 1174472376264299769, guid: 0b1f191820559456f8cc5c1766c37302, type: 3}
   criticalDamagePrefab: {fileID: 7973864257283064824, guid: f34c3334e25d24a4e939a376278aaf3d, type: 3}
 --- !u!1 &1294329982
@@ -5339,7 +5372,7 @@ GameObject:
   - component: {fileID: 1784011383}
   - component: {fileID: 1784011382}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text_Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5385,7 +5418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '12 : 25'
+  m_text: '05 : 00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84c6446ab060f47499121e72b4327d89, type: 2}
   m_sharedMaterial: {fileID: -8249821319427003600, guid: 84c6446ab060f47499121e72b4327d89, type: 2}
