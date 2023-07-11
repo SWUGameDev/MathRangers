@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiagnosticSceneUIManager : MonoBehaviour
+public partial class DiagnosticSceneUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject noticePanel;
     public void ClickOkayButton()
