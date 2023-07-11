@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 public partial class AuthManager : MonoBehaviour
 { 
 
+    [SerializeField] NoticeMessageUIManager noticeMessageUIManager;
     [SerializeField] TMP_InputField emailField;
     [SerializeField] TMP_InputField passwordField;
     Firebase.Auth.FirebaseAuth auth;
@@ -23,13 +24,13 @@ public partial class AuthManager : MonoBehaviour
     {
         if(!this.IsEmailValid(emailField.text))
         {
-            LoginUIManager.Instance.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
+            this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
             return;
         }
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            LoginUIManager.Instance.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
             return;
         }
 
@@ -73,13 +74,13 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsEmailValid(emailField.text))
         {
-            LoginUIManager.Instance.PopUpMessage("이메일 형식이 잘못되었습니다.");
+            this.noticeMessageUIManager.PopUpMessage("이메일 형식이 잘못되었습니다.");
             return;
         }
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            LoginUIManager.Instance.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
             return;
         }
 
