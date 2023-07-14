@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static Minion;
+
 public partial class BossSceneUIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text limitTimeText;
 
     [SerializeField] private float limitTimeSeconds;
+
+    public int deadMinionNumber;
+    [SerializeField] private TextMeshProUGUI deadMinionNumberText;
 
     //TODO : 시간 나면 로직 분리하기
     private void Update() {
@@ -24,6 +29,13 @@ public partial class BossSceneUIManager : MonoBehaviour
     }
 
     private void Start() {
-        
+        deadMinionNumber = 0;
+        Minion.OnMinionAttacked.AddListener(this.setMinionNumber);
+    }
+
+    public void setMinionNumber()
+    {
+        deadMinionNumber++;
+        deadMinionNumberText.text = deadMinionNumber.ToString();
     }
 }

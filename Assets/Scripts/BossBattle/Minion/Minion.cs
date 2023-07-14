@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Minion : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class Minion : MonoBehaviour
     public Vector3 targetDirection;
     public bool isTriggerTarget;
     public float minionHp;
-    //public static event Action OnMinionAttacked;
+
     public MinionCreator minionCreator;
     private float maxHp = 1;
+
+    public static UnityEvent OnMinionAttacked;
 
     public GameObject Target
     {
@@ -37,8 +40,8 @@ public class Minion : MonoBehaviour
         {
             Debug.LogError("Boss object not found!");
         }
-        //OnMinionAttacked += MinionHpDecrease;
         minionHp = maxHp;
+        Minion.OnMinionAttacked = new UnityEvent();
     }
 
     private void Start()
@@ -52,10 +55,6 @@ public class Minion : MonoBehaviour
         this.DirectionToTarget();
     }
 
-    private void OnDestroy()
-    {
-        //OnMinionAttacked-= MinionHpDecrease;
-    }
 
     private void DirectionToTarget()
     {
@@ -78,16 +77,12 @@ public class Minion : MonoBehaviour
         {
             // 여기서 setstate 해야하는지?
             Debug.Log($"{this.transform.gameObject.name}, ontriggerenter");
-            //OnMinionAttacked?.Invoke();
             this.minionHp--;
+            Minion.OnMinionAttacked?.Invoke();
         }
 
     }
-    void MinionHpDecrease()
-    {
-        // TO DO : - 플레이어의 공격력으로 수정
-        
-    }
+
 
     public float GetMaxHp()
     {

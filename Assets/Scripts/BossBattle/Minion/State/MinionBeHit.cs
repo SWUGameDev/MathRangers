@@ -12,6 +12,7 @@ public class MinionBeHit : MinionState
     public override void OnEnter()
     {
         base.OnEnter();
+
     }
 
     public override void OnUpdate()
