@@ -1,21 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class DialogSystem : MonoBehaviour
+public partial class DialogSystem : MonoBehaviour
 {
-    [Header("Data Sheet")]
-    
-    [SerializeField]
-    private TextAsset[] TextAssets;
-
-    [SerializeField]
-    private TextAsset[] SelectPanelTextAssets;
-
-    private List<List<DialogData>> dialogData;
 
     [Header("Dialog UI")]
 
@@ -51,6 +43,8 @@ public class DialogSystem : MonoBehaviour
 
     void Start()
     {
+        this.StartCoroutine(this.FadeIn());
+
         this.InitializeDialogScriptData();
 
         this.SetDialogUI(this.dataIndex,this.index);
@@ -105,30 +99,9 @@ public class DialogSystem : MonoBehaviour
         this.nextButton.interactable = true;
     }
 
-    private void DoText(TMP_Text text)
-    {
-        text.maxVisibleCharacters = 0;
-        DOTween.To(x => text.maxVisibleCharacters = (int)x , 0f, text.text.Length, this.textAnimationDuration);
-    }
+
     
 
-    // TODO: 성능이슈로 csv to json 고려해보기
-    private void InitializeDialogScriptData()
-    {
-        this.dialogData = new List<List<DialogData>>();
-        foreach(TextAsset textAsset in this.TextAssets)
-        {
-            List<Dictionary<string, object>> scriptData = CSVReader.Read(textAsset);
 
-            var dialogData = new List<DialogData>();
-            
-            for(int i=0; i < scriptData.Count; i++) {
-                dialogData.Add(new DialogData((int)scriptData[i]["talker"],Convert.ToBoolean(scriptData[i]["selection"]),scriptData[i]["name"].ToString(),(int)scriptData[i]["spriteType"],scriptData[i]["content"].ToString() ));
-            }
-
-            this.dialogData.Add(dialogData);
-        }
-
-    }
 
 }
