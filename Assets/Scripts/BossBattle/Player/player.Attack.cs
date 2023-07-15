@@ -23,6 +23,19 @@ public partial class Player : MonoBehaviour
 
     [SerializeField] private int criticalDamage = 800;
 
+    public int MinDamage
+    {
+        get { return minDamage; }
+    }
+    public int MaxDamage
+    {
+        get { return minDamage; }
+    }
+    public int CriticalDamage
+    {
+        get { return criticalDamage; }
+    }
+
     public void CreateBullet()
     {
         GameObject bulletObj = bulletPool.GetObject();

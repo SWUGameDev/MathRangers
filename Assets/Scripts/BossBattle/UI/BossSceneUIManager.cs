@@ -27,7 +27,7 @@ public partial class BossSceneUIManager : MonoBehaviour
         bossHp = maxBossHp;
         Player.OnBossDamaged.AddListener(this.setBossHpGauge);
 
-        Minion.OnMinionAttacked.AddListener(this.setMinionNumber);
+        Minion.OnMinionDead.AddListener(this.setMinionNumber);
     }
 
     private void Update() {

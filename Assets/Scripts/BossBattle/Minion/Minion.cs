@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Minion : MonoBehaviour
+public partial class Minion : MonoBehaviour
 {
     private MinionStateMachine minionStateMachine;
     private GameObject target;
@@ -15,10 +16,13 @@ public class Minion : MonoBehaviour
     public float minionHp;
 
     public MinionCreator minionCreator;
-    private float maxHp = 1;
+    private float maxHp = 1000;
 
-    public static UnityEvent OnMinionAttacked;
+    public static UnityEvent OnMinionDead;
 
+    private BossSceneUIManager bossSceneUIManager;
+
+    private Player player;
     public GameObject Target
     {
         get
@@ -31,7 +35,10 @@ public class Minion : MonoBehaviour
     {
         target = GameObject.Find("Player");
         boss = GameObject.Find("Boss");
+
+        player = target.GetComponent<Player>(); 
         this.minionStateMachine = this.gameObject.AddComponent<MinionStateMachine>();
+        bossSceneUIManager = FindObjectOfType<BossSceneUIManager>();
         if (boss != null)
         {
             this.minionCreator = boss.GetComponent<MinionCreator>();
@@ -41,7 +48,7 @@ public class Minion : MonoBehaviour
             Debug.LogError("Boss object not found!");
         }
         minionHp = maxHp;
-        Minion.OnMinionAttacked = new UnityEvent();
+        Minion.OnMinionDead = new UnityEvent();
     }
 
     private void Start()
@@ -75,10 +82,23 @@ public class Minion : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
-            // 여기서 setstate 해야하는지?
-            Debug.Log($"{this.transform.gameObject.name}, ontriggerenter");
-            this.minionHp--;
-            Minion.OnMinionAttacked?.Invoke();
+            int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
+
+            this.minionHp -= damage;
+
+            if (damage > player.CriticalDamage)
+            {
+                this.PlayDamageEffect(DamageType.Critical, damage);
+            }
+            else
+            {
+                this.PlayDamageEffect(DamageType.Normal, damage);
+            }
+
+            if(this.minionHp <= 0)
+            {
+                Minion.OnMinionDead?.Invoke();
+            }
         }
 
     }
