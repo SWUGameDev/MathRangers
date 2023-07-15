@@ -1,3 +1,3 @@
-select1,select2,select3
-떠들썩한 워터파크요!, 시원한 바다요! ,감성 가득 캠핑장이요!
-봄이요!,가을이요!,겨울이요!
+select1Type,select1,select2Type,select2,select3Type,select3
+1,떠들썩한 워터파크요!,2, 시원한 바다요! ,3,감성 가득 캠핑장이요!
+2,봄이요!,3,가을이요!,1,겨울이요!
