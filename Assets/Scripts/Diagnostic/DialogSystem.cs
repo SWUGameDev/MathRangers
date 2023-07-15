@@ -27,6 +27,8 @@ public partial class DialogSystem : MonoBehaviour
 
     [SerializeField]
     private Button[] selectedButtons;
+    [SerializeField]
+    private TMP_Text[] selectedTexts;
 
     [SerializeField]
     private GameObject selectedPanel;
@@ -36,7 +38,7 @@ public partial class DialogSystem : MonoBehaviour
 
     private int dataIndex = 0;
 
-    private int index = 0;
+    private int dialogDataIndex = 0;
 
     private int selectedPanelIndex = 0;
 
@@ -47,17 +49,19 @@ public partial class DialogSystem : MonoBehaviour
 
         this.InitializeDialogScriptData();
 
-        this.SetDialogUI(this.dataIndex,this.index);
+        this.InitializeSelectedPanelScriptData();
+
+        this.SetDialogUI(this.dataIndex,this.dialogDataIndex);
 
     }
 
     public void DialogNextButtonClicked()
     {
-        if(this.index + 1 >=this.dialogData[this.dataIndex].Count)
+        if(this.dialogDataIndex + 1 >=this.dialogData[this.dataIndex].Count)
             return;
 
-        this.index++;
-        this.SetDialogUI(this.dataIndex,this.index);
+        this.dialogDataIndex++;
+        this.SetDialogUI(this.dataIndex,this.dialogDataIndex);
     }
 
     private void SetDialogUI(int dataIndex,int index)
@@ -90,7 +94,15 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetSelectPanel(int selectedPanelIndex)
     {
-        //TODO : Panel Data Setting
+        if(this.selectPanelData[this.dataIndex].Count <= selectedPanelIndex)
+            return;
+
+        SelectInfoData selectInfoData = this.selectPanelData[this.dataIndex][this.selectedPanelIndex];
+        for(int index = 0;index<3;index++)
+        {
+            this.selectedTexts[index].text = selectInfoData.selectInfoList[index].content;
+        }
+        this.selectedPanelIndex++;
     }
 
     public void SetSelectPanelUnActive()
@@ -98,10 +110,6 @@ public partial class DialogSystem : MonoBehaviour
         this.selectedPanel.SetActive(false);
         this.nextButton.interactable = true;
     }
-
-
-    
-
 
 
 }
