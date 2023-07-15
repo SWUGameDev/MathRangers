@@ -24,6 +24,7 @@ public partial class Player : MonoBehaviour
         VirtualJoystick.OnProcessInput += OnProcessInput;
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
+        Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
 
     }
 

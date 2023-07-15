@@ -13,7 +13,9 @@ public partial class Player : MonoBehaviour
 
     [SerializeField] public GameObject monster;
 
-    public static UnityEvent<DamageType,Damage> onAttackSucceeded; 
+    public static UnityEvent<DamageType,Damage> onAttackSucceeded;
+    public static UnityEvent<int> OnBossDamaged;
+
 
     [Header("Damage Info")]
     [SerializeField] private int minDamage = 200;
@@ -39,7 +41,9 @@ public partial class Player : MonoBehaviour
         this.bulletPool.ReturnObject(bullet);
 
         int damage = UnityEngine.Random.Range(this.minDamage,this.maxDamage);
-        
+
+        Player.OnBossDamaged?.Invoke(damage);
+
         if(damage>this.criticalDamage)
         {
             Player.onAttackSucceeded?.Invoke(DamageType.Critical,damage);

@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using static Minion;
+//using static Minion;
 
 public partial class BossSceneUIManager : MonoBehaviour
 {
@@ -13,8 +14,22 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     public int deadMinionNumber;
     [SerializeField] private TextMeshProUGUI deadMinionNumberText;
+    [SerializeField] private Slider bossHpslider;
+    private float maxBossHp = 20000;
+    private float bossHp;
 
     //TODO : 시간 나면 로직 분리하기
+
+    private void Start()
+    {
+        bossHpslider.value = 1;
+        deadMinionNumber = 0;
+        bossHp = maxBossHp;
+        Player.OnBossDamaged.AddListener(this.setBossHpGauge);
+
+        Minion.OnMinionAttacked.AddListener(this.setMinionNumber);
+    }
+
     private void Update() {
 
         this.limitTimeSeconds -= Time.deltaTime;
@@ -28,14 +43,17 @@ public partial class BossSceneUIManager : MonoBehaviour
         this.limitTimeText.text = time.ToString(@"mm\:ss");
     }
 
-    private void Start() {
-        deadMinionNumber = 0;
-        Minion.OnMinionAttacked.AddListener(this.setMinionNumber);
-    }
+
 
     public void setMinionNumber()
     {
         deadMinionNumber++;
         deadMinionNumberText.text = deadMinionNumber.ToString();
+    }
+
+    private void setBossHpGauge(int damage)
+    {
+        bossHp -= damage;
+        this.bossHpslider.value = bossHp/maxBossHp;
     }
 }
