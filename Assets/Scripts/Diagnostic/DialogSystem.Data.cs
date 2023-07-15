@@ -20,7 +20,6 @@ public partial class DialogSystem : MonoBehaviour
 
     private List<List<DialogData>> dialogData;
 
-    // TODO: 성능이슈로 csv to json 고려해보기
     private void InitializeDialogScriptData()
     {
         this.dialogData = new List<List<DialogData>>();
@@ -55,8 +54,6 @@ public partial class DialogSystem : MonoBehaviour
                 
                 selectInfoData.Add(new SelectInfoData(selectInfoList));
             }
-            Debug.Log(selectInfoData[0].selectInfoList[0].content);
-            Debug.Log(selectInfoData[0].selectInfoList[0].type);
             this.selectPanelData.Add(selectInfoData);
         }
     }

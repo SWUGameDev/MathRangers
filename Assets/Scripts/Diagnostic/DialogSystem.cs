@@ -42,9 +42,15 @@ public partial class DialogSystem : MonoBehaviour
 
     private int selectedPanelIndex = 0;
 
+    private TeamMatchManager teamMatchManager;
+
+    public static Action onDialogEnded;
+
 
     void Start()
     {
+        this.teamMatchManager = TeamMatchManager.GetInstance();
+        
         this.StartCoroutine(this.FadeIn());
 
         this.InitializeDialogScriptData();
@@ -58,9 +64,18 @@ public partial class DialogSystem : MonoBehaviour
     public void DialogNextButtonClicked()
     {
         if(this.dialogDataIndex + 1 >=this.dialogData[this.dataIndex].Count)
+        {
+            DialogSystem.onDialogEnded?.Invoke();
             return;
+        }
 
         this.dialogDataIndex++;
+
+        if(this.dialogData[this.dataIndex][this.dialogDataIndex-1].isSelection)
+        {
+            this.SetSelectPanelUnActive();
+        }
+
         this.SetDialogUI(this.dataIndex,this.dialogDataIndex);
     }
 
@@ -89,7 +104,26 @@ public partial class DialogSystem : MonoBehaviour
             this.selectedPanel.SetActive(true);
         }
 
+        //만약에 선택지가 여러개라면
+        if(this.dialogData[dataIndex][index].isMultiContent>0)
+        {
+            List<string> contents = new List<string>();
+            contents.Add(this.dialogData[dataIndex][this.dialogDataIndex].content);
+            while(this.dialogDataIndex + 1 < this.dialogData[this.dataIndex].Count && this.dialogData[dataIndex][this.dialogDataIndex+1].isMultiContent!=0)
+            {
+                this.dialogDataIndex++;
+                contents.Add(this.dialogData[dataIndex][this.dialogDataIndex].content);
+            }
+            this.SetTextInMultipleContents(selectedUIInfo,contents,this.teamMatchManager.GetSelectedTeam());
+        }
+
         this.DoText(selectedUIInfo.contentText);
+    }
+
+    private void SetTextInMultipleContents(DialogSystemUIInfo selectedUIInfo,List<string> contents,int index)
+    {
+        Debug.Log(index);
+        selectedUIInfo.contentText.text = contents[index];
     }
 
     private void SetSelectPanel(int selectedPanelIndex)
@@ -102,6 +136,7 @@ public partial class DialogSystem : MonoBehaviour
         {
             this.selectedTexts[index].text = selectInfoData.selectInfoList[index].content;
         }
+
         this.selectedPanelIndex++;
     }
 
@@ -111,5 +146,11 @@ public partial class DialogSystem : MonoBehaviour
         this.nextButton.interactable = true;
     }
 
+    public void SelectButton(int index)
+    {
+        SelectInfoData selectInfoData = this.selectPanelData[this.dataIndex][this.selectedPanelIndex-1];
+        int teamType = selectInfoData.selectInfoList[index].type;
+        this.teamMatchManager.SetTeamMatchScore((TeamType)teamType - 1,1);
+    }
 
 }
