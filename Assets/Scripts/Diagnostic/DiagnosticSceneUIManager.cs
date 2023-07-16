@@ -14,6 +14,8 @@ public partial class DiagnosticSceneUIManager : MonoBehaviour
 
     [SerializeField] private SceneController sceneController;
 
+    [SerializeField] private TeamMatchManager teamMatchManager;
+
     private YieldInstruction waitForFadeSeconds;
 
     private void Start() {
@@ -33,10 +35,21 @@ public partial class DiagnosticSceneUIManager : MonoBehaviour
         }
         else if(dataIndex == 1)
         {
-            this.StartCoroutine(this.FadeOut(this.sceneController.LoadMainScene));
+            this.OnCompletedSecondDialog();
         }
 
     }
+
+    private void OnCompletedSecondDialog()
+    {
+        this.StartCoroutine(this.FadeOut(this.OnCompletedFadeOut));
+    }
+
+    private void OnCompletedFadeOut() {
+        this.sceneController.LoadMainScene();
+    }
+
+
     public void ClickOkayButton()
     {
         this.StartCoroutine(this.PlayShowDown());

@@ -45,7 +45,7 @@ public partial class NicknameUIManager : MonoBehaviour
 
     private void OnNicknameCheckCompleted(string nickName)
     {
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName);
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName,-1);
 
         PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,nickName);
 

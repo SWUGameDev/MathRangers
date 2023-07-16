@@ -6116,6 +6116,7 @@ MonoBehaviour:
   - {fileID: 1935298234}
   - {fileID: 1692894340}
   diagnosticEndPanel: {fileID: 1888517067}
+  teamMatchManager: {fileID: 1834744836}
   characterImage: {fileID: 1287588682}
   OXImage: {fileID: 826031563}
   OXBackgroundImage: {fileID: 2025338927}
@@ -8411,6 +8412,7 @@ MonoBehaviour:
   blackPanel: {fileID: 314588573}
   DiagnosticCanvas: {fileID: 587137532}
   sceneController: {fileID: 1514890206}
+  teamMatchManager: {fileID: 1834744836}
 --- !u!4 &2081522166
 Transform:
   m_ObjectHideFlags: 0

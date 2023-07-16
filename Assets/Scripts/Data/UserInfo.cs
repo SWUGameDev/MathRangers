@@ -12,14 +12,18 @@ public class UserInfo
     [SerializeField]
     public string nickname;
 
+    [SerializeField]
+    public int teamType;
+
     public UserInfo()
     {
 
     }
     
-    public UserInfo(string email,string nickname)
+    public UserInfo(string email,string nickname,int teamType)
     {
         this.email = email;
         this.nickname = nickname;
+        this.teamType = teamType;
     }
 }
