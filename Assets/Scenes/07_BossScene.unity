@@ -1464,7 +1464,7 @@ MonoBehaviour:
   maxDamage: 1001
   criticalDamage: 800
   playerSpeed: 15
-  jumpForce: 350
+  jumpForce: 300
   slider: {fileID: 393731249}
   bossSceneStop: {fileID: 329476672}
 --- !u!50 &210544695
