@@ -52,6 +52,13 @@ public partial class DialogSystem : MonoBehaviour
 
     public static Action<int> onDialogEnded;
 
+    private string userNickname;
+
+    private void Awake() {
+        this.userNickname = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
+        this.userNickname = this.userNickname == null? "Unknown" : this.userNickname;
+    }
+
 
     void Start()
     {
@@ -105,7 +112,7 @@ public partial class DialogSystem : MonoBehaviour
         selectedUIInfo.talkerNamePanel.SetActive(true);
         selectedUIInfo.characterImage.color = this.activeCharacterColor;
 
-        selectedUIInfo.contentText.text = this.dialogData[dataIndex][index].content;
+        selectedUIInfo.contentText.text = this.dialogData[dataIndex][index].content.Replace("[닉네임]",this.userNickname);
         selectedUIInfo.talkerNameText.text = this.dialogData[dataIndex][index].talkerName;
         selectedUIInfo.characterImage.sprite = selectedUIInfo.characterSprites[this.dialogData[dataIndex][index].spriteType];
 
@@ -139,7 +146,7 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetTextInMultipleContents(DialogSystemUIInfo selectedUIInfo,List<string> contents,int index)
     {
-        selectedUIInfo.contentText.text = contents[index];
+        selectedUIInfo.contentText.text = contents[index].Replace("[닉네임]",this.userNickname);
     }
 
     private void SetSelectPanel(int selectedPanelIndex)
