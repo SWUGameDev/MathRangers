@@ -36,6 +36,12 @@ public partial class DialogSystem : MonoBehaviour
     [SerializeField]
     private float textAnimationDuration;
 
+    [SerializeField]
+    private GameObject dialogCanvas;
+
+    [SerializeField]
+    private GameObject diagnosticCanvas;
+
     private int dataIndex = 0;
 
     private int dialogDataIndex = 0;
@@ -44,7 +50,7 @@ public partial class DialogSystem : MonoBehaviour
 
     private TeamMatchManager teamMatchManager;
 
-    public static Action onDialogEnded;
+    public static Action<int> onDialogEnded;
 
 
     void Start()
@@ -65,7 +71,7 @@ public partial class DialogSystem : MonoBehaviour
     {
         if(this.dialogDataIndex + 1 >=this.dialogData[this.dataIndex].Count)
         {
-            DialogSystem.onDialogEnded?.Invoke();
+            DialogSystem.onDialogEnded?.Invoke(this.dataIndex);
             return;
         }
 
@@ -77,6 +83,17 @@ public partial class DialogSystem : MonoBehaviour
         }
 
         this.SetDialogUI(this.dataIndex,this.dialogDataIndex);
+    }
+
+    public void SetDialogCanvasActive()
+    {
+        this.dataIndex++;
+        this.dialogDataIndex = 0;
+
+        this.SetDialogUI(this.dataIndex,this.dialogDataIndex);
+
+        this.diagnosticCanvas.SetActive(false);
+        this.dialogCanvas.SetActive(true);
     }
 
     private void SetDialogUI(int dataIndex,int index)
@@ -122,7 +139,6 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetTextInMultipleContents(DialogSystemUIInfo selectedUIInfo,List<string> contents,int index)
     {
-        Debug.Log(index);
         selectedUIInfo.contentText.text = contents[index];
     }
 

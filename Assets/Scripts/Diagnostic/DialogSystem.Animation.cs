@@ -37,30 +37,6 @@ public partial class DialogSystem : MonoBehaviour
 
     }
 
-
-    private IEnumerator FadeOut()
-    {
-        if(this.blackPanel == null)
-            yield break;
-
-        if(this.waitForFadeSeconds == null)
-            this.waitForFadeSeconds = new WaitForSeconds(0.1f);
-
-        this.blackPanel.gameObject.SetActive(true);
-
-        Color color = new Color(0,0,0,0);
-        this.blackPanel.color = color; 
-        while(color.a > 0)
-        {
-            color.a += 0.1f;
-            this.blackPanel.color = color;
-            yield return this.waitForFadeSeconds;
-        }
-
-        this.blackPanel.gameObject.SetActive(false);
-
-    }
-
     private void DoText(TMP_Text text)
     {
         text.maxVisibleCharacters = 0;

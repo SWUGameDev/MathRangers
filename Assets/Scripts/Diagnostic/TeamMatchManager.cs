@@ -7,14 +7,22 @@ public enum TeamType:int
 {
     Plus = 0,
     Minus = 1,
-    Multiple = 2
+    Multiple = 2,
+    None = -1
 }
 
 public class TeamMatchManager : MonoBehaviour
 {
     private static TeamMatchManager instance;
 
-    public int[] score = new int[3];
+    private int[] score = new int[3];
+
+    private TeamType teamType = TeamType.None;
+
+    private void Awake()
+    {
+        TeamMatchManager.instance = this;
+    }
 
     public static TeamMatchManager GetInstance()
     {
@@ -49,26 +57,40 @@ public class TeamMatchManager : MonoBehaviour
         return max_indices;
     }
 
-    public int GetSelectedTeam()
+    private void SetTeamType()
     {
         List<int> maxScores = this.FindMaxIndices(this.score.ToList());
 
         if(maxScores.Count==1)
         {
-            return maxScores[0];
+            this.teamType =  (TeamType)maxScores[0];
         }else{
             switch (maxScores[0])
             {
                 case 0:
-                    return maxScores[1] == 1 ? 0 : 2;
+                    this.teamType = maxScores[1] == (int)TeamType.Minus ? TeamType.Plus : TeamType.Multiple;
+                    break;
                 case 1:
-                    return maxScores[1] == 2 ? 1 : 0;
+                    this.teamType = maxScores[1] == (int)TeamType.Multiple ? TeamType.Minus : TeamType.Plus;
+                    break;
                 case 2:
-                    return maxScores[1] == 0 ? 2 : 1;
+                    this.teamType = maxScores[1] == (int)TeamType.Plus ? TeamType.Multiple : TeamType.Minus;
+                    break;
                 default:
-                    return 0;
+                    this.teamType = TeamType.None;
+                    break;
             }
         }
+    }
+
+    public int GetSelectedTeam()
+    {
+        if(this.teamType == TeamType.None)
+        {
+            this.SetTeamType();
+        }
+
+        return (int)this.teamType;
     }
 
     public void PrintCurrentMatchScore()
@@ -77,10 +99,5 @@ public class TeamMatchManager : MonoBehaviour
         {
             Debug.Log($"{((TeamType)index).ToString()}  score : {score[index]}");
         }
-    }
-
-    private void Awake()
-    {
-        TeamMatchManager.instance = this;
     }
 }
