@@ -38,6 +38,7 @@ public partial class Player : MonoBehaviour
         firePoint = transform;
 
         Boss.OnBossAttacked.AddListener(this.OnBulletTriggered);
+        Minion.OnReturnBullet.AddListener(this.OnReturnBullet);
     }
 
     private void Update()

@@ -19,6 +19,8 @@ public partial class Minion : MonoBehaviour
     private float maxHp = 1000;
 
     public static UnityEvent OnMinionDead;
+    public static UnityEvent<GameObject> OnReturnBullet;
+
 
     private BossSceneUIManager bossSceneUIManager;
 
@@ -49,6 +51,7 @@ public partial class Minion : MonoBehaviour
         }
         minionHp = maxHp;
         Minion.OnMinionDead = new UnityEvent();
+        Minion.OnReturnBullet = new UnityEvent<GameObject>();
     }
 
     private void Start()
@@ -82,6 +85,8 @@ public partial class Minion : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
+            Minion.OnReturnBullet?.Invoke(collision.gameObject);
+
             int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
 
             this.minionHp -= damage;

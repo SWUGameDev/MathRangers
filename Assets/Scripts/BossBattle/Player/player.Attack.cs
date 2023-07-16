@@ -29,7 +29,7 @@ public partial class Player : MonoBehaviour
     }
     public int MaxDamage
     {
-        get { return minDamage; }
+        get { return maxDamage; }
     }
     public int CriticalDamage
     {
@@ -64,6 +64,11 @@ public partial class Player : MonoBehaviour
             Player.onAttackSucceeded?.Invoke(DamageType.Normal,damage);
         }
         
+    }
+
+    private void OnReturnBullet(GameObject bullet)
+    {
+        this.bulletPool.ReturnObject(bullet);
     }
 
     public ObjectPool GetBulletPool()
