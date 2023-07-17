@@ -10,15 +10,31 @@ public partial class DialogSystem : MonoBehaviour
 {
 
     [Header("Data Sheet")]
+
+    [SerializeField]
+    private TextAsset[] EnglishTextAssets;
     
     [SerializeField]
     private TextAsset[] TextAssets;
 
     private List<List<SelectInfoData>> selectPanelData;
+    
+    [SerializeField]
+    private TextAsset[] EnglishSelectPanelTextAssets;
+
     [SerializeField]
     private TextAsset[] SelectPanelTextAssets;
 
     private List<List<DialogData>> dialogData;
+
+    private void InitializeTextAssets(int index)
+    {
+        if(index == 0)
+        {
+            this.TextAssets = this.EnglishTextAssets;
+            this.SelectPanelTextAssets = this.EnglishSelectPanelTextAssets;
+        }
+    }
 
     private void InitializeDialogScriptData()
     {
