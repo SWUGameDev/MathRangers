@@ -84,10 +84,24 @@ public class DiagnosticManager : MonoBehaviour
             case "E":
                 Debug.Log("진단평가 끝! 학습 단계로 넘어갑니다.");
                 PlayerPrefs.SetInt("DiagnosticCompleted",1);
+                this.InitializeUserInfo();
                 currentStatus = CurrentStatus.LEARNING;
                 diagnosticEndPanel.SetActive(true);
                 break;
         }
+    }
+
+    [SerializeField] private TeamMatchManager teamMatchManager;
+
+    private void InitializeUserInfo()
+    {
+        string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
+        Debug.Log($"this.teamMatchManager.GetSelectedTeam() {this.teamMatchManager.GetSelectedTeam()}");
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName,this.teamMatchManager.GetSelectedTeam());
+        string serializedData = JsonUtility.ToJson(userInfo);
+
+        string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
+        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
     }
 
     /// <summary>

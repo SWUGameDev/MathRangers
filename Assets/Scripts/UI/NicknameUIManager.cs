@@ -19,6 +19,8 @@ public partial class NicknameUIManager : MonoBehaviour
 
     private bool isChecked = false;
 
+    public static readonly string NicknamePlayerPrefsKey = "NicknamePlayerPrefsKey";
+
     public void ConfirmNickname()
     {
         if(this.isChecked)
@@ -43,7 +45,10 @@ public partial class NicknameUIManager : MonoBehaviour
 
     private void OnNicknameCheckCompleted(string nickName)
     {
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName);
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName,-1);
+
+        PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,nickName);
+
         string serializedData = JsonUtility.ToJson(userInfo);
         FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
         this.isChecked = true;

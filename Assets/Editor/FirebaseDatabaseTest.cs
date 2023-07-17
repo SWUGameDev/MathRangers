@@ -16,7 +16,7 @@ public class FirebaseDatabaseTest : MonoBehaviour
     [MenuItem("Firebase/Upload")]
     static void UploadTest()
     {
-        UserInfo userInfo = new UserInfo("test@naver.com","MyName");
+        UserInfo userInfo = new UserInfo("test@naver.com","MyName",-1);
         string serializedData = JsonUtility.ToJson(userInfo);
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo("YGU345D2sD",serializedData);
     }
