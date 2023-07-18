@@ -5895,6 +5895,7 @@ MonoBehaviour:
   deadMinionNumber: 0
   deadMinionNumberText: {fileID: 863514973}
   bossHpslider: {fileID: 679881096}
+  bossHpText: {fileID: 918841429}
   damagePrefab: {fileID: 1174472376264299769, guid: 0b1f191820559456f8cc5c1766c37302, type: 3}
   criticalDamagePrefab: {fileID: 7973864257283064824, guid: f34c3334e25d24a4e939a376278aaf3d, type: 3}
 --- !u!1 &1294329982

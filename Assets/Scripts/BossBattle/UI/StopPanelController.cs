@@ -16,26 +16,27 @@ public class StopPanelController : MonoBehaviour
     {
         for(int i = 0; i < 8; i++)
         {
-            SetQuestionCorrect(questionImageArr, i, true);
+            SetQuestionCorrect(i, true);
         }
 
         SetQuestionCorrectRate(100);
     }
 
-    public void SetQuestionCorrect(Image[] arr, int idx, bool isCorrect)
+    public void SetQuestionCorrect(int idx, bool isCorrect)
     {
         if(isCorrect == true)
         {
-            arr[idx].color = green;
+            questionImageArr[idx].color = green;
         }
         else
         {
-            arr[idx].color = red;
+            questionImageArr[idx].color = red;
         }
     }
 
     public void SetQuestionCorrectRate(int rate)
     {
+        // float 로 받아서 소수점 없애기
         this.correctRate.text = rate.ToString() + '%';
     }
 }

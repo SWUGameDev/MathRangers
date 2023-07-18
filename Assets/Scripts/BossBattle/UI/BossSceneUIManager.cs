@@ -15,8 +15,10 @@ public partial class BossSceneUIManager : MonoBehaviour
     public int deadMinionNumber;
     [SerializeField] private TextMeshProUGUI deadMinionNumberText;
     [SerializeField] private Slider bossHpslider;
+    [SerializeField] private TMP_Text bossHpText;
+
     private float maxBossHp = 20000;
-    private float bossHp;
+    private float bossHp; // 보스로 이동
 
     //TODO : 시간 나면 로직 분리하기
 
@@ -25,9 +27,11 @@ public partial class BossSceneUIManager : MonoBehaviour
         bossHpslider.value = 1;
         deadMinionNumber = 0;
         bossHp = maxBossHp;
-        Player.OnBossDamaged.AddListener(this.setBossHpGauge);
+        bossHpText.text = bossHp.ToString();
 
-        Minion.OnMinionDead.AddListener(this.setMinionNumber);
+        Player.OnBossDamaged.AddListener(this.SetBossHpGauge);
+
+        Minion.OnMinionDead.AddListener(this.SetMinionNumber);
     }
 
     private void Update() {
@@ -45,15 +49,16 @@ public partial class BossSceneUIManager : MonoBehaviour
 
 
 
-    public void setMinionNumber()
+    public void SetMinionNumber()
     {
         deadMinionNumber++;
         deadMinionNumberText.text = deadMinionNumber.ToString();
     }
 
-    private void setBossHpGauge(int damage)
+    private void SetBossHpGauge(int damage)
     {
         bossHp -= damage;
+        bossHpText.text = bossHp.ToString();
         this.bossHpslider.value = bossHp/maxBossHp;
     }
 }

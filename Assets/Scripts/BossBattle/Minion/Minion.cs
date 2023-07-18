@@ -85,6 +85,8 @@ public partial class Minion : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
+            // 함수로 바꾸기
+
             Minion.OnReturnBullet?.Invoke(collision.gameObject);
 
             int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
