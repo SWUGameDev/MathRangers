@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Minion : MonoBehaviour
+public partial class Minion : MonoBehaviour
 {
     private MinionStateMachine minionStateMachine;
     private GameObject target;
@@ -12,10 +14,17 @@ public class Minion : MonoBehaviour
     public Vector3 targetDirection;
     public bool isTriggerTarget;
     public float minionHp;
-    //public static event Action OnMinionAttacked;
-    public MinionCreator minionCreator;
-    private float maxHp = 1;
 
+    public MinionCreator minionCreator;
+    private float maxHp = 1000;
+
+    public static UnityEvent OnMinionDead;
+    public static UnityEvent<GameObject> OnReturnBullet;
+
+
+    private BossSceneUIManager bossSceneUIManager;
+
+    private Player player;
     public GameObject Target
     {
         get
@@ -28,7 +37,10 @@ public class Minion : MonoBehaviour
     {
         target = GameObject.Find("Player");
         boss = GameObject.Find("Boss");
+
+        player = target.GetComponent<Player>(); 
         this.minionStateMachine = this.gameObject.AddComponent<MinionStateMachine>();
+        bossSceneUIManager = FindObjectOfType<BossSceneUIManager>();
         if (boss != null)
         {
             this.minionCreator = boss.GetComponent<MinionCreator>();
@@ -37,8 +49,9 @@ public class Minion : MonoBehaviour
         {
             Debug.LogError("Boss object not found!");
         }
-        //OnMinionAttacked += MinionHpDecrease;
         minionHp = maxHp;
+        Minion.OnMinionDead = new UnityEvent();
+        Minion.OnReturnBullet = new UnityEvent<GameObject>();
     }
 
     private void Start()
@@ -52,10 +65,6 @@ public class Minion : MonoBehaviour
         this.DirectionToTarget();
     }
 
-    private void OnDestroy()
-    {
-        //OnMinionAttacked-= MinionHpDecrease;
-    }
 
     private void DirectionToTarget()
     {
@@ -76,18 +85,31 @@ public class Minion : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
-            // 여기서 setstate 해야하는지?
-            Debug.Log($"{this.transform.gameObject.name}, ontriggerenter");
-            //OnMinionAttacked?.Invoke();
-            this.minionHp--;
+            // 함수로 바꾸기
+
+            Minion.OnReturnBullet?.Invoke(collision.gameObject);
+
+            int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
+
+            this.minionHp -= damage;
+
+            if (damage > player.CriticalDamage)
+            {
+                this.PlayDamageEffect(DamageType.Critical, damage);
+            }
+            else
+            {
+                this.PlayDamageEffect(DamageType.Normal, damage);
+            }
+
+            if(this.minionHp <= 0)
+            {
+                Minion.OnMinionDead?.Invoke();
+            }
         }
 
     }
-    void MinionHpDecrease()
-    {
-        // TO DO : - 플레이어의 공격력으로 수정
-        
-    }
+
 
     public float GetMaxHp()
     {

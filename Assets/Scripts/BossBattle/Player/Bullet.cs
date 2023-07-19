@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] public float time = 0f;
-    public float timeInterval = 1f;
+    private float timeInterval = 30f;
     [SerializeField] private float bulletSpeed = 13.0f;
     private Vector3 startPosition;
     Rigidbody2D rigid;

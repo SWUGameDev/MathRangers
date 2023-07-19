@@ -13,13 +13,28 @@ public partial class Player : MonoBehaviour
 
     [SerializeField] public GameObject monster;
 
-    public static UnityEvent<DamageType,Damage> onAttackSucceeded; 
+    public static UnityEvent<DamageType,Damage> onAttackSucceeded;
+    public static UnityEvent<int> OnBossDamaged;
+
 
     [Header("Damage Info")]
     [SerializeField] private int minDamage = 200;
     [SerializeField] private int maxDamage = 1001;
 
     [SerializeField] private int criticalDamage = 800;
+
+    public int MinDamage
+    {
+        get { return minDamage; }
+    }
+    public int MaxDamage
+    {
+        get { return maxDamage; }
+    }
+    public int CriticalDamage
+    {
+        get { return criticalDamage; }
+    }
 
     public void CreateBullet()
     {
@@ -39,7 +54,9 @@ public partial class Player : MonoBehaviour
         this.bulletPool.ReturnObject(bullet);
 
         int damage = UnityEngine.Random.Range(this.minDamage,this.maxDamage);
-        
+
+        Player.OnBossDamaged?.Invoke(damage);
+
         if(damage>this.criticalDamage)
         {
             Player.onAttackSucceeded?.Invoke(DamageType.Critical,damage);
@@ -47,6 +64,11 @@ public partial class Player : MonoBehaviour
             Player.onAttackSucceeded?.Invoke(DamageType.Normal,damage);
         }
         
+    }
+
+    private void OnReturnBullet(GameObject bullet)
+    {
+        this.bulletPool.ReturnObject(bullet);
     }
 
     public ObjectPool GetBulletPool()

@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 public partial class Player : MonoBehaviour
 {
-    [SerializeField] float playerSpeed = 15f;    
-    [SerializeField] private float jumpForce = 350f;
+    [SerializeField] float playerSpeed = 15f;
+    [SerializeField] private float jumpForce;
     [SerializeField] private Slider slider;
     [SerializeField] private BossSceneStop bossSceneStop;
     private Rigidbody2D rb;
 
-    private bool isJumping;
     private bool isTriggerBoss;
+    private int jumpCount = 0;
 
     public static event Action OnDamaged;
 
@@ -24,19 +24,21 @@ public partial class Player : MonoBehaviour
         VirtualJoystick.OnProcessInput += OnProcessInput;
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
+        Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
 
     }
 
     private void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
-        isJumping = false;
+
         isTriggerBoss = false;
 
         bulletPool = new ObjectPool(bulletPrefab, 10, "BulletPool");
         firePoint = transform;
 
         Boss.OnBossAttacked.AddListener(this.OnBulletTriggered);
+        Minion.OnReturnBullet.AddListener(this.OnReturnBullet);
     }
 
     private void Update()
@@ -71,11 +73,10 @@ public partial class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (isJumping == false)
+        if(jumpCount < 2)
         {
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
-            
-            isJumping = true;
+            jumpCount++;
             this.rb.AddForce(transform.up * this.jumpForce);
         }
     }
@@ -84,7 +85,7 @@ public partial class Player : MonoBehaviour
     { 
         if (col.transform.name == "Ground") 
         { 
-            isJumping = false; 
+            jumpCount = 0;
         }
     }
 
