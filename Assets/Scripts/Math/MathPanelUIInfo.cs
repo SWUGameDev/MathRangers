@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MathPanelUIInfo : MonoBehaviour
+public partial class MathPanelUIInfo : MonoBehaviour
 {
 
     [Header("Question Panels")]
@@ -17,6 +17,16 @@ public class MathPanelUIInfo : MonoBehaviour
 
     [SerializeField] TEXDraw[] TEXDrawAnswerText;
 
+    public TEXDraw[] textAnswers {  get => this.TEXDrawAnswerText;}
+
+    [SerializeField] private Image resultImage;
+
+    [SerializeField] private Sprite[] resultSprites;
+
+    [SerializeField] private Animator mathPanelAnimator;
+
+    private readonly string exitAnimKey = "IsExited";
+
     public void SetMathPanelActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
@@ -27,7 +37,7 @@ public class MathPanelUIInfo : MonoBehaviour
         string      correctAnswer =  questionAnswers;
         string[]    wrongAnswers = questionWrongAnswer.Split(',');
 
-        this.descriptionText.text = questionDescription;
+        this.descriptionText.text = "Q. " + questionDescription;
         this.equationText.text = questionText;
 
         int answerCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
@@ -54,6 +64,51 @@ public class MathPanelUIInfo : MonoBehaviour
         }
         
         return true;
+    }
+
+    public void SetResultImage(bool isCorrect)
+    {
+        this.resultImage.gameObject.SetActive(true);
+
+        if(isCorrect)
+        {
+            this.resultImage.sprite = this.resultSprites[1];
+        }else{
+            this.resultImage.sprite = this.resultSprites[0];
+        }
+
+        this.StartCoroutine(this.SetResultImageCoroutine());
+    }
+
+
+    public IEnumerator SetResultImageCoroutine()
+    {
+        this.SetAnswerButtonActive(false);
+        
+        yield return new WaitForSeconds(0.5f);
+
+        this.mathPanelAnimator.SetTrigger(this.exitAnimKey);
+
+        yield return new WaitForSeconds(0.7f);
+
+        this.ResetUISetting();
+
+        this.ResetTimerUI();
+    }
+
+    private void SetAnswerButtonActive(bool isActable)
+    {
+        foreach (var button in this.answerButtons)
+        {
+            button.interactable = isActable;
+        }
+    }
+
+    public void ResetUISetting()
+    {
+        this.SetAnswerButtonActive(true);
+
+        this.resultImage.gameObject.SetActive(false);
     }
 
 }
