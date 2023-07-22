@@ -165,7 +165,7 @@ public class WJ_Sample : MonoBehaviour
 
                 this.DisplayAnswer(isCorrect,_idx);
 
-                panel_question.SetActive(false);
+                //panel_question.SetActive(false);
                 questionSolveTime = 0;
                 break;
 
@@ -199,6 +199,7 @@ public class WJ_Sample : MonoBehaviour
 
     private void DisplayAnswer(bool isCorrect,int index)
     {
+
         this.OXImage.gameObject.SetActive(true);
 
         if(isCorrect)

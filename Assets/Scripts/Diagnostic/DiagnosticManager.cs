@@ -8,7 +8,7 @@ public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
 
 public class DiagnosticManager : MonoBehaviour
 {
- [SerializeField] WJ_Connector       wj_conn;
+    [SerializeField] WJ_Connector       wj_conn;
     [SerializeField] CurrentStatus      currentStatus;
     public CurrentStatus                CurrentStatus => currentStatus;
 
@@ -96,9 +96,11 @@ public class DiagnosticManager : MonoBehaviour
     private void InitializeUserInfo()
     {
         string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
-        Debug.Log($"this.teamMatchManager.GetSelectedTeam() {this.teamMatchManager.GetSelectedTeam()}");
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName,this.teamMatchManager.GetSelectedTeam());
+        PlayerPrefs.SetString(MathQuestionExtension.AuthorizationPlayerPrefsKey,this.wj_conn.GetAuthorization());
+        
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, this.wj_conn.GetAuthorization(),this.teamMatchManager.GetSelectedTeam());
         string serializedData = JsonUtility.ToJson(userInfo);
+        Debug.Log($"[InitializeUserInfo] ${serializedData}");
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);

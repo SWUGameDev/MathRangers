@@ -1,9 +1,7 @@
-using System.Collections;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public class UserInfo
 {
     [SerializeField]
@@ -13,6 +11,9 @@ public class UserInfo
     public string nickname;
 
     [SerializeField]
+    public string userAuthorization;
+
+    [SerializeField]
     public int teamType;
 
     public UserInfo()
@@ -20,10 +21,11 @@ public class UserInfo
 
     }
     
-    public UserInfo(string email,string nickname,int teamType)
+    public UserInfo(string email,string nickname,string userAuthorization,int teamType)
     {
         this.email = email;
         this.nickname = nickname;
+        this.userAuthorization = userAuthorization;
         this.teamType = teamType;
     }
 }
