@@ -9,8 +9,6 @@ public partial class MathPanelUIController : MonoBehaviour
     [Header("Timer UI Panels")]
 
     [SerializeField] private TMP_Text clockText;
-
-
     [SerializeField] private Animator clockAnimator;
 
     private readonly string clockAnimKey = "IsSwinging";
@@ -27,6 +25,5 @@ public partial class MathPanelUIController : MonoBehaviour
     {
         this.clockText.color = Color.black;
     }
-
 
 }
