@@ -17,15 +17,18 @@ public partial class MathQuestionExtension : MonoBehaviour
 
     private void SetTimeout()
     {
-        this.SendLearningSelectAnswer(0,"N");
+        this.SendLearningSelectAnswer(0,"N",false);
     }
 
-    private void SendLearningSelectAnswer(int index,string answerCwYn)
+    private void SendLearningSelectAnswer(int index,string answerCwYn,bool isCorrect)
     {
         isSolvingQuestion = false;
         currentQuestionIndex++;
 
         wj_connector.Learning_SelectAnswer(currentQuestionIndex, this.mathPanelUIController.textAnswers[index].text, answerCwYn, (int)(questionSolveTime * 1000));
+
+        this.mathPanelUIController.SetResultImage(isCorrect);
+        this.countdownController.StopCountdown();
 
         questionSolveTime = 0;
     }

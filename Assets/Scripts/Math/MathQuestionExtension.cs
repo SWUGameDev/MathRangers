@@ -68,17 +68,14 @@ public partial class MathQuestionExtension : MonoBehaviour
                     wj_connector.cLearnSet.data.qsts[_index].qstWransr);
     }
 
-    public void SelectAnswer(int _idx)
+    public void SelectAnswer(int selectedIndex)
     {
-        bool isCorrect  = this.mathPanelUIController.textAnswers[_idx].text.CompareTo(wj_connector.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
-        string ansrCwYn = isCorrect ? "Y" : "N";
+        bool isCorrect  = this.mathPanelUIController.textAnswers[selectedIndex].text.CompareTo(wj_connector.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+        string answerCwYn = isCorrect ? "Y" : "N";
 
-        this.SendLearningSelectAnswer(_idx,ansrCwYn);
+        this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
 
-        Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[_idx].text + ansrCwYn+ questionSolveTime + " 초");
-
-        this.mathPanelUIController.SetResultImage(isCorrect);
-        this.countdownController.StopCountdown();
+        Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[selectedIndex].text + answerCwYn+ questionSolveTime + " 초");
 
         if (currentQuestionIndex >= 8) 
         {
