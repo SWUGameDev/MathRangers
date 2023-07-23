@@ -9,23 +9,25 @@ using WjChallenge;
 public class WJ_Connector : MonoBehaviour
 {
     [Header("My Info")]
-    public string strGameCD;        //°ÔÀÓÄÚµå
-    public string strGameKey;       //°ÔÀÓÅ°(Api Key)
+    public string strGameCD;        //ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+    public string strGameKey;       //ï¿½ï¿½ï¿½ï¿½Å°(Api Key)
 
     private string strAuthorization;
 
-    private string strMBR_ID;       //¸â¹ö ID
-    private string strDeviceNm;     //µð¹ÙÀÌ½º ÀÌ¸§
+    private readonly string defaultAuth = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjaG4iOiJFMTUiLCJtYnIiOiJFMTUyMDIzMDcyMjE1MTMzMTA3NyIsImlhdCI6MTY1MTU2MDYxNywiZXhwIjozNTQ2ODA2NTE1fQ.gw6uzVPtTOYGaQFxZvP7HtowzIsyPqGJuyk80PJSfA4";
+
+    private string strMBR_ID;       //ï¿½ï¿½ï¿½ ID
+    private string strDeviceNm;     //ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½Ì¸ï¿½
     private string strOsScnCd;      //OS
-    private string strGameVer;      //°ÔÀÓ ¹öÀü
+    private string strGameVer;      //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     #region StoredData
     [HideInInspector]
-    public DN_Response                  cDiagnotics     = null; //Áø´Ü - ÇöÀç Ç®°íÀÖ´Â Áø´ÜÆò°¡ ¹®Á¦
+    public DN_Response                  cDiagnotics     = null; //ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [HideInInspector]
-    public Response_Learning_Setting    cLearnSet       = null; //ÇÐ½À - ÇÐ½À ¹®Ç× ¿äÃ» ½Ã ¹Þ¾Æ¿Â ÇÐ½À µ¥ÀÌÅÍ
+    public Response_Learning_Setting    cLearnSet       = null; //ï¿½Ð½ï¿½ - ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [HideInInspector]
-    public Response_Learning_Progress   cLearnProg      = null; //ÇÐ½À - ÇÐ½À ¿Ï·á ½Ã ¹Þ¾Æ¿Â °á°ú
+    public Response_Learning_Progress   cLearnProg      = null; //ï¿½Ð½ï¿½ - ï¿½Ð½ï¿½ ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½
     [HideInInspector]
     public List<Learning_MyAnsr>        cMyAnsrs        = null;
     [HideInInspector]
@@ -56,7 +58,7 @@ public class WJ_Connector : MonoBehaviour
         Make_MBR_ID();
     }
 
-    //ÇöÀç ½Ã°£À» ±âÁØÀ¸·Î MBR ID »ý¼º
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MBR ID ï¿½ï¿½ï¿½ï¿½
     private void Make_MBR_ID()
     {
         DateTime dt = DateTime.Now;
@@ -66,7 +68,7 @@ public class WJ_Connector : MonoBehaviour
     #region Function Progress
 
     /// <summary>
-    /// Áø´ÜÆò°¡ Ã¹ ½ÇÇà ½Ã ¼­¹ö¿Í Åë½Å
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¹ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     /// </summary>
     private IEnumerator Send_Diagnosis(int level)
     {
@@ -97,18 +99,18 @@ public class WJ_Connector : MonoBehaviour
     }
 
     /// <summary>
-    /// Áø´ÜÆò°¡ ¸Å ¹®Á¦ Ç®ÀÌ ½Ã ¼­¹ö¿Í Åë½Å
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     /// </summary>
     private IEnumerator SendProgress_Diagnosis(string _prgsCd, string _qstCd, string _qstCransr, string _ansrCwYn, long _sid, long _nQstDelayTime)
     {
         Request_DN_Progress request = new Request_DN_Progress();
         request.mbrId = strMBR_ID;
         request.gameCd = strGameCD;
-        request.prgsCd = _prgsCd;// "W";    // W: Áø´Ü ÁøÇà    E: Áø´Ü ¿Ï·á    X: ±âÅ¸ Ãë¼Ò?
-        request.qstCd = _qstCd;             // ¹®Ç× ÄÚµå
-        request.qstCransr = _qstCransr;     // ÀÔ·ÂÇÑ ´ä³»¿ë
-        request.ansrCwYn = _ansrCwYn;//"Y"; // Á¤´ä ¿©ºÎ
-        request.sid = _sid;                 // Áø´Ü ID
+        request.prgsCd = _prgsCd;// "W";    // W: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½    E: ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½    X: ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½?
+        request.qstCd = _qstCd;             // ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
+        request.qstCransr = _qstCransr;     // ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ä³»ï¿½ï¿½
+        request.ansrCwYn = _ansrCwYn;//"Y"; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        request.sid = _sid;                 // ï¿½ï¿½ï¿½ï¿½ ID
         request.slvTime = _nQstDelayTime;//5000;
 
         yield return StartCoroutine(UWR_Post<Request_DN_Progress, DN_Response>(request, "https://prd-brs-relay-model.mathpid.com/api/v1/contest/diagnosis/progress", true));
@@ -119,7 +121,7 @@ public class WJ_Connector : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÐ½À ¹®Á¦¸¦ ¹Þ¾Æ¿À±â À§ÇØ ¼­¹ö¿Í Åë½Å
+    /// ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     /// </summary>
     private IEnumerator Send_Learning()
     {
@@ -144,8 +146,31 @@ public class WJ_Connector : MonoBehaviour
         yield return null;
     }
 
+    private IEnumerator Send_Learning_Running()
+    {
+        Request_Learning_Setting request = new Request_Learning_Setting();
+
+        request.gameCd = strGameCD;
+        request.mbrId = "E1520230722165839723";
+        request.gameVer = "1.0";
+        request.osScnCd = strOsScnCd;
+        request.deviceNm = strDeviceNm;
+        request.langCd = "KO";
+        request.timeZone = TimeZoneInfo.Local.BaseUtcOffset.Hours;
+
+        request.mathpidId = "";
+
+        yield return StartCoroutine(UWR_Post<Request_Learning_Setting, Response_Learning_Setting>(request, "https://prd-brs-relay-model.mathpid.com/api/v1/contest/learning/setting", true));
+
+        onGetLearning.Invoke();
+
+        cMyAnsrs = new List<Learning_MyAnsr>();
+
+        yield return null;
+    }
+
     /// <summary>
-    /// ÇÐ½À 8¹®Á¦ ¿Ï·áÇÒ¶§¸¶´Ù ¼­¹ö¿Í Åë½ÅÇÏ¿© ÇÐ½À °á°ú¸¦ ¹Þ¾Æ¿È
+    /// ï¿½Ð½ï¿½ 8ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
     /// </summary>
     private IEnumerator SendProgress_Learning()
     {
@@ -164,14 +189,24 @@ public class WJ_Connector : MonoBehaviour
         yield return null;
     }
 
+    public string GetAuthorization()
+    {
+        return this.strAuthorization == "" ? this.defaultAuth : this.strAuthorization;
+    }
+
+    public void SetAuthorization(string authorization)
+    {
+        this.strAuthorization = authorization;
+    }
+
     /// <summary>
-    /// UnityWebRequest¸¦ »ç¿ëÇÏ¿© ¼­¹ö¿Í ½ÇÁ¦·Î Åë½Å
+    /// UnityWebRequestï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     /// </summary>
-    /// <typeparam name="TRequest"> º¸³»±â ¿øÇÏ´Â Å¸ÀÔ </typeparam>
-    /// <typeparam name="TResponse"> ¹Þ¾Æ¿Ã Å¸ÀÔ </typeparam>
-    /// <param name="request"> º¸³»´Â °ª </param>
+    /// <typeparam name="TRequest"> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ Å¸ï¿½ï¿½ </typeparam>
+    /// <typeparam name="TResponse"> ï¿½Þ¾Æ¿ï¿½ Å¸ï¿½ï¿½ </typeparam>
+    /// <param name="request"> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ </param>
     /// <param name="url"> URL </param>
-    /// <param name="isSendAuth"> Authorization Çì´õ º¸³¾Áö </param>
+    /// <param name="isSendAuth"> Authorization ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ </param>
     /// <returns></returns>
     private IEnumerator UWR_Post<TRequest, TResponse>(TRequest request, string url, bool isSendAuth)
     where TRequest : class
@@ -188,15 +223,17 @@ public class WJ_Connector : MonoBehaviour
             uwr.SetRequestHeader("Content-Type", "application/json");
             uwr.SetRequestHeader("x-api-key", strGameKey);
 
+            Debug.Log(strAuthorization);
+
             if (isSendAuth) uwr.SetRequestHeader("Authorization", strAuthorization);
 
             uwr.timeout = 5;
 
             yield return uwr.SendWebRequest();
 
-            Debug.Log($"¡àRequest => {strBody}");
+            Debug.Log($"ï¿½ï¿½Request => {strBody}");
 
-            if (uwr.error == null)  //¼º°ø ½Ã
+            if (uwr.error == null)  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
                 TResponse output = default;
                 try
@@ -231,13 +268,13 @@ public class WJ_Connector : MonoBehaviour
 
                 if (uwr.GetResponseHeaders().ContainsKey("Authorization")) strAuthorization = uwr.GetResponseHeader("Authorization");
             }
-            else //½ÇÆÐ ½Ã
+            else //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
-                Debug.LogError("°á°ú¸¦ ¹Þ¾Æ¿À´Â µ¥ ½ÇÆÐÇß½À´Ï´Ù.");
+                Debug.LogError("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
                 Debug.LogError(uwr.error.ToString());
             }
 
-            Debug.Log($"¡áResponse => {uwr.downloadHandler.text}");
+            Debug.Log($"ï¿½ï¿½Response => {uwr.downloadHandler.text}");
             uwr.Dispose();
         }
     }
@@ -255,8 +292,13 @@ public class WJ_Connector : MonoBehaviour
         StartCoroutine(Send_Learning());
     }
 
+    public void GetQuestionByExtension()
+    {
+        StartCoroutine(Send_Learning_Running());   
+    }
+
     /// <summary>
-    /// Áø´Ü - °í¸¥ Á¤´äÀ» ÀúÀå ÈÄ Àü¼Û
+    /// ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void Diagnosis_SelectAnswer(string _cransr, string _ansrYn, long _slvTime = 5000)
     {
@@ -272,7 +314,7 @@ public class WJ_Connector : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÐ½À - °í¸¥ Á¤´äÀ» ÀúÀå, Ç¬ ¹®Á¦°¡ 8°³°¡ µÇ¸é Àü¼Û
+    /// ï¿½Ð½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, Ç¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void Learning_SelectAnswer(int _index, string _cransr, string _ansrYn, long _slvTime = 5000)
     {

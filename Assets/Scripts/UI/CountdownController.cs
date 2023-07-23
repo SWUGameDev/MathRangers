@@ -16,10 +16,12 @@ public class CountdownController : MonoBehaviour
 
     private CustomYieldInstruction waitForSecondsRealtime;
 
+    public Action<float> OnCountdownRemained;
+
+    private Coroutine currentRunningCountdownRoutine;
+
     private void Awake() {
         this.waitForSecondsRealtime = new WaitForSecondsRealtime(1);
-
-        this.StartCountdown();
     }
 
     /**
@@ -39,13 +41,13 @@ public class CountdownController : MonoBehaviour
     카운트 다운을 진행합니다.
     옵셔널 파라미터 OnCountdownCompleted로 카운트다운 이후 액션을 전달할 수 있습니다.
     */
-    public void StartCountdown(Action OnCountdownCompleted = null)
+    public void StartCountdown(Action OnCountdownCompleted = null,Action<float> OnCountdownRemained = null)
     {
         this.gameObject.SetActive(true);
 
-        this.StartCoroutine(this.StartCountdownCoroutine(OnCountdownCompleted));
+        this.currentRunningCountdownRoutine = this.StartCoroutine(this.StartCountdownCoroutine(OnCountdownCompleted,OnCountdownRemained));
     }
-    private IEnumerator StartCountdownCoroutine(Action OnCountdownCompleted = null)
+    private IEnumerator StartCountdownCoroutine(Action OnCountdownCompleted = null,Action<float> OnCountdownRemained = null)
     {
         this.ResetCountdown();
 
@@ -55,11 +57,22 @@ public class CountdownController : MonoBehaviour
         {  
             this.countdownText.text = this.remainTime.ToString();
             yield return this.waitForSecondsRealtime;
-            this.remainTime--;           
+            this.remainTime--;
+
+            OnCountdownRemained?.Invoke(this.remainTime);           
         }
 
         this.gameObject.SetActive(false);
+        
         OnCountdownCompleted?.Invoke();
+    }
+
+    public void StopCountdown()
+    {
+        if(this.currentRunningCountdownRoutine != null)
+            this.StopCoroutine(this.currentRunningCountdownRoutine);
+
+        this.ResetCountdown();
     }
 
     private void ResetCountdown()
