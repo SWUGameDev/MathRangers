@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MinionMove : MinionState
 {
-    private float elapsedTime = 0f;
-
-    private float escapeTime = 1.5f;
     public MinionMove(MinionStateMachine stateMachine) : base(stateMachine) 
     {
     

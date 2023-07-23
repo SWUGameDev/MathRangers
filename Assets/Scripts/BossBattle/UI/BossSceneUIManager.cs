@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-//using static Minion;
 
 public partial class BossSceneUIManager : MonoBehaviour
 {
@@ -16,21 +15,19 @@ public partial class BossSceneUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deadMinionNumberText;
     [SerializeField] private Slider bossHpslider;
     [SerializeField] private TMP_Text bossHpText;
-
-    private float maxBossHp = 20000;
-    private float bossHp; // 보스로 이동
-
+    [SerializeField] private GameObject bossGameObject;
+    private Boss boss;
     //TODO : 시간 나면 로직 분리하기
 
     private void Start()
     {
+        boss = bossGameObject.GetComponent<Boss>();
         bossHpslider.value = 1;
         deadMinionNumber = 0;
-        bossHp = maxBossHp;
-        bossHpText.text = bossHp.ToString();
+        boss.BossHp = boss.MaxBossHp;
+        bossHpText.text = boss.BossHp.ToString();
 
         Player.OnBossDamaged.AddListener(this.SetBossHpGauge);
-
         Minion.OnMinionDead.AddListener(this.SetMinionNumber);
     }
 
@@ -47,6 +44,11 @@ public partial class BossSceneUIManager : MonoBehaviour
         this.limitTimeText.text = time.ToString(@"mm\:ss");
     }
 
+    private void OnDestroy()
+    {
+        Player.OnBossDamaged.RemoveListener(this.SetBossHpGauge);
+        Minion.OnMinionDead.RemoveListener(this.SetMinionNumber);
+    }
 
 
     public void SetMinionNumber()
@@ -57,8 +59,8 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     private void SetBossHpGauge(int damage)
     {
-        bossHp -= damage;
-        bossHpText.text = bossHp.ToString();
-        this.bossHpslider.value = bossHp/maxBossHp;
+        boss.BossHp -= damage;
+        bossHpText.text = boss.BossHp.ToString();
+        this.bossHpslider.value = boss.BossHp / boss.MaxBossHp;
     }
 }

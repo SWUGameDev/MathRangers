@@ -61,6 +61,7 @@ public partial class Player : MonoBehaviour
     {
         VirtualJoystick.OnProcessInput -= OnProcessInput;
 
+        Minion.OnReturnBullet.RemoveListener(this.OnReturnBullet);
         Boss.OnBossAttacked.RemoveListener(this.OnBulletTriggered);
     }
 

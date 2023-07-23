@@ -41,14 +41,8 @@ public partial class Minion : MonoBehaviour
         player = target.GetComponent<Player>(); 
         this.minionStateMachine = this.gameObject.AddComponent<MinionStateMachine>();
         bossSceneUIManager = FindObjectOfType<BossSceneUIManager>();
-        if (boss != null)
-        {
-            this.minionCreator = boss.GetComponent<MinionCreator>();
-        }
-        else
-        {
-            Debug.LogError("Boss object not found!");
-        }
+        this.minionCreator = boss.GetComponent<MinionCreator>();
+
         minionHp = maxHp;
         Minion.OnMinionDead = new UnityEvent();
         Minion.OnReturnBullet = new UnityEvent<GameObject>();
