@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 2699780850395338344}
   - component: {fileID: 2153177377383773039}
   - component: {fileID: 3053268808552332512}
+  - component: {fileID: 6108076010329687849}
   - component: {fileID: 7917831249599809551}
   m_Layer: 5
   m_Name: Image_BuffSelectPanel
@@ -550,6 +551,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6108076010329687849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445948580690829568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16bdbfa344494023a04cc39747ef5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7917831249599809551}
 --- !u!95 &7917831249599809551
 Animator:
   serializedVersion: 5
@@ -756,7 +770,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 34136728287686813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6108076010329687849}
+        m_TargetAssemblyTypeName: BuffSelectPanelUIController, Assembly-CSharp
+        m_MethodName: SetUnActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2785243728686255693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1200,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1336261830204832608}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6108076010329687849}
+        m_TargetAssemblyTypeName: BuffSelectPanelUIController, Assembly-CSharp
+        m_MethodName: SetUnActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5811539821435389898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1469,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8483479163782336853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6108076010329687849}
+        m_TargetAssemblyTypeName: BuffSelectPanelUIController, Assembly-CSharp
+        m_MethodName: SetUnActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7100054507593112696
 GameObject:
   m_ObjectHideFlags: 0

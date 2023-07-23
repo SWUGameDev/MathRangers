@@ -35,7 +35,7 @@ AnimatorController:
   m_Name: Image_BuffSelectPanel
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isExited
+  - m_Name: IsExited
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -89,7 +89,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isExited
+    m_ConditionEvent: IsExited
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 732324233874810710}
