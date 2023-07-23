@@ -1793,9 +1793,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc59453797044d0aa6de94542f97141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerAnimTime: 2
   mathPanelUIController: {fileID: 2197525804443780868}
   countdownController: {fileID: 6883770549799560763}
-  wj_conn: {fileID: 3873089638717026267}
+  wj_connector: {fileID: 3873089638717026267}
   currentStatus: 0
 --- !u!1 &6133327733959585401
 GameObject:
