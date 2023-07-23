@@ -18,10 +18,10 @@ public class CountdownController : MonoBehaviour
 
     public Action<float> OnCountdownRemained;
 
+    private Coroutine currentRunningCountdownRoutine;
+
     private void Awake() {
         this.waitForSecondsRealtime = new WaitForSecondsRealtime(1);
-
-        //this.StartCountdown();
     }
 
     /**
@@ -45,7 +45,7 @@ public class CountdownController : MonoBehaviour
     {
         this.gameObject.SetActive(true);
 
-        this.StartCoroutine(this.StartCountdownCoroutine(OnCountdownCompleted,OnCountdownRemained));
+        this.currentRunningCountdownRoutine = this.StartCoroutine(this.StartCountdownCoroutine(OnCountdownCompleted,OnCountdownRemained));
     }
     private IEnumerator StartCountdownCoroutine(Action OnCountdownCompleted = null,Action<float> OnCountdownRemained = null)
     {
@@ -65,6 +65,14 @@ public class CountdownController : MonoBehaviour
         this.gameObject.SetActive(false);
         
         OnCountdownCompleted?.Invoke();
+    }
+
+    public void StopCountdown()
+    {
+        if(this.currentRunningCountdownRoutine != null)
+            this.StopCoroutine(this.currentRunningCountdownRoutine);
+
+        this.ResetCountdown();
     }
 
     private void ResetCountdown()
