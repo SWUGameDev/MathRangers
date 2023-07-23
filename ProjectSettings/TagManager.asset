@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - BossSceneUIManager
+  - Ground
+  - Cheese
   layers:
   - Default
   - TransparentFX
