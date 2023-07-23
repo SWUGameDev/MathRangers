@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class MathPanelUIInfo : MonoBehaviour
+public partial class MathPanelUIController : MonoBehaviour
 {
     [Header("Timer UI Panels")]
 

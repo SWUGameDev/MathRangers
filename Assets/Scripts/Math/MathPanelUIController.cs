@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class MathPanelUIInfo : MonoBehaviour
+public partial class MathPanelUIController : MonoBehaviour
 {
 
     [Header("Question Panels")]
@@ -26,6 +26,8 @@ public partial class MathPanelUIInfo : MonoBehaviour
     [SerializeField] private Animator mathPanelAnimator;
 
     private readonly string exitAnimKey = "IsExited";
+
+    [SerializeField] private BuffSelectPanelUIController buffSelectPanelUIController;
 
     public void SetMathPanelActive(bool isActive)
     {
@@ -77,11 +79,11 @@ public partial class MathPanelUIInfo : MonoBehaviour
             this.resultImage.sprite = this.resultSprites[0];
         }
 
-        this.StartCoroutine(this.SetResultImageCoroutine());
+        this.StartCoroutine(this.SetResultImageCoroutine(isCorrect));
     }
 
 
-    public IEnumerator SetResultImageCoroutine()
+    public IEnumerator SetResultImageCoroutine(bool isCorrect)
     {
         this.SetAnswerButtonActive(false);
         
@@ -91,9 +93,14 @@ public partial class MathPanelUIInfo : MonoBehaviour
 
         yield return new WaitForSeconds(0.7f);
 
+        this.buffSelectPanelUIController.SetBuffPanelActive(isCorrect);
+
         this.ResetUISetting();
 
         this.ResetTimerUI();
+
+        if(!isCorrect)
+            this.transform.gameObject.SetActive(false);
     }
 
     private void SetAnswerButtonActive(bool isActable)
