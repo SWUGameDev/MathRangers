@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 66dd8c49155f5d04aaeb87ae6e1555d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3728f57031da3a14fb3c005177628597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minionMoveSpeed: 3
   targetDirection: {x: 0, y: 0, z: 0}
   isTriggerTarget: 0
   minionHp: 5
-  minionManager: {fileID: 0}
+  minionCreator: {fileID: 0}
 --- !u!61 &-7718360315567771970
 BoxCollider2D:
   m_ObjectHideFlags: 0
