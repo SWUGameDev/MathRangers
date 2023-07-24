@@ -96,11 +96,10 @@ public class DiagnosticManager : MonoBehaviour
     private void InitializeUserInfo()
     {
         string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
-        PlayerPrefs.SetString(MathQuestionExtension.AuthorizationPlayerPrefsKey,this.wj_conn.GetAuthorization());
+        string userMBRId = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsMBRKey);
         
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, this.wj_conn.GetAuthorization(),this.teamMatchManager.GetSelectedTeam());
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, userMBRId,this.teamMatchManager.GetSelectedTeam());
         string serializedData = JsonUtility.ToJson(userInfo);
-        Debug.Log($"[InitializeUserInfo] ${serializedData}");
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
