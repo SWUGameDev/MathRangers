@@ -10,13 +10,13 @@ public partial class Minion : MonoBehaviour
     private MinionStateMachine minionStateMachine;
     private GameObject target;
     private GameObject boss;
-    private float minionMoveSpeed = 5f;
+    [SerializeField] private float minionMoveSpeed = 3f;
     public Vector3 targetDirection;
     public bool isTriggerTarget;
     public float minionHp;
 
     public MinionCreator minionCreator;
-    private float maxHp = 1000;
+    private float maxHp = 300;
 
     public static UnityEvent OnMinionDead;
     public static UnityEvent<GameObject> OnReturnBullet;
@@ -41,14 +41,8 @@ public partial class Minion : MonoBehaviour
         player = target.GetComponent<Player>(); 
         this.minionStateMachine = this.gameObject.AddComponent<MinionStateMachine>();
         bossSceneUIManager = FindObjectOfType<BossSceneUIManager>();
-        if (boss != null)
-        {
-            this.minionCreator = boss.GetComponent<MinionCreator>();
-        }
-        else
-        {
-            Debug.LogError("Boss object not found!");
-        }
+        this.minionCreator = boss.GetComponent<MinionCreator>();
+
         minionHp = maxHp;
         Minion.OnMinionDead = new UnityEvent();
         Minion.OnReturnBullet = new UnityEvent<GameObject>();
@@ -57,59 +51,60 @@ public partial class Minion : MonoBehaviour
     private void Start()
     {
         this.minionStateMachine.Initialize("Idle", this);
-        isTriggerTarget = false;
     }
 
-    private void Update()
-    {
-        this.DirectionToTarget();
-    }
-
-
-    private void DirectionToTarget()
+    public void MoveToTarget()
     {
         this.targetDirection = (this.target.transform.position - this.transform.position).normalized;
-    }
-
-    public void MoveToTarget(Vector3 direction)
-    {
-        this.transform.position += direction * this.minionMoveSpeed * Time.deltaTime;
+        this.transform.position += this.targetDirection * this.minionMoveSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            this.isTriggerTarget = !this.isTriggerTarget;
+            this.StartCoroutine(CollideMinionWithPlayer());
         }
 
         if (collision.gameObject.tag == "Bullet")
         {
-            // 함수로 바꾸기
-
             Minion.OnReturnBullet?.Invoke(collision.gameObject);
-
-            int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
-
-            this.minionHp -= damage;
-
-            if (damage > player.CriticalDamage)
-            {
-                this.PlayDamageEffect(DamageType.Critical, damage);
-            }
-            else
-            {
-                this.PlayDamageEffect(DamageType.Normal, damage);
-            }
-
-            if(this.minionHp <= 0)
-            {
-                Minion.OnMinionDead?.Invoke();
-            }
+            this.minionStateMachine.SetState("BeHit");
         }
-
     }
 
+    public IEnumerator CollideMinionWithPlayer()
+    {
+        yield return new WaitForSeconds(1f);
+        this.minionStateMachine.SetState("Dead");
+    }
+
+
+    public IEnumerator CollideMinionWithBullet()
+    {
+
+        Debug.Log("CollideMinionWithPlayer");
+
+        int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
+
+        this.minionHp -= damage;
+
+        if (damage > player.CriticalDamage)
+        {
+            this.PlayDamageEffect(DamageType.Critical, damage);
+        }
+        else
+        {
+            this.PlayDamageEffect(DamageType.Normal, damage);
+        }
+
+        if (this.minionHp <= 0)
+        {
+            Minion.OnMinionDead?.Invoke();
+        }
+
+        yield return new WaitForSeconds(1.0f);
+    }
 
     public float GetMaxHp()
     {

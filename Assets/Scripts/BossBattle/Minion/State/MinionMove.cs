@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MinionMove : MinionState
 {
-    private float elapsedTime = 0f;
-
-    private float escapeTime = 1.5f;
     public MinionMove(MinionStateMachine stateMachine) : base(stateMachine) 
     {
     
@@ -21,25 +18,7 @@ public class MinionMove : MinionState
     {
         base.OnUpdate();
 
-        this.elapsedTime += Time.deltaTime;
-
-        if (this.stateMachine.Minion.isTriggerTarget == true)
-        {
-            Debug.Log("Ãæµ¹");
-            if(this.elapsedTime < this.escapeTime)
-            {
-                this.stateMachine.Minion.MoveToTarget(Vector3.Reflect(this.stateMachine.Minion.targetDirection, Vector3.up));
-            }
-            else
-            {
-                this.elapsedTime = 0f;
-                this.stateMachine.Minion.isTriggerTarget = false;
-            }
-        }
-        else
-        {
-            this.stateMachine.Minion.MoveToTarget(this.stateMachine.Minion.targetDirection);
-        }
+        this.stateMachine.Minion.MoveToTarget();
 
         if(this.stateMachine.Minion.minionHp == 0)
         {

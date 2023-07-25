@@ -20,6 +20,9 @@ public partial class Boss : MonoBehaviour
 
     [SerializeField] BossSceneUIManager bossSceneUIManager;
 
+    private float maxBossHp = 20000;
+    private float bossHp;
+
     private void Awake() {
 
         Boss.OnPlayerAttacked = new UnityEvent();
@@ -64,5 +67,15 @@ public partial class Boss : MonoBehaviour
             Boss.OnBossAttacked?.Invoke(other.gameObject);
         }
     }
-    
+
+    public float MaxBossHp
+    {
+        get { return maxBossHp; } 
+    }
+
+    public float BossHp
+    {
+        get { return bossHp; }
+        set { bossHp = value; }
+    }
 }
