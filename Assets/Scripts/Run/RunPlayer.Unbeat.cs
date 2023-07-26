@@ -10,29 +10,23 @@ public partial class RunPlayer : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private bool isTransparent = false;
     private float transparentAlpha;
+    private float transparent = 0.5f;
+    private float normal = 1.0f;
 
     private IEnumerator TransparentCycle()
     {
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 7; i++)
         {
             ChangeTransparent();
             isTransparent = !isTransparent;
-            if(isTransparent)
-            {
-                Debug.Log("투명");
-            }
-            else
-            {
-                Debug.Log("불투명");
-            }
-            // 1초 기다리기
+
             yield return new WaitForSeconds(0.3f);
         }
     }
 
     private void ChangeTransparent()
     {
-        float transparentAlpha = isTransparent ? 1.0f : 0.5f; // 투명이면 1.0, 반투명이면 0.5
+        transparentAlpha = isTransparent ? transparent : normal;
         changeColor = playerSpriteRenderer.color;
         changeColor.a = transparentAlpha;
         playerSpriteRenderer.color = changeColor;

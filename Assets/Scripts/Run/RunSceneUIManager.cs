@@ -8,34 +8,39 @@ using System;
 public class RunSceneUIManager : UI_Base
 {
     [SerializeField] GameObject playerGameObject;
-    private RunPlayer player;
+    private RunPlayer runPlayer;
     private int eatCheeseNumber = 0;
     [SerializeField] TMP_Text eatCheeseNumberText;
-
-    enum Texts
-    {
-        correctAnswerRate,
-        // eatCheeseNumberText,
-    }
+    [SerializeField] Slider playerHpSlider;
 
     private void Awake()
     {
-        player = playerGameObject.GetComponent<RunPlayer>();
-        player.onEatCheese.AddListener(this.EatCheeseNumber);
+        runPlayer = playerGameObject.GetComponent<RunPlayer>();
+        runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
+        runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
     }
 
     private void Start()
     {
-        // Bind<TMP_Text>(typeof(Texts));
-        // Get<TMP_Text>((int)Texts.eatCheeseNumberText).text = eatCheeseNumber.ToString();
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
+        playerHpSlider.value = 1;
+    }
+
+    private void OnDestroy()
+    {
+        runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
+        runPlayer.onCollisionEnemy.RemoveListener(this.SetHpGauge);
     }
 
     public void EatCheeseNumber()
     {
         Debug.Log("eatCheeseNumber");
         eatCheeseNumber++;
-        // Get<TMP_Text>((int)Texts.eatCheeseNumberText).text = eatCheeseNumber.ToString();
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
+    }
+
+    private void SetHpGauge()
+    {
+        this.playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
     }
 }

@@ -11,10 +11,29 @@ public partial class RunPlayer : MonoBehaviour
     private Rigidbody2D rb;
 
     public UnityEvent onEatCheese;
+    public UnityEvent onCollisionEnemy;
+
+    private float maxPlayerHp = 10000;
+    private float playerHp;
+    private float enemyDamage = 400;
+
+    public float MaxPlayerHp
+    {
+        get { return maxPlayerHp; }
+    }
+
+    public float PlayerHp
+    {
+        get { return playerHp; }
+        set { playerHp = value; }
+    }
+
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        PlayerHp = MaxPlayerHp;
     }
 
     public void Jump()
@@ -45,6 +64,8 @@ public partial class RunPlayer : MonoBehaviour
 
         if (col.gameObject.tag == "Enemy")
         {
+            PlayerHp -= enemyDamage;
+            onCollisionEnemy?.Invoke();
             StartCoroutine(TransparentCycle());
         }
     }
