@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class RunPlayer : MonoBehaviour
+public partial class RunPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
     private int jumpCount = 0;
@@ -13,6 +14,7 @@ public class RunPlayer : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
+        playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public void Jump()
@@ -39,6 +41,11 @@ public class RunPlayer : MonoBehaviour
             Debug.Log("Cheese");
             col.gameObject.SetActive(false);
             onEatCheese?.Invoke();
+        }
+
+        if (col.gameObject.tag == "Enemy")
+        {
+            StartCoroutine(TransparentCycle());
         }
     }
 
