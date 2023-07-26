@@ -36,6 +36,15 @@ public partial class RunPlayer : MonoBehaviour
         PlayerHp = MaxPlayerHp;
     }
 
+    void Update()
+    {
+        // 테스트 용
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
     public void Jump()
     {
         if (jumpCount < 2)
