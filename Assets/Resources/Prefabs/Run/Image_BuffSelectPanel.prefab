@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mathPanelGameObject: {fileID: 0}
   animator: {fileID: 7917831249599809551}
+  abilityInfoManager: {fileID: 6547274241171242760}
 --- !u!95 &7917831249599809551
 Animator:
   serializedVersion: 3
@@ -129,8 +130,10 @@ MonoBehaviour:
   abilityInfoUIControllers: []
   abilityInfos:
   - {fileID: 11400000, guid: e4774de52f34c4513a5dfa833eaa82b7, type: 2}
-  - {fileID: 11400000, guid: e4774de52f34c4513a5dfa833eaa82b7, type: 2}
-  - {fileID: 11400000, guid: e4774de52f34c4513a5dfa833eaa82b7, type: 2}
+  - {fileID: 11400000, guid: f969e8e8c90ecd2448530960428e0587, type: 2}
+  - {fileID: 11400000, guid: 21ff931676df5a840a721c8e07b1b927, type: 2}
+  - {fileID: 11400000, guid: f2c56ae8a86149542894fc2dddcf183e, type: 2}
+  - {fileID: 11400000, guid: 05bf728dae05a214c99b0de7ec0c899d, type: 2}
 --- !u!1 &2785243728686255693
 GameObject:
   m_ObjectHideFlags: 0

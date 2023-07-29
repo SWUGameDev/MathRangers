@@ -54,12 +54,22 @@ public class AbilityInfoManager : MonoBehaviour {
             this.abilityInfoDictionary[abilityInfo.abilityId] = abilityInfo;
         }
 
-        for (int index = 0;index< this.abilityInfoUIControllers.Count;index++)
+    }
+
+    public void SetRandomAbilityInfo()
+    {
+
+        if (this.variableProbabilityController == null)
+            this.variableProbabilityController = new VariableProbabilityController();
+
+        List<AbilityInfo> selectedAbilityInfos = this.variableProbabilityController.GetCurrentRandomAbilityInfo(this.abilityInfos);
+
+        for (int index = 0; index < this.abilityInfoUIControllers.Count; index++)
         {
-            // TODO : 확룰 계산해서 셋팅하도록 이후 수정
-            this.abilityInfoUIControllers[index].InitializeAbilityUIInfo(this,this.abilityInfos[index]);
+            this.abilityInfoUIControllers[index].InitializeAbilityUIInfo(this, selectedAbilityInfos[index]);
         }
     }
+
 
     public Dictionary<AbilityId, selectedAbility> GetSelectedAbilityDictionary()
     {

@@ -6,6 +6,7 @@ public class BuffSelectPanelUIController : MonoBehaviour
 {
     [SerializeField] private GameObject mathPanelGameObject;
     [SerializeField] private Animator animator;
+    [SerializeField] private AbilityInfoManager abilityInfoManager;
 
     private readonly string BuffPanelExitKey = "IsExited"; 
 
@@ -13,6 +14,8 @@ public class BuffSelectPanelUIController : MonoBehaviour
     public void SetBuffPanelActive(bool isActive)
     {
         this.transform.gameObject.SetActive(isActive);
+
+        this.abilityInfoManager.SetRandomAbilityInfo();
     }
 
     public void SetUnActive()

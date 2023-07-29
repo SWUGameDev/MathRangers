@@ -40,9 +40,17 @@ public class VariableProbabilityController
     public List<AbilityInfo> GetCurrentRandomAbilityInfo(List<AbilityInfo> currentAbilityInfos)
     {
 
-        //foreach
+        List<AbilityInfo> abilityInfos = new List<AbilityInfo>();
+        
+        foreach (AbilityInfo abilityInfo in currentAbilityInfos)
+        {
+            if (abilityInfo.abilityType == AbilityType.Skill && abilityInfo.isSelected)
+                continue;
 
-        return currentAbilityInfos;
+            abilityInfos.Add(abilityInfo);
+        }
+
+        return this.GetRandomCombinations<AbilityInfo>(abilityInfos, 3);
     }
 
 
@@ -55,10 +63,13 @@ public class VariableProbabilityController
         GenerateCombinations(elements, combinations, new List<int>(), 0, n, m);
 
         int index = Random.Range(0, combinations.Count);
+        Debug.Log(index);
+
         foreach (int selected in combinations[index])
         {
             selectedElements.Add(elements[selected]);
         }
+
         return selectedElements;
     }
 
