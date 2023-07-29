@@ -12,12 +12,20 @@ public partial class Player : MonoBehaviour
     [SerializeField] private float jumpForce = 350f;
     [SerializeField] private Slider slider;
     [SerializeField] private BossSceneStop bossSceneStop;
+
+    [SerializeField] private float defaultPlayerDamage = 100f;
+    [SerializeField] private float defaultDefenseDamage = 100f;
+    [SerializeField] private float defaultPlayerHp = 100f;
+    [SerializeField] private float defaultAttackspeed = 100f;
+
     private Rigidbody2D rb;
 
     private bool isJumping;
     private bool isTriggerBoss;
 
     public static event Action OnDamaged;
+
+    private int attackCount = 0;
 
     private void Awake()
     {
@@ -46,8 +54,20 @@ public partial class Player : MonoBehaviour
             OnDamaged?.Invoke();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
-            this.CreateBullet();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
+            if (this.attackCount == 15)
+            {
+                this.CreateBullet(2f);
+                this.attackCount = 0;
+            }
+            else {
+                this.CreateBullet();
+            }
+
+            this.attackCount++;
+        }
 
         if(this.slider.value <= 0)
         {

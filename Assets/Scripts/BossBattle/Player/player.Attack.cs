@@ -13,15 +13,12 @@ public partial class Player : MonoBehaviour
 
     [SerializeField] public GameObject monster;
 
-    public static UnityEvent<DamageType,Damage> onAttackSucceeded; 
+    public static UnityEvent<DamageType,Damage> onAttackSucceeded;
 
-    [Header("Damage Info")]
-    [SerializeField] private int minDamage = 200;
-    [SerializeField] private int maxDamage = 1001;
+    private readonly float criticalPercent = 1.5f;
 
-    [SerializeField] private int criticalDamage = 800;
 
-    public void CreateBullet()
+    public void CreateBullet(float bulletSize = 1)
     {
         GameObject bulletObj = bulletPool.GetObject();
 
@@ -30,19 +27,37 @@ public partial class Player : MonoBehaviour
         bullet.Initialized(this);
 
         bulletObj.transform.position = firePoint.position;
+        bulletObj.transform.localScale = Vector3.one * bulletSize;
         bulletObj.transform.rotation = firePoint.rotation;
         bullet.Shot();
+    }
+
+    private int GetPlayerDamage()
+    {
+        return (int) this.defaultPlayerDamage;
+    }
+
+    private bool GetIsCriticalAttack()
+    {
+        int rand = UnityEngine.Random.Range(0, 10);
+        if (rand <= 3)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private void OnBulletTriggered(GameObject bullet)
     {   
         this.bulletPool.ReturnObject(bullet);
 
-        int damage = UnityEngine.Random.Range(this.minDamage,this.maxDamage);
-        
-        if(damage>this.criticalDamage)
+        int damage = this.GetPlayerDamage();
+       
+        if(this.GetIsCriticalAttack())
         {
-            Player.onAttackSucceeded?.Invoke(DamageType.Critical,damage);
+            Player.onAttackSucceeded?.Invoke(DamageType.Critical,  (int)(damage * this.criticalPercent));
         }else{
             Player.onAttackSucceeded?.Invoke(DamageType.Normal,damage);
         }
