@@ -291,11 +291,11 @@ public class WJ_Connector : MonoBehaviour
         }
     }
 
-    private void UploaGameResult()
+    private void UploaGameResult(Response_Learning_Progress response_Learning_Progress)
     { 
-    
+        //FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo
     }
-    #en1dregion
+    #endregion
 
     #region Public Method
 
