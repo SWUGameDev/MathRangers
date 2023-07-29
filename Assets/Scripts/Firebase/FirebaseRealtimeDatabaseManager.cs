@@ -13,6 +13,8 @@ public partial class FirebaseRealtimeDatabaseManager
 
     private static readonly string userInfoRootKey = "UserInfo";
 
+    private static readonly string gameResultInfoRootKey = "GameResultInfo";
+
     private FirebaseRealtimeDatabaseManager()
     {
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
