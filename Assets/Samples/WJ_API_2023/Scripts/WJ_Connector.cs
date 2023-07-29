@@ -264,8 +264,11 @@ public class WJ_Connector : MonoBehaviour
                         break;
 
                     case Response_Learning_Progress ResponselearnProg:
-                        cLearnProg = ResponselearnProg;
-                        break;
+                    {
+                            cLearnProg = ResponselearnProg;
+                            this.UploaGameResult(this.cLearnProg);
+                            break;
+                    }
 
                     default:
                         Debug.LogError("type error - output type : " + output.GetType().ToString());
@@ -287,7 +290,12 @@ public class WJ_Connector : MonoBehaviour
             uwr.Dispose();
         }
     }
-    #endregion
+
+    private void UploaGameResult()
+    { 
+    
+    }
+    #en1dregion
 
     #region Public Method
 
