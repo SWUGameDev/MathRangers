@@ -10,19 +10,26 @@ public enum CommandOperator{
     Minus
 }
 
-public enum BuffType{
+public enum AbilityType{
     Passive,
     Skill
 }
 
 [Serializable]
-public class BuffName{
+public class AbilityName{
     public string koreanName;
     public string englishName;
 }
 
 [Serializable]
-public class buffCommand {
+public class BuffDescription
+{
+    public string koreanDescription;
+    public string englishDescription;
+}
+
+[Serializable]
+public class AbilityCommand {
     public string fieldName;
 
     public string target;
@@ -34,14 +41,16 @@ public class buffCommand {
 } 
 
 [CreateAssetMenu(fileName = "BuffInfo", menuName = "~/MathRangers/Assets/Scripts/Buff/BuffInfo.cs/BuffInfo", order = 0)]
-public class BuffInfo : ScriptableObject {
-    public int buffId;
-    public BuffName buffName;
+public class AbilityInfo : ScriptableObject {
+    public int abilityId;
 
-    public Sprite buffIcon;
+    public AbilityName abilityName;
 
-    public BuffType buffType;
-    public List<buffCommand> buffCommands;
+    public BuffDescription abilityDescription;
 
-    public List<float> buffStat;
+    public Sprite abilityIcon;
+
+    public AbilityType abilityType;
+
+    public List<AbilityCommand> abilityCommands;
 }

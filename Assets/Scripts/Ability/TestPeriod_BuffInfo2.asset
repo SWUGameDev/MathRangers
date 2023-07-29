@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: TestPeriod_BuffInfo2
+  m_EditorClassIdentifier: 
+  abilityId: 1
+  abilityName:
+    koreanName: "\uD14C\uC2A4\uD2B8"
+    englishName: TEST
+  abilityDescription:
+    koreanDescription: " \uD14C\uC2A4\uD2B8 \uC124\uBA8522\uC785\uB2C8\uB2E4."
+    englishDescription: test for description
+  abilityIcon: {fileID: 21300024, guid: 70cc3e8406f29d34ab8e7b5bb2cfae2e, type: 3}
+  abilityType: 0
+  abilityCommands:
+  - fieldName: 
+    target: 
+    amountForLevel:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    commandOperator: 0
