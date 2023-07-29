@@ -28,7 +28,11 @@ public class AbilityInfoManager : MonoBehaviour {
 
     [SerializeField] private List<AbilityInfo> abilityInfos;
 
+    private Dictionary<int, AbilityInfo> abilityInfoDictionary;
+
     private Dictionary<AbilityId, selectedAbility> selectedAbilityDictionary;
+
+    private VariableProbabilityController variableProbabilityController;
 
     private int selectedIndex = 0;
 
@@ -39,10 +43,20 @@ public class AbilityInfoManager : MonoBehaviour {
 
     public void InitializeAbilityUIInfo()
     {
+
+        if (this.variableProbabilityController == null)
+            this.variableProbabilityController = new VariableProbabilityController();
+
+        this.abilityInfoDictionary = new Dictionary<AbilityId, AbilityInfo>();
+
+        foreach (AbilityInfo abilityInfo in this.abilityInfos)
+        {
+            this.abilityInfoDictionary[abilityInfo.abilityId] = abilityInfo;
+        }
+
         for (int index = 0;index< this.abilityInfoUIControllers.Count;index++)
         {
             // TODO : 확룰 계산해서 셋팅하도록 이후 수정
-
             this.abilityInfoUIControllers[index].InitializeAbilityUIInfo(this,this.abilityInfos[index]);
         }
     }
@@ -63,6 +77,7 @@ public class AbilityInfoManager : MonoBehaviour {
         }
         else {
             this.selectedAbilityDictionary[abliityId] = new selectedAbility(this.selectedIndex, 1);
+            this.abilityInfoDictionary[abliityId].isSelected = true;
             this.selectedIndex++;
         }
 

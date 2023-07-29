@@ -52,5 +52,7 @@ public class AbilityInfo : ScriptableObject {
 
     public AbilityType abilityType;
 
+    public bool isSelected;
+
     public List<AbilityCommand> abilityCommands;
 }
