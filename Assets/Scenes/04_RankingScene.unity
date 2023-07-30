@@ -776,28 +776,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rankPanels:
-  - tabName: Team
-    tabOrder: 0
-    rankListButton: {fileID: 1717967850}
+  - rankListButton: {fileID: 1717967850}
     rankListPanel: {fileID: 644762721}
-    isUIInitialized: 0
-  - tabName: Personal
-    tabOrder: 1
-    rankListButton: {fileID: 299519199}
+  - rankListButton: {fileID: 299519199}
     rankListPanel: {fileID: 1475731952}
-    isUIInitialized: 0
-  - tabName: Friend
-    tabOrder: 2
-    rankListButton: {fileID: 1241814182}
+  - rankListButton: {fileID: 1241814182}
     rankListPanel: {fileID: 1671583023}
-    isUIInitialized: 0
   colorOption:
     activatedColor: {r: 0.8745098, g: 0.8745098, b: 0.8745098, a: 1}
     unActivatedColor: {r: 0.6392157, g: 0.6392157, b: 0.6392157, a: 1}
   OnActivatedButtonChanged:
     m_PersistentCalls:
       m_Calls: []
-  rankingManager: {fileID: 149805252}
   rankItemPrefab: {fileID: 6545873277741955674, guid: 23038ad1bf7ed4163b6fd6ce1b2f4b7d, type: 3}
   personalContentParentTransform: {fileID: 1729313320}
   rankBackgroundColors:
@@ -3073,10 +3063,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2340, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

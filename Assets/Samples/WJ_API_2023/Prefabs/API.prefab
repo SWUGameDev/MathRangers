@@ -110,3 +110,11 @@ MonoBehaviour:
   - {fileID: 0}
   wj_displayText: {fileID: 0}
   getLearningButton: {fileID: 0}
+  characterImage: {fileID: 0}
+  OXImage: {fileID: 0}
+  characterAnswerImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  OXImages:
+  - {fileID: 0}
+  - {fileID: 0}

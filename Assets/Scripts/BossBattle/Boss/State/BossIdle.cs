@@ -25,6 +25,8 @@ public class BossIdle : BossState
         {
             this.stateMachine.SetState("Move");
         }
+
+
     }
     public override void OnExit()
     {

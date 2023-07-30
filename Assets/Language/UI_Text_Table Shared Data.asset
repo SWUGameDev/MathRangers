@@ -77,6 +77,10 @@ MonoBehaviour:
     m_Key: Key_SignUpNotice
     m_Metadata:
       m_Items: []
+  - m_Id: 11862026530840576
+    m_Key: Key_AppName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

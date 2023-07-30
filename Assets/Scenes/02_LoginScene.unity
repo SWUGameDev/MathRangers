@@ -668,7 +668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db49e13fa9e16dc44b5ffb6bc43d4235, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b9987f03f7064783a8d355d043ebffe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2421daa9b8f9b4e72890c37bdb253e4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2252,6 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20ddbb532ee5468eae4ad9edd89345b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noticeMessageUIManager: {fileID: 2147133270}
   emailField: {fileID: 1441428576}
   passwordField: {fileID: 1841357366}
 --- !u!1 &1321552535
@@ -2869,7 +2870,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 40, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711982474
 MonoBehaviour:
@@ -2891,7 +2892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0e92ddf428f3da4abe78b8ef60e2a84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae93009276ff54c3db8300b0e1d6352a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3210,8 +3211,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2147133270}
-        m_TargetAssemblyTypeName: LoginUIManager, Assembly-CSharp
+      - m_Target: {fileID: 2016481019}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: LoadSignupScene
         m_Mode: 1
         m_Arguments:
@@ -3665,6 +3666,50 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &2016481017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016481018}
+  - component: {fileID: 2016481019}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016481018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016481017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016481019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016481017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8de3a4fd81e4e929bfc269a1968d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102638536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,7 +3823,7 @@ GameObject:
   - component: {fileID: 2147133269}
   - component: {fileID: 2147133270}
   m_Layer: 0
-  m_Name: LoginUIManager
+  m_Name: NoticeMessageUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3808,13 +3853,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2147133267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2a1548db1f7443b86d57689c5ac263, type: 3}
+  m_Script: {fileID: 11500000, guid: 49158766999f446e0a3970310ccff9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nicknameSettingPanel: {fileID: 0}
-  nicknameInputField: {fileID: 0}
-  emailField: {fileID: 1441428576}
   noticePrefab: {fileID: 8286678351859594252, guid: fc200dc320cc943dc82d89d965726b46, type: 3}
   canvasTransform: {fileID: 2102638540}
-  popupTime: 1.8
+  popupTime: 1.5
   noticePosition: {x: 0, y: -250}

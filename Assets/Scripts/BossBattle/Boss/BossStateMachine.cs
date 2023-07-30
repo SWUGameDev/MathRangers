@@ -15,10 +15,10 @@ public class BossStateMachine : StateMachine<BossStateMachine>
         base.states = new Dictionary<string, State<BossStateMachine>>{
             {"Idle",new BossIdle(this)},
             {"Move",new BossMove(this)},
+            {"Rush",new BossRush(this)},
             {"BeHit",new BossBeHit(this)},
             {"Call",new BossCall(this)},
-            {"Attack",new BossAttack(this)},
-            {"Skill",new BossSkill(this)}
+            {"Swing",new BossSwing(this)}
         };
     }
 

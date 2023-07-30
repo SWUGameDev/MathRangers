@@ -5,12 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] public float time = 0f;
-    public float timeInterval = 1f;
+    private float timeInterval = 30f;
     [SerializeField] private float bulletSpeed = 13.0f;
     private Vector3 startPosition;
     Rigidbody2D rigid;
 
-    private AutoAttackSystem autoAttackSystem;
+    private Player player;
 
 
     private void Awake()
@@ -20,17 +20,19 @@ public class Bullet : MonoBehaviour
 
     public void Shot()
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_PLAYER_ATTACK);
+
         startPosition = transform.position;
 
-         Vector3 monsterDir = autoAttackSystem.monster.transform.position - transform.position;
+        Vector3 monsterDir = player.monster.transform.position - transform.position;
 
         monsterDir = monsterDir == Vector3.zero ? Vector3.up : monsterDir;
         rigid.velocity = monsterDir.normalized * bulletSpeed;
     }
 
-    public void Initialized(AutoAttackSystem autoAttackSystem)
+    public void Initialized(Player player)
     {
-        this.autoAttackSystem = autoAttackSystem;
+        this.player = player;
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class Bullet : MonoBehaviour
         time += Time.deltaTime;
         if (time >= timeInterval)
         {
-            this.autoAttackSystem.GetBulletPool().ReturnObject(this.gameObject);
+            this.player.GetBulletPool().ReturnObject(this.gameObject);
             time = 0f;
         }
     }

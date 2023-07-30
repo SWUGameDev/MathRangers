@@ -13,6 +13,8 @@ public partial class FirebaseRealtimeDatabaseManager
 
     private static readonly string userInfoRootKey = "UserInfo";
 
+    private static readonly string gameResultInfoRootKey = "GameResultInfo";
+
     private FirebaseRealtimeDatabaseManager()
     {
         this.databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -123,7 +125,9 @@ public partial class FirebaseRealtimeDatabaseManager
     {
         var query = this.databaseReference.Child(key).OrderByChild(orderChildKey).EqualTo(valueToCheck);
 
-        query.ValueChanged += (object sender, ValueChangedEventArgs args) =>
+        query.ValueChanged += Handler;
+
+        void Handler(object sender, ValueChangedEventArgs args)
         {
             if (args.DatabaseError != null)
             {
@@ -140,7 +144,9 @@ public partial class FirebaseRealtimeDatabaseManager
                     OnIsNotDuplicated?.Invoke(valueToCheck);
                 }
             }
+            query.ValueChanged -= Handler;
         };
+
     }
 
 }

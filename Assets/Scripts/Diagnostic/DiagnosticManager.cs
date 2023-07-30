@@ -8,7 +8,7 @@ public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
 
 public class DiagnosticManager : MonoBehaviour
 {
- [SerializeField] WJ_Connector       wj_conn;
+    [SerializeField] WJ_Connector       wj_conn;
     [SerializeField] CurrentStatus      currentStatus;
     public CurrentStatus                CurrentStatus => currentStatus;
 
@@ -84,10 +84,25 @@ public class DiagnosticManager : MonoBehaviour
             case "E":
                 Debug.Log("진단평가 끝! 학습 단계로 넘어갑니다.");
                 PlayerPrefs.SetInt("DiagnosticCompleted",1);
+                this.InitializeUserInfo();
                 currentStatus = CurrentStatus.LEARNING;
                 diagnosticEndPanel.SetActive(true);
                 break;
         }
+    }
+
+    [SerializeField] private TeamMatchManager teamMatchManager;
+
+    private void InitializeUserInfo()
+    {
+        string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
+        string userMBRId = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsMBRKey);
+        
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, userMBRId,this.teamMatchManager.GetSelectedTeam());
+        string serializedData = JsonUtility.ToJson(userInfo);
+
+        string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
+        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
     }
 
     /// <summary>
@@ -204,9 +219,13 @@ public class DiagnosticManager : MonoBehaviour
 
         if(isCorrect)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_O);
+
             this.OXImage.sprite = this.OXImages[0];
             this.characterImage.sprite = this.characterAnswerImages[1];
         }else{
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_X);
+            
             this.OXImage.sprite = this.OXImages[1];
             this.characterImage.sprite = this.characterAnswerImages[2];
         }
