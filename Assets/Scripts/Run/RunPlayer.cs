@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public partial class RunPlayer : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public partial class RunPlayer : MonoBehaviour
     private float maxPlayerHp = 10000;
     private float playerHp;
     private float enemyDamage = 400;
+
+    [SerializeField] GameObject cheeseTilemapGameObject;
+    Tilemap cheeseTilemap;
+    Grid grid;
 
     public float MaxPlayerHp
     {
@@ -34,12 +39,19 @@ public partial class RunPlayer : MonoBehaviour
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         PlayerHp = MaxPlayerHp;
+        cheeseTilemap = cheeseTilemapGameObject.GetComponent<Tilemap>();
+
+        grid = cheeseTilemapGameObject.GetComponentInParent<Grid>();
+
+
+        Vector3Int testPosition = new Vector3Int(14, -10, 0);
+        cheeseTilemap.SetTile(testPosition, null);
     }
 
     void Update()
     {
         // 테스트 용
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
@@ -51,7 +63,13 @@ public partial class RunPlayer : MonoBehaviour
         {
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
             jumpCount++;
-            this.rb.AddForce(transform.up * this.jumpForce);
+            rb.velocity = Vector2.zero;
+            this.rb.AddForce(new Vector2(0, this.jumpForce));
+
+            if(jumpCount == 2)
+            {
+                // 애니메이션 변경
+            }
         }
     }
 
@@ -66,21 +84,17 @@ public partial class RunPlayer : MonoBehaviour
 
         if (col.gameObject.tag == "Cheese")
         {
-            Debug.Log("Cheese");
-            col.gameObject.SetActive(false);
             onEatCheese?.Invoke();
-        }
-
-        if (col.gameObject.tag == "Enemy")
-        {
-            PlayerHp -= enemyDamage;
-            onCollisionEnemy?.Invoke();
-            StartCoroutine(TransparentCycle());
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger");
+        if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
+        { 
+            PlayerHp -= enemyDamage;
+            onCollisionEnemy?.Invoke();
+            StartCoroutine(TransparentCycle());
+        }
     }
 }

@@ -14,11 +14,11 @@ public class RunUIBackGroundScrolling : MonoBehaviour
 
     void Start()
     {
-        yScreenHalfSize = Camera.main.orthographicSize;
-        xScreenHalfSize = yScreenHalfSize * Camera.main.aspect;
+        // yScreenHalfSize = Camera.main.orthographicSize;
+        // xScreenHalfSize = yScreenHalfSize * Camera.main.aspect;
 
-        leftPosX = -(xScreenHalfSize * 2);
-        rightPosX = xScreenHalfSize * 2 * backgrounds.Length;
+        // leftPosX = -(xScreenHalfSize * 2);
+        // rightPosX = xScreenHalfSize * 2 * backgrounds.Length;
     }
 
     void Update()
@@ -28,6 +28,9 @@ public class RunUIBackGroundScrolling : MonoBehaviour
             backgrounds[i].position += new Vector3(-speed, 0, 0) * Time.deltaTime;
         }
     }
+
+
+
 }
 
 

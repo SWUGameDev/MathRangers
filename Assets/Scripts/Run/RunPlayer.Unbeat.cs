@@ -9,19 +9,22 @@ public partial class RunPlayer : MonoBehaviour
     private Color changeColor;
     private SpriteRenderer playerSpriteRenderer;
     private bool isTransparent = false;
+    private bool isUnbeat = false;
+
     private float transparentAlpha;
     private float transparent = 0.5f;
     private float normal = 1.0f;
 
     private IEnumerator TransparentCycle()
     {
-        for(int i = 0; i < 7; i++)
+        isUnbeat = true;
+        for (int i = 0; i < 6; i++)
         {
-            ChangeTransparent();
             isTransparent = !isTransparent;
-
+            ChangeTransparent();
             yield return new WaitForSeconds(0.3f);
         }
+        isUnbeat = false;
     }
 
     private void ChangeTransparent()
