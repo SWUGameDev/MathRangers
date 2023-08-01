@@ -12,8 +12,6 @@ public class VariableProbabilityController
     {
         this.currentPercentages = initialPercentages;
     }
-
-    private Tilemap tilemap;
     public VariableProbabilityController()
     {
 
@@ -33,7 +31,6 @@ public class VariableProbabilityController
             if (target <= targetSum)
                 return index;
         }
-        Tilemap test;
         return this.currentPercentages.Count - 1;
     }
 
