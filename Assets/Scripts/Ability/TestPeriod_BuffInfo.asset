@@ -15,12 +15,13 @@ MonoBehaviour:
   abilityId: 0
   abilityName:
     koreanName: "\uC2DC\uD5D8\uAE30\uAC04"
-    englishName: TEST
+    englishName: ExamPeriod
   abilityDescription:
     koreanDescription: "\uC2DC\uD5D8\uAE30\uAC04 \uD14C\uC2A4\uD2B8 \uC124\uBA85\uC785\uB2C8\uB2E4."
     englishDescription: test for description
-  abilityIcon: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 5f7641378323de54a85f225fb8e271e8, type: 3}
   abilityType: 0
+  isSelected: 0
   abilityCommands:
   - fieldName: 
     target: 
