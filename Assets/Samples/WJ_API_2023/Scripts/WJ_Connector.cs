@@ -13,9 +13,6 @@ public class WJ_Connector : MonoBehaviour
     public string strGameKey;       //����Ű(Api Key)
 
     private string strAuthorization;
-
-    private readonly string defaultAuth = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjaG4iOiJFMTUiLCJtYnIiOiJFMTUyMDIzMDcyMjE1MTMzMTA3NyIsImlhdCI6MTY1MTU2MDYxNywiZXhwIjozNTQ2ODA2NTE1fQ.gw6uzVPtTOYGaQFxZvP7HtowzIsyPqGJuyk80PJSfA4";
-
     private string strMBR_ID;       //��� ID
     private string strDeviceNm;     //����̽� �̸�
     private string strOsScnCd;      //OS
@@ -34,6 +31,11 @@ public class WJ_Connector : MonoBehaviour
     public Request_DN_Progress          result          = null;
     [HideInInspector]
     public string                       qstCransr       = "";
+
+    public static readonly string userPlayerPrefsMBRKey = "userMBRKey";
+
+    public static readonly string userPlayerPrefsAuthorizationKey = "userAuthorizationKey";
+
     #endregion
 
     #region UnityEvents
@@ -55,14 +57,20 @@ public class WJ_Connector : MonoBehaviour
 
         if (strOsScnCd.Length >= 15) strOsScnCd = strOsScnCd.Substring(0, 14);
 
-        Make_MBR_ID();
+        Setting_MBR_ID();
     }
 
     //���� �ð��� �������� MBR ID ����
-    private void Make_MBR_ID()
+    private void Setting_MBR_ID()
     {
-        DateTime dt = DateTime.Now;
-        strMBR_ID = string.Format("{0}{1:0000}{2:00}{3:00}{4:00}{5:00}{6:00}{7:000}", strGameCD, dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+        if(PlayerPrefs.HasKey(WJ_Connector.userPlayerPrefsMBRKey))
+        {
+            this.strMBR_ID = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsMBRKey);
+        }else{
+            DateTime dt = DateTime.Now;
+            strMBR_ID = string.Format("{0}{1:0000}{2:00}{3:00}{4:00}{5:00}{6:00}{7:000}", strGameCD, dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            PlayerPrefs.SetString(WJ_Connector.userPlayerPrefsMBRKey,strMBR_ID);
+        }
     }
 
     #region Function Progress
@@ -151,14 +159,14 @@ public class WJ_Connector : MonoBehaviour
         Request_Learning_Setting request = new Request_Learning_Setting();
 
         request.gameCd = strGameCD;
-        request.mbrId = "E1520230722165839723";
-        request.gameVer = "1.0";
+        request.mbrId = strMBR_ID;
+        request.gameVer = strGameVer;
         request.osScnCd = strOsScnCd;
         request.deviceNm = strDeviceNm;
         request.langCd = "KO";
         request.timeZone = TimeZoneInfo.Local.BaseUtcOffset.Hours;
 
-        request.mathpidId = "";
+        request.mathpidId = strMBR_ID;
 
         yield return StartCoroutine(UWR_Post<Request_Learning_Setting, Response_Learning_Setting>(request, "https://prd-brs-relay-model.mathpid.com/api/v1/contest/learning/setting", true));
 
@@ -189,16 +197,6 @@ public class WJ_Connector : MonoBehaviour
         yield return null;
     }
 
-    public string GetAuthorization()
-    {
-        return this.strAuthorization == "" ? this.defaultAuth : this.strAuthorization;
-    }
-
-    public void SetAuthorization(string authorization)
-    {
-        this.strAuthorization = authorization;
-    }
-
     /// <summary>
     /// UnityWebRequest�� ����Ͽ� ������ ������ ���
     /// </summary>
@@ -225,17 +223,25 @@ public class WJ_Connector : MonoBehaviour
 
             Debug.Log(strAuthorization);
 
-            if (isSendAuth) uwr.SetRequestHeader("Authorization", strAuthorization);
+            if (isSendAuth)
+            {
+                if(PlayerPrefs.HasKey(WJ_Connector.userPlayerPrefsAuthorizationKey))
+                {
+                    this.strAuthorization = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsAuthorizationKey);
+                }
+                uwr.SetRequestHeader("Authorization", strAuthorization);
+            }
 
             uwr.timeout = 5;
 
             yield return uwr.SendWebRequest();
 
-            Debug.Log($"��Request => {strBody}");
+            Debug.Log($"Request => {strBody}");
 
-            if (uwr.error == null)  //���� ��
+            if (uwr.error == null)
             {
                 TResponse output = default;
+
                 try
                 {
                     output = JsonUtility.FromJson<TResponse>(uwr.downloadHandler.text);
@@ -258,25 +264,36 @@ public class WJ_Connector : MonoBehaviour
                         break;
 
                     case Response_Learning_Progress ResponselearnProg:
-                        cLearnProg = ResponselearnProg;
-                        break;
+                    {
+                            cLearnProg = ResponselearnProg;
+                            this.UploaGameResult(this.cLearnProg);
+                            break;
+                    }
 
                     default:
                         Debug.LogError("type error - output type : " + output.GetType().ToString());
                         break;
                 }
 
-                if (uwr.GetResponseHeaders().ContainsKey("Authorization")) strAuthorization = uwr.GetResponseHeader("Authorization");
+                if (uwr.GetResponseHeaders().ContainsKey("Authorization")) 
+                {
+                    strAuthorization = uwr.GetResponseHeader("Authorization");
+                    PlayerPrefs.SetString(WJ_Connector.userPlayerPrefsAuthorizationKey,this.strAuthorization);
+                }
             }
-            else //���� ��
+            else
             {
-                Debug.LogError("����� �޾ƿ��� �� �����߽��ϴ�.");
                 Debug.LogError(uwr.error.ToString());
             }
-
-            Debug.Log($"��Response => {uwr.downloadHandler.text}");
+            Debug.Log($"Authorization => {uwr.GetResponseHeader("Authorization")}");
+            Debug.Log($"Response => {uwr.downloadHandler.text}");
             uwr.Dispose();
         }
+    }
+
+    private void UploaGameResult(Response_Learning_Progress response_Learning_Progress)
+    { 
+        //FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo
     }
     #endregion
 

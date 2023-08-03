@@ -11,7 +11,7 @@ public class UserInfo
     public string nickname;
 
     [SerializeField]
-    public string userAuthorization;
+    public string userMRBId;
 
     [SerializeField]
     public int teamType;
@@ -21,11 +21,11 @@ public class UserInfo
 
     }
     
-    public UserInfo(string email,string nickname,string userAuthorization,int teamType)
+    public UserInfo(string email,string nickname,string userMRBId,int teamType)
     {
         this.email = email;
         this.nickname = nickname;
-        this.userAuthorization = userAuthorization;
+        this.userMRBId = userMRBId;
         this.teamType = teamType;
     }
 }

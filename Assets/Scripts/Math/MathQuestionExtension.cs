@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public partial class MathQuestionExtension : MonoBehaviour
     bool    isSolvingQuestion;
     float   questionSolveTime;
 
-    public static readonly string AuthorizationPlayerPrefsKey = "AuthorizationPlayerPrefsKey";
+    public static Action<int,bool> OnQuestionSolved;
 
     private void Start() 
     {
@@ -32,9 +33,6 @@ public partial class MathQuestionExtension : MonoBehaviour
         {
             this.wj_connector.onGetLearning = new UnityEngine.Events.UnityEvent();
             this.wj_connector.onGetLearning.AddListener(() => GetLearning(0));
-            this.wj_connector.SetAuthorization(PlayerPrefs.GetString(MathQuestionExtension.AuthorizationPlayerPrefsKey));
-            // TODO  : Authoriaztion 및 유저 아이디 셋팅 정리하고 로직 변경하기
-            this.wj_connector.SetAuthorization("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjaG4iOiJFMTUiLCJtYnIiOiJFMTUyMDIzMDcyMjE2NTgzOTcyMyIsImlhdCI6MTY1MTU2MDYxNywiZXhwIjozNTQ2ODA2NTE1fQ.uI1rQddXMLwM26HWfxR9yFPnTKA_wt0b1rfmx_elrpY");
             
         }
     }
@@ -51,6 +49,12 @@ public partial class MathQuestionExtension : MonoBehaviour
     }
 
     private void OnEnable() {
+
+        if(this.currentQuestionIndex>=8)
+        {
+            this.mathPanelUIController.transform.gameObject.SetActive(false);
+            return;
+        }
 
         if(this.currentQuestionIndex!=0)
             this.GetLearning(this.currentQuestionIndex);
@@ -75,9 +79,11 @@ public partial class MathQuestionExtension : MonoBehaviour
 
         this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
 
+        OnQuestionSolved?.Invoke(selectedIndex,isCorrect);
+
         Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[selectedIndex].text + answerCwYn+ questionSolveTime + " 초");
 
-        if (currentQuestionIndex >= 8) 
+        if (this.currentQuestionIndex >= 8) 
         {
             Debug.Log("8 문제 전체 풀이 완료");
         }
