@@ -2600,9 +2600,9 @@ MonoBehaviour:
   contentText: {fileID: 748471035}
   characterImage: {fileID: 495574168}
   characterSprites:
-  - {fileID: 21300000, guid: 9465549422bff44e59229a90535f8496, type: 3}
-  - {fileID: 21300000, guid: 9dfa8ab9781d845b08696c704e384554, type: 3}
-  - {fileID: 21300000, guid: 8bf2bef7a595e45c098f601c05d89172, type: 3}
+  - {fileID: 21300000, guid: d8277dcec52acb54dab4c6a3947485fe, type: 3}
+  - {fileID: 21300000, guid: a3ab1d757aebd8244b07307a1d47eb1b, type: 3}
+  - {fileID: 21300000, guid: 82e96810b148b02409683183a4629be3, type: 3}
 --- !u!1 &629778966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6224,12 +6224,12 @@ MonoBehaviour:
   OXImage: {fileID: 826031563}
   OXBackgroundImage: {fileID: 2025338927}
   characterAnswerImages:
-  - {fileID: 21300000, guid: a3ab1d757aebd8244b07307a1d47eb1b, type: 3}
-  - {fileID: 21300000, guid: d8277dcec52acb54dab4c6a3947485fe, type: 3}
-  - {fileID: 21300000, guid: 82e96810b148b02409683183a4629be3, type: 3}
-  OXImages:
+  - {fileID: 21300000, guid: 831b39aeb25a29d46b7a6d4a315e7e76, type: 3}
   - {fileID: 21300000, guid: d684abd7b6fdd044a811aedec6451194, type: 3}
   - {fileID: 21300000, guid: ffa3cd14273194d408214f28e6f9afe3, type: 3}
+  OXImages:
+  - {fileID: 21300000, guid: 4ee829e6270bae340a57b276c8775378, type: 3}
+  - {fileID: 21300000, guid: a73efe4150d2d1e409281aad3e4cfbeb, type: 3}
 --- !u!114 &1517716707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6331,7 +6331,7 @@ MonoBehaviour:
   contentText: {fileID: 748471035}
   characterImage: {fileID: 942496102}
   characterSprites:
-  - {fileID: 21300000, guid: 0b40ec8c01dc541d09f02612c11ac376, type: 3}
+  - {fileID: 21300000, guid: 43ffc126a480b094d8e66e03b921888a, type: 3}
 --- !u!1 &1540254746
 GameObject:
   m_ObjectHideFlags: 0
