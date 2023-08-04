@@ -8,6 +8,7 @@ TagManager:
   - BossSceneUIManager
   - Ground
   - Cheese
+  - Enemy
   layers:
   - Default
   - TransparentFX

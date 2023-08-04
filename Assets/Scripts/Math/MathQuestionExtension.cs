@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public partial class MathQuestionExtension : MonoBehaviour
     int     currentQuestionIndex;
     bool    isSolvingQuestion;
     float   questionSolveTime;
+
+    public static Action<int,bool> OnQuestionSolved;
 
     private void Start() 
     {
@@ -75,6 +78,8 @@ public partial class MathQuestionExtension : MonoBehaviour
         string answerCwYn = isCorrect ? "Y" : "N";
 
         this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
+
+        OnQuestionSolved?.Invoke(selectedIndex,isCorrect);
 
         Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[selectedIndex].text + answerCwYn+ questionSolveTime + " 초");
 
