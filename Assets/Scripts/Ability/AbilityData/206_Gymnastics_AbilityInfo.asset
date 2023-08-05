@@ -18,12 +18,12 @@ MonoBehaviour:
     englishName: Gymnastics
   abilityDescription:
     koreanDescription: "\uACF5\uBD80\uC5D0\uB294 \uCCB4\uB825\uB3C4 \uD544\uC218!
-      \uC218\uD559\uB808\uC778\uC800\uC758 \uCD5C\uB300 \uCCB4\uB825\uC774 n% \uC99D\uAC00\uD55C\uB2E4."
+      \uC218\uD559\uB808\uC778\uC800\uC758 \uCD5C\uB300 \uCCB4\uB825\uC774 {0}% \uC99D\uAC00\uD55C\uB2E4."
     englishDescription: Physical strength is essential for studying. Mathranger's
-      max hp increases by n%.
+      max hp increases by {0}%.
   abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
   abilityType: 0
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
   - fieldName: hpPower
     target: player

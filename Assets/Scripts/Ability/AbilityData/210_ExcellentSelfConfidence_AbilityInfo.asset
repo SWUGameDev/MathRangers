@@ -18,10 +18,10 @@ MonoBehaviour:
     englishName: Excellent self-confidence
   abilityDescription:
     koreanDescription: "\uB0B4\uAC00 \uCC0D\uB294 \uACF3\uC774 \uACE7 \uC815\uB2F5\uC774\uB2E4.
-      m\uCD08\uB9C8\uB2E4 \uB79C\uB364 \uC704\uCE58\uC5D0 \uC704\uB825 n\uC758 \uACF5\uACA9
-      x\uAC1C\uB97C \uC790\uB3D9\uC73C\uB85C \uBC1C\uC0AC\uD55C\uB2E4."
+      {0}\uCD08\uB9C8\uB2E4 \uB79C\uB364 \uC704\uCE58\uC5D0 \uC704\uB825 {1}\uC758
+      \uACF5\uACA9 {2}\uAC1C\uB97C \uC790\uB3D9\uC73C\uB85C \uBC1C\uC0AC\uD55C\uB2E4."
     englishDescription: What i chose is the answer. Mathranger automatically attacks
-      x times with force n at random positions every m seconds.
+      {2} times with force {1} at random positions every {0} seconds.
   abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
   abilityType: 0
   isSelected: 0

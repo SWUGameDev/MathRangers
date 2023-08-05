@@ -8,6 +8,8 @@ public class VariableProbabilityController
 {
     List<float> currentPercentages;
 
+    private HashSet<AbilityInfo> selectedActiveAbility;
+
     public VariableProbabilityController(List<float> initialPercentages)
     {
         this.currentPercentages = initialPercentages;
@@ -41,13 +43,37 @@ public class VariableProbabilityController
         
         foreach (AbilityInfo abilityInfo in currentAbilityInfos)
         {
-            if (abilityInfo.abilityType == AbilityType.Active && abilityInfo.isSelected)
-                continue;
+
+            if(abilityInfo.abilityType == AbilityType.Active)
+            {
+                if( this.IsActiveAbilityContain(abilityInfo))
+                    continue;
+            }
 
             abilityInfos.Add(abilityInfo);
         }
 
         return this.GetRandomCombinations<AbilityInfo>(abilityInfos, 3);
+    }
+
+    private bool IsActiveAbilityContain(AbilityInfo abilityInfo)
+    {
+        if(this.selectedActiveAbility == null)
+            this.selectedActiveAbility = new HashSet<AbilityInfo>();
+
+        if (abilityInfo.isSelected)
+        {
+            if(this.selectedActiveAbility.Count != 2)
+                this.selectedActiveAbility.Add(abilityInfo);
+        }
+
+        if (this.selectedActiveAbility.Count == 2)
+        {
+            if(!this.selectedActiveAbility.Contains(abilityInfo))
+                return false;
+        }
+
+        return true;
     }
 
 
@@ -57,34 +83,42 @@ public class VariableProbabilityController
         List<List<int>> combinations = new List<List<int>>();
         int n = elements.Count;
 
-        GenerateCombinations(elements, combinations, new List<int>(), 0, n, m);
-
+        combinations = GenerateCombinations(elements.Count, m);
         int index = Random.Range(0, combinations.Count);
-        Debug.Log(index);
 
         foreach (int selected in combinations[index])
         {
-            selectedElements.Add(elements[selected]);
+            Debug.Log($"selected {selected-1}");
+
+            selectedElements.Add(elements[selected-1]);
         }
 
         return selectedElements;
     }
 
-    private void GenerateCombinations<T>(List<T> elements, List<List<int>> combinations, List<int> currentCombination, int start, int n, int m)
+    public static List<List<int>> GenerateCombinations(int n, int m)
     {
-        if (currentCombination.Count == m)
+        List<List<int>> combinations = new List<List<int>>();
+        List<int> currentCombination = new List<int>();
+        return GenerateCombinationsHelper(combinations, currentCombination, 1, n, m);
+    }
+
+    private static List<List<int>> GenerateCombinationsHelper(List<List<int>> combinations, List<int> currentCombination, int start, int n, int m)
+    {
+        if (m == 0)
         {
-            List<int> combination = new List<int>(currentCombination);
-            combinations.Add(combination);
-            return;
+            combinations.Add(new List<int>(currentCombination));
+            return combinations;
         }
 
-        for (int i = start; i < n; i++)
+        for (int i = start; i <= n; i++)
         {
             currentCombination.Add(i);
-            GenerateCombinations(elements, combinations, currentCombination, i + 1, n, m);
+            GenerateCombinationsHelper(combinations, currentCombination, i + 1, n, m - 1);
             currentCombination.RemoveAt(currentCombination.Count - 1);
         }
+
+        return combinations;
     }
 
 

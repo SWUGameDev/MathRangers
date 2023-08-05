@@ -18,10 +18,10 @@ MonoBehaviour:
     englishName: School Anniversary
   abilityDescription:
     koreanDescription: "\uAC1C\uAD50\uAE30\uB150\uC77C\uB85C \uD559\uAD50\uAC00 \uC270\uB2E4.
-      \uC218\uD559\uB808\uC778\uC800\uAC00 n\uCD08 \uB3D9\uC548 \uBB34\uC801\uC774
+      \uC218\uD559\uB808\uC778\uC800\uAC00 {0}\uCD08 \uB3D9\uC548 \uBB34\uC801\uC774
       \uB41C\uB2E4."
     englishDescription: School is closed for school anniversary. Mathranger becomes
-      unbeatable for n seconds.
+      unbeatable for {0} seconds.
   abilityIcon: {fileID: 21300000, guid: d87dc65665d1d1c4e8aecc1a562ebd9d, type: 3}
   abilityType: 1
   isSelected: 0

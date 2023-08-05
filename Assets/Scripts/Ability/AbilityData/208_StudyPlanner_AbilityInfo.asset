@@ -18,9 +18,9 @@ MonoBehaviour:
     englishName: Study planner
   abilityDescription:
     koreanDescription: "\uAF3C\uAF3C\uD55C \uACF5\uBD80 \uACC4\uD68D\uC73C\uB85C
-      \uC2DC\uAC04\uC744 \uC544\uAF08\uB2E4. \uC81C\uD55C \uC2DC\uAC04\uC774 n\uCD08
+      \uC2DC\uAC04\uC744 \uC544\uAF08\uB2E4. \uC81C\uD55C \uC2DC\uAC04\uC774 {0}\uCD08
       \uC99D\uAC00\uD55C\uB2E4."
-    englishDescription: Study plans save time. The time limit increases by 3 seconds.
+    englishDescription: Study plans save time. The time limit increases by {0} seconds.
   abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
   abilityType: 0
   isSelected: 0

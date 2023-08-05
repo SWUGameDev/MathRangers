@@ -17,14 +17,14 @@ MonoBehaviour:
     koreanName: "\uC804\uAD50 1\uB4F1"
     englishName: First grade
   abilityDescription:
-    koreanDescription: "\uB0B4\uAC00 \uC804\uAD50 1\uB4F1\uC774\uB77C\uB2C8! n\uCD08
-      \uB3D9\uC548 \uACF5\uACA9\uB825\uC774 m%, \uACF5\uACA9 \uC18D\uB3C4\uAC00 x%
-      \uC99D\uAC00\uD55C\uB2E4."
+    koreanDescription: "\uB0B4\uAC00 \uC804\uAD50 1\uB4F1\uC774\uB77C\uB2C8! {0}\uCD08
+      \uB3D9\uC548 \uACF5\uACA9\uB825\uC774 {1}%, \uACF5\uACA9 \uC18D\uB3C4\uAC00
+      {2}% \uC99D\uAC00\uD55C\uB2E4."
     englishDescription: I'm ranked first in the school! Mathranger's attack power
-      increases by m%, attack speed increases by x% for n seconds.
+      increases by {2}%, attack speed increases by {1}% for {0} seconds.
   abilityIcon: {fileID: 21300000, guid: c60bce71063ee584b97d11fc36ccd7a2, type: 3}
   abilityType: 1
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
   - fieldName: effectTime
     target: player

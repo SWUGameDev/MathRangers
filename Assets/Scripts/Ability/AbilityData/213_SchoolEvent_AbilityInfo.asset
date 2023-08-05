@@ -18,13 +18,13 @@ MonoBehaviour:
     englishName: School event
   abilityDescription:
     koreanDescription: "\uBC14\uC05C \uD559\uAD50 \uC0DD\uD65C\uC744 \uC7A0\uC2DC
-      \uC26C\uC5B4\uAC04\uB2E4. \uC77C\uBC18 \uACF5\uACA9 n\uBC88\uB9C8\uB2E4 \uBCF4\uC2A4\uB97C
-      m\uCD08 \uAC04 \uAE30\uC808\uC2DC\uD0A8\uB2E4."
+      \uC26C\uC5B4\uAC04\uB2E4. \uC77C\uBC18 \uACF5\uACA9 {0}\uBC88\uB9C8\uB2E4 \uBCF4\uC2A4\uB97C
+      {1}\uCD08 \uAC04 \uAE30\uC808\uC2DC\uD0A8\uB2E4."
     englishDescription: Take a break from busy school life. Mathranger stuns the
-      exam monster for m seconds for every n basic attacks.
+      exam monster for {1} seconds for every {0} basic attacks.
   abilityIcon: {fileID: 21300000, guid: 00ccc76f499ad5f498b07b4a65332bdc, type: 3}
   abilityType: 0
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
   - fieldName: attack count
     target: player

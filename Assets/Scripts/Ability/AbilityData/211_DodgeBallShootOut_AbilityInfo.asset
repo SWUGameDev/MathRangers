@@ -17,13 +17,13 @@ MonoBehaviour:
     koreanName: "\uD53C\uAD6C \uC29B \uC544\uC6C3"
     englishName: Dodge ball shoot out
   abilityDescription:
-    koreanDescription: "\uD53C\uAD6C\uACF5\uC744 \uC7A1\uC558\uB2E4! m\uCD08\uB9C8\uB2E4
-      \uC2DC\uD5D8 \uAD34\uBB3C\uC5D0\uAC8C \uC704\uB825 n\uC758 \uACF5\uC744 \uB0A0\uB9B0\uB2E4."
+    koreanDescription: "\uD53C\uAD6C\uACF5\uC744 \uC7A1\uC558\uB2E4! {0}\uCD08\uB9C8\uB2E4
+      \uC2DC\uD5D8 \uAD34\uBB3C\uC5D0\uAC8C \uC704\uB825 {1}\uC758 \uACF5\uC744 \uB0A0\uB9B0\uB2E4."
     englishDescription: I caught a ball! Mathranger automatically shoots ball with
-      force n every m seconds.
+      force {0} every {1} seconds.
   abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
   abilityType: 0
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
   - fieldName: attack
     target: player

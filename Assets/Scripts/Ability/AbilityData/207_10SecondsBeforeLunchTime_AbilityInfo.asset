@@ -18,9 +18,9 @@ MonoBehaviour:
     englishName: 10 seconds before lunch time
   abilityDescription:
     koreanDescription: "\uACE7 \uC810\uC2EC\uC2DC\uAC04\uC774\uB2E4! \uC218\uD559\uB808\uC778\uC800\uC758
-      \uACF5\uACA9 \uC18D\uB3C4\uAC00 n% \uC99D\uAC00\uD55C\uB2E4."
+      \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD55C\uB2E4."
     englishDescription: It's lunch time soon! Mathranger's attack speed increases
-      by n%.
+      by {0}%.
   abilityIcon: {fileID: 21300000, guid: 0e6ff551f961bac409d868f8eb784dab, type: 3}
   abilityType: 0
   isSelected: 0

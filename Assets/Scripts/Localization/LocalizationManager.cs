@@ -6,6 +6,9 @@ using UnityEngine.Localization.Settings;
 
 public class LocalizationManager : MonoBehaviourSingleton<LocalizationManager> {
 
+
+// 0 English
+// 1 Korean
     private bool isChanging = false; 
 
     public static readonly string userSelectedLanguageKey = "SelectedLanguage";
@@ -26,6 +29,11 @@ public class LocalizationManager : MonoBehaviourSingleton<LocalizationManager> {
         }else{
             return -1;
         }
+    }
+
+    public static bool IsSettingKorean()
+    {
+        return (PlayerPrefs.GetInt(LocalizationManager.userSelectedLanguageKey) == 1) ;
     }
     
     private IEnumerator ChangeLocalizationSettingRoutine(int selectedLanguageIndex,UnityAction onCompleted = null)

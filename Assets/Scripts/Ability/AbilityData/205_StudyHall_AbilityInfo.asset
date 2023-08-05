@@ -19,12 +19,12 @@ MonoBehaviour:
   abilityDescription:
     koreanDescription: "\uC790\uC2B5\uC2DC\uAC04\uC758 \uB178\uB825\uC774 \uBE5B\uC744
       \uBCF8\uB2E4. \uC218\uD559\uB808\uC778\uC800\uC758 \uBC29\uC5B4\uB825\uC774
-      n% \uC99D\uAC00\uD55C\uB2E4."
+      {0}% \uC99D\uAC00\uD55C\uB2E4."
     englishDescription: Effort of study hall increases Mathranger's shiled power
-      by n%.
+      by {0}%.
   abilityIcon: {fileID: 21300000, guid: 2ef99197cef95364294a30ed8bf43aa5, type: 3}
   abilityType: 0
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
   - fieldName: shield power
     target: player
