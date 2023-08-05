@@ -40,7 +40,7 @@ public class AbilityInfoUIController : MonoBehaviour {
 
         this.abilityImage.sprite = abilityInfo.abilityIcon;
 
-        var dictionary =   abilityInfoManager.GetSelectedAbilityDictionary();
+        var dictionary =  abilityInfoManager.GetSelectedAbilityDictionary();
 
         int level = 0;
 
@@ -49,7 +49,7 @@ public class AbilityInfoUIController : MonoBehaviour {
             level = dictionary[abilityInfo.abilityId].selectedCount;
         }
 
-        if (PlayerPrefs.HasKey(LocalizationManager.userSelectedLanguageKey) == false || LocalizationManager.Instance.GetCurrentLocalizationIndex() == 1)
+        if (LocalizationManager.Instance.GetCurrentLocalizationIndex() == 1)
         {
             this.AbilityNameText.text = abilityInfo.abilityName.koreanName;
             this.AbilityDescriptionText.text = this.abilityDescriptionFormatting(abilityInfo,abilityInfo.abilityDescription.koreanDescription,level);
