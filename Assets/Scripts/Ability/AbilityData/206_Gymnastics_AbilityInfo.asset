@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 206_Gymnastics_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 206
+  abilityName:
+    koreanName: "\uAD6D\uBBFC\uCCB4\uC870"
+    englishName: Gymnastics
+  abilityDescription:
+    koreanDescription: "\uACF5\uBD80\uC5D0\uB294 \uCCB4\uB825\uB3C4 \uD544\uC218!
+      \uC218\uD559\uB808\uC778\uC800\uC758 \uCD5C\uB300 \uCCB4\uB825\uC774 {0}% \uC99D\uAC00\uD55C\uB2E4."
+    englishDescription: Physical strength is essential for studying. Mathranger's
+      max hp increases by {0}%.
+  abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
+  abilityType: 0
+  isSelected: 1
+  abilityCommands:
+  - fieldName: hpPower
+    target: player
+    amountForLevel:
+    - 10
+    - 15
+    - 20
+    - 25
+    - 30
+    - 35
+    - 40
+    - 45
+    commandOperator: 0

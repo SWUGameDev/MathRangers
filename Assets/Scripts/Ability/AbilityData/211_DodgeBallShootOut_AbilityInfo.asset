@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 211_DodgeBallShootOut_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 211
+  abilityName:
+    koreanName: "\uD53C\uAD6C \uC29B \uC544\uC6C3"
+    englishName: Dodge ball shoot out
+  abilityDescription:
+    koreanDescription: "\uD53C\uAD6C\uACF5\uC744 \uC7A1\uC558\uB2E4! {0}\uCD08\uB9C8\uB2E4
+      \uC2DC\uD5D8 \uAD34\uBB3C\uC5D0\uAC8C \uC704\uB825 {1}\uC758 \uACF5\uC744 \uB0A0\uB9B0\uB2E4."
+    englishDescription: I caught a ball! Mathranger automatically shoots ball with
+      force {0} every {1} seconds.
+  abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
+  abilityType: 0
+  isSelected: 1
+  abilityCommands:
+  - fieldName: attack
+    target: player
+    amountForLevel:
+    - 200
+    - 250
+    - 300
+    - 350
+    - 400
+    - 450
+    - 500
+    - 550
+    commandOperator: 4
+  - fieldName: attack
+    target: player
+    amountForLevel:
+    - 10
+    - 10
+    - 7
+    - 7
+    - 7
+    - 4
+    - 4
+    - 4
+    commandOperator: 4

@@ -163,7 +163,10 @@ public class WJ_Connector : MonoBehaviour
         request.gameVer = strGameVer;
         request.osScnCd = strOsScnCd;
         request.deviceNm = strDeviceNm;
-        request.langCd = "KO";
+        if(LocalizationManager.Instance.GetCurrentLocalizationIndex()==1)   
+            request.langCd = "KO";
+        else
+            request.langCd = "EN";
         request.timeZone = TimeZoneInfo.Local.BaseUtcOffset.Hours;
 
         request.mathpidId = strMBR_ID;

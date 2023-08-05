@@ -10,28 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
-  m_Name: TestPeriod_BuffInfo
+  m_Name: 204_ExamPeriod_AbilityInfo
   m_EditorClassIdentifier: 
-  abilityId: 0
+  abilityId: 204
   abilityName:
     koreanName: "\uC2DC\uD5D8\uAE30\uAC04"
-    englishName: ExamPeriod
+    englishName: Exam period
   abilityDescription:
-    koreanDescription: "\uC2DC\uD5D8\uAE30\uAC04 \uD14C\uC2A4\uD2B8 \uC124\uBA85\uC785\uB2C8\uB2E4."
-    englishDescription: test for description
+    koreanDescription: "\uC2DC\uD5D8\uAE30\uAC04\uC758 \uC5F4\uC815\uC73C\uB85C \uC218\uD559\uB808\uC778\uC800\uC758
+      \uACF5\uACA9\uB825\uC774 {0}% \uC99D\uAC00\uD55C\uB2E4."
+    englishDescription: Passion of exam period increases Mathranger's attack power
+      by {0}%.
   abilityIcon: {fileID: 21300000, guid: 5f7641378323de54a85f225fb8e271e8, type: 3}
   abilityType: 0
-  isSelected: 0
+  isSelected: 1
   abilityCommands:
-  - fieldName: 
-    target: 
+  - fieldName: attackPower
+    target: player
     amountForLevel:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    - 60
+    - 70
+    - 80
     commandOperator: 0

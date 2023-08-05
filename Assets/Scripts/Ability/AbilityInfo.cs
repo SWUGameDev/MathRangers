@@ -5,14 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum CommandOperator{
-    Mutiple,
+    Multiple,
     Add,
-    Minus
+    Minus,
+    Plus,
+    Default
 }
 
 public enum AbilityType{
     Passive,
-    Skill
+    Active
 }
 
 [Serializable]
@@ -40,7 +42,7 @@ public class AbilityCommand {
 
 } 
 
-[CreateAssetMenu(fileName = "BuffInfo", menuName = "~/MathRangers/Assets/Scripts/Buff/BuffInfo.cs/BuffInfo", order = 0)]
+[CreateAssetMenu(fileName = "_AbilityInfo", menuName = "MathRangers/Assets/AbilityInfo", order = 0)]
 public class AbilityInfo : ScriptableObject {
     public int abilityId;
 

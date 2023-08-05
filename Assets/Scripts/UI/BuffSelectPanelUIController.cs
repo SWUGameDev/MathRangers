@@ -15,7 +15,8 @@ public class BuffSelectPanelUIController : MonoBehaviour
     {
         this.transform.gameObject.SetActive(isActive);
 
-        this.abilityInfoManager.SetRandomAbilityInfo();
+        if(isActive)
+            this.abilityInfoManager.SetRandomAbilityInfo();
     }
 
     public void SetUnActive()

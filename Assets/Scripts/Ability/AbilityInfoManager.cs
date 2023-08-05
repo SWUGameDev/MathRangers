@@ -70,9 +70,12 @@ public class AbilityInfoManager : MonoBehaviour {
         }
     }
 
-
+    // TODO : 이후에 readOnly 로 변경하기
     public Dictionary<AbilityId, selectedAbility> GetSelectedAbilityDictionary()
     {
+        if(this.selectedAbilityDictionary == null)
+            this.selectedAbilityDictionary = new Dictionary<AbilityId, selectedAbility>();
+
         return this.selectedAbilityDictionary;
     }
 
@@ -104,6 +107,5 @@ public class AbilityInfoManager : MonoBehaviour {
         }
     }
 
-   
 }
 
