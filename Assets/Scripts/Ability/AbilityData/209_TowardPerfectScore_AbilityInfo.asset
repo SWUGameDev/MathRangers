@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 209_TowardPerfectScore_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 209
+  abilityName:
+    koreanName: "\uC62C\uBC31\uC744 \uD5A5\uD574"
+    englishName: Toward a perfect score
+  abilityDescription:
+    koreanDescription: "\uD55C \uBB38\uC81C\uB3C4 \uB193\uCE60 \uC218 \uC5C6\uB2E4!
+      \uC2DC\uD5D8 \uAD34\uBB3C\uC774 \uBB38\uC81C\uC9D1\uC744 \uC18C\uD658\uD558\uBA74
+      \uADF8\uC911 n\uAC1C\uB97C \uC790\uB3D9\uC73C\uB85C \uACF5\uACA9\uD55C\uB2E4."
+    englishDescription: Don't miss every question. When the exam monster calls workbook
+      monsters, Mathranger attacks n of them automatically.
+  abilityIcon: {fileID: 21300000, guid: e28cb90fb8b85b54e82db0e5cb98ef8c, type: 3}
+  abilityType: 0
+  isSelected: 0
+  abilityCommands:
+  - fieldName: attack
+    target: player
+    amountForLevel:
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    commandOperator: 4

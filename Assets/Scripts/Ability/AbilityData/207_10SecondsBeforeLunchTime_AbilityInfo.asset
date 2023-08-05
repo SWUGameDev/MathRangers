@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 207_10SecondsBeforeLunchTime_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 207
+  abilityName:
+    koreanName: "\uC810\uC2EC\uC2DC\uAC04 10\uCD08 \uC804"
+    englishName: 10 seconds before lunch time
+  abilityDescription:
+    koreanDescription: "\uACE7 \uC810\uC2EC\uC2DC\uAC04\uC774\uB2E4! \uC218\uD559\uB808\uC778\uC800\uC758
+      \uACF5\uACA9 \uC18D\uB3C4\uAC00 n% \uC99D\uAC00\uD55C\uB2E4."
+    englishDescription: It's lunch time soon! Mathranger's attack speed increases
+      by n%.
+  abilityIcon: {fileID: 21300000, guid: 0e6ff551f961bac409d868f8eb784dab, type: 3}
+  abilityType: 0
+  isSelected: 0
+  abilityCommands:
+  - fieldName: attack speed
+    target: player
+    amountForLevel:
+    - 10
+    - 15
+    - 20
+    - 25
+    - 30
+    - 35
+    - 40
+    - 45
+    commandOperator: 0

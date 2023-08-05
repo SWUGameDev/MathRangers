@@ -41,7 +41,7 @@ public class VariableProbabilityController
         
         foreach (AbilityInfo abilityInfo in currentAbilityInfos)
         {
-            if (abilityInfo.abilityType == AbilityType.Skill && abilityInfo.isSelected)
+            if (abilityInfo.abilityType == AbilityType.Active && abilityInfo.isSelected)
                 continue;
 
             abilityInfos.Add(abilityInfo);

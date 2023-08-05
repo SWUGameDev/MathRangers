@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 205_StudyHall_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 205
+  abilityName:
+    koreanName: "\uC790\uC2B5\uC2DC\uAC04"
+    englishName: Study hall
+  abilityDescription:
+    koreanDescription: "\uC790\uC2B5\uC2DC\uAC04\uC758 \uB178\uB825\uC774 \uBE5B\uC744
+      \uBCF8\uB2E4. \uC218\uD559\uB808\uC778\uC800\uC758 \uBC29\uC5B4\uB825\uC774
+      n% \uC99D\uAC00\uD55C\uB2E4."
+    englishDescription: Effort of study hall increases Mathranger's shiled power
+      by n%.
+  abilityIcon: {fileID: 21300000, guid: 2ef99197cef95364294a30ed8bf43aa5, type: 3}
+  abilityType: 0
+  isSelected: 0
+  abilityCommands:
+  - fieldName: shield power
+    target: player
+    amountForLevel:
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    - 60
+    - 70
+    - 80
+    commandOperator: 0

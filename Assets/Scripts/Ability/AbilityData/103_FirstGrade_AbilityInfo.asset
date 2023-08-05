@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 103_FirstGrade_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 103
+  abilityName:
+    koreanName: "\uC804\uAD50 1\uB4F1"
+    englishName: First grade
+  abilityDescription:
+    koreanDescription: "\uB0B4\uAC00 \uC804\uAD50 1\uB4F1\uC774\uB77C\uB2C8! n\uCD08
+      \uB3D9\uC548 \uACF5\uACA9\uB825\uC774 m%, \uACF5\uACA9 \uC18D\uB3C4\uAC00 x%
+      \uC99D\uAC00\uD55C\uB2E4."
+    englishDescription: I'm ranked first in the school! Mathranger's attack power
+      increases by m%, attack speed increases by x% for n seconds.
+  abilityIcon: {fileID: 21300000, guid: c60bce71063ee584b97d11fc36ccd7a2, type: 3}
+  abilityType: 1
+  isSelected: 0
+  abilityCommands:
+  - fieldName: effectTime
+    target: player
+    amountForLevel:
+    - 10
+    - 10
+    - 10
+    - 15
+    - 15
+    - 15
+    - 20
+    - 20
+    commandOperator: 3
+  - fieldName: attackPower
+    target: player
+    amountForLevel:
+    - 20
+    - 30
+    - 40
+    - 40
+    - 50
+    - 50
+    - 50
+    - 80
+    commandOperator: 0
+  - fieldName: attackSpeed
+    target: player
+    amountForLevel:
+    - 10
+    - 10
+    - 15
+    - 15
+    - 15
+    - 20
+    - 20
+    - 20
+    commandOperator: 0
