@@ -6,8 +6,6 @@ using AbilityId = System.Int32;
 using SelectedIndex = System.Int32;
 using Newtonsoft.Json;
 
-public class AbilityInfoManager : MonoBehaviour {
-
     [Serializable]
     public class selectedAbility
     {
@@ -30,6 +28,8 @@ public class AbilityInfoManager : MonoBehaviour {
             this.selectedCount++;
         }
     }
+    
+public class AbilityInfoManager : MonoBehaviour {
 
     [SerializeField] private List<AbilityInfoUIController> abilityInfoUIControllers;
 
