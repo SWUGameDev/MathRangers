@@ -18,10 +18,6 @@ public partial class RunPlayer : MonoBehaviour
     private float playerHp;
     private float enemyDamage = 400;
 
-    [SerializeField] GameObject cheeseTilemapGameObject;
-    Tilemap cheeseTilemap;
-    Grid grid;
-
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -39,13 +35,6 @@ public partial class RunPlayer : MonoBehaviour
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         PlayerHp = MaxPlayerHp;
-        cheeseTilemap = cheeseTilemapGameObject.GetComponent<Tilemap>();
-
-        grid = cheeseTilemapGameObject.GetComponentInParent<Grid>();
-
-
-        Vector3Int testPosition = new Vector3Int(14, -10, 0);
-        cheeseTilemap.SetTile(testPosition, null);
     }
 
     void Update()
