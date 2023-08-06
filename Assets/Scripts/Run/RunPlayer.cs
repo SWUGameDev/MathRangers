@@ -30,6 +30,8 @@ public partial class RunPlayer : MonoBehaviour
     private BoxCollider2D[] colliders;
 
     bool isArive;
+    bool isSlide;
+    bool isWalk;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -49,6 +51,8 @@ public partial class RunPlayer : MonoBehaviour
         colliders[0].enabled = true;
         colliders[1].enabled = false;
         isArive = true;
+        isSlide = false;
+        isWalk = true;
     }
     void Start()
     {
@@ -73,6 +77,11 @@ public partial class RunPlayer : MonoBehaviour
         else
         {
             Walk();
+        }
+
+        if(isSlide == true)
+        {
+            Slide();
         }
 
         if(this.playerHp <= 0 && this.isArive == true)
@@ -113,15 +122,22 @@ public partial class RunPlayer : MonoBehaviour
         colliders[1].enabled = false;
     }
 
+    public void PointerDownSlide()
+    {
+        isSlide = true;
+    }
+
+    public void PointerUpSlide()
+    {
+        isSlide = false;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
-
         if (col.gameObject.tag == "Ground")
         {
             jumpCount = 0;
         }
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -142,7 +158,6 @@ public partial class RunPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Math" && runSceneUIManager.windowScrolling.isScroll == true)
         {
             mathPanelUIController.SetMathPanelActive(true);
-            Debug.Log("매쓰 충돌");
             onTriggerMath?.Invoke();
         }
     }
