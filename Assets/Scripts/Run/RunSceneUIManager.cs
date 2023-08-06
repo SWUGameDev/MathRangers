@@ -21,6 +21,11 @@ public class RunSceneUIManager : UI_Base
 
     [SerializeField] private CountdownController countdownController;
     [SerializeField] GameObject deadPanel;
+
+    [SerializeField] TMP_Text AnswerRateText;
+    private int latestAnswerRate;
+    [SerializeField] MathQuestionExtension mathQuestionExtension;
+
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
@@ -28,6 +33,7 @@ public class RunSceneUIManager : UI_Base
         runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
         runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
+        MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
     }
 
     private void Start()
@@ -80,5 +86,30 @@ public class RunSceneUIManager : UI_Base
         yield return new WaitForSeconds(4.0f);
         deadPanel.SetActive(false);
         SetAllScroll();
+    }
+
+    void GetAnswerRate(int index, bool isCorrect)
+    {
+        Debug.Log("GetAnswerRate");
+        Debug.Log(index);
+        Debug.Log(isCorrect);
+
+
+        int sum = latestAnswerRate * (index - 1);
+        if (isCorrect == true)
+        {
+            latestAnswerRate = (sum + 100) / index;
+        }
+        else if (isCorrect == false) 
+        {
+            latestAnswerRate = (sum + 0) / index;
+        }
+
+        SetAnswerRate();
+    }
+
+    void SetAnswerRate()
+    {
+        AnswerRateText.text = latestAnswerRate.ToString() + "%"; 
     }
 }
