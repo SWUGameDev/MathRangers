@@ -15,8 +15,9 @@ public partial class RunPlayer : MonoBehaviour
     public UnityEvent onEatCheese;
     public UnityEvent onCollisionEnemy;
     public UnityEvent onTriggerMath;
+    public UnityEvent onRunPlayerDead;
 
-    private float maxPlayerHp = 10000;
+    private float maxPlayerHp = 1000;
     private float playerHp;
     private float enemyDamage = 400;
 
@@ -27,6 +28,8 @@ public partial class RunPlayer : MonoBehaviour
     [SerializeField] Sprite slideSprite;
     [SerializeField] Sprite walkSprite;
     private BoxCollider2D[] colliders;
+
+    bool isArive;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -45,10 +48,10 @@ public partial class RunPlayer : MonoBehaviour
         this.colliders = this.GetComponents<BoxCollider2D>();
         colliders[0].enabled = true;
         colliders[1].enabled = false;
+        isArive = true;
     }
     void Start()
     {
-
         this.rb = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -70,6 +73,12 @@ public partial class RunPlayer : MonoBehaviour
         else
         {
             Walk();
+        }
+
+        if(this.playerHp <= 0 && this.isArive == true)
+        {
+            this.isArive = false;
+            onRunPlayerDead?.Invoke();
         }
     }
 
