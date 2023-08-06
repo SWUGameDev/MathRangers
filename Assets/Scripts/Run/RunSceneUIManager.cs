@@ -12,24 +12,38 @@ public class RunSceneUIManager : UI_Base
     private int eatCheeseNumber = 0;
     [SerializeField] TMP_Text eatCheeseNumberText;
     [SerializeField] Slider playerHpSlider;
+    [SerializeField] GameObject mathPanel;
 
+    [SerializeField] public RunUIBackGroundScrolling windowScrolling;
+    [SerializeField] RunUIBackGroundScrolling cloudScrolling;
+    [SerializeField] RunUIBackGroundScrolling tileScrolling;
+    [SerializeField] RunUIBackGroundScrolling cheezeScrolling;
+
+    [SerializeField] private CountdownController countdownController;
+    [SerializeField] GameObject deadPanel;
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
         runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
+        runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
+        runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
     }
 
     private void Start()
     {
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = 1;
+
+        this.countdownController.StartCountdown(this.SetAllScroll);
     }
 
     private void OnDestroy()
     {
         runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
         runPlayer.onCollisionEnemy.RemoveListener(this.SetHpGauge);
+        runPlayer.onTriggerMath.RemoveAllListeners();
+        runPlayer.onRunPlayerDead.RemoveAllListeners();
     }
 
     public void EatCheeseNumber()
@@ -39,8 +53,32 @@ public class RunSceneUIManager : UI_Base
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
+
+    public void SetAllScroll()
+    {
+        windowScrolling.SetisScroll();
+        cloudScrolling.SetisScroll();
+        tileScrolling.SetisScroll();
+        cheezeScrolling.SetisScroll();
+    }
+
     private void SetHpGauge()
     {
         this.playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
+    }
+
+    private void SetDeadPanel()
+    {
+        this.StartCoroutine(this.SetDeadPanelCoroutine());
+    }
+
+    public IEnumerator SetDeadPanelCoroutine()
+    {
+        SetAllScroll();
+        yield return new WaitForSeconds(0.8f);
+        deadPanel.SetActive(true);
+        yield return new WaitForSeconds(4.0f);
+        deadPanel.SetActive(false);
+        SetAllScroll();
     }
 }

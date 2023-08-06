@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 
+
 public partial class RunPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
@@ -13,15 +14,22 @@ public partial class RunPlayer : MonoBehaviour
 
     public UnityEvent onEatCheese;
     public UnityEvent onCollisionEnemy;
+    public UnityEvent onTriggerMath;
+    public UnityEvent onRunPlayerDead;
 
-    private float maxPlayerHp = 10000;
+    private float maxPlayerHp = 1000;
     private float playerHp;
     private float enemyDamage = 400;
 
-    [SerializeField] GameObject cheeseTilemapGameObject;
-    Tilemap cheeseTilemap;
-    Grid grid;
+    [SerializeField] MathPanelUIController mathPanelUIController;
+    [SerializeField] RunSceneUIManager runSceneUIManager;
 
+    SpriteRenderer runPlayerSpriteRenderer;
+    [SerializeField] Sprite slideSprite;
+    [SerializeField] Sprite walkSprite;
+    private BoxCollider2D[] colliders;
+
+    bool isArive;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -33,19 +41,21 @@ public partial class RunPlayer : MonoBehaviour
         set { playerHp = value; }
     }
 
+    private void Awake()
+    {
+        runPlayerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        this.colliders = this.GetComponents<BoxCollider2D>();
+        colliders[0].enabled = true;
+        colliders[1].enabled = false;
+        isArive = true;
+    }
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         PlayerHp = MaxPlayerHp;
-        cheeseTilemap = cheeseTilemapGameObject.GetComponent<Tilemap>();
-
-        grid = cheeseTilemapGameObject.GetComponentInParent<Grid>();
-
-
-        Vector3Int testPosition = new Vector3Int(14, -10, 0);
-        cheeseTilemap.SetTile(testPosition, null);
     }
 
     void Update()
@@ -54,6 +64,21 @@ public partial class RunPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        if(Input.GetKey(KeyCode.Z))
+        {
+            Slide();
+        }
+        else
+        {
+            Walk();
+        }
+
+        if(this.playerHp <= 0 && this.isArive == true)
+        {
+            this.isArive = false;
+            onRunPlayerDead?.Invoke();
         }
     }
 
@@ -73,19 +98,30 @@ public partial class RunPlayer : MonoBehaviour
         }
     }
 
+    public void Slide()
+    {
+        runPlayerSpriteRenderer.sprite = slideSprite;
+        colliders[0].enabled = false;
+        colliders[1].enabled = true;
+    }
+
+
+    public void Walk()
+    {
+        runPlayerSpriteRenderer.sprite = walkSprite;
+        colliders[0].enabled = true;
+        colliders[1].enabled = false;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("collision");
 
         if (col.gameObject.tag == "Ground")
         {
             jumpCount = 0;
         }
 
-        if (col.gameObject.tag == "Cheese")
-        {
-            onEatCheese?.Invoke();
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -95,6 +131,19 @@ public partial class RunPlayer : MonoBehaviour
             PlayerHp -= enemyDamage;
             onCollisionEnemy?.Invoke();
             StartCoroutine(TransparentCycle());
+        }
+
+        if (collision.gameObject.tag == "Cheese")
+        {
+            collision.gameObject.SetActive(false);
+            onEatCheese?.Invoke();
+        }
+
+        if (collision.gameObject.tag == "Math" && runSceneUIManager.windowScrolling.isScroll == true)
+        {
+            mathPanelUIController.SetMathPanelActive(true);
+            Debug.Log("매쓰 충돌");
+            onTriggerMath?.Invoke();
         }
     }
 }
