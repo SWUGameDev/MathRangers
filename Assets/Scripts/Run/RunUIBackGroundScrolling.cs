@@ -25,7 +25,7 @@ public class RunUIBackGroundScrolling : MonoBehaviour
 
     private void Awake()
     {
-        isScroll = true;
+        isScroll = false;
         if (this.isRepeat == true)
         {
             objectSpriteRenderer = backgoundObject.GetComponent<SpriteRenderer>();

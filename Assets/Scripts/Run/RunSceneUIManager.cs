@@ -19,6 +19,7 @@ public class RunSceneUIManager : UI_Base
     [SerializeField] RunUIBackGroundScrolling tileScrolling;
     [SerializeField] RunUIBackGroundScrolling cheezeScrolling;
 
+    [SerializeField] private CountdownController countdownController;
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
@@ -32,6 +33,8 @@ public class RunSceneUIManager : UI_Base
     {
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = 1;
+
+        this.countdownController.StartCountdown(this.SetAllScroll);
     }
 
     private void OnDestroy()

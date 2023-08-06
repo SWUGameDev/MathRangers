@@ -7905,6 +7905,7 @@ MonoBehaviour:
   cloudScrolling: {fileID: 1128229654}
   tileScrolling: {fileID: 170528038}
   cheezeScrolling: {fileID: 1658749534}
+  countdownController: {fileID: 1286087816}
 --- !u!1001 &371963485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41069,6 +41070,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
+--- !u!114 &1286087816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2703977467519581741, guid: db9caaa9672b94104b67f8c3c20789cf, type: 3}
+  m_PrefabInstance: {fileID: 810107687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40155c4c18784cb48646d06b6e3fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1286519579
 PrefabInstance:
   m_ObjectHideFlags: 0
