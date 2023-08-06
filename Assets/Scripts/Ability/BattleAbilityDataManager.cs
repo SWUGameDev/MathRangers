@@ -13,12 +13,15 @@ public class BattleAbilityDataManager : MonoBehaviour
     Dictionary<AbilityId, selectedAbility> selectedAbilityDictionary;
 
     private void Awake() {
+
         this.InitializeAbilityData();
+        
     }
 
     private void InitializeAbilityData()
     {
         this.ConvertAbilityListToDictionary();
+
         this.LoadSelectedAbilityDictionary();
     }
 
