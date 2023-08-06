@@ -29,6 +29,8 @@ public partial class MathPanelUIController : MonoBehaviour
 
     [SerializeField] private BuffSelectPanelUIController buffSelectPanelUIController;
 
+    [SerializeField] private RunSceneUIManager runSceneUIManager;
+
     public void SetMathPanelActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
@@ -100,7 +102,10 @@ public partial class MathPanelUIController : MonoBehaviour
         this.ResetTimerUI();
 
         if(!isCorrect)
+        {
             this.transform.gameObject.SetActive(false);
+            runSceneUIManager.SetAllScroll();
+        }
     }
 
     private void SetAnswerButtonActive(bool isActable)

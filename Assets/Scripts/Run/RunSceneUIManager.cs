@@ -12,12 +12,20 @@ public class RunSceneUIManager : UI_Base
     private int eatCheeseNumber = 0;
     [SerializeField] TMP_Text eatCheeseNumberText;
     [SerializeField] Slider playerHpSlider;
+    [SerializeField] GameObject mathPanel;
+
+    [SerializeField] public RunUIBackGroundScrolling windowScrolling;
+    [SerializeField] RunUIBackGroundScrolling cloudScrolling;
+    [SerializeField] RunUIBackGroundScrolling tileScrolling;
+    [SerializeField] RunUIBackGroundScrolling cheezeScrolling;
 
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
         runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
+        runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
+
     }
 
     private void Start()
@@ -30,6 +38,7 @@ public class RunSceneUIManager : UI_Base
     {
         runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
         runPlayer.onCollisionEnemy.RemoveListener(this.SetHpGauge);
+        runPlayer.onTriggerMath.RemoveAllListeners();
     }
 
     public void EatCheeseNumber()
@@ -39,8 +48,18 @@ public class RunSceneUIManager : UI_Base
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
+
+    public void SetAllScroll()
+    {
+        windowScrolling.SetisScroll();
+        cloudScrolling.SetisScroll();
+        tileScrolling.SetisScroll();
+        cheezeScrolling.SetisScroll();
+    }
+
     private void SetHpGauge()
     {
         this.playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
     }
+
 }

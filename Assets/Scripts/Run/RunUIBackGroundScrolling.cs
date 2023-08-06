@@ -6,18 +6,26 @@ using static UnityEditor.PlayerSettings;
 
 public class RunUIBackGroundScrolling : MonoBehaviour
 {
-    public float speed;
+    public float scrollSpeed;
     public Transform[] backgrounds;
 
     Vector3 endPos;
     Vector3 startPos;
     [SerializeField] bool isRepeat;
+    [SerializeField] bool isDistance;
+    public bool isScroll;
     [SerializeField] GameObject backgoundObject;
     SpriteRenderer objectSpriteRenderer;
     private float objectWidth;
 
+    float leftPosX = 0f;
+    float rightPosX = 0f;
+    float xScreenHalfSize;
+    float yScreenHalfSize;
+
     private void Awake()
-    { 
+    {
+        isScroll = true;
         if (this.isRepeat == true)
         {
             objectSpriteRenderer = backgoundObject.GetComponent<SpriteRenderer>();
@@ -29,15 +37,32 @@ public class RunUIBackGroundScrolling : MonoBehaviour
             int endIndex = backgrounds.Length - 2;
             endPos = backgrounds[endIndex].position;
         }
+
+        if(this.isDistance == true) 
+        {
+            yScreenHalfSize = Camera.main.orthographicSize;
+            xScreenHalfSize = yScreenHalfSize * Camera.main.aspect;
+
+            leftPosX = -(xScreenHalfSize * 2);
+            rightPosX = xScreenHalfSize * 2 * backgrounds.Length;
+        }
     }
 
     void Update()
     {
-        ScrollBackground();
+        if(this.isScroll == true)
+        {
+            ScrollBackground();
+        }
 
         if (this.isRepeat == true)
         {
             WarpBackground();
+        }
+
+        if(this.isDistance == true)
+        {
+            WarpBackgroundDistance();
         }
     }
 
@@ -45,7 +70,7 @@ public class RunUIBackGroundScrolling : MonoBehaviour
     {
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            backgrounds[i].position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+            backgrounds[i].position += new Vector3(-scrollSpeed, 0, 0) * Time.deltaTime;
         }
     }
 
@@ -58,6 +83,24 @@ public class RunUIBackGroundScrolling : MonoBehaviour
                 backgrounds[i].position = endPos;
             }
         }
+    }
+
+    void WarpBackgroundDistance()
+    {
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            if (backgrounds[i].position.x < leftPosX)
+            {
+                Vector3 nextPos = backgrounds[i].position;
+                nextPos = new Vector3(nextPos.x + rightPosX, nextPos.y, nextPos.z);
+                backgrounds[i].position = nextPos;
+            }
+        }
+    }
+
+    public void SetisScroll()
+    {
+        this.isScroll = !this.isScroll;
     }
 }
 

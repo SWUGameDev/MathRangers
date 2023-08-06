@@ -13,11 +13,14 @@ public partial class RunPlayer : MonoBehaviour
 
     public UnityEvent onEatCheese;
     public UnityEvent onCollisionEnemy;
+    public UnityEvent onTriggerMath;
 
     private float maxPlayerHp = 10000;
     private float playerHp;
     private float enemyDamage = 400;
 
+    [SerializeField] MathPanelUIController mathPanelUIController;
+    [SerializeField] RunSceneUIManager runSceneUIManager;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -64,17 +67,13 @@ public partial class RunPlayer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("collision");
 
         if (col.gameObject.tag == "Ground")
         {
             jumpCount = 0;
         }
 
-        if (col.gameObject.tag == "Cheese")
-        {
-            onEatCheese?.Invoke();
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -84,6 +83,19 @@ public partial class RunPlayer : MonoBehaviour
             PlayerHp -= enemyDamage;
             onCollisionEnemy?.Invoke();
             StartCoroutine(TransparentCycle());
+        }
+
+        if (collision.gameObject.tag == "Cheese")
+        {
+            collision.gameObject.SetActive(false);
+            onEatCheese?.Invoke();
+        }
+
+        if (collision.gameObject.tag == "Math" && runSceneUIManager.windowScrolling.isScroll == true)
+        {
+            mathPanelUIController.SetMathPanelActive(true);
+            Debug.Log("매쓰 충돌");
+            onTriggerMath?.Invoke();
         }
     }
 }
