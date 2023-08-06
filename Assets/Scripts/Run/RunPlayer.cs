@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 
+
 public partial class RunPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
@@ -21,6 +22,11 @@ public partial class RunPlayer : MonoBehaviour
 
     [SerializeField] MathPanelUIController mathPanelUIController;
     [SerializeField] RunSceneUIManager runSceneUIManager;
+
+    SpriteRenderer runPlayerSpriteRenderer;
+    [SerializeField] Sprite slideSprite;
+    [SerializeField] Sprite walkSprite;
+    private BoxCollider2D[] colliders;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -32,8 +38,17 @@ public partial class RunPlayer : MonoBehaviour
         set { playerHp = value; }
     }
 
+    private void Awake()
+    {
+        runPlayerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        this.colliders = this.GetComponents<BoxCollider2D>();
+        colliders[0].enabled = true;
+        colliders[1].enabled = false;
+    }
     void Start()
     {
+
         this.rb = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -46,6 +61,15 @@ public partial class RunPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        if(Input.GetKey(KeyCode.Z))
+        {
+            Slide();
+        }
+        else
+        {
+            Walk();
         }
     }
 
@@ -63,6 +87,21 @@ public partial class RunPlayer : MonoBehaviour
                 // 애니메이션 변경
             }
         }
+    }
+
+    public void Slide()
+    {
+        runPlayerSpriteRenderer.sprite = slideSprite;
+        colliders[0].enabled = false;
+        colliders[1].enabled = true;
+    }
+
+
+    public void Walk()
+    {
+        runPlayerSpriteRenderer.sprite = walkSprite;
+        colliders[0].enabled = true;
+        colliders[1].enabled = false;
     }
 
     void OnCollisionEnter2D(Collision2D col)
