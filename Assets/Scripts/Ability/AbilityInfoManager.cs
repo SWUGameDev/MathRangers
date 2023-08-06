@@ -1,15 +1,21 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using AbilityId = System.Int32;
 using SelectedIndex = System.Int32;
+using Newtonsoft.Json;
 
-public class AbilityInfoManager : MonoBehaviour {
-
+    [Serializable]
     public class selectedAbility
     {
         public int selectedIndex;
         public int selectedCount;
+
+        public selectedAbility()
+        {
+            
+        }
 
         public selectedAbility(int selectedIndex, int selectedCount)
         {
@@ -22,7 +28,8 @@ public class AbilityInfoManager : MonoBehaviour {
             this.selectedCount++;
         }
     }
-
+    
+public class AbilityInfoManager : MonoBehaviour {
 
     [SerializeField] private List<AbilityInfoUIController> abilityInfoUIControllers;
 
@@ -35,6 +42,8 @@ public class AbilityInfoManager : MonoBehaviour {
     private VariableProbabilityController variableProbabilityController;
 
     private int selectedIndex = 0;
+
+    public static readonly string serializedAbilityInfoDictionaryKey = "serializedAbilityInfoDictionaryKey";
 
     private void Start()
     {
@@ -54,6 +63,13 @@ public class AbilityInfoManager : MonoBehaviour {
             this.abilityInfoDictionary[abilityInfo.abilityId] = abilityInfo;
         }
 
+    }
+
+    private void SaveAbilityData()
+    {
+        string serializedSelectedAbilityDictionary = JsonConvert.SerializeObject(selectedAbilityDictionary);
+
+        PlayerPrefs.SetString(AbilityInfoManager.serializedAbilityInfoDictionaryKey,serializedSelectedAbilityDictionary);
     }
 
     public void SetRandomAbilityInfo()
@@ -93,6 +109,8 @@ public class AbilityInfoManager : MonoBehaviour {
             this.abilityInfoDictionary[abliityId].isSelected = true;
             this.selectedIndex++;
         }
+
+        this.SaveAbilityData();
 
         this.PrintCurrentSelectedAbilityInfos();
 

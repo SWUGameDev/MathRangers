@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using WjChallenge;
-
+using Newtonsoft.Json;
 public class WJ_Connector : MonoBehaviour
 {
     [Header("My Info")]
@@ -269,7 +269,7 @@ public class WJ_Connector : MonoBehaviour
                     case Response_Learning_Progress ResponselearnProg:
                     {
                             cLearnProg = ResponselearnProg;
-                            this.UploaGameResult(this.cLearnProg);
+                            this.SaveGameResult(this.cLearnProg);
                             break;
                     }
 
@@ -294,9 +294,11 @@ public class WJ_Connector : MonoBehaviour
         }
     }
 
-    private void UploaGameResult(Response_Learning_Progress response_Learning_Progress)
-    { 
-        //FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo
+    private void SaveGameResult(Response_Learning_Progress response_Learning_Progress)
+    {
+        string serializedResponseLearningProgress = JsonConvert.SerializeObject(response_Learning_Progress.data);
+
+        PlayerPrefs.SetString(GameResultUIController.responseLearningProgressDataKey, serializedResponseLearningProgress); 
     }
     #endregion
 
