@@ -17,7 +17,7 @@ public partial class RunPlayer : MonoBehaviour
     public UnityEvent onTriggerMath;
     public UnityEvent onRunPlayerDead;
 
-    private float maxPlayerHp = 1000;
+    private float maxPlayerHp = 10000;
     private float playerHp;
     private float enemyDamage = 400;
 
