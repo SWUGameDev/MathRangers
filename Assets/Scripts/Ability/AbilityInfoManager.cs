@@ -97,6 +97,8 @@ public class AbilityInfoManager : MonoBehaviour {
 
     public void SelectAbility(int abliityId)
     {
+        SoundManager.Instance?.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_SELECT_ABILITY);
+
         if (this.selectedAbilityDictionary == null)
             this.selectedAbilityDictionary = new Dictionary<AbilityId, selectedAbility>();
 

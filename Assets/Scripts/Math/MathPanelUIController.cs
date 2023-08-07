@@ -33,6 +33,8 @@ public partial class MathPanelUIController : MonoBehaviour
 
     public void SetMathPanelActive(bool isActive)
     {
+        SoundManager.Instance?.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_POPUP);
+        
         this.gameObject.SetActive(isActive);
     }
 
@@ -76,8 +78,13 @@ public partial class MathPanelUIController : MonoBehaviour
 
         if(isCorrect)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_O);
+
             this.resultImage.sprite = this.resultSprites[1];
         }else{
+
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_X);
+
             this.resultImage.sprite = this.resultSprites[0];
         }
 

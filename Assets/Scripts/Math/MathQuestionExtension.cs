@@ -74,6 +74,8 @@ public partial class MathQuestionExtension : MonoBehaviour
 
     public void SelectAnswer(int selectedIndex)
     {
+        SoundManager.Instance?.StopEffectAudioSource();
+
         bool isCorrect  = this.mathPanelUIController.textAnswers[selectedIndex].text.CompareTo(wj_connector.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
         string answerCwYn = isCorrect ? "Y" : "N";
 
