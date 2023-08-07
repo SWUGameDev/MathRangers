@@ -15,6 +15,8 @@ public class RankingUIItem : MonoBehaviour
 
     [SerializeField] private Image userIconImage;
 
+    [SerializeField] private GameObject myRankingImage;
+
     [SerializeField] private TMP_Text userName;
 
     [SerializeField] private TMP_Text userScore;
@@ -35,6 +37,11 @@ public class RankingUIItem : MonoBehaviour
     public void SetRankBackGroundImage(Color color)
     {
         this.rankBackgroundImage.color = color;
+    }
+
+    public void SetMyRankBackGroundActive(bool isActive )
+    {
+        this.myRankingImage.SetActive(isActive);
     }
 
 }
