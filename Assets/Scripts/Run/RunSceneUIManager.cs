@@ -102,19 +102,14 @@ public class RunSceneUIManager : UI_Base
 
     void GetAnswerRate(int index, bool isCorrect)
     {
-        Debug.Log("GetAnswerRate");
-        Debug.Log(index);
-        Debug.Log(isCorrect);
-
-
-        int sum = latestAnswerRate * index;
+        int sum = latestAnswerRate * (index - 1);
         if (isCorrect == true)
         {   
-            latestAnswerRate = (sum + 100) / (index + 1);
+            latestAnswerRate = (sum + 100) / index;
         }
         else if (isCorrect == false) 
         {
-            latestAnswerRate = (sum + 0) / (index + 1);
+            latestAnswerRate = (sum + 0) / index;
         }
 
         SetAnswerRate();

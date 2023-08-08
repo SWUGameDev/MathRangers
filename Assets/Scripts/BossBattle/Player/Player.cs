@@ -84,7 +84,7 @@ public partial class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     { 
-        if (col.transform.name == "Ground") 
+        if (col.gameObject.tag == "Ground") 
         { 
             jumpCount = 0;
         }
