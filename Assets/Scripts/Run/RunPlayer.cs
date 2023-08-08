@@ -13,13 +13,14 @@ public partial class RunPlayer : MonoBehaviour
     private Rigidbody2D rb;
 
     public UnityEvent onEatCheese;
-    public UnityEvent onCollisionEnemy;
+    public UnityEvent onSetHpGauge;
     public UnityEvent<bool> onTriggerMath;
     public UnityEvent onRunPlayerDead;
 
     private float maxPlayerHp = 10000;
     private float playerHp;
-    private float enemyDamage = 400;
+    private float enemyDamage = 300;
+    private float fallDownDamage = 600;
 
     [SerializeField] MathPanelUIController mathPanelUIController;
     [SerializeField] RunSceneUIManager runSceneUIManager;
@@ -55,7 +56,7 @@ public partial class RunPlayer : MonoBehaviour
         isArive = true;
         isSlide = false;
         isWalk = true;
-
+        PlayerHp = MaxPlayerHp;
         playerTransform = this.transform;
     }
     void Start()
@@ -63,7 +64,7 @@ public partial class RunPlayer : MonoBehaviour
         this.rb = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        PlayerHp = MaxPlayerHp;
+        
     }
 
     void Update()
@@ -149,10 +150,8 @@ public partial class RunPlayer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
-        { 
-            PlayerHp -= enemyDamage;
-            onCollisionEnemy?.Invoke();
-            StartCoroutine(TransparentCycle());
+        {
+            TakeDamageplayer(enemyDamage);
         }
 
         if (collision.gameObject.tag == "Cheese")
@@ -172,16 +171,29 @@ public partial class RunPlayer : MonoBehaviour
     {
         if(this.gameObject.transform.position.y <= runSceneUIManager.MinY )
         {
-            runSceneUIManager.SetAllScroll(false);
-            LiftUpPlayer();
+            this.StartCoroutine(this.LiftUpPlayer());
         }
     }
 
-    void LiftUpPlayer() 
+    IEnumerator LiftUpPlayer() 
     {
-        Debug.Log("LiftUpPlayer");
+        runSceneUIManager.SetAllScroll(false);
 
-        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 5.0f; // 현재 위치에서 yOffset만큼 y 좌표 증가
-        playerTransform.position = liftUpPosition; // 위치 업데이트
+        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 5.0f; 
+        playerTransform.position = liftUpPosition;
+
+        TakeDamageplayer(fallDownDamage);
+        
+        yield return new WaitForSeconds(1.2f);
+
+        runSceneUIManager.SetAllScroll(true);
+    }
+
+    void TakeDamageplayer(float damage)
+    {
+        PlayerHp -= damage;
+        Debug.Log(playerHp);
+        onSetHpGauge?.Invoke();
+        StartCoroutine(TransparentCycle());
     }
 }

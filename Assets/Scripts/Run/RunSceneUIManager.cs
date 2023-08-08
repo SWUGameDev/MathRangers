@@ -36,7 +36,7 @@ public class RunSceneUIManager : UI_Base
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
-        runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
+        runPlayer.onSetHpGauge.AddListener(this.SetHpGauge);
         runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
@@ -47,7 +47,7 @@ public class RunSceneUIManager : UI_Base
         minY = CalculateScreenMinY();
 
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
-        playerHpSlider.value = 1;
+        playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
 
         this.countdownController.StartCountdown(this.GameStartUISetting);
     }
@@ -55,7 +55,7 @@ public class RunSceneUIManager : UI_Base
     private void OnDestroy()
     {
         runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
-        runPlayer.onCollisionEnemy.RemoveListener(this.SetHpGauge);
+        runPlayer.onSetHpGauge.RemoveListener(this.SetHpGauge);
         runPlayer.onTriggerMath.RemoveAllListeners();
         runPlayer.onRunPlayerDead.RemoveAllListeners();
     }
@@ -82,6 +82,7 @@ public class RunSceneUIManager : UI_Base
     private void SetHpGauge()
     {
         this.playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
+        Debug.Log(this.playerHpSlider.value);
     }
 
     private void SetDeadPanel()
@@ -106,14 +107,14 @@ public class RunSceneUIManager : UI_Base
         Debug.Log(isCorrect);
 
 
-        int sum = latestAnswerRate * (index - 1);
+        int sum = latestAnswerRate * index;
         if (isCorrect == true)
-        {
-            latestAnswerRate = (sum + 100) / index;
+        {   
+            latestAnswerRate = (sum + 100) / (index + 1);
         }
         else if (isCorrect == false) 
         {
-            latestAnswerRate = (sum + 0) / index;
+            latestAnswerRate = (sum + 0) / (index + 1);
         }
 
         SetAnswerRate();
