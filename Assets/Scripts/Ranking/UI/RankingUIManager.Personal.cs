@@ -61,8 +61,6 @@ public partial class RankingUIManager : MonoBehaviour
     {
         if(this.userId == "")
             this.userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
-
-            Debug.Log(this.userId);
         
         if(this.userId == null)
             return;
