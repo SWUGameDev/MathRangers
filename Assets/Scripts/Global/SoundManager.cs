@@ -20,7 +20,9 @@ public enum effectsAudioSourceType
     SFX_BOSS_BEHIT,
     SFX_RUSH,
     SFX_PLAYER_ATTACK,
-    SFX_BOSS_CALL
+    SFX_BOSS_CALL,
+    SFX_SELECT_ABILITY,
+    SFX_POPUP
 }
 
 [Serializable]
@@ -55,6 +57,11 @@ public class SoundManager : MonoBehaviourSingleton<SoundManager>
             this.ChangeSFXArrayToDictionary();
 
         this.effectsAudioSource.PlayOneShot(this.effectAudioDictionary[type]);
+    }
+
+    public void StopEffectAudioSource()
+    {
+        this.effectsAudioSource.Stop();
     }
 
     public void ChangeBackgroundAudioSource(backgroundAudioSourceType type)
