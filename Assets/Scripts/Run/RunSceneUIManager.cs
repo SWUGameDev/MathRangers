@@ -26,6 +26,12 @@ public class RunSceneUIManager : UI_Base
     private int latestAnswerRate;
     [SerializeField] MathQuestionExtension mathQuestionExtension;
 
+    private float minY;
+    public float MinY
+    {
+        get { return minY; }
+    }
+
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
@@ -38,10 +44,12 @@ public class RunSceneUIManager : UI_Base
 
     private void Start()
     {
+        minY = CalculateScreenMinY();
+
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = 1;
 
-        this.countdownController.StartCountdown(this.SetAllScroll);
+        this.countdownController.StartCountdown(this.GameStartUISetting);
     }
 
     private void OnDestroy()
@@ -54,18 +62,21 @@ public class RunSceneUIManager : UI_Base
 
     public void EatCheeseNumber()
     {
-        Debug.Log("eatCheeseNumber");
         eatCheeseNumber++;
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
-
-    public void SetAllScroll()
+    public void GameStartUISetting()
     {
-        windowScrolling.SetisScroll();
-        cloudScrolling.SetisScroll();
-        tileScrolling.SetisScroll();
-        cheezeScrolling.SetisScroll();
+        SetAllScroll(true);
+    }
+
+    public void SetAllScroll(bool isEnabled)
+    {
+        windowScrolling.SetisScroll(isEnabled);
+        cloudScrolling.SetisScroll(isEnabled);
+        tileScrolling.SetisScroll(isEnabled);
+        cheezeScrolling.SetisScroll(isEnabled);
     }
 
     private void SetHpGauge()
@@ -80,12 +91,12 @@ public class RunSceneUIManager : UI_Base
 
     public IEnumerator SetDeadPanelCoroutine()
     {
-        SetAllScroll();
+        SetAllScroll(false);
         yield return new WaitForSeconds(0.8f);
         deadPanel.SetActive(true);
         yield return new WaitForSeconds(4.0f);
         deadPanel.SetActive(false);
-        SetAllScroll();
+        SetAllScroll(true);
     }
 
     void GetAnswerRate(int index, bool isCorrect)
@@ -111,5 +122,11 @@ public class RunSceneUIManager : UI_Base
     void SetAnswerRate()
     {
         AnswerRateText.text = latestAnswerRate.ToString() + "%"; 
+    }
+
+    public float CalculateScreenMinY()
+    {
+        Vector3 screenMin = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        return screenMin.y;
     }
 }

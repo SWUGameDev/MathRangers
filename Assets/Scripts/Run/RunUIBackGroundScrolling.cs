@@ -98,9 +98,9 @@ public class RunUIBackGroundScrolling : MonoBehaviour
         }
     }
 
-    public void SetisScroll()
+    public void SetisScroll(bool isEnabled)
     {
-        this.isScroll = !this.isScroll;
+        this.isScroll = isEnabled;
     }
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
-
+using Unity.VisualScripting;
 
 public partial class RunPlayer : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public partial class RunPlayer : MonoBehaviour
 
     public UnityEvent onEatCheese;
     public UnityEvent onCollisionEnemy;
-    public UnityEvent onTriggerMath;
+    public UnityEvent<bool> onTriggerMath;
     public UnityEvent onRunPlayerDead;
 
     private float maxPlayerHp = 10000;
@@ -32,6 +32,8 @@ public partial class RunPlayer : MonoBehaviour
     bool isArive;
     bool isSlide;
     bool isWalk;
+
+    private Transform playerTransform;
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -53,6 +55,8 @@ public partial class RunPlayer : MonoBehaviour
         isArive = true;
         isSlide = false;
         isWalk = true;
+
+        playerTransform = this.transform;
     }
     void Start()
     {
@@ -89,6 +93,8 @@ public partial class RunPlayer : MonoBehaviour
             this.isArive = false;
             onRunPlayerDead?.Invoke();
         }
+
+        CheckFallDown();
     }
 
     public void Jump()
@@ -158,7 +164,24 @@ public partial class RunPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Math" && runSceneUIManager.windowScrolling.isScroll == true)
         {
             mathPanelUIController.SetMathPanelActive(true);
-            onTriggerMath?.Invoke();
+            onTriggerMath?.Invoke(false);
         }
+    }
+    
+    void CheckFallDown()
+    {
+        if(this.gameObject.transform.position.y <= runSceneUIManager.MinY )
+        {
+            runSceneUIManager.SetAllScroll(false);
+            LiftUpPlayer();
+        }
+    }
+
+    void LiftUpPlayer() 
+    {
+        Debug.Log("LiftUpPlayer");
+
+        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 5.0f; // 현재 위치에서 yOffset만큼 y 좌표 증가
+        playerTransform.position = liftUpPosition; // 위치 업데이트
     }
 }
