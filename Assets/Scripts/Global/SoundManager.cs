@@ -6,8 +6,8 @@ using System;
 public enum backgroundAudioSourceType
 {
     BGM_MAIN,
-    BGM_BOSS_BATTLE
-
+    BGM_BOSS_BATTLE,
+    BGM_RUN
 }
 
 public enum effectsAudioSourceType
@@ -22,7 +22,9 @@ public enum effectsAudioSourceType
     SFX_PLAYER_ATTACK,
     SFX_BOSS_CALL,
     SFX_SELECT_ABILITY,
-    SFX_POPUP
+    SFX_POPUP,
+    SFX_CHEESE,
+    SFX_HURDLE
 }
 
 [Serializable]

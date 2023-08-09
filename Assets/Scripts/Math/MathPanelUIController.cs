@@ -111,7 +111,7 @@ public partial class MathPanelUIController : MonoBehaviour
         if(!isCorrect)
         {
             this.transform.gameObject.SetActive(false);
-            runSceneUIManager.SetAllScroll();
+            runSceneUIManager.SetAllScroll(true);
         }
     }
 

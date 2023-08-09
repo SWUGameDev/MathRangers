@@ -81,7 +81,7 @@ public partial class MathQuestionExtension : MonoBehaviour
 
         this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
 
-        OnQuestionSolved?.Invoke(selectedIndex,isCorrect);
+        OnQuestionSolved?.Invoke(this.currentQuestionIndex, isCorrect);
 
         Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[selectedIndex].text + answerCwYn+ questionSolveTime + " 초");
 

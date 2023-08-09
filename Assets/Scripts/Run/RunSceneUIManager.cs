@@ -21,45 +21,75 @@ public class RunSceneUIManager : UI_Base
 
     [SerializeField] private CountdownController countdownController;
     [SerializeField] GameObject deadPanel;
+
+    [SerializeField] TMP_Text AnswerRateText;
+    private int latestAnswerRate;
+    [SerializeField] MathQuestionExtension mathQuestionExtension;
+
+    [SerializeField] StopPanelController stopPanelController;
+
+    private float minY;
+    public float MinY
+    {
+        get { return minY; }
+    }
+
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
-        runPlayer.onCollisionEnemy.AddListener(this.SetHpGauge);
+        runPlayer.onSetHpGauge.AddListener(this.SetHpGauge);
         runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
+        MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
+        this.countdownController.StartCountdown(this.GameStartUISetting);
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
     }
 
     private void Start()
     {
+        minY = CalculateScreenMinY();
+        
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
-        playerHpSlider.value = 1;
-
-        this.countdownController.StartCountdown(this.SetAllScroll);
+        playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
     }
 
     private void OnDestroy()
     {
         runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
-        runPlayer.onCollisionEnemy.RemoveListener(this.SetHpGauge);
+        runPlayer.onSetHpGauge.RemoveListener(this.SetHpGauge);
         runPlayer.onTriggerMath.RemoveAllListeners();
         runPlayer.onRunPlayerDead.RemoveAllListeners();
     }
 
     public void EatCheeseNumber()
     {
-        Debug.Log("eatCheeseNumber");
         eatCheeseNumber++;
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
-
-    public void SetAllScroll()
+    public void GameStartUISetting()
     {
-        windowScrolling.SetisScroll();
-        cloudScrolling.SetisScroll();
-        tileScrolling.SetisScroll();
-        cheezeScrolling.SetisScroll();
+        SetAllScroll(true);
+        runPlayer.isRun = true;
+        SoundManager.Instance.SetBackgroundAudioSourceMute(false);
+    }
+
+    public void SetAllScroll(bool isEnabled)
+    {
+        windowScrolling.SetisScroll(isEnabled);
+        cloudScrolling.SetisScroll(isEnabled);
+        tileScrolling.SetisScroll(isEnabled);
+        cheezeScrolling.SetisScroll(isEnabled);
+        runPlayer.isRun = isEnabled;
+    }
+
+    public void SetAllReverse(bool isEnabled)
+    {
+        windowScrolling.SetisReverse(isEnabled);
+        cloudScrolling.SetisReverse(isEnabled);
+        tileScrolling.SetisReverse(isEnabled);
+        cheezeScrolling.SetisReverse(isEnabled);
     }
 
     private void SetHpGauge()
@@ -74,11 +104,38 @@ public class RunSceneUIManager : UI_Base
 
     public IEnumerator SetDeadPanelCoroutine()
     {
-        SetAllScroll();
+        SetAllScroll(false);
         yield return new WaitForSeconds(0.8f);
         deadPanel.SetActive(true);
         yield return new WaitForSeconds(4.0f);
         deadPanel.SetActive(false);
-        SetAllScroll();
+        SetAllScroll(true);
+    }
+
+    void GetAnswerRate(int index, bool isCorrect)
+    {
+        int sum = latestAnswerRate * (index - 1);
+        if (isCorrect == true)
+        {   
+            latestAnswerRate = (sum + 100) / index;
+        }
+        else if (isCorrect == false) 
+        {
+            latestAnswerRate = (sum + 0) / index;
+        }
+
+        SetAnswerRate();
+        stopPanelController.SetQuestionCorrectRate(latestAnswerRate);
+    }
+
+    void SetAnswerRate()
+    {
+        AnswerRateText.text = latestAnswerRate.ToString() + "%"; 
+    }
+
+    public float CalculateScreenMinY()
+    {
+        Vector3 screenMin = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        return screenMin.y;
     }
 }
