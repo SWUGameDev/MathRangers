@@ -26,6 +26,8 @@ public class RunSceneUIManager : UI_Base
     private int latestAnswerRate;
     [SerializeField] MathQuestionExtension mathQuestionExtension;
 
+    [SerializeField] StopPanelController stopPanelController;
+
     private float minY;
     public float MinY
     {
@@ -121,6 +123,7 @@ public class RunSceneUIManager : UI_Base
         }
 
         SetAnswerRate();
+        stopPanelController.SetQuestionCorrectRate(latestAnswerRate);
     }
 
     void SetAnswerRate()

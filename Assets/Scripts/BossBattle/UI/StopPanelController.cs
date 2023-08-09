@@ -8,35 +8,51 @@ public class StopPanelController : MonoBehaviour
 {
     [SerializeField] Image[] buffImageArr = new Image[7];
     [SerializeField] Image[] questionImageArr = new Image[7];
+    [SerializeField] Image[] questionRunArr = new Image[7];
     [SerializeField] TMP_Text correctRate;
-
+    [SerializeField] GameObject stopPanel;
+    [SerializeField] MathQuestionExtension mathQuestionExtension;
     Color green = new Color(0f, 1f, 0f);
     Color red = new Color(1f, 0f, 0f);
+
+    private void Awake()
+    {
+        MathQuestionExtension.OnQuestionSolved += SetQuestionCorrect;
+    }
     void Start()
     {
-        for(int i = 0; i < 8; i++)
-        {
-            SetQuestionCorrect(i, true);
-        }
-
         SetQuestionCorrectRate(100);
     }
 
-    public void SetQuestionCorrect(int idx, bool isCorrect)
+    public void StopPanelSetActive()
     {
+        stopPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void StopPanelSetActiveFalse()
+    {
+        stopPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void SetQuestionCorrect(int mathindex, bool isCorrect)
+    {
+        int idx = mathindex - 1;
         if(isCorrect == true)
         {
             questionImageArr[idx].color = green;
+            questionRunArr[idx].color = green;
         }
         else
         {
             questionImageArr[idx].color = red;
+            questionRunArr[idx].color = red;
         }
     }
 
     public void SetQuestionCorrectRate(int rate)
     {
-        // float 로 받아서 소수점 없애기
         this.correctRate.text = rate.ToString() + '%';
     }
 }
