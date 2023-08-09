@@ -40,7 +40,12 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("03_SignupScene");
     }
 
-    public void LoaBossScene()
+    public void LoadRunningScene()
+    {
+        SceneManager.LoadScene("07_RunScene");
+    }
+
+    public void LoadBossScene()
     {
         SceneManager.LoadScene("07_BossScene");
     }
