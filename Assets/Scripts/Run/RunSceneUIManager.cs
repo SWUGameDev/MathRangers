@@ -79,10 +79,17 @@ public class RunSceneUIManager : UI_Base
         cheezeScrolling.SetisScroll(isEnabled);
     }
 
+    public void SetAllReverse(bool isEnabled)
+    {
+        windowScrolling.SetisReverse(isEnabled);
+        cloudScrolling.SetisReverse(isEnabled);
+        tileScrolling.SetisReverse(isEnabled);
+        cheezeScrolling.SetisReverse(isEnabled);
+    }
+
     private void SetHpGauge()
     {
         this.playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
-        Debug.Log(this.playerHpSlider.value);
     }
 
     private void SetDeadPanel()

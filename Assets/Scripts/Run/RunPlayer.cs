@@ -33,6 +33,7 @@ public partial class RunPlayer : MonoBehaviour
     bool isArive;
     bool isSlide;
     bool isWalk;
+    bool isFall = false;
 
     private Transform playerTransform;
     public float MaxPlayerHp
@@ -169,7 +170,7 @@ public partial class RunPlayer : MonoBehaviour
     
     void CheckFallDown()
     {
-        if(this.gameObject.transform.position.y <= runSceneUIManager.MinY )
+        if(this.gameObject.transform.position.y <= runSceneUIManager.MinY && isFall == false)
         {
             this.StartCoroutine(this.LiftUpPlayer());
         }
@@ -177,22 +178,23 @@ public partial class RunPlayer : MonoBehaviour
 
     IEnumerator LiftUpPlayer() 
     {
+        isFall = true;
         runSceneUIManager.SetAllScroll(false);
-
-        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 5.0f; 
-        playerTransform.position = liftUpPosition;
+        runSceneUIManager.SetAllReverse(true);
 
         TakeDamageplayer(fallDownDamage);
-        
-        yield return new WaitForSeconds(1.2f);
-
+        yield return new WaitForSeconds(1.0f);
+        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 12.0f;
+        playerTransform.position = liftUpPosition;
+        runSceneUIManager.SetAllReverse(false);
+        yield return new WaitForSeconds(1.0f);
         runSceneUIManager.SetAllScroll(true);
+        isFall = false;
     }
 
     void TakeDamageplayer(float damage)
     {
         PlayerHp -= damage;
-        Debug.Log(playerHp);
         onSetHpGauge?.Invoke();
         StartCoroutine(TransparentCycle());
     }
