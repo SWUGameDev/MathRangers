@@ -188,6 +188,7 @@ public partial class RunPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
             TakeDamageplayer(enemyDamage);
             animator.SetTrigger("Behit");
         }
@@ -195,11 +196,13 @@ public partial class RunPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Cheese")
         {
             collision.gameObject.SetActive(false);
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_CHEESE);
             onEatCheese?.Invoke();
         }
 
         if (collision.gameObject.tag == "Math" && runSceneUIManager.windowScrolling.isScroll == true)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
             mathPanelUIController.SetMathPanelActive(true);
             onTriggerMath?.Invoke(false);
         }

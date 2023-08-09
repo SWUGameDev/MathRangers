@@ -43,12 +43,13 @@ public class RunSceneUIManager : UI_Base
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
         this.countdownController.StartCountdown(this.GameStartUISetting);
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
     }
 
     private void Start()
     {
         minY = CalculateScreenMinY();
-
+        
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
     }
@@ -71,6 +72,7 @@ public class RunSceneUIManager : UI_Base
     {
         SetAllScroll(true);
         runPlayer.isRun = true;
+        SoundManager.Instance.SetBackgroundAudioSourceMute(false);
     }
 
     public void SetAllScroll(bool isEnabled)
