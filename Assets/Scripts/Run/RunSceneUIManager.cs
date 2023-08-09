@@ -44,7 +44,7 @@ public class RunSceneUIManager : UI_Base
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
         this.countdownController.StartCountdown(this.GameStartUISetting);
         SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
-        SoundManager.Instance.SetBackgroundAudioSourceMute(true);
+        //SoundManager.Instance.SetBackgroundAudioSourceMute(true);
     }
 
     private void Start()
@@ -73,7 +73,7 @@ public class RunSceneUIManager : UI_Base
     {
         SetAllScroll(true);
         runPlayer.isRun = true;
-        SoundManager.Instance.SetBackgroundAudioSourceMute(false);
+        //SoundManager.Instance.SetBackgroundAudioSourceMute(false);
     }
 
     public void SetAllScroll(bool isEnabled)
