@@ -40,6 +40,7 @@ public class RunSceneUIManager : UI_Base
         runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
+        this.countdownController.StartCountdown(this.GameStartUISetting);
     }
 
     private void Start()
@@ -48,8 +49,6 @@ public class RunSceneUIManager : UI_Base
 
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
-
-        this.countdownController.StartCountdown(this.GameStartUISetting);
     }
 
     private void OnDestroy()
@@ -69,6 +68,7 @@ public class RunSceneUIManager : UI_Base
     public void GameStartUISetting()
     {
         SetAllScroll(true);
+        runPlayer.isRun = true;
     }
 
     public void SetAllScroll(bool isEnabled)
@@ -77,6 +77,7 @@ public class RunSceneUIManager : UI_Base
         cloudScrolling.SetisScroll(isEnabled);
         tileScrolling.SetisScroll(isEnabled);
         cheezeScrolling.SetisScroll(isEnabled);
+        runPlayer.isRun = isEnabled;
     }
 
     public void SetAllReverse(bool isEnabled)

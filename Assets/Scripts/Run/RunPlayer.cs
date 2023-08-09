@@ -32,10 +32,23 @@ public partial class RunPlayer : MonoBehaviour
 
     bool isArive;
     bool isSlide;
-    bool isWalk;
+    public bool isRun;
     bool isFall = false;
+    bool isJump = false;
 
     private Transform playerTransform;
+
+    [SerializeField] Animator animator;
+    string runGame = "RunGame";
+
+    enum States
+    {
+        Run = 0,
+        Jump = 1,
+        Slide = 2,
+        Idle = 3,
+    }
+
     public float MaxPlayerHp
     {
         get { return maxPlayerHp; }
@@ -56,7 +69,7 @@ public partial class RunPlayer : MonoBehaviour
         colliders[1].enabled = false;
         isArive = true;
         isSlide = false;
-        isWalk = true;
+        isRun = false;
         PlayerHp = MaxPlayerHp;
         playerTransform = this.transform;
     }
@@ -70,7 +83,6 @@ public partial class RunPlayer : MonoBehaviour
 
     void Update()
     {
-        // 테스트 용
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -80,14 +92,23 @@ public partial class RunPlayer : MonoBehaviour
         {
             Slide();
         }
-        else
-        {
-            Walk();
-        }
 
+        if(Input.GetKeyUp(KeyCode.Z)) 
+        {
+            isSlide = false;
+        }
+        
         if(isSlide == true)
         {
             Slide();
+        }
+        else if(isRun == true && isJump == false)
+        {
+            Run();
+        }
+        else if(isRun == false)
+        {
+            PlayerIdle();
         }
 
         if(this.playerHp <= 0 && this.isArive == true)
@@ -99,8 +120,15 @@ public partial class RunPlayer : MonoBehaviour
         CheckFallDown();
     }
 
+    void PlayerIdle()
+    {
+        animator.SetInteger(runGame, (int)States.Idle);
+    }
+
     public void Jump()
     {
+        isJump = true;
+
         if (jumpCount < 2)
         {
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
@@ -108,7 +136,8 @@ public partial class RunPlayer : MonoBehaviour
             rb.velocity = Vector2.zero;
             this.rb.AddForce(new Vector2(0, this.jumpForce));
 
-            if(jumpCount == 2)
+            animator.SetInteger(runGame, (int)States.Jump);
+            if (jumpCount == 2)
             {
                 // 애니메이션 변경
             }
@@ -117,19 +146,24 @@ public partial class RunPlayer : MonoBehaviour
 
     public void Slide()
     {
+        isSlide = true;
         runPlayerSpriteRenderer.sprite = slideSprite;
         colliders[0].enabled = false;
         colliders[1].enabled = true;
+
+        animator.SetInteger(runGame, (int)States.Slide);
     }
 
 
-    public void Walk()
+    public void Run()
     {
         runPlayerSpriteRenderer.sprite = walkSprite;
         colliders[0].enabled = true;
         colliders[1].enabled = false;
-    }
+        animator.SetInteger(runGame, (int)States.Run);
 
+    }
+    
     public void PointerDownSlide()
     {
         isSlide = true;
@@ -139,12 +173,14 @@ public partial class RunPlayer : MonoBehaviour
     {
         isSlide = false;
     }
-
+    
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Ground")
         {
             jumpCount = 0;
+            isJump = false;
+            animator.SetInteger(runGame, (int)States.Run);
         }
     }
 
@@ -153,6 +189,7 @@ public partial class RunPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
         {
             TakeDamageplayer(enemyDamage);
+            animator.SetTrigger("Behit");
         }
 
         if (collision.gameObject.tag == "Cheese")
