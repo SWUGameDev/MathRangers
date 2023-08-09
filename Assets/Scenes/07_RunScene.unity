@@ -9993,7 +9993,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5369862697446042640, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5369862697446042640, guid: 8acb781da5bc5462fa1d9fbf4d5c8104, type: 3}
       propertyPath: m_Volume

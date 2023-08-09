@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/04_DiagnosticScene.unity
     guid: 2acadd3554c9c415da095ae5f63bbb3f
   - enabled: 1
+    path: Assets/Scenes/07_RunScene.unity
+    guid: afa17b2954c1fad44b074325c0b4e6a6
+  - enabled: 1
     path: Assets/Scenes/07_BossScene.unity
     guid: 9132de0ad4a2e914cb509929769d9ad0
   - enabled: 1

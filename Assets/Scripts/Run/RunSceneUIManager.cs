@@ -44,6 +44,7 @@ public class RunSceneUIManager : UI_Base
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
         this.countdownController.StartCountdown(this.GameStartUISetting);
         SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
+        SoundManager.Instance.SetBackgroundAudioSourceMute(true);
     }
 
     private void Start()
@@ -126,6 +127,9 @@ public class RunSceneUIManager : UI_Base
 
         SetAnswerRate();
         stopPanelController.SetQuestionCorrectRate(latestAnswerRate);
+
+        // 분리하기
+        // ResultTest
     }
 
     void SetAnswerRate()
