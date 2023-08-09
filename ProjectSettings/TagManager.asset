@@ -10,6 +10,7 @@ TagManager:
   - Cheese
   - Enemy
   - Math
+  - End
   layers:
   - Default
   - TransparentFX

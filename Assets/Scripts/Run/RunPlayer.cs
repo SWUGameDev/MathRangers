@@ -41,6 +41,7 @@ public partial class RunPlayer : MonoBehaviour
     [SerializeField] Animator animator;
     string runGame = "RunGame";
 
+    [SerializeField] SceneController sceneController;
     enum States
     {
         Run = 0,
@@ -76,7 +77,7 @@ public partial class RunPlayer : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
-        playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
 
         
     }
@@ -205,6 +206,11 @@ public partial class RunPlayer : MonoBehaviour
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
             mathPanelUIController.SetMathPanelActive(true);
             onTriggerMath?.Invoke(false);
+        }
+
+        if(collision.gameObject.tag == "End")
+        {
+            sceneController.LoaBossScene();
         }
     }
     
