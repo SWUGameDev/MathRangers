@@ -10417,11 +10417,13 @@ MonoBehaviour:
   cloudScrolling: {fileID: 1128229654}
   tileScrolling: {fileID: 1399481602}
   cheezeScrolling: {fileID: 2135592708}
+  endScrolling: {fileID: 467168106}
   countdownController: {fileID: 1286087816}
   deadPanel: {fileID: 1189177725}
   AnswerRateText: {fileID: 976448701}
   mathQuestionExtension: {fileID: 1394559066}
   stopPanelController: {fileID: 853260405}
+  gameResultUIController: {fileID: 1717070137}
 --- !u!4 &371807752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8520939495168951753, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
@@ -12895,6 +12897,7 @@ GameObject:
   - component: {fileID: 467168104}
   - component: {fileID: 467168103}
   - component: {fileID: 467168102}
+  - component: {fileID: 467168106}
   m_Layer: 0
   m_Name: End
   m_TagString: End
@@ -13008,14 +13011,34 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467168101}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 983.08, y: -0.67, z: 0}
   m_LocalScale: {x: 1, y: 5.182637, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 2028809517}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467168106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467168101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9924ff20175dc5e4a8aaf46e2264106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 7
+  backgrounds:
+  - {fileID: 467168105}
+  isRepeat: 0
+  isDistance: 0
+  isScroll: 0
+  isReverse: 0
+  backgoundObject: {fileID: 467168101}
 --- !u!1001 &468011170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53486,6 +53509,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8520939495168951753, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
   m_PrefabInstance: {fileID: 2136522441}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1717070137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5363084978243688071, guid: 7f2f96d309e8f4a8791a353cdc64848f, type: 3}
+  m_PrefabInstance: {fileID: 5819960}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9f87f1700054d85a48870f89552606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1718891333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60415,6 +60449,7 @@ Transform:
   - {fileID: 1695216005}
   - {fileID: 699084930}
   - {fileID: 1990465622}
+  - {fileID: 467168105}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

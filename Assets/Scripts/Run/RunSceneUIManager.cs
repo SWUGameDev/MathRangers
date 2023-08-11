@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Newtonsoft.Json;
+using WjChallenge;
 
 public class RunSceneUIManager : UI_Base
 {
@@ -18,15 +20,17 @@ public class RunSceneUIManager : UI_Base
     [SerializeField] RunUIBackGroundScrolling cloudScrolling;
     [SerializeField] RunUIBackGroundScrolling tileScrolling;
     [SerializeField] RunUIBackGroundScrolling cheezeScrolling;
+    [SerializeField] RunUIBackGroundScrolling endScrolling;
 
     [SerializeField] private CountdownController countdownController;
     [SerializeField] GameObject deadPanel;
 
     [SerializeField] TMP_Text AnswerRateText;
-    private int latestAnswerRate;
+    private float latestAnswerRate;
     [SerializeField] MathQuestionExtension mathQuestionExtension;
 
     [SerializeField] StopPanelController stopPanelController;
+    [SerializeField] GameResultUIController gameResultUIController;
 
     private float minY;
     public float MinY
@@ -34,6 +38,8 @@ public class RunSceneUIManager : UI_Base
         get { return minY; }
     }
 
+    private int solveIndex;
+    private float sum;
     private void Awake()
     {
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
@@ -50,7 +56,7 @@ public class RunSceneUIManager : UI_Base
     private void Start()
     {
         minY = CalculateScreenMinY();
-        
+        sum = 0;
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
         playerHpSlider.value = runPlayer.PlayerHp / runPlayer.MaxPlayerHp;
     }
@@ -82,6 +88,7 @@ public class RunSceneUIManager : UI_Base
         cloudScrolling.SetisScroll(isEnabled);
         tileScrolling.SetisScroll(isEnabled);
         cheezeScrolling.SetisScroll(isEnabled);
+        endScrolling.SetisScroll(isEnabled);
         runPlayer.isRun = isEnabled;
     }
 
@@ -115,21 +122,33 @@ public class RunSceneUIManager : UI_Base
 
     void GetAnswerRate(int index, bool isCorrect)
     {
-        int sum = latestAnswerRate * (index - 1);
         if (isCorrect == true)
-        {   
-            latestAnswerRate = (sum + 100) / index;
-        }
-        else if (isCorrect == false) 
         {
-            latestAnswerRate = (sum + 0) / index;
+            sum += 100;
         }
 
+        latestAnswerRate = (int)(sum / index);
         SetAnswerRate();
-        stopPanelController.SetQuestionCorrectRate(latestAnswerRate);
+        stopPanelController.SetQuestionCorrectRate((int)latestAnswerRate);
 
         // 분리하기
         // ResultTest
+        Debug.Log(index);
+        solveIndex = index;
+    }
+
+    public void GameResultSuccess()
+    {
+        if (solveIndex == 8)
+        {
+            if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
+                return;
+
+            string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
+            Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
+
+            this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
+        }
     }
 
     void SetAnswerRate()

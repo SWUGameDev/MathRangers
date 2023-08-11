@@ -35,5 +35,6 @@ public class BuffSelectPanelUIController : MonoBehaviour
 
         // 스크롤 속도 정상화
         runSceneUIManager.SetAllScroll(true);
+        runSceneUIManager.GameResultSuccess();
     }
 }
