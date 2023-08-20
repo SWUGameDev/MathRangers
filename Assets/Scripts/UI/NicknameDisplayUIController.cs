@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MainSceneUIManager : MonoBehaviour
+public class NicknameDisplayUIController : MonoBehaviour
 {
     [SerializeField] private TMP_Text nicknameText;
     void Start()
@@ -13,9 +13,8 @@ public class MainSceneUIManager : MonoBehaviour
         this.nicknameText.text = userNickname;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetNicknameText(string nickname)
     {
-        
+        this.nicknameText.text = nickname;
     }
 }
