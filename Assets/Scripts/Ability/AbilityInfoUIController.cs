@@ -23,14 +23,16 @@ public class AbilityInfoUIController : MonoBehaviour {
 
     private AbilityInfo abilityInfo;
 
+    [SerializeField] RunSceneUIManager runSceneUIManager;
+    
     private void Start()
     {
         this.abilitySelectedButton.onClick.AddListener(() =>
         {
             this.abilityInfoManager.SelectAbility(this.abilityInfo.abilityId);
+            runSceneUIManager.ShowAbilityOnScreen(this.abilityInfo);
         });
     }
-
 
     public void InitializeAbilityUIInfo(AbilityInfoManager abilityInfoManager,AbilityInfo abilityInfo)
     {
