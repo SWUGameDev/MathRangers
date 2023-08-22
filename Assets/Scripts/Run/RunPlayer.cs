@@ -210,7 +210,6 @@ public partial class RunPlayer : MonoBehaviour
 
         if(collision.gameObject.tag == "End")
         {
-            Debug.Log("collision end");
             sceneController.LoadBossScene();
         }
     }
