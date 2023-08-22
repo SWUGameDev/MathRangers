@@ -74,6 +74,7 @@ public class RunSceneUIManager : UI_Base
     public void EatCheeseNumber()
     {
         eatCheeseNumber++;
+        RunBossItemManager.Instance.CheeseFromRunGame = eatCheeseNumber;
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
@@ -109,6 +110,7 @@ public class RunSceneUIManager : UI_Base
     private void SetDeadPanel()
     {
         this.StartCoroutine(this.SetDeadPanelCoroutine());
+        
     }
 
     public IEnumerator SetDeadPanelCoroutine()
