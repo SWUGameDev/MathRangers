@@ -11,12 +11,16 @@ public partial class MathQuestionExtension : MonoBehaviour
     {
         if(time==this.timerAnimTime)
         {
+            SoundManager.Instance?.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_TIME_LIMIT_TEN_REMAINED);
+
             this.mathPanelUIController.SetTimerTimeoutUI();
         }
     }
 
     private void SetTimeout()
     {
+        SoundManager.Instance?.StopEffectAudioSource();
+
         this.SendLearningSelectAnswer(0,"N",false);
     }
 

@@ -7,7 +7,7 @@ public partial class RunPlayer : MonoBehaviour
 {
     // 무적 상태 관련 스크립트
     private Color changeColor;
-    private SpriteRenderer playerSpriteRenderer;
+    [SerializeField] SpriteRenderer[] playerSpriteRenderer;
     private bool isTransparent = false;
     private bool isUnbeat = false;
 
@@ -30,8 +30,11 @@ public partial class RunPlayer : MonoBehaviour
     private void ChangeTransparent()
     {
         transparentAlpha = isTransparent ? transparent : normal;
-        changeColor = playerSpriteRenderer.color;
-        changeColor.a = transparentAlpha;
-        playerSpriteRenderer.color = changeColor;
+        for (int i = 0; i < playerSpriteRenderer.Length; i++)
+        {
+            changeColor = playerSpriteRenderer[i].color;
+            changeColor.a = transparentAlpha;
+            playerSpriteRenderer[i].color = changeColor;
+        }
     }
 }

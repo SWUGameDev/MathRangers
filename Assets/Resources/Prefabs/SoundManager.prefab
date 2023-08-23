@@ -186,6 +186,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 8908065bd539c924c88f105417442ddc, type: 3}
   - backgroundAudioType: 1
     audioClip: {fileID: 8300000, guid: 27919b6a459b042b4a91ad139ff2d6a8, type: 3}
+  - backgroundAudioType: 2
+    audioClip: {fileID: 8300000, guid: fee16baa3741d4aa9b1d9d92b8341ee2, type: 3}
   effectAudioClipArray:
   - effectAudioType: 0
     audioClip: {fileID: 8300000, guid: ef2d3c79a61fe4a17bbb3aa432e4976a, type: 3}
@@ -205,6 +207,14 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 84d9878527c6846b4a22ff23a468ba9e, type: 3}
   - effectAudioType: 8
     audioClip: {fileID: 8300000, guid: 5964031bc208a4e3ba6f3e8164071ef1, type: 3}
+  - effectAudioType: 9
+    audioClip: {fileID: 8300000, guid: 43613d2ff0228407ea8ff6ea87fa50c9, type: 3}
+  - effectAudioType: 10
+    audioClip: {fileID: 8300000, guid: 7faffcd6f5b634414b77ad2da7d9d3f2, type: 3}
+  - effectAudioType: 11
+    audioClip: {fileID: 8300000, guid: 83241f1cc2def4f0db057c321ba9123f, type: 3}
+  - effectAudioType: 12
+    audioClip: {fileID: 8300000, guid: 7f238d246cc424af89ac255048c3da11, type: 3}
 --- !u!1 &5369862698219727299
 GameObject:
   m_ObjectHideFlags: 0

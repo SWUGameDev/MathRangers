@@ -155,10 +155,18 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetTextInMultipleContents(DialogSystemUIInfo selectedUIInfo,List<string> contents,int index)
     {
+        // Debug.Log("SetTextInMultipleContents"+index);
+        // for(int i =0;i<3;i++)
+        //     Debug.Log(contents[i]);
         if(this.languageIndex == 0)
-            selectedUIInfo.contentText.text = this.dialogData[dataIndex][index].content.Replace("[Nickname]",this.userNickname);
+        {
+            selectedUIInfo.contentText.text = contents[index].Replace("[Nickname]",this.userNickname);
+        }
         else
-            selectedUIInfo.contentText.text = this.dialogData[dataIndex][index].content.Replace("[닉네임]",this.userNickname);
+        {
+            selectedUIInfo.contentText.text = contents[index].Replace("[닉네임]",this.userNickname);
+        }
+ 
     }
 
     private void SetSelectPanel(int selectedPanelIndex)

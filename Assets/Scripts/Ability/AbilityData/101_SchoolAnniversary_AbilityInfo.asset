@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e4ea9eeb4249a49a796afc4a0a673, type: 3}
+  m_Name: 101_SchoolAnniversary_AbilityInfo
+  m_EditorClassIdentifier: 
+  abilityId: 101
+  abilityName:
+    koreanName: "\uAC1C\uAD50\uAE30\uB150\uC77C"
+    englishName: School Anniversary
+  abilityDescription:
+    koreanDescription: "\uAC1C\uAD50\uAE30\uB150\uC77C\uB85C \uD559\uAD50\uAC00 \uC270\uB2E4.
+      \uC218\uD559\uB808\uC778\uC800\uAC00 {0}\uCD08 \uB3D9\uC548 \uBB34\uC801\uC774
+      \uB41C\uB2E4."
+    englishDescription: School is closed for school anniversary. Mathranger becomes
+      unbeatable for {0} seconds.
+  abilityIcon: {fileID: 21300000, guid: d87dc65665d1d1c4e8aecc1a562ebd9d, type: 3}
+  abilityType: 1
+  isSelected: 0
+  abilityCommands:
+  - fieldName: unbeat
+    target: player
+    amountForLevel:
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    commandOperator: 3

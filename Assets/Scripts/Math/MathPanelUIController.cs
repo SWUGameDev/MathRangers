@@ -29,8 +29,12 @@ public partial class MathPanelUIController : MonoBehaviour
 
     [SerializeField] private BuffSelectPanelUIController buffSelectPanelUIController;
 
+    [SerializeField] private RunSceneUIManager runSceneUIManager;
+
     public void SetMathPanelActive(bool isActive)
     {
+        SoundManager.Instance?.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_POPUP);
+        
         this.gameObject.SetActive(isActive);
     }
 
@@ -74,8 +78,13 @@ public partial class MathPanelUIController : MonoBehaviour
 
         if(isCorrect)
         {
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_O);
+
             this.resultImage.sprite = this.resultSprites[1];
         }else{
+
+            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_DIAGNOSTIC_X);
+
             this.resultImage.sprite = this.resultSprites[0];
         }
 
@@ -100,7 +109,11 @@ public partial class MathPanelUIController : MonoBehaviour
         this.ResetTimerUI();
 
         if(!isCorrect)
+        {
             this.transform.gameObject.SetActive(false);
+            runSceneUIManager.SetAllScroll(true);
+            // runSceneUIManager.GameResultSuccess();
+        }
     }
 
     private void SetAnswerButtonActive(bool isActable)

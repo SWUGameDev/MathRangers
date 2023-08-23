@@ -7,15 +7,15 @@ public class BuffSelectPanelUIController : MonoBehaviour
     [SerializeField] private GameObject mathPanelGameObject;
     [SerializeField] private Animator animator;
     [SerializeField] private AbilityInfoManager abilityInfoManager;
-
-    private readonly string BuffPanelExitKey = "IsExited"; 
-
+    [SerializeField] private RunSceneUIManager runSceneUIManager;
+    private readonly string BuffPanelExitKey = "IsExited";
 
     public void SetBuffPanelActive(bool isActive)
     {
         this.transform.gameObject.SetActive(isActive);
 
-        this.abilityInfoManager.SetRandomAbilityInfo();
+        if(isActive)
+            this.abilityInfoManager.SetRandomAbilityInfo();
     }
 
     public void SetUnActive()
@@ -32,5 +32,9 @@ public class BuffSelectPanelUIController : MonoBehaviour
         this.transform.gameObject.SetActive(false);
 
         this.mathPanelGameObject?.SetActive(false);
+
+        // 스크롤 속도 정상화
+        runSceneUIManager.SetAllScroll(true);
+        // runSceneUIManager.GameResultSuccess();
     }
 }

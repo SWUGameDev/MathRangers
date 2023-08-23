@@ -74,12 +74,14 @@ public partial class MathQuestionExtension : MonoBehaviour
 
     public void SelectAnswer(int selectedIndex)
     {
+        SoundManager.Instance?.StopEffectAudioSource();
+
         bool isCorrect  = this.mathPanelUIController.textAnswers[selectedIndex].text.CompareTo(wj_connector.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
         string answerCwYn = isCorrect ? "Y" : "N";
 
         this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
 
-        OnQuestionSolved?.Invoke(selectedIndex,isCorrect);
+        OnQuestionSolved?.Invoke(this.currentQuestionIndex, isCorrect);
 
         Debug.Log("문제풀이 중"+ this.mathPanelUIController.textAnswers[selectedIndex].text + answerCwYn+ questionSolveTime + " 초");
 

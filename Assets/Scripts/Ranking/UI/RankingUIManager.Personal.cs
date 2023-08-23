@@ -40,7 +40,7 @@ public partial class RankingUIManager : MonoBehaviour
 
             controller.InitializeRankingItemController(index+1,infos[index]);
             this.SetRankBackgroundColor(index,controller);
-            if(this.isCurrentUserChecked)
+            if(this.isCurrentUserChecked == false)
                 this.SetMyRankBackgroundColor(infos[index],controller);
 
             this.rankingItems.Add(controller);
@@ -67,7 +67,7 @@ public partial class RankingUIManager : MonoBehaviour
 
         if(this.userId == rankInfo.UID)
         {
-            rankingItemController.SetItemBackGroundImage(this.myRankHighlightBackgroundColor);
+            rankingItemController.SetMyRankBackGroundActive(true);
             this.isCurrentUserChecked = true;
         }
         
