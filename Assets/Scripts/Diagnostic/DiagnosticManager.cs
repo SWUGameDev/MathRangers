@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Newtonsoft.Json;
 
 public enum CurrentStatus { WAITING, DIAGNOSIS, LEARNING }
 
@@ -93,13 +94,17 @@ public class DiagnosticManager : MonoBehaviour
 
     [SerializeField] private TeamMatchManager teamMatchManager;
 
+    public static readonly string userInfoData = "Key_UserInfoData";
+
     private void InitializeUserInfo()
     {
         string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
         string userMBRId = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsMBRKey);
         
         UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, userMBRId,this.teamMatchManager.GetSelectedTeam());
-        string serializedData = JsonUtility.ToJson(userInfo);
+        string serializedData = JsonConvert.SerializeObject(userInfo);
+
+        PlayerPrefs.SetString(DiagnosticManager.userInfoData,serializedData);
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
