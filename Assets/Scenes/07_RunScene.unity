@@ -21329,7 +21329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9924ff20175dc5e4a8aaf46e2264106e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 4
+  scrollSpeed: 2
   backgrounds:
   - {fileID: 1484228833}
   - {fileID: 547238065}
@@ -34203,7 +34203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9924ff20175dc5e4a8aaf46e2264106e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 2
+  scrollSpeed: 1
   backgrounds:
   - {fileID: 1213183719}
   - {fileID: 1699751510}
