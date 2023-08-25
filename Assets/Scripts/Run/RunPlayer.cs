@@ -33,7 +33,7 @@ public partial class RunPlayer : MonoBehaviour
     bool isArive;
     bool isSlide;
     public bool isRun;
-    bool isFall = false;
+
     bool isJump = false;
 
     private Transform playerTransform;
@@ -77,9 +77,6 @@ public partial class RunPlayer : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
-
-
-        
     }
 
     void Update()
@@ -87,16 +84,6 @@ public partial class RunPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
-        }
-
-        if(Input.GetKey(KeyCode.Z))
-        {
-            Slide();
-        }
-
-        if(Input.GetKeyUp(KeyCode.Z)) 
-        {
-            isSlide = false;
         }
         
         if(isSlide == true)
@@ -138,10 +125,6 @@ public partial class RunPlayer : MonoBehaviour
             this.rb.AddForce(new Vector2(0, this.jumpForce));
 
             animator.SetInteger(runGame, (int)States.Jump);
-            if (jumpCount == 2)
-            {
-                // 애니메이션 변경
-            }
         }
     }
 
@@ -162,12 +145,12 @@ public partial class RunPlayer : MonoBehaviour
         colliders[0].enabled = true;
         colliders[1].enabled = false;
         animator.SetInteger(runGame, (int)States.Run);
-
     }
     
     public void PointerDownSlide()
     {
         isSlide = true;
+        Slide();
     }
 
     public void PointerUpSlide()
@@ -212,30 +195,6 @@ public partial class RunPlayer : MonoBehaviour
         {
             sceneController.LoadBossScene();
         }
-    }
-    
-    void CheckFallDown()
-    {
-        if(this.gameObject.transform.position.y <= runSceneUIManager.MinY && isFall == false)
-        {
-            this.StartCoroutine(this.LiftUpPlayer());
-        }
-    }
-
-    IEnumerator LiftUpPlayer() 
-    {
-        isFall = true;
-        runSceneUIManager.SetAllScroll(false);
-        runSceneUIManager.SetAllReverse(true);
-
-        TakeDamageplayer(fallDownDamage);
-        yield return new WaitForSeconds(1.0f);
-        Vector3 liftUpPosition = playerTransform.position + Vector3.up * 12.0f;
-        playerTransform.position = liftUpPosition;
-        runSceneUIManager.SetAllReverse(false);
-        yield return new WaitForSeconds(1.0f);
-        runSceneUIManager.SetAllScroll(true);
-        isFall = false;
     }
 
     void TakeDamageplayer(float damage)
