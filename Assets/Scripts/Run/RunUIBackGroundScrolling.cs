@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class RunUIBackGroundScrolling : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class RunUIBackGroundScrolling : MonoBehaviour
     [SerializeField] bool isRepeat;
     [SerializeField] bool isDistance;
     public bool isScroll;
+    public bool isReverse;
     [SerializeField] GameObject backgoundObject;
     SpriteRenderer objectSpriteRenderer;
     private float objectWidth;
@@ -50,10 +49,16 @@ public class RunUIBackGroundScrolling : MonoBehaviour
 
     void Update()
     {
-        if(this.isScroll == true)
+        if (this.isScroll == true)
         {
             ScrollBackground();
         }
+        
+        if (this.isReverse == true)
+        {
+            ScrollReverse();
+        }
+
 
         if (this.isRepeat == true)
         {
@@ -73,6 +78,15 @@ public class RunUIBackGroundScrolling : MonoBehaviour
             backgrounds[i].position += new Vector3(-scrollSpeed, 0, 0) * Time.deltaTime;
         }
     }
+
+    void ScrollReverse()
+    {
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            backgrounds[i].position += new Vector3(scrollSpeed * 1.5f, 0, 0) * Time.deltaTime;
+        }
+    }
+
 
     void WarpBackground()
     {
@@ -98,9 +112,14 @@ public class RunUIBackGroundScrolling : MonoBehaviour
         }
     }
 
-    public void SetisScroll()
+    public void SetisScroll(bool isEnabled)
     {
-        this.isScroll = !this.isScroll;
+        this.isScroll = isEnabled;
+    }
+
+    public void SetisReverse(bool isEnabled)
+    {
+        this.isReverse = isEnabled;
     }
 }
 

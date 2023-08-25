@@ -3,7 +3,7 @@ talker,selection,name,spriteType,isMultiContent,content
 0,0,Town Jjhief,0,0,……Squeak.
 0,0,Town Jjhief,2,0,"Um, um. You are cool! I can trust you."
 0,0,Town Jjhief,0,0,"Well, squeak, then……."
-0,0,Town Jjhief,0,0,The Exam monster is very dangerous. You need to hide your identity.
+0,0,Town Jjhief,1,0,The Exam monster is very dangerous. You need to hide your identity.
 0,0,Town Jjhief,1,0,I will give you a new name.
 0,0,Town Jjhief,1,0,"Your new name, squeak, from now on…!"
 0,0,Town Jjhief,1,0,From now on…………………!
@@ -12,6 +12,22 @@ talker,selection,name,spriteType,isMultiContent,content
 0,0,Town Jjhief,2,0,……Squeak.
 0,0,Town Jjhief,0,0,How is it? Do you like it?
 0,0,Town Jjhief,0,0,[Nickname]. Congratulation on becoming the Mathranger.
-0,0,Town Jjhief,0,0,Please repel the Exam monster and bring peace to our town.
+0,0,Town Jjhief,0,0,"Then, i'll explain the mission before you start."
+0,0,Town Jjhief,0,0,The exam monster is deep in the school. You must go there to combat with it.
+0,0,Town Jjhief,0,0,The way to go there is very rough. There are many enemies there.
+0,0,Town Jjhief,1,0,"But, you can do! Squeak!"
+0,0,Town Jjhief,0,0,"You can <color=#479dda>[""jump""]</color> and <color=#479dda>[""slide""]</color> well to avoid them."
+0,0,Town Jjhief,0,0,"There is a hearsay that something that looks like a rular poses horrible <color=#bf4240>[""questions""]</color>. You have to solve the question to pass."
+0,0,Town Jjhief,0,0,"And if you solve it, you can get a <color=#a9ad35>[""special buff""]</color>! Squeak!"
+0,0,Town Jjhief,1,0,"If you have that buff, your battle will be easier...!"
+0,0,Town Jjhief,0,0,"Squeak, squeak... And..."
+0,0,Town Jjhief,2,0,Don't forget to collect delicious cheese! It is used for good!
+0,0,Town Jjhief,0,0,And there are various activities besides defeating the exam monster.
+0,0,Town Jjhief,0,0,You can decorate yourself with skin items and listen to peaceful music.
+0,0,Town Jjhief,0,0,It is also possible to check your records and compete against other mathrangers for score.
+0,0,Town Jjhief,2,0,"In addition, you can compete for family scores with the honor of the family!"
+0,0,Town Jjhief,0,0,"When you are tired of fighting, try other various activities! Squeak!"
+0,0,Town Jjhief,1,0,Then [Nickname]... It is time to start!
+0,0,Town Jjhief,1,0,Please repel the Exam monster and bring peace to our town.
 0,0,Town Jjhief,0,0,…….
 0,0,Town Jjhief,2,0,……Squeak.
