@@ -113,6 +113,7 @@ public partial class MathPanelUIController : MonoBehaviour
             this.transform.gameObject.SetActive(false);
             runSceneUIManager.SetAllScroll(true);
             // runSceneUIManager.GameResultSuccess();
+            Handheld.Vibrate();
         }
     }
 
