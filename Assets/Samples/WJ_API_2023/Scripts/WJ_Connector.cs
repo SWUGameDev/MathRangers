@@ -298,6 +298,7 @@ public class WJ_Connector : MonoBehaviour
     {
         string serializedResponseLearningProgress = JsonConvert.SerializeObject(response_Learning_Progress.data);
 
+        // 풀이 결과를 여기 1차적으로 저장합니다.
         PlayerPrefs.SetString(GameResultUIController.responseLearningProgressDataKey, serializedResponseLearningProgress); 
     }
     #endregion

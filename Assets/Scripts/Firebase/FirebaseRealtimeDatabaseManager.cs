@@ -64,7 +64,7 @@ public partial class FirebaseRealtimeDatabaseManager
                 Debug.LogError("Data write encountered an error: " + task.Exception);
             }else if(task.IsCompleted)
             {
-                Debug.Log("Upload Complete");
+                Debug.Log("Upload Completed");
 
                 onCompleted?.Invoke();
             }

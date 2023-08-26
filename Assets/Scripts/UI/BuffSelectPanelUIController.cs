@@ -33,8 +33,9 @@ public class BuffSelectPanelUIController : MonoBehaviour
 
         this.mathPanelGameObject?.SetActive(false);
 
+        // TODO : 이벤트기반으로 변경
         // 스크롤 속도 정상화
-        runSceneUIManager.SetAllScroll(true);
-        runSceneUIManager.GameResultSuccess();
+        runSceneUIManager?.SetAllScroll(true);
+        runSceneUIManager?.GameResultSuccess();
     }
 }

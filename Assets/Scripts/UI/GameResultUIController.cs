@@ -41,11 +41,17 @@ public class GameResultNPCContent
     }
 }
 
+[Serializable]
 public class GameResultData
 {
     public long damage;
     public int minionCount;
     public int cheeseCount;
+
+    public GameResultData()
+    {
+
+    }
 
     public GameResultData(int cheeseCount)
     {
@@ -164,6 +170,22 @@ public partial class GameResultUIController : MonoBehaviour
         this.earningText.text = gameResultData.cheeseCount.ToString("N0");
 
         this.titleText.text = this.gameResultContentDictionary[type].gameResultTitle;
+
+        this.SaveGameResultData(type,gameResultData,progressData);
+    }
+
+    private void SaveGameResultData(GameResultType type,GameResultData gameResultData,Response_Learning_ProgressData progressData)
+    {
+
+        GameResultInfo gameResultInfo = new GameResultInfo(type,gameResultData,progressData);
+        string gameResultInfoString = JsonConvert.SerializeObject(gameResultInfo);
+        string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
+        FirebaseRealtimeDatabaseManager.Instance.UploadGameResultInfo(userId,gameResultInfoString,()=>{this.UploadGameResultDebug(gameResultInfoString);});
+    }
+
+    private void UploadGameResultDebug(string data)
+    {
+        Debug.Log($"Upload Data : {data}");
     }
 
     private void PlayParticle()

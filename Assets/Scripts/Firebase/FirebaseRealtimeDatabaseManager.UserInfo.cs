@@ -8,7 +8,7 @@ public partial class FirebaseRealtimeDatabaseManager
 
     public void UploadGameResultInfo(string userUID, string serializedGameResultInfo, Action OnCompleted = null)
     {
-        this.WriteData<UserInfo>($"{FirebaseRealtimeDatabaseManager.gameResultInfoRootKey}/{userUID}", serializedGameResultInfo, OnCompleted);
+        this.WriteData<UserInfo>($"{FirebaseRealtimeDatabaseManager.gameResultInfoRootKey}/{userUID}/{DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss")}", serializedGameResultInfo, OnCompleted);
     }
 
 
