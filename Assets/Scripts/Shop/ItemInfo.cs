@@ -12,7 +12,7 @@ public class ItemInfo : MonoBehaviour
 {
     [SerializeField] private int itemId;
     [SerializeField] private string itemResourceFileName;
-    [SerializeField] public int price {get; private set;}
+    [SerializeField] public int price;
     [SerializeField] public ItemType itemType;
     [SerializeField] public int minLevel;
     [SerializeField] private bool isOwned;
