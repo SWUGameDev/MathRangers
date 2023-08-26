@@ -32,6 +32,9 @@ public class RunSceneUIManager : UI_Base
     [SerializeField] StopPanelController stopPanelController;
     [SerializeField] GameResultUIController gameResultUIController;
 
+    [SerializeField] private Image[] selectAbilityOnPlayImages;
+    [SerializeField] private Image[] selectAbilityOnStopImages;
+    private int abilityIndex = 0;
     private float minY;
     public float MinY
     {
@@ -50,7 +53,6 @@ public class RunSceneUIManager : UI_Base
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
         this.countdownController.StartCountdown(this.GameStartUISetting);
         SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
-        //SoundManager.Instance.SetBackgroundAudioSourceMute(true);
     }
 
     private void Start()
@@ -72,6 +74,7 @@ public class RunSceneUIManager : UI_Base
     public void EatCheeseNumber()
     {
         eatCheeseNumber++;
+        RunBossItemManager.Instance.CheeseFromRunGame = eatCheeseNumber;
         eatCheeseNumberText.text = eatCheeseNumber.ToString();
     }
 
@@ -79,7 +82,6 @@ public class RunSceneUIManager : UI_Base
     {
         SetAllScroll(true);
         runPlayer.isRun = true;
-        //SoundManager.Instance.SetBackgroundAudioSourceMute(false);
     }
 
     public void SetAllScroll(bool isEnabled)
@@ -108,6 +110,7 @@ public class RunSceneUIManager : UI_Base
     private void SetDeadPanel()
     {
         this.StartCoroutine(this.SetDeadPanelCoroutine());
+        
     }
 
     public IEnumerator SetDeadPanelCoroutine()
@@ -160,5 +163,12 @@ public class RunSceneUIManager : UI_Base
     {
         Vector3 screenMin = Camera.main.ScreenToWorldPoint(Vector3.zero);
         return screenMin.y;
+    }
+
+    public void ShowAbilityOnScreen(AbilityInfo abilityInfo)
+    {
+        selectAbilityOnPlayImages[abilityIndex].sprite = abilityInfo.abilityIcon;
+        selectAbilityOnStopImages[abilityIndex].sprite = abilityInfo.abilityIcon;
+        abilityIndex++;
     }
 }

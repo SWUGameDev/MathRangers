@@ -1199,10 +1199,10 @@ MonoBehaviour:
   diagnosticCanvas: {fileID: 587137532}
   EnglishTextAssets:
   - {fileID: 4900000, guid: f9a74caa2e1d143be9fb6a85b4ed41f6, type: 3}
-  - {fileID: 4900000, guid: 2b26b36ecfadc449f991408dd9809cd7, type: 3}
+  - {fileID: 4900000, guid: 647203edb20ff45a1ab3a4090f69e856, type: 3}
   TextAssets:
   - {fileID: 4900000, guid: c2a984a3929474c99aaf10b8c07cfb78, type: 3}
-  - {fileID: 4900000, guid: 21abc8940bce4440285c1b40c3a93f16, type: 3}
+  - {fileID: 4900000, guid: 5192336e9144c4847b49bc171ec54780, type: 3}
   EnglishSelectPanelTextAssets:
   - {fileID: 4900000, guid: 0ba7565b195534908bee8def9061b719, type: 3}
   SelectPanelTextAssets:

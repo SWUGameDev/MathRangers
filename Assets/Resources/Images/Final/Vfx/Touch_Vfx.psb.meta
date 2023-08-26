@@ -7,7 +7,7 @@ ScriptedImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-  script: {instanceID: 0}
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -104,7 +104,7 @@ ScriptedImporter:
       y: 4
       width: 172
       height: 152
-    spriteID: f95f5b749ae918d448a591eaff2b2012
+    spriteID: 11cd72512f6449e41a67bde95e8b3a18
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -126,7 +126,7 @@ ScriptedImporter:
       y: 4
       width: 160
       height: 141
-    spriteID: 40e6049d366b18f4293e3e8544dfec1b
+    spriteID: 396b98cba31705a4aa1975bd51ecf5e9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,7 +148,7 @@ ScriptedImporter:
       y: 4
       width: 134
       height: 127
-    spriteID: 582c3bb27b33424459a8656e43dfb82e
+    spriteID: 5f494df980c652d46965451a714ba76e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 164
       width: 163
       height: 114
-    spriteID: 3648820ece83a264bbb62eb433790aba
+    spriteID: 47ac598d8af50f442baec46988da5673
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 164
       width: 113
       height: 105
-    spriteID: d5e48d9865a43574d9f778d969a0a341
+    spriteID: e55af863107884049bb918849a346f50
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -214,7 +214,7 @@ ScriptedImporter:
       y: 164
       width: 99
       height: 91
-    spriteID: 0c4282c611bb28d418d1f892ff39786d
+    spriteID: b3182753e957b4f4ea40332654b8ef38
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -236,7 +236,7 @@ ScriptedImporter:
       y: 164
       width: 83
       height: 77
-    spriteID: 9af3051de9a80184f8f0f64896631e5a
+    spriteID: bbdaeaf7bd6199c44b3173b4c57f2647
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -281,7 +281,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: f95f5b749ae918d448a591eaff2b2012
+    spriteID: 11cd72512f6449e41a67bde95e8b3a18
     layerID: 8
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
@@ -291,7 +291,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: 40e6049d366b18f4293e3e8544dfec1b
+    spriteID: 396b98cba31705a4aa1975bd51ecf5e9
     layerID: 7
     mosaicPosition: {x: 184, y: 4}
     flatten: 0
@@ -301,7 +301,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: 582c3bb27b33424459a8656e43dfb82e
+    spriteID: 5f494df980c652d46965451a714ba76e
     layerID: 6
     mosaicPosition: {x: 352, y: 4}
     flatten: 0
@@ -311,7 +311,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: 3648820ece83a264bbb62eb433790aba
+    spriteID: 47ac598d8af50f442baec46988da5673
     layerID: 5
     mosaicPosition: {x: 4, y: 164}
     flatten: 0
@@ -321,7 +321,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: d5e48d9865a43574d9f778d969a0a341
+    spriteID: e55af863107884049bb918849a346f50
     layerID: 4
     mosaicPosition: {x: 175, y: 164}
     flatten: 0
@@ -331,7 +331,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: 0c4282c611bb28d418d1f892ff39786d
+    spriteID: b3182753e957b4f4ea40332654b8ef38
     layerID: 3
     mosaicPosition: {x: 296, y: 164}
     flatten: 0
@@ -341,7 +341,7 @@ ScriptedImporter:
     spriteName: "\uB808\uC774\uC5B4 2"
     isGroup: 0
     parentIndex: -1
-    spriteID: 9af3051de9a80184f8f0f64896631e5a
+    spriteID: bbdaeaf7bd6199c44b3173b4c57f2647
     layerID: 2
     mosaicPosition: {x: 403, y: 164}
     flatten: 0
@@ -351,7 +351,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
-    spriteID: 7ae6a0f20023d3f43ae1305391c9399b
+    spriteID: 2e8d20f386c2ad94483a805c02a641c3
     layerID: 1
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
