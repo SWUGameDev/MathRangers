@@ -6,12 +6,12 @@ using TMPro;
 public class BarData
 {
     public string date;
-    public int rate;
+    public int value;
 
     public BarData(string date,int rate)
     {
         this.date = date;
-        this.rate = rate;
+        this.value = rate;
     }
 }
 
@@ -34,6 +34,11 @@ public class CorrectGraphUIPanelController : MonoBehaviour
         if(gameResultInfos.Count==0)
             return;
 
+        if(gameResultInfos.Count>7)
+        {
+            gameResultInfos.RemoveRange(0,gameResultInfos.Count-7);
+        }
+
         this.InitializeBarData(gameResultInfos);
 
         Debug.Log(barDataList.Count);
@@ -45,7 +50,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
             BarUIController barUIController = barObj.GetComponent<BarUIController>();
 
             barUIController.SetDateText(this.barDataList[index].date);
-            barUIController.SetBarSize(this.barDataList[index].rate/100);
+            barUIController.SetBarSize(this.barDataList[index].value/100);
         }
     }
 
@@ -57,11 +62,9 @@ public class CorrectGraphUIPanelController : MonoBehaviour
         int correctRateSum = 0;
         int dayCount = 0;
         string date = gameResultInfos[0].date.Substring(0,8);
-        Debug.Log(date);
 
         for(int index = 0;index<gameResultInfos.Count;index++)
         {
-            Debug.Log($"date:{date} , {gameResultInfos[index].date.Substring(0,8)}");
             if(date == gameResultInfos[index].date.Substring(0,8))
             {
                 correctRateSum += gameResultInfos[index].progressData.explAcrcyRt;

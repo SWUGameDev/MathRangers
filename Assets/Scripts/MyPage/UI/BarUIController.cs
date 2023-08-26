@@ -18,7 +18,7 @@ public class BarUIController : MonoBehaviour
         this.text.text = date;
     }
 
-    public void SetBarSize(int normalizedRate)
+    public void SetBarSize(float normalizedRate)
     {
         this.barImage.rectTransform.sizeDelta = new Vector2(this.fixedWidth,this.fixedHight * normalizedRate);
     }
