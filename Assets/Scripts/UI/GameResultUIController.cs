@@ -41,11 +41,17 @@ public class GameResultNPCContent
     }
 }
 
+[Serializable]
 public class GameResultData
 {
     public long damage;
     public int minionCount;
     public int cheeseCount;
+
+    public GameResultData()
+    {
+
+    }
 
     public GameResultData(int cheeseCount)
     {
@@ -128,7 +134,7 @@ public partial class GameResultUIController : MonoBehaviour
         string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
         Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
 
-        this.SetResult(GameResultType.MissionSuccess, new GameResultData(345534453345,3245,433),response_Learning_ProgressData);
+        this.SetResult(GameResultType.MissionSuccess, new GameResultData(5455315487300,3245,433),response_Learning_ProgressData);
     }
 
     public void SetPanelUnActive()
@@ -164,6 +170,63 @@ public partial class GameResultUIController : MonoBehaviour
         this.earningText.text = gameResultData.cheeseCount.ToString("N0");
 
         this.titleText.text = this.gameResultContentDictionary[type].gameResultTitle;
+
+        this.SaveGameResultData(type,gameResultData,progressData);
+    }
+
+    private void SaveGameResultData(GameResultType type,GameResultData gameResultData,Response_Learning_ProgressData progressData)
+    {
+
+        GameResultInfo gameResultInfo = new GameResultInfo(type,gameResultData,progressData);
+        string gameResultInfoString = JsonConvert.SerializeObject(gameResultInfo);
+
+        FirebaseRealtimeDatabaseManager firebaseRealtimeDatabaseManager = FirebaseRealtimeDatabaseManager.Instance;
+
+        string userId = firebaseRealtimeDatabaseManager.GetCurrentUserId();
+        
+        this.SaveUserHighScore(firebaseRealtimeDatabaseManager,userId,gameResultData.damage);
+
+        firebaseRealtimeDatabaseManager.UploadGameResultInfo(userId,gameResultInfoString,()=>{this.UploadGameResultDebug(gameResultInfoString);});
+
+    }
+
+    public static readonly string UserHighScoreKey = "Key_UserHighScore";
+
+    private bool SaveUserHighScore(FirebaseRealtimeDatabaseManager firebaseRealtimeDatabaseManager,string userId,long currentScore)
+    {
+        long prevHighScore = 0;
+
+        if(PlayerPrefs.HasKey(GameResultUIController.UserHighScoreKey))
+        {
+            prevHighScore = long.Parse(PlayerPrefs.GetString(GameResultUIController.UserHighScoreKey));
+        }else{
+            PlayerPrefs.SetString(GameResultUIController.UserHighScoreKey,currentScore.ToString());
+
+            int iconIndex = PlayerPrefs.GetInt(IconSelectPanel.userIconKey);
+            string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
+            int teamType = PlayerPrefs.GetInt(DiagnosticManager.TeamTypeKey);
+
+            UserRankInfo userRankInfo = new UserRankInfo(userId,iconIndex,nickName,currentScore,teamType);
+            string serializedUserRankInfo = JsonConvert.SerializeObject(userRankInfo);
+
+            firebaseRealtimeDatabaseManager.UploadInitializedUserRankInfo(userId,serializedUserRankInfo);
+        }
+
+        if(prevHighScore<currentScore)
+        {
+            PlayerPrefs.SetString(GameResultUIController.UserHighScoreKey,currentScore.ToString());
+
+            firebaseRealtimeDatabaseManager.UpdateUserScoreInfo(userId,currentScore.ToString());
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void UploadGameResultDebug(string data)
+    {
+        Debug.Log($"Upload Data : {data}");
     }
 
     private void PlayParticle()

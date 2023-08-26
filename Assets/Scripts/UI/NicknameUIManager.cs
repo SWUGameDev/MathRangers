@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,46 +18,65 @@ public partial class NicknameUIManager : MonoBehaviour
     
     private string userId;
 
+    private string nickname;
+
     private bool isChecked = false;
+
+    private static readonly string NickNameSettingSceneName = "03_NicknameSettingScene";
 
     public static readonly string NicknamePlayerPrefsKey = "NicknamePlayerPrefsKey";
 
+    public static Action<bool> OnNicknameConfirmed;
+
     public void ConfirmNickname()
     {
-        if(this.isChecked)
+        if(this.nickname == nicknameInputField.text && this.isChecked)
             return;
 
-        string nickName = nicknameInputField.text;
+        this.nickname = nicknameInputField.text;
 
-        if(!IsNicknameValid(nickName))
+        if(!IsNicknameValid(this.nickname))
         {
             this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
             return;    
         }
 
-        FirebaseRealtimeDatabaseManager.Instance.CheckDuplicateNickname(nickName,OnNicknameCheckFailed,OnNicknameCheckDuplicated,OnNicknameCheckCompleted);
+        FirebaseRealtimeDatabaseManager.Instance.CheckDuplicateNickname(this.nickname,OnNicknameCheckFailed,OnNicknameCheckDuplicated,OnNicknameCheckCompleted);
     }
 
     private void OnNicknameCheckFailed()
     {
         this.noticeMessageUIManager.PopUpMessage("! [Error] Can't Access to Firebase Service");
+
+        NicknameUIManager.OnNicknameConfirmed?.Invoke(false);
+
         this.isChecked = true;
     }
 
     private void OnNicknameCheckCompleted(string nickName)
     {
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),"",nickName,-1);
+        // TODO : 조건 확인 로직 현재 씬 이름 여부 말고 다른 방식으로 변경하기
+        
+        if(SceneManager.GetActiveScene().name == NicknameUIManager.NickNameSettingSceneName)
+        {
+            UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),"",nickName,-1);
 
-        PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,nickName);
+            PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,nickName);
 
-        string serializedData = JsonUtility.ToJson(userInfo);
-        FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
+            string serializedData = JsonUtility.ToJson(userInfo);
+
+            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
+        }
+
+        NicknameUIManager.OnNicknameConfirmed?.Invoke(true);
+
         this.isChecked = true;
     }
 
     private void OnNicknameCheckDuplicated(string nickName)
     {
         this.noticeMessageUIManager.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
+
         this.isChecked = true;
     }
 

@@ -91,14 +91,19 @@ public class DiagnosticManager : MonoBehaviour
         }
     }
 
+    public static readonly string TeamTypeKey = "Key_TeamType";
+
     [SerializeField] private TeamMatchManager teamMatchManager;
 
     private void InitializeUserInfo()
     {
         string nickName = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
         string userMBRId = PlayerPrefs.GetString(WJ_Connector.userPlayerPrefsMBRKey);
+
+        int teamType = this.teamMatchManager.GetSelectedTeam();
+        PlayerPrefs.SetInt(DiagnosticManager.TeamTypeKey,teamType);
         
-        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, userMBRId,this.teamMatchManager.GetSelectedTeam());
+        UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),nickName, userMBRId,teamType);
         string serializedData = JsonUtility.ToJson(userInfo);
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
