@@ -111,9 +111,10 @@ public partial class MathPanelUIController : MonoBehaviour
         if(!isCorrect)
         {
             this.transform.gameObject.SetActive(false);
-            runSceneUIManager.SetAllScroll(true);
-            // runSceneUIManager.GameResultSuccess();
-            Handheld.Vibrate();
+
+            // TODO : 이벤트 기반으로 변경
+            runSceneUIManager?.SetAllScroll(true);
+            runSceneUIManager?.GameResultSuccess();
         }
     }
 
