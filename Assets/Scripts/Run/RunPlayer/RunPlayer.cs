@@ -128,6 +128,7 @@ public partial class RunPlayer : MonoBehaviour
         }
     }
 
+
     public void Slide()
     {
         isSlide = true;
@@ -165,6 +166,7 @@ public partial class RunPlayer : MonoBehaviour
             jumpCount = 0;
             isJump = false;
             animator.SetInteger(runGame, (int)States.Run);
+            Run();
         }
     }
 
