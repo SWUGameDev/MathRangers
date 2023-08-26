@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 711788765}
-  teamName: Red
+  teamType: 0
   teamRankText: {fileID: 68829039}
   teamRankTextBackgroundImage: {fileID: 1224642813}
 --- !u!1 &726592561
@@ -2051,7 +2051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1093446619}
-  teamName: Blue
+  teamType: 0
   teamRankText: {fileID: 1360012870}
   teamRankTextBackgroundImage: {fileID: 2117418636}
 --- !u!1 &1095857939
@@ -2424,6 +2424,7 @@ GameObject:
   - component: {fileID: 1256358465}
   - component: {fileID: 1256358464}
   - component: {fileID: 1256358463}
+  - component: {fileID: 1256358466}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2497,6 +2498,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1256358466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256358462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e288132c7fd5b409d859118b80d4da02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightRate: 6
+  widthRate: 13
 --- !u!1 &1296568061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1878299236}
-  teamName: Green
+  teamType: 0
   teamRankText: {fileID: 1360124922}
   teamRankTextBackgroundImage: {fileID: 1584046697}
 --- !u!1 &2117418634
