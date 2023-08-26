@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Database;
 using Firebase.Auth;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 public partial class FirebaseRealtimeDatabaseManager 
 {
     private DatabaseReference databaseReference;
@@ -99,6 +102,34 @@ public partial class FirebaseRealtimeDatabaseManager
                 string deserializedData = snapshot.GetRawJsonValue();
                 T data =  JsonUtility.FromJson<T>(deserializedData);
                 OnCompleted?.Invoke(data);
+            }
+            else
+            {
+                Debug.Log("Data not found");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error retrieving data: " + e.Message);
+        }
+    }
+
+    private async void ReadDataList<T>(string key,Action<List<T>> OnCompleted = null)
+    {
+        try
+        {
+            DataSnapshot snapshot = await databaseReference.Child(key).GetValueAsync();
+
+            if (snapshot != null && snapshot.Exists)
+            {
+                string deserializedData = snapshot.GetRawJsonValue();
+                List<T> dataList = new List<T>();
+                foreach(DataSnapshot child in snapshot.Children)
+                {
+                    T data =  JsonConvert.DeserializeObject<T>(child.GetRawJsonValue());
+                    dataList.Add(data);
+                }
+                OnCompleted?.Invoke(dataList);
             }
             else
             {
