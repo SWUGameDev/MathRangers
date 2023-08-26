@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 5994339623152559767}
   - component: {fileID: 3495711807347567224}
   - component: {fileID: 8112200321140681133}
+  - component: {fileID: 8259998023800525531}
   m_Layer: 5
   m_Name: GameResultInfo
   m_TagString: Untagged
@@ -355,6 +356,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &8259998023800525531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617171385563480399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf04d2b06d254b73ac623bb50804a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dateText: {fileID: 4987608190281504063}
+  scoreText: {fileID: 1841783204334632148}
+  accuracyText: {fileID: 1439826555777913644}
+  speedText: {fileID: 7837817036404940238}
+  progressText: {fileID: 3615678611808276754}
+  correctRateText: {fileID: 3350285837079768606}
+  gameResultText: {fileID: 2872043318049468392}
 --- !u!1 &1321037159071414420
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +411,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7546467065673708555
 CanvasRenderer:
@@ -421,7 +441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '23.07.30 '
+  m_text: 23.07.30 23.07.30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d8f23877818d1c646a7cf77796bd6828, type: 2}
   m_sharedMaterial: {fileID: -15602359633995800, guid: d8f23877818d1c646a7cf77796bd6828, type: 2}
@@ -448,8 +468,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

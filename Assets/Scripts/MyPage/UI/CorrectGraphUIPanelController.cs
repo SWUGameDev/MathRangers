@@ -30,6 +30,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
     }
     private void SetCorrectGraphData(List<GameResultInfo> gameResultInfos)
     {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectGraphData;
 
         if(gameResultInfos.Count==0)
             return;
@@ -40,8 +41,6 @@ public class CorrectGraphUIPanelController : MonoBehaviour
         }
 
         this.InitializeBarData(gameResultInfos);
-
-        Debug.Log(barDataList.Count);
 
         for(int index = 0;index<this.barDataList.Count;index++)
         {

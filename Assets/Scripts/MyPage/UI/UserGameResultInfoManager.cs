@@ -17,6 +17,11 @@ public class UserGameResultInfoManager : MonoBehaviour
         FirebaseRealtimeDatabaseManager.Instance.LoadGameResultInfoList(userId,this.InitUserGameResultInfoData);
     }
 
+    public List<GameResultInfo> GetUserGameResultInfos()
+    {
+        return this.userGameResultInfos;
+    }
+
     private void InitUserGameResultInfoData(List<GameResultInfo> gameResultInfos)
     {
         this.userGameResultInfos = gameResultInfos;
