@@ -24,7 +24,7 @@ public class CorrectUIPanelController : MonoBehaviour
         this.SetCorrectRateText(correctRateSum.ToString());
     }
 
-        private void SetCorrectRateText(string rate)
+    private void SetCorrectRateText(string rate)
     {
         this.correctRateText.text = $"{rate}%";
     }
