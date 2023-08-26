@@ -7,10 +7,10 @@ public class TeamRackingUIItem : MonoBehaviour
 {
     [SerializeField] private Image backgroundImage;
 
-    [SerializeField] private string teamName;
+    [SerializeField] private TeamType teamType;
 
-    public string TeamName{
-        get {return this.teamName;}
+    public TeamType TeamType{
+        get {return this.teamType;}
     }
 
     [SerializeField] private TMP_Text teamRankText;

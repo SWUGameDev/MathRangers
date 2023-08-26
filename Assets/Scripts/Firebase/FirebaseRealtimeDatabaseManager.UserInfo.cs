@@ -11,6 +11,16 @@ public partial class FirebaseRealtimeDatabaseManager
         this.WriteData<UserInfo>($"{FirebaseRealtimeDatabaseManager.gameResultInfoRootKey}/{userUID}/{DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss")}", serializedGameResultInfo, OnCompleted);
     }
 
+    public void UploadInitializedUserRankInfo(string userUID, string serializedUserRankInfo, Action OnCompleted = null)
+    {
+        this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}", serializedUserRankInfo, OnCompleted);
+    }
+
+    public void UpdateUserScoreInfo(string userUID, string score, Action OnCompleted = null)
+    {
+        this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/score", score, OnCompleted);
+    }
+
 
     public void UploadInitializedUserInfo(string userUID, string serializedUserInfo,Action OnCompleted = null)
     {

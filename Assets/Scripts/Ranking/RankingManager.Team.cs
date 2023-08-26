@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Firebase.Database;
 using UnityEngine;
-using TeamName = System.String;
 using totalScore = System.Int64;
 using System.Linq;
 
 public partial class RankingManager : MonoBehaviour
 {
 
-    private IOrderedEnumerable<KeyValuePair<TeamName, totalScore>> CalculateTotalSumByTeams()
+    private IOrderedEnumerable<KeyValuePair<TeamType, totalScore>> CalculateTotalSumByTeams()
     {
         if(this.infos == null)
         {
@@ -17,16 +16,17 @@ public partial class RankingManager : MonoBehaviour
             return null;
         }
 
-        Dictionary<TeamName, totalScore> TotalScoreByTeamDictionary = new Dictionary<TeamName, totalScore>();
+        Dictionary<TeamType, totalScore> TotalScoreByTeamDictionary = new Dictionary<TeamType, totalScore>();
         foreach (var user in infos)
         {
-            if (TotalScoreByTeamDictionary.ContainsKey(user.team))
+            TeamType teamType = (TeamType)user.team;
+            if (TotalScoreByTeamDictionary.ContainsKey(teamType))
             {
-                TotalScoreByTeamDictionary[user.team] += user.score;
+                TotalScoreByTeamDictionary[teamType] += user.score;
             }
             else
             {
-                TotalScoreByTeamDictionary[user.team] = user.score;
+                TotalScoreByTeamDictionary[teamType] = user.score;
             }
         }
         var sortedScoreByTeams = TotalScoreByTeamDictionary.OrderByDescending(pair => pair.Value);

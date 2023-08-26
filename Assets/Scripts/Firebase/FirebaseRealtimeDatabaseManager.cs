@@ -11,6 +11,8 @@ public partial class FirebaseRealtimeDatabaseManager
 
     public static FirebaseRealtimeDatabaseManager Instance { get { return _instance.Value; } }
 
+    private static readonly string rankInfoRootKey = "Rank";
+
     private static readonly string userInfoRootKey = "UserInfo";
 
     private static readonly string gameResultInfoRootKey = "GameResultInfo";
