@@ -106,7 +106,8 @@ public class DiagnosticManager : MonoBehaviour
         string serializedData = JsonConvert.SerializeObject(userInfo);
 
         PlayerPrefs.SetString(DiagnosticManager.userInfoData,serializedData);
-        PlayerPrefs.SetInt(DiagnosticManager.userInfoData,userInfo.teamType);
+        PlayerPrefs.SetInt(IconSelectPanel.userIconKey,userInfo.teamType);
+        PlayerPrefs.SetInt(DiagnosticManager.TeamTypeKey,userInfo.teamType);
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);

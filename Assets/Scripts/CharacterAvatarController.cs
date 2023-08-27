@@ -2,7 +2,6 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
 
 [Serializable]

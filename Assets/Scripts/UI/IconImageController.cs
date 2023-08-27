@@ -20,5 +20,9 @@ public class IconImageController : MonoBehaviour
     private void ChangeIcon(int index)
     {
         this.iconImage.sprite = this.iconSprites[index];
+
+        PlayerPrefs.SetInt(IconSelectPanel.userIconKey,index);
+
+        FirebaseRealtimeDatabaseManager.Instance.UpdateUserIconInfo(index.ToString());
     }
 }
