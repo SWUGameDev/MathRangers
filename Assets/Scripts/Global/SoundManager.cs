@@ -7,7 +7,10 @@ public enum backgroundAudioSourceType
 {
     BGM_MAIN,
     BGM_BOSS_BATTLE,
-    BGM_RUN
+    BGM_RUN,
+    BGM_TITLE,
+    BGM_PROLOGUE,
+    BGM_RANKING
 }
 
 public enum effectsAudioSourceType
@@ -24,7 +27,9 @@ public enum effectsAudioSourceType
     SFX_SELECT_ABILITY,
     SFX_POPUP,
     SFX_CHEESE,
-    SFX_HURDLE
+    SFX_HURDLE,
+    SFX_TYPING,
+    SFX_CLICK
 }
 
 [Serializable]
@@ -53,6 +58,20 @@ public class SoundManager : MonoBehaviourSingleton<SoundManager>
 
     private Dictionary<effectsAudioSourceType,AudioClip> effectAudioDictionary;
 
+    public void PlayAffectSoundOneShot(effectsAudioSourceType type,float volumeScale)
+    {
+        if(this.effectAudioDictionary == null)
+            this.ChangeSFXArrayToDictionary();
+
+        this.effectsAudioSource.PlayOneShot(this.effectAudioDictionary[type],volumeScale);
+    }
+
+    public void StopEffectsAudioSource()
+    {
+        this.effectsAudioSource.Stop();
+    }
+
+
     public void PlayAffectSoundOneShot(effectsAudioSourceType type)
     {
         if(this.effectAudioDictionary == null)
@@ -61,9 +80,23 @@ public class SoundManager : MonoBehaviourSingleton<SoundManager>
         this.effectsAudioSource.PlayOneShot(this.effectAudioDictionary[type]);
     }
 
+    public void PlayAffectSound(effectsAudioSourceType type)
+    {
+        if(this.effectAudioDictionary == null)
+            this.ChangeSFXArrayToDictionary();
+    }
+
     public void StopEffectAudioSource()
     {
         this.effectsAudioSource.Stop();
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            this.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_CLICK);
+        }
     }
 
     public void ChangeBackgroundAudioSource(backgroundAudioSourceType type)
