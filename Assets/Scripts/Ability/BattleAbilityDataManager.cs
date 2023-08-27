@@ -43,8 +43,17 @@ public class BattleAbilityDataManager : MonoBehaviour
         string serializedSelectedAbilityDictionary = PlayerPrefs.GetString(AbilityInfoManager.serializedAbilityInfoDictionaryKey);
 
         this.selectedAbilityDictionary = JsonConvert.DeserializeObject<Dictionary<int,selectedAbility>>(serializedSelectedAbilityDictionary);
-
     }
 
+    public Dictionary<AbilityId, selectedAbility> GetLoadSelectedAbilityDictionary()
+    {
+        if (this.selectedAbilityDictionary == null)
+        {
+            this.selectedAbilityDictionary = new Dictionary<AbilityId, selectedAbility>();
 
+            LoadSelectedAbilityDictionary();
+        }
+
+        return this.selectedAbilityDictionary;
+    }
 }

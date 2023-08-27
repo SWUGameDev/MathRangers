@@ -21,6 +21,7 @@ public class RunSceneUIManager : UI_Base
     [SerializeField] RunUIBackGroundScrolling tileScrolling;
     [SerializeField] RunUIBackGroundScrolling cheezeScrolling;
     [SerializeField] RunUIBackGroundScrolling endScrolling;
+    [SerializeField] RunUIBackGroundScrolling testScrolling;
 
     [SerializeField] private CountdownController countdownController;
     [SerializeField] GameObject deadPanel;
@@ -91,6 +92,7 @@ public class RunSceneUIManager : UI_Base
         tileScrolling.SetisScroll(isEnabled);
         cheezeScrolling.SetisScroll(isEnabled);
         endScrolling.SetisScroll(isEnabled);
+        testScrolling.SetisScroll(isEnabled);
         runPlayer.isRun = isEnabled;
     }
 
@@ -100,6 +102,8 @@ public class RunSceneUIManager : UI_Base
         cloudScrolling.SetisReverse(isEnabled);
         tileScrolling.SetisReverse(isEnabled);
         cheezeScrolling.SetisReverse(isEnabled);
+        endScrolling.SetisReverse(isEnabled);
+        testScrolling.SetisReverse(isEnabled);
     }
 
     private void SetHpGauge()

@@ -114,7 +114,7 @@ public partial class MathPanelUIController : MonoBehaviour
 
             // TODO : 이벤트 기반으로 변경
             runSceneUIManager?.SetAllScroll(true);
-            runSceneUIManager?.GameResultSuccess();
+            // runSceneUIManager?.GameResultSuccess();
         }
     }
 

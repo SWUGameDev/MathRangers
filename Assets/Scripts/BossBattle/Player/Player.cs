@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Player.Ability101;
+using AbilityId = System.Int32;
 
 public partial class Player : MonoBehaviour
 {
@@ -26,6 +29,8 @@ public partial class Player : MonoBehaviour
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
         Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
 
+        // 버프 테스트
+        this.AddBuff();
     }
 
     private void Start()
