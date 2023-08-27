@@ -31,6 +31,7 @@ public class DiagnosticManager : MonoBehaviour
     //[SerializeField] WJ_DisplayText     wj_displayText;         //텍스트 표시용(필수X)
     //[SerializeField] Button             getLearningButton;      //문제 받아오기 버튼
 
+    public static readonly string TeamTypeKey = "Key_TeamType";
     private void Awake()
     {
         textAnsr = new TEXDraw[btAnsr.Length];
@@ -105,6 +106,7 @@ public class DiagnosticManager : MonoBehaviour
         string serializedData = JsonConvert.SerializeObject(userInfo);
 
         PlayerPrefs.SetString(DiagnosticManager.userInfoData,serializedData);
+        PlayerPrefs.SetInt(DiagnosticManager.userInfoData,userInfo.teamType);
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
         FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
