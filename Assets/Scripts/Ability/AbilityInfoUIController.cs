@@ -30,7 +30,7 @@ public class AbilityInfoUIController : MonoBehaviour {
         this.abilitySelectedButton.onClick.AddListener(() =>
         {
             this.abilityInfoManager.SelectAbility(this.abilityInfo.abilityId);
-            runSceneUIManager.ShowAbilityOnScreen(this.abilityInfo);
+            runSceneUIManager?.ShowAbilityOnScreen(this.abilityInfo);
         });
     }
 

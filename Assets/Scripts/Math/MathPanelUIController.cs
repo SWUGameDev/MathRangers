@@ -44,6 +44,7 @@ public partial class MathPanelUIController : MonoBehaviour
         string[]    wrongAnswers = questionWrongAnswer.Split(',');
 
         this.descriptionText.text = "Q. " + questionDescription;
+        questionText = questionText.Replace("align","flalign");
         this.equationText.text = questionText;
 
         int answerCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
