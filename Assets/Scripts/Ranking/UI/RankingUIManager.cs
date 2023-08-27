@@ -35,6 +35,11 @@ public partial class RankingUIManager : MonoBehaviour
         this.InitializeButtonSettings();
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RANKING);
+    }
+
     private void InitializeButtonSettings()
     {
 

@@ -38,14 +38,16 @@ public class LevelUIController : MonoBehaviour
             }
         }
 
-        this.levelText.text = $"Lv {level}";
+        if(this.levelText != null)
+            this.levelText.text = $"Lv {level}";
 
         // 최고 레벨일 경우 예외처리 따로 필요함
         if(level<countForLevelUp.Length)
         {
-            this.expText.text = $"{count}/{this.countForLevelUp[level]}";
-
-            this.expSlider.value = count/(float)this.countForLevelUp[level];
+            if(this.expText != null)
+                this.expText.text = $"{count}/{this.countForLevelUp[level]}";
+            if(this.expSlider != null)
+                this.expSlider.value = count/(float)this.countForLevelUp[level];
         }
 
     }
