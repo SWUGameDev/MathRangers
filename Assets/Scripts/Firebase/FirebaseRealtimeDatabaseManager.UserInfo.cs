@@ -23,6 +23,11 @@ public partial class FirebaseRealtimeDatabaseManager
         this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/score", score, OnCompleted);
     }
 
+    public void UpdateUserIconInfo(string team, Action OnCompleted = null)
+    {
+        string userUID = this.GetCurrentUserId();
+        this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/team", team, OnCompleted);
+    }
 
     public void UploadInitializedUserInfo(string userUID, string serializedUserInfo,Action OnCompleted = null)
     {
