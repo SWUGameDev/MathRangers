@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Database;
 using Firebase.Auth;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 public partial class FirebaseRealtimeDatabaseManager 
 {
     private DatabaseReference databaseReference;
@@ -10,6 +13,8 @@ public partial class FirebaseRealtimeDatabaseManager
     private static readonly Lazy<FirebaseRealtimeDatabaseManager> _instance = new Lazy<FirebaseRealtimeDatabaseManager>(()=> new FirebaseRealtimeDatabaseManager());
 
     public static FirebaseRealtimeDatabaseManager Instance { get { return _instance.Value; } }
+
+    private static readonly string rankInfoRootKey = "Rank";
 
     private static readonly string userInfoRootKey = "UserInfo";
 
@@ -64,7 +69,7 @@ public partial class FirebaseRealtimeDatabaseManager
                 Debug.LogError("Data write encountered an error: " + task.Exception);
             }else if(task.IsCompleted)
             {
-                Debug.Log("Upload Complete");
+                Debug.Log("Upload Completed");
 
                 onCompleted?.Invoke();
             }
@@ -97,6 +102,34 @@ public partial class FirebaseRealtimeDatabaseManager
                 string deserializedData = snapshot.GetRawJsonValue();
                 T data =  JsonUtility.FromJson<T>(deserializedData);
                 OnCompleted?.Invoke(data);
+            }
+            else
+            {
+                Debug.Log("Data not found");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error retrieving data: " + e.Message);
+        }
+    }
+
+    private async void ReadDataList<T>(string key,Action<List<T>> OnCompleted = null)
+    {
+        try
+        {
+            DataSnapshot snapshot = await databaseReference.Child(key).GetValueAsync();
+
+            if (snapshot != null && snapshot.Exists)
+            {
+                string deserializedData = snapshot.GetRawJsonValue();
+                List<T> dataList = new List<T>();
+                foreach(DataSnapshot child in snapshot.Children)
+                {
+                    T data =  JsonConvert.DeserializeObject<T>(child.GetRawJsonValue());
+                    dataList.Add(data);
+                }
+                OnCompleted?.Invoke(dataList);
             }
             else
             {
