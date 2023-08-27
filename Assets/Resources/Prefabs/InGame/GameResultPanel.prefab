@@ -104,8 +104,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New TextNew TextNew TextNew TextNew TextNew TextNew TextNew Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d8f23877818d1c646a7cf77796bd6828, type: 2}
+  m_sharedMaterial: {fileID: -15602359633995800, guid: d8f23877818d1c646a7cf77796bd6828, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -129,12 +129,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 32
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 32
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a3ab1d757aebd8244b07307a1d47eb1b, type: 3}
   - {fileID: 21300000, guid: d8277dcec52acb54dab4c6a3947485fe, type: 3}
   - {fileID: 21300000, guid: 82e96810b148b02409683183a4629be3, type: 3}
-  npcChatText: {fileID: 0}
+  npcChatText: {fileID: 4439767116266222969}
   explanationResultText: {fileID: 4536861626756376567}
   accuracyText: {fileID: 1383776254783066}
   explanationSpeedText: {fileID: 1383778108839016}
