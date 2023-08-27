@@ -191,6 +191,7 @@ public partial class RunPlayer : MonoBehaviour
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
             mathPanelUIController.SetMathPanelActive(true);
             onTriggerMath?.Invoke(false);
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
         if(collision.gameObject.tag == "End")
