@@ -54,4 +54,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("06_ShopScene");
     }
+
+    public void LoadMyPageScene()
+    {
+        SceneManager.LoadScene("08_MyPageScene");
+    }
 }

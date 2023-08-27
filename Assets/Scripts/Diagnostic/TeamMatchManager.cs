@@ -5,8 +5,11 @@ using System.Linq;
 
 public enum TeamType:int
 {
+    // 초록색
     Plus = 0,
+    // 파란색
     Minus = 1,
+    // 빨강색
     Multiple = 2,
     None = -1
 }
