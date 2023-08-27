@@ -6,7 +6,7 @@ using TMPro;
 
 public class LevelUIController : MonoBehaviour
 {
-    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text[] levelTexts;
 
     [SerializeField] private TMP_Text expText;
 
@@ -38,8 +38,14 @@ public class LevelUIController : MonoBehaviour
             }
         }
 
-        if(this.levelText != null)
-            this.levelText.text = $"Lv {level}";
+        if(this.levelTexts != null)
+        {
+            foreach (var item in this.levelTexts)
+            {
+                item.text = $"Lv {level}";
+            }
+            
+        }
 
         // 최고 레벨일 경우 예외처리 따로 필요함
         if(level<countForLevelUp.Length)
