@@ -203,9 +203,15 @@ public partial class RunPlayer : MonoBehaviour
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        if(collision.gameObject.tag == "End")
+        if(collision.gameObject.tag == "End" && this.isArive == true)
         {
             sceneController.LoadBossScene();
+        }
+
+        if (collision.gameObject.tag == "End" && this.isArive == false)
+        {
+            runSceneUIManager.GameResultEmergencyAbortOfMission();
+            runSceneUIManager.SetAllScroll(false);
         }
     }
 

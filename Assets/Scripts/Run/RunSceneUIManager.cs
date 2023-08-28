@@ -42,7 +42,6 @@ public class RunSceneUIManager : UI_Base
         get { return minY; }
     }
 
-    private int solveIndex;
     private float sum;
     private void Awake()
     {
@@ -142,25 +141,6 @@ public class RunSceneUIManager : UI_Base
         latestAnswerRate = (int)(sum / index);
         SetAnswerRate();
         stopPanelController.SetQuestionCorrectRate((int)latestAnswerRate);
-
-        // 분리하기
-        // ResultTest
-        Debug.Log(index);
-        solveIndex = index;
-    }
-
-    public void GameResultSuccess()
-    {
-        if (solveIndex == 8)
-        {
-            if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
-                return;
-
-            string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
-            Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
-
-            this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
-        }
     }
 
     void SetAnswerRate()
@@ -179,5 +159,16 @@ public class RunSceneUIManager : UI_Base
         selectAbilityOnPlayImages[abilityIndex].sprite = abilityInfo.abilityIcon;
         selectAbilityOnStopImages[abilityIndex].sprite = abilityInfo.abilityIcon;
         abilityIndex++;
+    }
+
+    public void GameResultEmergencyAbortOfMission()
+    {
+        if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
+            return;
+
+        string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
+        Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
+
+        this.gameResultUIController.SetResult(GameResultType.EmergencyAbortOfMission, new GameResultData(0, 0, 0), response_Learning_ProgressData);
     }
 }

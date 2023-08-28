@@ -41,7 +41,7 @@ public partial class BossSceneUIManager : MonoBehaviour
         if(this.limitTimeSeconds <= 0)
         {
             //TODO : GameEnd 호출하기
-            GameResultMission();
+            GameResultMissionSuccess();
         }
 
         TimeSpan time = TimeSpan.FromSeconds(this.limitTimeSeconds);
@@ -78,7 +78,7 @@ public partial class BossSceneUIManager : MonoBehaviour
         this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, 0), response_Learning_ProgressData);
     }
 
-    public void GameResultMission()
+    public void GameResultMissionSuccess()
     {
         if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
             return;
@@ -88,5 +88,6 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, 0), response_Learning_ProgressData);
     }
+
 
 }
