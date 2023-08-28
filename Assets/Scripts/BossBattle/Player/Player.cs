@@ -21,9 +21,10 @@ public partial class Player : MonoBehaviour
     private int jumpCount = 0;
 
     public static event Action OnDamaged;
-
+    public PropertyInfo playerProperty;
     private void Awake()
     {
+        this.playerProperty = new PropertyInfo();
         VirtualJoystick.OnProcessInput += OnProcessInput;
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();

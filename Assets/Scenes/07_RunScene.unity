@@ -10602,7 +10602,7 @@ MonoBehaviour:
   tileScrolling: {fileID: 1541570940}
   cheezeScrolling: {fileID: 996726183}
   endScrolling: {fileID: 467168106}
-  testScrolling: {fileID: 764323698}
+  testScrolling: {fileID: 1596548501}
   countdownController: {fileID: 1286087816}
   deadPanel: {fileID: 1189177725}
   AnswerRateText: {fileID: 976448701}
@@ -14648,7 +14648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467168101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 882, y: 0, z: 0}
+  m_LocalPosition: {x: 90, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -54079,7 +54079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1596548501
 MonoBehaviour:
   m_ObjectHideFlags: 0

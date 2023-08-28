@@ -1,53 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PropertyManager : MonoBehaviour
 {
-    private PropertyInfo propertyInfo;
+    [SerializeField] BattleAbilityDataManager battleAbilityDataManager;
+    [SerializeField] Player player;
 
-    private void Start()
+    // ex) n% 증가
+
+    public void HpIncrease(float percentage)
     {
-        this.propertyInfo = new PropertyInfo();
-        this.propertyInfo.HP = 100;
-        this.propertyInfo.AttackPower = 100;
-        this.propertyInfo.DefensePower = 100;
-        this.propertyInfo.AttackSpeed = 1; // 기획서는 100인데 그렇게 하면 너무 큼
-        this.propertyInfo.LimitTime = 120;
+        float increaseAmount = player.playerProperty.Hp * (percentage / 100.0f);
+
+        player.playerProperty.Hp += increaseAmount;
+        Debug.Log("체력: " + player.playerProperty.Hp);
     }
 
-    // ex) 10% 증가 후 반환
-    public float HpIncrease(float percentage)
+    public void AttackPowerIncrease(float percentage)
     {
-        float increaseAmount = this.propertyInfo.HP * (percentage / 100.0f);
+        float increaseAmount = player.playerProperty.AttackPower * (percentage / 100.0f);
 
-        return this.propertyInfo.HP + increaseAmount;
+        player.playerProperty.AttackPower += increaseAmount;
+        Debug.Log("공격력: " + player.playerProperty.AttackPower);
     }
 
-    public float AttackPowerIncrease(float percentage)
+    public void DefensePowerIncrease(float percentage)
     {
-        float increaseAmount = this.propertyInfo.AttackPower * (percentage / 100.0f);
+        float increaseAmount = player.playerProperty.DefensePower * (percentage / 100.0f);
 
-        return this.propertyInfo.AttackPower + increaseAmount;
+        player.playerProperty.DefensePower += increaseAmount;
+        Debug.Log("방어력: " + player.playerProperty.DefensePower);
     }
 
-    public float DefensePowerIncrease(float percentage)
+    public void AttackSpeedIncrease(float percentage)
     {
-        float increaseAmount = this.propertyInfo.DefensePower * (percentage / 100.0f);
+        float increaseAmount = player.playerProperty.AttackSpeed * (percentage / 100.0f);
 
-        return this.propertyInfo.DefensePower + increaseAmount;
-    }
-
-    public float AttackSpeedIncrease(float percentage)
-    {
-        float increaseAmount = this.propertyInfo.AttackSpeed * (percentage / 100.0f);
-
-        return this.propertyInfo.AttackSpeed + increaseAmount;
+        player.playerProperty.AttackSpeed += increaseAmount;
+        Debug.Log("공격 속도: " + player.playerProperty.AttackSpeed);
     }
 
     // n초 증가
-    public float LimitTimeIncrease(float second)
+    public void LimitTimeIncrease(float second)
     {
-        return this.propertyInfo.LimitTime + second;
+        player.playerProperty.LimitTime += second; 
+        Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
     }
 }

@@ -26,7 +26,7 @@ public class BattleAbilityDataManager : MonoBehaviour
     }
 
     private void ConvertAbilityListToDictionary()
-    {
+    { 
         this.abilityInfoDictionary = new Dictionary<int,AbilityInfo>();
 
         foreach(AbilityInfo info in this.abilityInfoList)
@@ -55,5 +55,10 @@ public class BattleAbilityDataManager : MonoBehaviour
         }
 
         return this.selectedAbilityDictionary;
+    }
+
+    public List<AbilityInfo> GetAbilityInfoList()
+    {
+        return this.abilityInfoList;
     }
 }
