@@ -115,10 +115,7 @@ public partial class MathPanelUIController : MonoBehaviour
         {
             this.transform.gameObject.SetActive(false);
 
-            // TODO : 이벤트 기반으로 변경
-            // runSceneUIManager?.SetAllScroll(true);
             OnSolveWrong?.Invoke(true);
-            // runSceneUIManager?.GameResultSuccess();
         }
     }
 

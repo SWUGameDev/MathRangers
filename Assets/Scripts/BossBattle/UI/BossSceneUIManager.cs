@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Newtonsoft.Json;
+using WjChallenge;
 
 public partial class BossSceneUIManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public partial class BossSceneUIManager : MonoBehaviour
     [SerializeField] private TMP_Text bossHpText;
     [SerializeField] private GameObject bossGameObject;
     private Boss boss;
+    [SerializeField] GameResultUIController gameResultUIController;
     //TODO : 시간 나면 로직 분리하기
 
     private void Start()
@@ -62,5 +65,16 @@ public partial class BossSceneUIManager : MonoBehaviour
         boss.BossHp -= damage;
         bossHpText.text = boss.BossHp.ToString();
         this.bossHpslider.value = boss.BossHp / boss.MaxBossHp;
+    }
+
+    public void GameResultMissionFail()
+    {
+        if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
+            return;
+
+        string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
+        Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
+
+        this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, 0), response_Learning_ProgressData);
     }
 }

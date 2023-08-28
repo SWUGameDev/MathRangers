@@ -15,6 +15,7 @@ public partial class Player : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private Slider slider;
     [SerializeField] private BossSceneStop bossSceneStop;
+    [SerializeField] private BossSceneUIManager bossSceneUIManager;
     private Rigidbody2D rb;
 
     private bool isTriggerBoss;
@@ -59,7 +60,8 @@ public partial class Player : MonoBehaviour
 
         if(this.slider.value <= 0)
         {
-            bossSceneStop.GameEnd();
+            // 임시 버전: bossSceneStop.GameEnd();
+            bossSceneUIManager.GameResultMissionFail();
         }
     }
 
