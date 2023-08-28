@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class ShopUIManager : MonoBehaviour
     private Dictionary<ItemType,ItemUIInfo> selectedItemInfo;
 
     [SerializeField] private GameObject purchaseButton; 
+
+    public static Action<ItemInfo,bool> OnItemSelected;
 
     public void SelectItem(ItemUIInfo itemUIInfo)
     {
@@ -19,17 +22,22 @@ public class ShopUIManager : MonoBehaviour
             {
                 this.selectedItemInfo[itemUIInfo.itemInfo.itemType].SetSelectedPanel(false);
                 this.selectedItemInfo.Remove(itemUIInfo.itemInfo.itemType);
+                ShopUIManager.OnItemSelected?.Invoke(itemUIInfo.itemInfo,false);
             }else{
                 this.selectedItemInfo[itemUIInfo.itemInfo.itemType].SetSelectedPanel(false);
                 this.selectedItemInfo[itemUIInfo.itemInfo.itemType] = itemUIInfo;
                 this.selectedItemInfo[itemUIInfo.itemInfo.itemType].SetSelectedPanel(true);
+                ShopUIManager.OnItemSelected?.Invoke(itemUIInfo.itemInfo,true);
             }
         }else{
             this.selectedItemInfo[itemUIInfo.itemInfo.itemType] = itemUIInfo;
             this.selectedItemInfo[itemUIInfo.itemInfo.itemType].SetSelectedPanel(true);
+            ShopUIManager.OnItemSelected?.Invoke(itemUIInfo.itemInfo,true);
         }
 
         this.CheckPurchaseButtonCanActive();
+
+
         
     }
 
