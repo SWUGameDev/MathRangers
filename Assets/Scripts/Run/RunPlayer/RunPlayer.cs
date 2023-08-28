@@ -119,12 +119,21 @@ public partial class RunPlayer : MonoBehaviour
 
         if (jumpCount < 2)
         {
-            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
+            if (jumpCount == 0)
+            {
+                SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP1);
+            }
+            else
+            {
+                SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP2);
+            }
+            
             jumpCount++;
             rb.velocity = Vector2.zero;
             this.rb.AddForce(new Vector2(0, this.jumpForce));
 
             animator.SetInteger(runGame, (int)States.Jump);
+
         }
     }
 

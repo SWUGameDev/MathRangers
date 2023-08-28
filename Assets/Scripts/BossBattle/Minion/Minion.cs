@@ -85,7 +85,10 @@ public partial class Minion : MonoBehaviour
 
         Debug.Log("CollideMinionWithPlayer");
 
-        int damage = UnityEngine.Random.Range(player.MinDamage, player.MaxDamage);
+        int minDamage = (int)player.playerProperty.MinAttackPower;
+        int maxDamage = (int)player.playerProperty.MaxAttackPower;
+
+        int damage = UnityEngine.Random.Range(minDamage, maxDamage);
 
         this.minionHp -= damage;
 

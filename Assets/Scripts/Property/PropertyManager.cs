@@ -20,10 +20,16 @@ public class PropertyManager : MonoBehaviour
 
     public void AttackPowerIncrease(float percentage)
     {
-        float increaseAmount = player.playerProperty.AttackPower * (percentage / 100.0f);
+        float increaseAmountMin = player.playerProperty.MinAttackPower * (percentage / 100.0f);
 
-        player.playerProperty.AttackPower += increaseAmount;
-        Debug.Log("공격력: " + player.playerProperty.AttackPower);
+        player.playerProperty.MinAttackPower += increaseAmountMin;
+
+        float increaseAmountMax = player.playerProperty.MaxAttackPower * (percentage / 100.0f);
+
+        player.playerProperty.MaxAttackPower += increaseAmountMax;
+
+        Debug.Log("최소 공격력: " + player.playerProperty.MinAttackPower);
+        Debug.Log("최대 공격력: " + player.playerProperty.MaxAttackPower);
     }
 
     public void DefensePowerIncrease(float percentage)

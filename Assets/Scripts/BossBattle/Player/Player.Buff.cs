@@ -73,11 +73,10 @@ public partial class Player : MonoBehaviour
             Debug.Log("시험기간: 공격력이 n% 증가");
 
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
-            Debug.Log(playerAbilityInfoList[3].abilityCommands.Count);
-            Debug.Log(playerAbilityInfoList[3].abilityCommands[0].amountForLevel.Count);
+            Debug.Log("레벨: " + level);
             float amout = playerAbilityInfoList[3].abilityCommands[0].amountForLevel[level - 1];
 
-            propertyManager.AttackPowerIncrease(amout);
+            this.propertyManager.AttackPowerIncrease(amout);
         }
     }
 
@@ -96,7 +95,7 @@ public partial class Player : MonoBehaviour
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[4].abilityCommands[0].amountForLevel[level - 1];
 
-            // propertyManager.DefensePowerIncrease(amout);
+            this.propertyManager.DefensePowerIncrease(amout);
         }
     }
 
@@ -114,7 +113,7 @@ public partial class Player : MonoBehaviour
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[5].abilityCommands[0].amountForLevel[level - 1];
 
-            // propertyManager.HpIncrease(amout);
+            this.propertyManager.HpIncrease(amout);
         }
     }
 
@@ -132,7 +131,7 @@ public partial class Player : MonoBehaviour
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[6].abilityCommands[0].amountForLevel[level - 1];
 
-            // propertyManager.AttackSpeedIncrease(amout);
+            this.propertyManager.AttackSpeedIncrease(amout);
         }
     }
 
@@ -150,7 +149,7 @@ public partial class Player : MonoBehaviour
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[7].abilityCommands[0].amountForLevel[level - 1];
 
-            // propertyManager.LimitTimeIncrease(amout);
+            this.propertyManager.LimitTimeIncrease(amout);
         }
     }
 
