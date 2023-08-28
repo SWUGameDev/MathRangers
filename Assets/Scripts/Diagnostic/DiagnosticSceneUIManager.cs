@@ -19,6 +19,8 @@ public partial class DiagnosticSceneUIManager : MonoBehaviour
     private YieldInstruction waitForFadeSeconds;
 
     private void Start() {
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_PROLOGUE);
+
         DialogSystem.onDialogEnded -= this.SetDiagnosticCanvasActive;
         DialogSystem.onDialogEnded += this.SetDiagnosticCanvasActive;
     }

@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/06_ShopScene.unity
     guid: 76c2aecffc52d4e2182a9ee88ff5f3f6
+  - enabled: 1
+    path: Assets/Scenes/08_MyPageScene.unity
+    guid: 21294287882094c9ea7c2d2b5178dcc7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a089fa641726947c1873ddd2efe08403, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 99833efb2f3148c42a5d7e60dfafc3ad, type: 2}

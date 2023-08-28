@@ -17,6 +17,11 @@ public class TitleUIManager : MonoBehaviour
 
     [SerializeField] private SceneController sceneController;
 
+    private void Start()
+    {
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_TITLE);
+    }
+
     private void SetLoginPanelActive(bool isActive)
     {
         this.touchText.SetActive(!isActive);

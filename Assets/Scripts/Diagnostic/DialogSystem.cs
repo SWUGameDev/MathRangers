@@ -111,6 +111,8 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetDialogUI(int dataIndex,int index)
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_TYPING);
+
         DialogSystemUIInfo selectedUIInfo = this.dialogData[dataIndex][index].activeTalker == 0 ? this.leftCharacter : this.rightCharacter;
         DialogSystemUIInfo opponentUIInfo = this.dialogData[dataIndex][index].activeTalker == 0 ? this.rightCharacter : this.leftCharacter;
 

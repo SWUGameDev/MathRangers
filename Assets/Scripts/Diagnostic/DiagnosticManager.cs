@@ -138,6 +138,7 @@ public class DiagnosticManager : MonoBehaviour
         string[]    wrongAnswers;
 
         textDescription.text = textCn;
+        qstCn = qstCn.Replace("align","flalign");
         textEquation.text = qstCn;
 
         correctAnswer = qstCransr;
