@@ -54,6 +54,8 @@ public class RunSceneUIManager : UI_Base
         MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
         this.countdownController.StartCountdown(this.GameStartUISetting);
         SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
+        MathPanelUIController.OnSolveWrong.AddListener(this.SetAllScroll);
+        BuffSelectPanelUIController.OnSolvedCorrect.AddListener(this.SetAllScroll);
     }
 
     private void Start()
@@ -70,6 +72,9 @@ public class RunSceneUIManager : UI_Base
         runPlayer.onSetHpGauge.RemoveListener(this.SetHpGauge);
         runPlayer.onTriggerMath.RemoveAllListeners();
         runPlayer.onRunPlayerDead.RemoveAllListeners();
+
+        MathPanelUIController.OnSolveWrong.RemoveListener(this.SetAllScroll);
+        BuffSelectPanelUIController.OnSolvedCorrect.RemoveListener(this.SetAllScroll);
     }
 
     public void EatCheeseNumber()
