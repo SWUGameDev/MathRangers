@@ -10,8 +10,8 @@ public enum ItemType
 
 public class ItemInfo : MonoBehaviour
 {
-    [SerializeField] private int itemId;
-    [SerializeField] private string itemResourceFileName;
+    [SerializeField] public int itemId;
+    [SerializeField] public string itemResourceFileName;
     [SerializeField] public int price;
     [SerializeField] public ItemType itemType;
     [SerializeField] public int minLevel;

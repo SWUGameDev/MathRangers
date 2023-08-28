@@ -1,15 +1,16 @@
 using System;
+using System.IO;
 using UnityEngine.UI;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 [Serializable]
-public class ItemAvatarContainer
+public class ItemAvatarBone
 {
-    [SerializeField] private Transform headItemTransform;
+    public Image itemImage;
 
-    [SerializeField] private Transform backItemTransform;
+    public ItemType itemType;
 }
 
 
@@ -17,17 +18,52 @@ public class ItemAvatarContainer
 public class CharacterAvatarController : MonoBehaviour
 {
     [SerializeField] private Image characterImage;
-    [SerializeField] private ItemAvatarContainer itemContainer;
+
+    [SerializeField] private Sprite defaultSprite;
+
+    private Dictionary<int,Sprite> itemSpriteDictionary;
+
+    [SerializeField] private List<ItemAvatarBone> avatarPartsList;
+
+    private Dictionary<ItemType,Image> avatarPartsDictionary;
 
     [SerializeField] private List<Sprite> avatarSkin;
+
+    private readonly string spriteResourceRootPath = "Images/Final/Character/Skin";
     void Start()
     {
         this.InitializeAvatar();
+
+        this.RegisterShopEvent();
+
+    }
+
+    private void OnDestroy() {
+        ShopUIManager.OnItemSelected -= WearItem;        
+    }
+
+    private void RegisterShopEvent()
+    {
+        ShopUIManager.OnItemSelected -= WearItem;
+        ShopUIManager.OnItemSelected += WearItem;
+
+        this.itemSpriteDictionary = new Dictionary<int,Sprite>();
     }
 
     private void InitializeAvatar()
     {
+        this.InitializeAvatarInfo();
+
         this.InitializeAvatarSkin();
+    }
+
+    private void InitializeAvatarInfo()
+    {
+        this.avatarPartsDictionary = new Dictionary<ItemType, Image>();
+        foreach(ItemAvatarBone itemAvatarBone in this.avatarPartsList)
+        {
+            this.avatarPartsDictionary[itemAvatarBone.itemType] = itemAvatarBone.itemImage;
+        }
     }
 
     private void InitializeAvatarSkin()
@@ -48,6 +84,23 @@ public class CharacterAvatarController : MonoBehaviour
     private void LoadItemUserList()
     {
 
+    }
+
+    private void WearItem(ItemInfo itemInfo,bool isTakeOn)
+    {
+        if(isTakeOn == false)
+        {
+            this.avatarPartsDictionary[itemInfo.itemType].sprite = this.defaultSprite;
+            return;
+        }
+        if(this.itemSpriteDictionary.ContainsKey(itemInfo.itemId))
+        {
+            this.avatarPartsDictionary[itemInfo.itemType].sprite = this.itemSpriteDictionary[itemInfo.itemId];
+        }else{
+            Sprite itemSprite = Resources.Load<Sprite>(Path.Combine(this.spriteResourceRootPath,itemInfo.itemResourceFileName));
+            this.avatarPartsDictionary[itemInfo.itemType].sprite = itemSprite;
+            this.itemSpriteDictionary[itemInfo.itemId] = itemSprite;
+        }
     }
 
 }
