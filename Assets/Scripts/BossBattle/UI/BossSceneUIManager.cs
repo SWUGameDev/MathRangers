@@ -38,7 +38,7 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         this.limitTimeSeconds -= Time.deltaTime;
 
-        if(this.limitTimeSeconds>=0)
+        if(this.limitTimeSeconds <= 0)
         {
             //TODO : GameEnd 호출하기
             GameResultMission();
