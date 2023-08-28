@@ -203,16 +203,21 @@ public partial class RunPlayer : MonoBehaviour
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        if(collision.gameObject.tag == "End" && this.isArive == true)
+        if (collision.gameObject.tag == "End")
         {
-            sceneController.LoadBossScene();
+            if (this.isArive == true)
+            {
+                sceneController.LoadBossScene();
+                runSceneUIManager.SaveEatCheese();
+            }
+            else if (this.isArive == false)
+            {
+                runSceneUIManager.GameResultEmergencyAbortOfMission();
+                runSceneUIManager.SetAllScroll(false);
+            }
         }
 
-        if (collision.gameObject.tag == "End" && this.isArive == false)
-        {
-            runSceneUIManager.GameResultEmergencyAbortOfMission();
-            runSceneUIManager.SetAllScroll(false);
-        }
+
     }
 
     void TakeDamageplayer(float damage)

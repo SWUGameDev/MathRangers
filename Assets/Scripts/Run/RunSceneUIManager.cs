@@ -169,6 +169,11 @@ public class RunSceneUIManager : UI_Base
         string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
         Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
 
-        this.gameResultUIController.SetResult(GameResultType.EmergencyAbortOfMission, new GameResultData(0, 0, 0), response_Learning_ProgressData);
+        this.gameResultUIController.SetResult(GameResultType.EmergencyAbortOfMission, new GameResultData(0, 0, this.eatCheeseNumber), response_Learning_ProgressData);
+    }
+
+    public void SaveEatCheese()
+    {
+        PlayerPrefs.SetInt("eatCheeseNumber", this.eatCheeseNumber);
     }
 }

@@ -75,7 +75,12 @@ public partial class BossSceneUIManager : MonoBehaviour
         string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
         Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
 
-        this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, 0), response_Learning_ProgressData);
+        if (!PlayerPrefs.HasKey("eatCheeseNumber"))
+            return;
+
+        int eatCheeseNumber = PlayerPrefs.GetInt("eatCheeseNumber");
+
+        this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
     }
 
     public void GameResultMissionSuccess()
@@ -86,8 +91,11 @@ public partial class BossSceneUIManager : MonoBehaviour
         string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
         Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
 
-        this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, 0), response_Learning_ProgressData);
+        if (!PlayerPrefs.HasKey("eatCheeseNumber"))
+            return;
+
+        int eatCheeseNumber = PlayerPrefs.GetInt("eatCheeseNumber");
+
+        this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
     }
-
-
 }
