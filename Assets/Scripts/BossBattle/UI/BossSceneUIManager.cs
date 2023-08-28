@@ -41,6 +41,7 @@ public partial class BossSceneUIManager : MonoBehaviour
         if(this.limitTimeSeconds>=0)
         {
             //TODO : GameEnd 호출하기
+            GameResultMission();
         }
 
         TimeSpan time = TimeSpan.FromSeconds(this.limitTimeSeconds);
@@ -52,7 +53,6 @@ public partial class BossSceneUIManager : MonoBehaviour
         Player.OnBossDamaged.RemoveListener(this.SetBossHpGauge);
         Minion.OnMinionDead.RemoveListener(this.SetMinionNumber);
     }
-
 
     public void SetMinionNumber()
     {
@@ -77,4 +77,16 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, 0), response_Learning_ProgressData);
     }
+
+    public void GameResultMission()
+    {
+        if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
+            return;
+
+        string data = PlayerPrefs.GetString(GameResultUIController.responseLearningProgressDataKey);
+        Response_Learning_ProgressData response_Learning_ProgressData = JsonConvert.DeserializeObject<Response_Learning_ProgressData>(data);
+
+        this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, 0), response_Learning_ProgressData);
+    }
+
 }
