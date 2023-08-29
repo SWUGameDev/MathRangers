@@ -27,7 +27,9 @@ public class CharacterAvatarController : MonoBehaviour
 
     private Dictionary<ItemType,Image> avatarPartsDictionary;
 
-    [SerializeField] private List<Sprite> avatarSkin;
+    [SerializeField] private GameObject characterGameObject;
+
+    //[SerializeField] private List<Sprite> avatarSkin;
 
     private readonly string spriteResourceRootPath = "Images/Final/Character/Skin";
     void Start()
@@ -78,7 +80,12 @@ public class CharacterAvatarController : MonoBehaviour
         if(userInfo.teamType == (int)TeamType.None)
             return;
 
-        this.characterImage.sprite = this.avatarSkin[(int)userInfo.teamType];
+        //this.characterImage.sprite = this.avatarSkin[(int)userInfo.teamType];
+    }
+
+    private void SetCurrentPlayerSpriteResolver()
+    {
+        //spriteResolver = GetComponent<UnityEngine.U2D.Animation.SpriteResolver>() ;
     }
 
     private void LoadItemUserList()
