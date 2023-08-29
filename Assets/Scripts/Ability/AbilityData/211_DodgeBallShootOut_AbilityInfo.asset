@@ -28,6 +28,18 @@ MonoBehaviour:
   - fieldName: attack
     target: player
     amountForLevel:
+    - 10
+    - 10
+    - 7
+    - 7
+    - 7
+    - 4
+    - 4
+    - 4
+    commandOperator: 4
+  - fieldName: attack
+    target: player
+    amountForLevel:
     - 200
     - 250
     - 300
@@ -36,16 +48,4 @@ MonoBehaviour:
     - 450
     - 500
     - 550
-    commandOperator: 4
-  - fieldName: attack
-    target: player
-    amountForLevel:
-    - 10
-    - 10
-    - 7
-    - 7
-    - 7
-    - 4
-    - 4
-    - 4
     commandOperator: 4
