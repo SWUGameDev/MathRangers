@@ -22,6 +22,7 @@ public partial class BossSceneUIManager : MonoBehaviour
     [SerializeField] GameResultUIController gameResultUIController;
     //TODO : 시간 나면 로직 분리하기
     long score = 0;
+    bool isEnd = false;
     private void Start()
     {
         boss = bossGameObject.GetComponent<Boss>();
@@ -38,9 +39,9 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         this.limitTimeSeconds -= Time.deltaTime;
 
-        if(this.limitTimeSeconds <= 0)
+        if(this.limitTimeSeconds <= 0 && this.isEnd == false)
         {
-            //TODO : GameEnd 호출하기
+            this.isEnd = true;
             GameResultMissionSuccess();
         }
 
