@@ -157,9 +157,17 @@ public partial class DialogSystem : MonoBehaviour
 
     private void SetTextInMultipleContents(DialogSystemUIInfo selectedUIInfo,List<string> contents,int index)
     {
-        // Debug.Log("SetTextInMultipleContents"+index);
-        // for(int i =0;i<3;i++)
-        //     Debug.Log(contents[i]);
+        if(index == 0)
+        {
+            // Green 
+            this.rightCharacter.characterImage.sprite = this.rightCharacter.characterSprites[0];
+        }else if(index == 1)
+        {
+            // Red
+            this.rightCharacter.characterImage.sprite = this.rightCharacter.characterSprites[1];            
+        }
+
+
         if(this.languageIndex == 0)
         {
             selectedUIInfo.contentText.text = contents[index].Replace("[Nickname]",this.userNickname);

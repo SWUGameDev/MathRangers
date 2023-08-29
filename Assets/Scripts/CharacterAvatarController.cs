@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using UnityEngine.U2D.Animation;
 
 [Serializable]
 public class ItemAvatarBone
@@ -17,8 +18,6 @@ public class ItemAvatarBone
 
 public class CharacterAvatarController : MonoBehaviour
 {
-    [SerializeField] private Image characterImage;
-
     [SerializeField] private Sprite defaultSprite;
 
     private Dictionary<int,Sprite> itemSpriteDictionary;
@@ -28,8 +27,6 @@ public class CharacterAvatarController : MonoBehaviour
     private Dictionary<ItemType,Image> avatarPartsDictionary;
 
     [SerializeField] private GameObject characterGameObject;
-
-    //[SerializeField] private List<Sprite> avatarSkin;
 
     private readonly string spriteResourceRootPath = "Images/Final/Character/Skin";
     void Start()
@@ -80,12 +77,28 @@ public class CharacterAvatarController : MonoBehaviour
         if(userInfo.teamType == (int)TeamType.None)
             return;
 
-        //this.characterImage.sprite = this.avatarSkin[(int)userInfo.teamType];
+        string teamColor = "";
+
+        if(userInfo.teamType  == (int)TeamType.Minus)
+        {
+            teamColor = "Blue";
+        }else if(userInfo.teamType  == (int)TeamType.Plus)
+        {
+            teamColor = "Green";
+        }else{
+            teamColor = "Red";
+        }
+        this.SetCurrentPlayerSpriteResolver(teamColor);
     }
 
-    private void SetCurrentPlayerSpriteResolver()
+    private void SetCurrentPlayerSpriteResolver(string teamColor)
     {
-        //spriteResolver = GetComponent<UnityEngine.U2D.Animation.SpriteResolver>() ;
+        SpriteResolver[] spriteResolvers = this.characterGameObject.transform.GetComponentsInChildren<SpriteResolver>();
+
+        foreach(SpriteResolver spriteResolver in spriteResolvers)
+        {
+            spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(),$"{teamColor}_{spriteResolver.GetCategory()}");
+        }
     }
 
     private void LoadItemUserList()
