@@ -12,6 +12,8 @@ public partial class DiagnosticSceneUIManager : MonoBehaviour
 
     [SerializeField] private GameObject DiagnosticCanvas;
 
+    [SerializeField] private GameObject DialogCanvas;
+
     [SerializeField] private SceneController sceneController;
 
     [SerializeField] private TeamMatchManager teamMatchManager;
@@ -34,6 +36,7 @@ public partial class DiagnosticSceneUIManager : MonoBehaviour
         if(dataIndex == 0)
         {
             this.DiagnosticCanvas.SetActive(true);
+            this.DialogCanvas.SetActive(false);
         }
         else if(dataIndex == 1)
         {
