@@ -68,13 +68,13 @@ public class AbilityInfoUIController : MonoBehaviour {
         switch(abilityInfo.abilityCommands.Count)
         {
             case 1:
-                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level+1]);
+                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level]);
                 break;
             case 2:
-                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level+1],abilityInfo.abilityCommands[1].amountForLevel[level+1]);
+                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level],abilityInfo.abilityCommands[1].amountForLevel[level]);
                 break;
             case 3:
-                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level+1],abilityInfo.abilityCommands[1].amountForLevel[level+1],abilityInfo.abilityCommands[2].amountForLevel[level+1]);
+                content = string.Format(content,abilityInfo.abilityCommands[0].amountForLevel[level],abilityInfo.abilityCommands[1].amountForLevel[level],abilityInfo.abilityCommands[2].amountForLevel[level]);
                 break;
         }
         return content;

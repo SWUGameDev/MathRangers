@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 using Unity.VisualScripting;
+using System.Drawing.Drawing2D;
 
 public partial class RunPlayer : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public partial class RunPlayer : MonoBehaviour
     bool isArive;
     bool isSlide;
     public bool isRun;
-
+    bool isEnd = false;
     bool isJump = false;
 
     private Transform playerTransform;
@@ -210,8 +211,9 @@ public partial class RunPlayer : MonoBehaviour
                 sceneController.LoadBossScene();
                 runSceneUIManager.SaveEatCheese();
             }
-            else if (this.isArive == false)
+            else if (this.isArive == false && this.isEnd == false)
             {
+                this.isEnd = true;
                 runSceneUIManager.GameResultEmergencyAbortOfMission();
                 runSceneUIManager.SetAllScroll(false);
             }
