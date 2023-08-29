@@ -183,11 +183,25 @@ public partial class GameResultUIController : MonoBehaviour
         FirebaseRealtimeDatabaseManager firebaseRealtimeDatabaseManager = FirebaseRealtimeDatabaseManager.Instance;
 
         string userId = firebaseRealtimeDatabaseManager.GetCurrentUserId();
+
+        this.SaveMoneyData(gameResultData.cheeseCount);
         
         this.SaveUserHighScore(firebaseRealtimeDatabaseManager,userId,gameResultData.damage);
 
         firebaseRealtimeDatabaseManager.UploadGameResultInfo(userId,gameResultInfoString,()=>{this.UploadGameResultDebug(gameResultInfoString);});
 
+    }
+
+    private void SaveMoneyData(int data)
+    {
+        if(PlayerPrefManager.HasKey(PlayerPrefManager.GameMoneyKey))
+        {
+            int moneyData = PlayerPrefManager.GetInt(PlayerPrefManager.GameMoneyKey);
+            moneyData += data;
+            PlayerPrefManager.SetInt(PlayerPrefManager.GameMoneyKey,moneyData);
+        }else{
+            PlayerPrefManager.SetInt(PlayerPrefManager.GameMoneyKey,data);
+        }
     }
 
     public static readonly string UserHighScoreKey = "Key_UserHighScore";
