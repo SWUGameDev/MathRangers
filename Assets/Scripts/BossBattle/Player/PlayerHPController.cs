@@ -19,20 +19,8 @@ public class PlayerHPController : MonoBehaviour
 
     private void Awake()
     {
-        Player.OnDamaged += OnBossDamage;
         playerHp = playerHpFull;
         fillImage.color = fullHealthColor;
-    }
-
-    private void OnDestroy()
-    {
-        Player.OnDamaged -= OnBossDamage;
-    }
-
-    private void OnBossDamage()
-    {
-        playerHp--;
-        setHp(playerHp/playerHpFull);
     }
 
     public void setHp(float hp)
