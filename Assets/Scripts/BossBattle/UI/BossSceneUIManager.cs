@@ -21,14 +21,14 @@ public partial class BossSceneUIManager : MonoBehaviour
     private Boss boss;
     [SerializeField] GameResultUIController gameResultUIController;
     //TODO : 시간 나면 로직 분리하기
-
+    long score = 0;
     private void Start()
     {
         boss = bossGameObject.GetComponent<Boss>();
         bossHpslider.value = 1;
         deadMinionNumber = 0;
         boss.BossHp = boss.MaxBossHp;
-        bossHpText.text = boss.BossHp.ToString();
+        bossHpText.text = score.ToString();
 
         Player.OnBossDamaged.AddListener(this.SetBossHpGauge);
         Minion.OnMinionDead.AddListener(this.SetMinionNumber);
@@ -63,7 +63,8 @@ public partial class BossSceneUIManager : MonoBehaviour
     private void SetBossHpGauge(int damage)
     {
         boss.BossHp -= damage;
-        bossHpText.text = boss.BossHp.ToString();
+        score += (long)damage;
+        bossHpText.text = score.ToString();
         this.bossHpslider.value = boss.BossHp / boss.MaxBossHp;
     }
 
@@ -80,7 +81,7 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         int eatCheeseNumber = PlayerPrefs.GetInt("eatCheeseNumber");
 
-        this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
+        this.gameResultUIController.SetResult(GameResultType.MissionFail, new GameResultData(this.score, this.deadMinionNumber, eatCheeseNumber), response_Learning_ProgressData);
     }
 
     public void GameResultMissionSuccess()
@@ -96,6 +97,6 @@ public partial class BossSceneUIManager : MonoBehaviour
 
         int eatCheeseNumber = PlayerPrefs.GetInt("eatCheeseNumber");
 
-        this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(0, 0, eatCheeseNumber), response_Learning_ProgressData);
+        this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(this.score, this.deadMinionNumber, eatCheeseNumber), response_Learning_ProgressData);
     }
 }
