@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static Player;
 
 public partial class Boss : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public partial class Boss : MonoBehaviour
     public static UnityEvent<GameObject> OnBossAttacked;
 
     [SerializeField] BossSceneUIManager bossSceneUIManager;
+    [SerializeField] Player player;
 
     private float maxBossHp = 20000;
     private float bossHp;
@@ -43,7 +45,7 @@ public partial class Boss : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(this.bossStateMachine.currentState);
+        // Debug.Log(this.bossStateMachine.currentState);
 
         this.TurnToTarget();
     }

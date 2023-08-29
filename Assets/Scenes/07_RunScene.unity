@@ -10617,7 +10617,7 @@ MonoBehaviour:
   tileScrolling: {fileID: 1541570940}
   cheezeScrolling: {fileID: 996726183}
   endScrolling: {fileID: 467168106}
-  testScrolling: {fileID: 1596548501}
+  testScrolling: {fileID: 764323698}
   countdownController: {fileID: 1286087816}
   deadPanel: {fileID: 1189177725}
   AnswerRateText: {fileID: 976448701}
@@ -24577,7 +24577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &764323697
 Transform:
   m_ObjectHideFlags: 0
@@ -54094,7 +54094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1596548501
 MonoBehaviour:
   m_ObjectHideFlags: 0
