@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Player.Ability101;
+using AbilityId = System.Int32;
 
 public partial class Player : MonoBehaviour
 {
@@ -12,20 +15,24 @@ public partial class Player : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private Slider slider;
     [SerializeField] private BossSceneStop bossSceneStop;
+    [SerializeField] private BossSceneUIManager bossSceneUIManager;
     private Rigidbody2D rb;
 
     private bool isTriggerBoss;
     private int jumpCount = 0;
 
     public static event Action OnDamaged;
-
+    public PropertyInfo playerProperty;
     private void Awake()
     {
+        this.playerProperty = new PropertyInfo();
         VirtualJoystick.OnProcessInput += OnProcessInput;
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
         Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
 
+        // 버프 테스트
+        this.AddBuff();
     }
 
     private void Start()
@@ -53,7 +60,8 @@ public partial class Player : MonoBehaviour
 
         if(this.slider.value <= 0)
         {
-            bossSceneStop.GameEnd();
+            // 임시 버전: bossSceneStop.GameEnd();
+            bossSceneUIManager.GameResultMissionFail();
         }
     }
 
@@ -76,7 +84,14 @@ public partial class Player : MonoBehaviour
     {
         if(jumpCount < 2)
         {
-            SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP);
+            if (jumpCount == 0)
+            {
+                SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP1);
+            }
+            else
+            {
+                SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP2);
+            }
             jumpCount++;
             this.rb.AddForce(transform.up * this.jumpForce);
         }

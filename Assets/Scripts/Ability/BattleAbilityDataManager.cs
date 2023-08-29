@@ -26,7 +26,7 @@ public class BattleAbilityDataManager : MonoBehaviour
     }
 
     private void ConvertAbilityListToDictionary()
-    {
+    { 
         this.abilityInfoDictionary = new Dictionary<int,AbilityInfo>();
 
         foreach(AbilityInfo info in this.abilityInfoList)
@@ -43,8 +43,22 @@ public class BattleAbilityDataManager : MonoBehaviour
         string serializedSelectedAbilityDictionary = PlayerPrefs.GetString(AbilityInfoManager.serializedAbilityInfoDictionaryKey);
 
         this.selectedAbilityDictionary = JsonConvert.DeserializeObject<Dictionary<int,selectedAbility>>(serializedSelectedAbilityDictionary);
-
     }
 
+    public Dictionary<AbilityId, selectedAbility> GetLoadSelectedAbilityDictionary()
+    {
+        if (this.selectedAbilityDictionary == null)
+        {
+            this.selectedAbilityDictionary = new Dictionary<AbilityId, selectedAbility>();
 
+            LoadSelectedAbilityDictionary();
+        }
+
+        return this.selectedAbilityDictionary;
+    }
+
+    public List<AbilityInfo> GetAbilityInfoList()
+    {
+        return this.abilityInfoList;
+    }
 }

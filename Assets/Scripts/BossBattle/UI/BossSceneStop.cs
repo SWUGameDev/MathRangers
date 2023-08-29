@@ -29,14 +29,16 @@ public class BossSceneStop : MonoBehaviour
         headerText.text = "일시 정지";
     }
 
+    // 대신 결과창으로 변경
     public void GameEnd()
     {
         stopPanel.SetActive(true);
         backSpace.SetActive(false);
         Time.timeScale = 0f;
         headerText.text = "게임 종료";
-
     }
+
+
 
     public void ExitGameScene()
     {

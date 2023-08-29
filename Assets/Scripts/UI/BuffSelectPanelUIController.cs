@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuffSelectPanelUIController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BuffSelectPanelUIController : MonoBehaviour
     [SerializeField] private AbilityInfoManager abilityInfoManager;
     [SerializeField] private RunSceneUIManager runSceneUIManager;
     private readonly string BuffPanelExitKey = "IsExited";
+    public static UnityEvent<bool> OnSolvedCorrect = new UnityEvent<bool>();
 
     public void SetBuffPanelActive(bool isActive)
     {
@@ -33,9 +35,6 @@ public class BuffSelectPanelUIController : MonoBehaviour
 
         this.mathPanelGameObject?.SetActive(false);
 
-        // TODO : 이벤트기반으로 변경
-        // 스크롤 속도 정상화
-        runSceneUIManager?.SetAllScroll(true);
-        runSceneUIManager?.GameResultSuccess();
+        OnSolvedCorrect?.Invoke(true);
     }
 }

@@ -14,9 +14,8 @@ public class MovingOnOffBTN : MonoBehaviour
     private bool[] isOnArray; // 각 버튼의 On/Off 상태
     private Vector2[] onPositions; // 각 버튼의 On 상태일 때 위치
     private Vector2[] offPositions; // 각 버튼의 Off 상태일 때 위치
-    private float moveSpeed = 100f; // 버튼의 이동 속도
+    private float moveSpeed = 300f; // 버튼의 이동 속도
 
-    // Start is called before the first frame update
     void Start()
     {
         // 배열 크기 초기화
@@ -39,7 +38,6 @@ public class MovingOnOffBTN : MonoBehaviour
         // 각 버튼에 클릭 이벤트 핸들러 연결
         for (int i = 0; i < buttonCount; i++)
         {
-
             int index = i; // 클로저를 사용하여 인덱스 변수를 보존
             toggleButtons[i].onClick.AddListener(() => ToggleButton(index));
         }
