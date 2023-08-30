@@ -2627,7 +2627,7 @@ MonoBehaviour:
   propertyManager: {fileID: 1278371138}
   battleAbilityDataManager: {fileID: 803853422864992459}
   playerSpeed: 15
-  jumpForce: 300
+  jumpForce: 550
   slider: {fileID: 393731249}
   bossSceneStop: {fileID: 329476672}
   bossSceneUIManager: {fileID: 1286944494}
@@ -2648,7 +2648,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

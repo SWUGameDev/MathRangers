@@ -88,8 +88,11 @@ public partial class Player : MonoBehaviour
             {
                 SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP2);
             }
+
             jumpCount++;
-            this.rb.AddForce(transform.up * this.jumpForce);
+
+            rb.velocity = Vector2.zero;
+            this.rb.AddForce(new Vector2(0, this.jumpForce));
         }
     }
 
