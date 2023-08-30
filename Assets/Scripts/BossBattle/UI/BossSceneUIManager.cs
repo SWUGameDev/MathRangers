@@ -74,6 +74,8 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     public void GameResultMissionFail()
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_FAIL);
+
         if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
             return;
 
@@ -90,6 +92,8 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     public void GameResultMissionSuccess()
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_SUCCESS);
+
         if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
             return;
 

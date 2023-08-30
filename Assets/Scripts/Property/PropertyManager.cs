@@ -8,7 +8,6 @@ public class PropertyManager : MonoBehaviour
     [SerializeField] Player player;
 
     // ex) n% ¡ı∞°
-
     public void HpIncrease(float percentage)
     {
         float increaseAmount = player.playerProperty.Hp * (percentage / 100.0f);

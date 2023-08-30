@@ -22,6 +22,7 @@ public partial class Player : MonoBehaviour
 
     private int jumpCount = 0;
 
+
     public PropertyInfo playerProperty;
     bool isEnd = false;
     private void Awake()

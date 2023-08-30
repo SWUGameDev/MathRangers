@@ -163,6 +163,8 @@ public class RunSceneUIManager : UI_Base
 
     public void GameResultEmergencyAbortOfMission()
     {
+        SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_FAIL);
+        
         if (!PlayerPrefs.HasKey(GameResultUIController.responseLearningProgressDataKey))
             return;
 

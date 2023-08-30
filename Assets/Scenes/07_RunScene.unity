@@ -34970,6 +34970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
+--- !u!1 &1070676802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8797437404502524591, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
+  m_PrefabInstance: {fileID: 9075045078588494183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1071446272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45278,6 +45283,7 @@ GameObject:
   - component: {fileID: 1418295391}
   - component: {fileID: 1418295394}
   - component: {fileID: 1418295393}
+  - component: {fileID: 1418295395}
   m_Layer: 0
   m_Name: RunPlayer
   m_TagString: Untagged
@@ -45471,6 +45477,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.0747614, y: 3.1211765}
   m_EdgeRadius: 0
+--- !u!114 &1418295395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418295388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475e402c244bd4e92af00a2dd607ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  avatarPartsList: []
+  characterGameObject: {fileID: 1070676802}
 --- !u!4 &1420889127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8520939495168951753, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
