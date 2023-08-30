@@ -15,8 +15,10 @@ public partial class Player : MonoBehaviour
 
     public static UnityEvent<DamageType,Damage> onAttackSucceeded;
     public static UnityEvent<int> OnBossDamaged;
+    public static UnityEvent OnBossFaint;
 
-    private int attackIndex;
+    private int attackIndexBuff213;
+    private int attackIndexBuff214;
     private int attackCount = 0;
 
     [Header("Damage Info")]
@@ -31,7 +33,7 @@ public partial class Player : MonoBehaviour
     public void CreateBullet()
     {
         attackCount++;
-
+        Debug.Log(attackCount);
         GameObject bulletObj = bulletPool.GetObject();
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
@@ -41,10 +43,15 @@ public partial class Player : MonoBehaviour
         bulletObj.transform.position = firePoint.position;
         bulletObj.transform.rotation = firePoint.rotation;
 
-        if(attackCount % attackIndex == 0)
+        if(attackCount % attackIndexBuff214 == 0)
         {
             bullet.isBuff214 = true;
             bulletObj.transform.localScale = new Vector3(0.6f, 0.6f, 1);
+        }
+
+        if (attackCount % attackIndexBuff213 == 0)
+        {
+            Player.OnBossFaint?.Invoke();
         }
 
         bullet.Shot();

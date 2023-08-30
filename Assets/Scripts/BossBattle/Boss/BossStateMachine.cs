@@ -18,7 +18,8 @@ public class BossStateMachine : StateMachine<BossStateMachine>
             {"Rush",new BossRush(this)},
             {"BeHit",new BossBeHit(this)},
             {"Call",new BossCall(this)},
-            {"Swing",new BossSwing(this)}
+            {"Swing",new BossSwing(this)},
+            {"Faint",new BossFaint(this)}
         };
     }
 

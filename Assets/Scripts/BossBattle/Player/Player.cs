@@ -22,7 +22,6 @@ public partial class Player : MonoBehaviour
 
     private int jumpCount = 0;
 
-
     public PropertyInfo playerProperty;
     bool isEnd = false;
     private void Awake()
@@ -32,7 +31,7 @@ public partial class Player : MonoBehaviour
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
         Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
-
+        Player.OnBossFaint = new UnityEngine.Events.UnityEvent();
         // 버프 테스트
         this.AddBuff();
     }
@@ -48,7 +47,8 @@ public partial class Player : MonoBehaviour
         Minion.OnReturnBullet.AddListener(this.OnReturnBullet);
         Boss.OnPlayerAttacked.AddListener(this.CalculateBossTriggerDamage);
 
-        attackIndex = this.playerProperty.Buff214Index;
+        attackIndexBuff213 = this.playerProperty.Buff213Count;
+        attackIndexBuff214 = this.playerProperty.Buff214Count;
     }
 
     private void Update()

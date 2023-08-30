@@ -53,8 +53,15 @@ public class PropertyManager : MonoBehaviour
         Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
     }
 
+    public void Buff213Attack(float n, float m)
+    {
+        player.playerProperty.Buff213Count = (int)n;
+        player.playerProperty.Buff213FaintTime = m;
+    }
+    
+
     public void Buff214AttackIndex(int idx)
     {
-        player.playerProperty.Buff214Index = idx;
+        player.playerProperty.Buff214Count = idx;
     }
 }

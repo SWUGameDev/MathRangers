@@ -35,12 +35,17 @@ public partial class Boss : MonoBehaviour
 
         //TODO : 이후에 위치 변경하기
         SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_BOSS_BATTLE);
+        originalColor = bossSpriteRenderer.color;
+        
     }
     void Start()
     {
         this.bossStateMachine.Initialize("Idle",this);
 
         Player.onAttackSucceeded.AddListener(this.PlayDamageEffect);
+        Player.OnBossFaint.AddListener(this.BossStateFaint);
+
+        faintTime = player.playerProperty.Buff213FaintTime;
     }
 
     void Update()
@@ -53,6 +58,7 @@ public partial class Boss : MonoBehaviour
     void OnDestroy()
     {
         Player.onAttackSucceeded.RemoveListener(this.PlayDamageEffect);
+        Player.OnBossFaint.RemoveListener(this.BossStateFaint);
     }
 
     void OnTriggerStay2D(Collider2D other) {
@@ -79,5 +85,10 @@ public partial class Boss : MonoBehaviour
     {
         get { return bossHp; }
         set { bossHp = value; }
+    }
+
+    void BossStateFaint()
+    {
+        this.bossStateMachine.Initialize("Faint", this);
     }
 }

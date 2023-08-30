@@ -223,8 +223,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("213");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("교내행사: 일반 공격 n번마다 보스를 m초 간 기절");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float n = playerAbilityInfoList[12].abilityCommands[0].amountForLevel[level - 1];
+            float m = playerAbilityInfoList[12].abilityCommands[1].amountForLevel[level - 1];
+
+            this.propertyManager.Buff213Attack(n, m);
         }
     }
 

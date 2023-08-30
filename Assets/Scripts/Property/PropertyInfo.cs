@@ -11,7 +11,11 @@ public class PropertyInfo : MonoBehaviour
     [SerializeField] private float defensePower = 100;
     [SerializeField] private float attackSpeed = 1; // 배수
     [SerializeField] private float limitTime = 120;
-    [SerializeField] private int buff214Index = 100;
+
+    // 버프가 없을 때는 발동되는 것이 불가능 할만큼 큰 값으로 설정
+    [SerializeField] private float buff213FaintTime = 5000f;
+    [SerializeField] private int buff213Count = 1000;
+    [SerializeField] private int buff214Count = 1000;
 
     public float Hp { get { return hp; } set { hp = value; } }
     public float MaxHp { get { return maxHp; } set { maxHp = value; } }
@@ -20,5 +24,7 @@ public class PropertyInfo : MonoBehaviour
     public float DefensePower { get { return defensePower; } set { defensePower = value; } }
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
     public float LimitTime { get { return limitTime; } set { limitTime = value; } }   
-    public int Buff214Index { get { return buff214Index; } set { buff214Index = value; } }
+    public float Buff213FaintTime { get { return buff213FaintTime; } set { buff213FaintTime = value; } }
+    public int Buff213Count { get { return buff213Count; } set { buff213Count = value; } }
+    public int Buff214Count { get { return buff214Count; } set { buff214Count = value; } }
 }

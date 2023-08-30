@@ -601,8 +601,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24513042}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 6, y: -1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 6, y: -1.5, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1154012715}
@@ -627,6 +627,8 @@ MonoBehaviour:
   minionCreator: {fileID: 24513049}
   bossSceneUIManager: {fileID: 1286944494}
   player: {fileID: 210544694}
+  bossSpriteRenderer: {fileID: 24513043}
+  faintTime: 0
   target: {fileID: 210544689}
   bossMoveSpeed: 10
   minDistance: 0.1
@@ -644,7 +646,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.3451147, y: 0.4638338}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -655,7 +657,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.97, y: 1.03}
+  m_Size: {x: 8.576864, y: 10.584957}
   m_EdgeRadius: 0
 --- !u!50 &24513048
 Rigidbody2D:
