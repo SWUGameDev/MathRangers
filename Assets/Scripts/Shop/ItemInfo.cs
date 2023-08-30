@@ -15,5 +15,6 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] public int price;
     [SerializeField] public ItemType itemType;
     [SerializeField] public int minLevel;
-    [SerializeField] private bool isOwned;
+    [SerializeField] public bool isOwned;
+    [SerializeField] public bool isLocked;
 }

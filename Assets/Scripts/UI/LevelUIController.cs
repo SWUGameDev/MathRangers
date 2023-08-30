@@ -47,6 +47,8 @@ public class LevelUIController : MonoBehaviour
             
         }
 
+        PlayerPrefManager.SetInt(PlayerPrefManager.PlayerLevelKey,level);
+
         // 최고 레벨일 경우 예외처리 따로 필요함
         if(level<countForLevelUp.Length)
         {

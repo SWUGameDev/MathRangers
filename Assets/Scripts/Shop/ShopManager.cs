@@ -13,7 +13,7 @@ public class ShopManager : MonoBehaviour
 
     private void LoadPlayerMoney()
     {
-        this.playerMoney = PlayerPrefs.GetInt("");
+        this.playerMoney = PlayerPrefs.GetInt(PlayerPrefManager.GameMoneyKey);
     }
 
 }

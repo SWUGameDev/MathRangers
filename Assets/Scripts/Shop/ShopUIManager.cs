@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ShopUIManager : MonoBehaviour
+public partial class ShopUIManager : MonoBehaviour
 {
     private Dictionary<ItemType,ItemUIInfo> selectedItemInfo;
 
     [SerializeField] private GameObject purchaseButton; 
+
+    [SerializeField] private GameObject applyButton; 
 
     public static Action<ItemInfo,bool> OnItemSelected;
 
@@ -35,17 +37,38 @@ public class ShopUIManager : MonoBehaviour
             ShopUIManager.OnItemSelected?.Invoke(itemUIInfo.itemInfo,true);
         }
 
-        this.CheckPurchaseButtonCanActive();
-
-
+        this.CheckButtonCanActive();
         
     }
 
-    private void CheckPurchaseButtonCanActive()
+    private void CheckButtonCanActive()
     {
         if(this.selectedItemInfo.Count == 0)
+        {
             this.purchaseButton.SetActive(false);
+            this.applyButton.SetActive(false);
+        }
         else
-            this.purchaseButton.SetActive(true);
+        {
+            if(this.IsAllSelectedItemOwned())
+            {
+                this.applyButton.SetActive(true);
+                this.purchaseButton.SetActive(false);
+            }else{
+                this.applyButton.SetActive(false);
+                this.purchaseButton.SetActive(true);
+            }
+            
+        }
+    }
+
+    private bool IsAllSelectedItemOwned()
+    {
+        foreach(KeyValuePair<ItemType,ItemUIInfo> info in this.selectedItemInfo)
+        {
+            if(info.Value.itemInfo.isOwned == false)
+                return false;
+        }
+        return true;
     }
 }

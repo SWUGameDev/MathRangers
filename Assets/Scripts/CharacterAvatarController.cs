@@ -6,27 +6,23 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine.U2D.Animation;
 
-[Serializable]
-public class ItemAvatarBone
-{
-    public Image itemImage;
-
-    public ItemType itemType;
-}
-
-
-
 public class CharacterAvatarController : MonoBehaviour
 {
     [SerializeField] private Sprite defaultSprite;
 
     private Dictionary<int,Sprite> itemSpriteDictionary;
 
-    [SerializeField] private List<ItemAvatarBone> avatarPartsList;
-
-    private Dictionary<ItemType,Image> avatarPartsDictionary;
+    private Dictionary<ItemType,SpriteRenderer> avatarPartsDictionary;
 
     [SerializeField] private GameObject characterGameObject;
+
+    [SerializeField] private GameObject backPrefab;
+
+    [SerializeField] private GameObject headPrefab;
+
+    private readonly string characterMainTag = "CharacterMain";
+
+    private readonly string headTag = "Head";
 
     private readonly string spriteResourceRootPath = "Images/Final/Character/Skin";
     void Start()
@@ -46,24 +42,35 @@ public class CharacterAvatarController : MonoBehaviour
         ShopUIManager.OnItemSelected -= WearItem;
         ShopUIManager.OnItemSelected += WearItem;
 
-        this.itemSpriteDictionary = new Dictionary<int,Sprite>();
     }
 
     private void InitializeAvatar()
     {
-        this.InitializeAvatarInfo();
-
         this.InitializeAvatarSkin();
+
+        this.InitializeAvatarItemPartsRootSprite();
+
+        this.InitAvatarItem();
     }
 
-    private void InitializeAvatarInfo()
+    private void InitAvatarItem()
     {
-        this.avatarPartsDictionary = new Dictionary<ItemType, Image>();
-        foreach(ItemAvatarBone itemAvatarBone in this.avatarPartsList)
+        string serializedData = PlayerPrefManager.GetString(PlayerPrefManager.PlayerItemSetDictionaryKey);
+        Dictionary<int,string> isItemSetDictionary;
+        if(serializedData == "")
         {
-            this.avatarPartsDictionary[itemAvatarBone.itemType] = itemAvatarBone.itemImage;
+            isItemSetDictionary = new Dictionary<int, string>();
+        }else{
+            isItemSetDictionary = JsonConvert.DeserializeObject<Dictionary<int,string>>(serializedData);
         }
+
+        foreach(KeyValuePair<int,string> info in isItemSetDictionary)
+        {
+            Sprite itemSprite = Resources.Load<Sprite>(Path.Combine(this.spriteResourceRootPath,info.Value));
+            this.avatarPartsDictionary[(ItemType)info.Key].sprite = itemSprite;            
+        }        
     }
+
 
     private void InitializeAvatarSkin()
     {
@@ -101,13 +108,24 @@ public class CharacterAvatarController : MonoBehaviour
         }
     }
 
-    private void LoadItemUserList()
+    private void InitializeAvatarItemPartsRootSprite()
     {
+        this.avatarPartsDictionary = new Dictionary<ItemType, SpriteRenderer>();
 
+        Transform headRoot = GameObject.FindWithTag(this.headTag).transform;;
+        GameObject headObject = GameObject.Instantiate(this.headPrefab,headRoot,false);
+        this.avatarPartsDictionary[ItemType.HEAD] = headObject.GetComponent<SpriteRenderer>();
+
+        Transform backRoot = GameObject.FindWithTag(this.characterMainTag).transform;;
+        GameObject backObject = GameObject.Instantiate(this.backPrefab,backRoot,false);
+        this.avatarPartsDictionary[ItemType.BACK] = backObject.GetComponent<SpriteRenderer>();
     }
 
     private void WearItem(ItemInfo itemInfo,bool isTakeOn)
     {
+        if(this.itemSpriteDictionary == null)
+            this.itemSpriteDictionary = new Dictionary<int,Sprite>();
+
         if(isTakeOn == false)
         {
             this.avatarPartsDictionary[itemInfo.itemType].sprite = this.defaultSprite;
