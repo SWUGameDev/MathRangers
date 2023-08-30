@@ -3996,7 +3996,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43ffc126a480b094d8e66e03b921888a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6663911dbd548524685a2a0490ff6046, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6290,6 +6290,7 @@ MonoBehaviour:
   characterImage: {fileID: 942496102}
   characterSprites:
   - {fileID: 21300000, guid: 43ffc126a480b094d8e66e03b921888a, type: 3}
+  - {fileID: 21300000, guid: 245e59c137c59484aacf9bc15be1f463, type: 3}
 --- !u!1 &1540254746
 GameObject:
   m_ObjectHideFlags: 0

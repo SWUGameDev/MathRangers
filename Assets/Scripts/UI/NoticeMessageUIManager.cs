@@ -37,6 +37,36 @@ public class NoticeMessageUIManager : MonoBehaviour
 
     }
 
+    public void PopUpMessage(string message,Vector2 size)
+    {
+
+        GameObject notice = this.noticeObjectPool.GetObject();
+        notice.transform.SetParent(this.canvasTransform);
+        notice.transform.localPosition = noticePosition;
+        NoticePanel panel = notice.transform.GetComponent<NoticePanel>();
+        panel.text.text = message;
+
+        notice.transform.GetComponent<RectTransform>().sizeDelta = size;
+        this.StartCoroutine(this.PopDown(notice));
+
+    }
+
+    public void PopUpMessage(string message,Vector2 size,Color popupColor)
+    {
+
+        GameObject notice = this.noticeObjectPool.GetObject();
+        notice.transform.SetParent(this.canvasTransform);
+        notice.transform.localPosition = noticePosition;
+        NoticePanel panel = notice.transform.GetComponent<NoticePanel>();
+        panel.iamge.color = popupColor;
+        panel.text.text = message;
+
+
+        notice.transform.GetComponent<RectTransform>().sizeDelta = size;
+        this.StartCoroutine(this.PopDown(notice));
+
+    }
+
     private IEnumerator PopDown(GameObject notice)
     {
         yield return this.waitForSeconds;
