@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private Player player;
 
-
+    public bool isBuff214 = false;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();

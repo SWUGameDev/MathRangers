@@ -11,6 +11,7 @@ public class PropertyInfo : MonoBehaviour
     [SerializeField] private float defensePower = 100;
     [SerializeField] private float attackSpeed = 1; // ¹è¼ö
     [SerializeField] private float limitTime = 120;
+    [SerializeField] private int buff214Index = 100;
 
     public float Hp { get { return hp; } set { hp = value; } }
     public float MaxHp { get { return maxHp; } set { maxHp = value; } }
@@ -19,4 +20,5 @@ public class PropertyInfo : MonoBehaviour
     public float DefensePower { get { return defensePower; } set { defensePower = value; } }
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
     public float LimitTime { get { return limitTime; } set { limitTime = value; } }   
+    public int Buff214Index { get { return buff214Index; } set { buff214Index = value; } }
 }

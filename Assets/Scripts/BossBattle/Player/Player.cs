@@ -48,7 +48,7 @@ public partial class Player : MonoBehaviour
         Minion.OnReturnBullet.AddListener(this.OnReturnBullet);
         Boss.OnPlayerAttacked.AddListener(this.CalculateBossTriggerDamage);
 
-
+        attackIndex = this.playerProperty.Buff214Index;
     }
 
     private void Update()

@@ -238,8 +238,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("214");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("복습은 철저히: 일반 공격 n번마다 위력 10 배");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[13].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.Buff214AttackIndex((int)amout);
+
         }
     }
 

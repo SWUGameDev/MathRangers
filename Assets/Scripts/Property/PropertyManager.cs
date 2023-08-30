@@ -52,4 +52,9 @@ public class PropertyManager : MonoBehaviour
         player.playerProperty.LimitTime += second; 
         Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
     }
+
+    public void Buff214AttackIndex(int idx)
+    {
+        player.playerProperty.Buff214Index = idx;
+    }
 }
