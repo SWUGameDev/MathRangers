@@ -8530,6 +8530,7 @@ MonoBehaviour:
   noticePanel: {fileID: 1593452190}
   blackPanel: {fileID: 314588573}
   DiagnosticCanvas: {fileID: 587137532}
+  DialogCanvas: {fileID: 152230147}
   sceneController: {fileID: 1514890206}
   teamMatchManager: {fileID: 1834744836}
 --- !u!4 &2081522166

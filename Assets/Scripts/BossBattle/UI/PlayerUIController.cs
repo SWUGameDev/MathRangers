@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class PlayerUIController : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-
-    //TODO : 선언 위치 이동 시키기
-    [SerializeField] private float damage = 0.01f;
+    [SerializeField] private Player player;
 
     [SerializeField] private Image fillImage;
     Color fullHealthColor = new Color(0f, 1f, 0f);
@@ -17,19 +15,20 @@ public class PlayerUIController : MonoBehaviour
 
     float lowHealthThreshold = 0.5f;
     float criticalHealthThreshold = 0.25f;
+
     void Start()
     {
-        Boss.OnPlayerAttacked.AddListener(this.ChangePlayerHpValue);
+        
         fillImage.color = fullHealthColor;
     }
 
-    private void ChangePlayerHpValue()
+    public void ChangePlayerHpValue()
     {
-        // TO DO : 플레이어 hp 만들기
-        if(this.slider.value<0)
+        if (player.playerProperty.Hp < 0)
             return;
 
-        this.slider.value -= damage;
+        this.slider.value = player.playerProperty.Hp / player.playerProperty.MaxHp;
+
         if (this.slider.value >= lowHealthThreshold)
         {
             fillImage.color = fullHealthColor;

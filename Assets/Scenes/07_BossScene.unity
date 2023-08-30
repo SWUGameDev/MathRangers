@@ -626,6 +626,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 802758985}
   minionCreator: {fileID: 24513049}
   bossSceneUIManager: {fileID: 1286944494}
+  player: {fileID: 210544694}
   target: {fileID: 210544689}
   bossMoveSpeed: 10
   minDistance: 0.1
@@ -2630,6 +2631,7 @@ MonoBehaviour:
   slider: {fileID: 393731249}
   bossSceneStop: {fileID: 329476672}
   bossSceneUIManager: {fileID: 1286944494}
+  playerUIController: {fileID: 1901364532}
   playerProperty: {fileID: 0}
 --- !u!50 &210544695
 Rigidbody2D:
@@ -13681,7 +13683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 393731249}
-  damage: 0.01
+  player: {fileID: 210544694}
+  damage: 0
   fillImage: {fileID: 24111028}
 --- !u!1 &1915887707
 GameObject:
