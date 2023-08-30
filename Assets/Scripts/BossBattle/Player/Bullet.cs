@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] public float time = 0f;
     private float timeInterval = 30f;
-    [SerializeField] private float bulletSpeed = 13.0f;
+    [SerializeField] private float bulletSpeed;
     private Vector3 startPosition;
     Rigidbody2D rigid;
 
@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
         Vector3 monsterDir = player.monster.transform.position - transform.position;
 
         monsterDir = monsterDir == Vector3.zero ? Vector3.up : monsterDir;
-        rigid.velocity = monsterDir.normalized * bulletSpeed;
+        rigid.velocity = monsterDir.normalized * bulletSpeed * player.playerProperty.AttackSpeed;
     }
 
     public void Initialized(Player player)
