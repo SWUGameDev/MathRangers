@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ShopUIManager : MonoBehaviour
+public partial class ShopUIManager : MonoBehaviour
 {
     private Dictionary<ItemType,ItemUIInfo> selectedItemInfo;
 
@@ -36,8 +36,6 @@ public class ShopUIManager : MonoBehaviour
         }
 
         this.CheckPurchaseButtonCanActive();
-
-
         
     }
 
