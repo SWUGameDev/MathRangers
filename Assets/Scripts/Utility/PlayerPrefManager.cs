@@ -8,7 +8,7 @@ public class PlayerPrefManager
     public static readonly string PlayerLevelKey = "Key_PlayerLevel";
     public static readonly string GameMoneyKey = "Key_GameMoney";
 
-    public static readonly string PlayerItemWearKey = "Key_PlayerItemWear";
+    public static readonly string PlayerItemSetDictionaryKey = "Key_PlayerItemSetResourcePathDictionary";
 
     public static readonly string PlayerItemOwnedKey = "Key_PlayerItemOwned";
 

@@ -8,8 +8,6 @@ public partial class ShopUIManager : MonoBehaviour
 {
     [SerializeField] private NoticeMessageUIManager noticeMessageUIManager;
 
-    [SerializeField] private ShopManager shopManager;
-
     private int localizationIndex = 0;
 
     private Dictionary<int,bool> isInitOwnedDataDictionary; // Set 으로 할껄 ....
@@ -29,7 +27,7 @@ public partial class ShopUIManager : MonoBehaviour
     {
         if(this.isInitOwnedDataDictionary.ContainsKey(itemId)==false)
             return false;
-            
+
         return this.isInitOwnedDataDictionary[itemId];
     }
 

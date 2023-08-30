@@ -41,6 +41,7 @@ public class ItemUIInfo : MonoBehaviour
         if(this.shopUIManager.IsOwnedItem(this.itemInfo.itemId))
         {
             this.bottomLayout.SetActive(false);
+            this.itemInfo.isOwned = true;
         }
 
     }

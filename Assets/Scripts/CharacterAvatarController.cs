@@ -42,7 +42,6 @@ public class CharacterAvatarController : MonoBehaviour
         ShopUIManager.OnItemSelected -= WearItem;
         ShopUIManager.OnItemSelected += WearItem;
 
-
     }
 
     private void InitializeAvatar()
@@ -50,6 +49,26 @@ public class CharacterAvatarController : MonoBehaviour
         this.InitializeAvatarSkin();
 
         this.InitializeAvatarItemPartsRootSprite();
+
+        this.InitAvatarItem();
+    }
+
+    private void InitAvatarItem()
+    {
+        string serializedData = PlayerPrefManager.GetString(PlayerPrefManager.PlayerItemSetDictionaryKey);
+        Dictionary<int,string> isItemSetDictionary;
+        if(serializedData == "")
+        {
+            isItemSetDictionary = new Dictionary<int, string>();
+        }else{
+            isItemSetDictionary = JsonConvert.DeserializeObject<Dictionary<int,string>>(serializedData);
+        }
+
+        foreach(KeyValuePair<int,string> info in isItemSetDictionary)
+        {
+            Sprite itemSprite = Resources.Load<Sprite>(Path.Combine(this.spriteResourceRootPath,info.Value));
+            this.avatarPartsDictionary[(ItemType)info.Key].sprite = itemSprite;            
+        }        
     }
 
 
@@ -117,8 +136,6 @@ public class CharacterAvatarController : MonoBehaviour
             this.avatarPartsDictionary[itemInfo.itemType].sprite = this.itemSpriteDictionary[itemInfo.itemId];
         }else{
             Sprite itemSprite = Resources.Load<Sprite>(Path.Combine(this.spriteResourceRootPath,itemInfo.itemResourceFileName));
-            Debug.Log(itemSprite);
-            Debug.Log(this.avatarPartsDictionary[itemInfo.itemType].sprite);
             this.avatarPartsDictionary[itemInfo.itemType].sprite = itemSprite;
             this.itemSpriteDictionary[itemInfo.itemId] = itemSprite;
         }
