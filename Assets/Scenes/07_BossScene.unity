@@ -7308,13 +7308,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limitTimeText: {fileID: 1784011382}
-  limitTimeSeconds: 120
   deadMinionNumber: 0
   deadMinionNumberText: {fileID: 863514973}
   bossHpslider: {fileID: 86956494}
   bossHpText: {fileID: 918841429}
   bossGameObject: {fileID: 24513042}
   gameResultUIController: {fileID: 420403586}
+  player: {fileID: 210544694}
   damagePrefab: {fileID: 1174472376264299769, guid: 0b1f191820559456f8cc5c1766c37302, type: 3}
   criticalDamagePrefab: {fileID: 7973864257283064824, guid: f34c3334e25d24a4e939a376278aaf3d, type: 3}
 --- !u!1 &1310341560
@@ -13684,7 +13684,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 393731249}
   player: {fileID: 210544694}
-  damage: 0
   fillImage: {fileID: 24111028}
 --- !u!1 &1915887707
 GameObject:

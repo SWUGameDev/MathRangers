@@ -11,7 +11,7 @@ public partial class BossSceneUIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text limitTimeText;
 
-    [SerializeField] private float limitTimeSeconds;
+    private float limitTimeSeconds;
 
     public int deadMinionNumber;
     [SerializeField] private TextMeshProUGUI deadMinionNumberText;
@@ -23,8 +23,11 @@ public partial class BossSceneUIManager : MonoBehaviour
     //TODO : 시간 나면 로직 분리하기
     long score = 0;
     bool isEnd = false;
+    [SerializeField] private Player player;
+
     private void Start()
     {
+        limitTimeSeconds = player.playerProperty.LimitTime;
         boss = bossGameObject.GetComponent<Boss>();
         bossHpslider.value = 1;
         deadMinionNumber = 0;
