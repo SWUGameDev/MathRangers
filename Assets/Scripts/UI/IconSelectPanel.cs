@@ -10,22 +10,33 @@ public class IconSelectPanel : MonoBehaviour
 
     public static Action<int> OnProfileChanged;
 
-    public static readonly string userIconKey = "PlayerPrefs_userIconKey";
-    void Start()
-    {
-        for(int index = 0;index< this.iconSelectButtonArray.Length; index++)
-        {
-            this.iconSelectButtonArray[index].GetComponent<IconSelectButton>().SetIndex(index);
+    [SerializeField] private GameObject character;
 
-            this.iconSelectButtonArray[index].onClick.AddListener(()=>{
-                this.transform.gameObject.SetActive(false);
-            });
-        }
+    public static readonly string userIconKey = "PlayerPrefs_userIconKey";
+    // void Start()
+    // {
+    //     for(int index = 0;index< this.iconSelectButtonArray.Length; index++)
+    //     {
+    //         this.iconSelectButtonArray[index].GetComponent<IconSelectButton>().SetIndex(index);
+
+    //         this.iconSelectButtonArray[index].onClick.AddListener(()=>{
+    //             this.transform.gameObject.SetActive(false);
+    //         });
+    //     }
+    // }
+
+    public void SetIconPanelUnActive()
+    {
+        this.transform.gameObject.SetActive(false);
+
+        this.character.SetActive(true);
     }
 
     public void SetIconSelectPanelActive()
     {
         this.transform.gameObject.SetActive(true);
+
+        this.character.SetActive(false);
     }
 
 }

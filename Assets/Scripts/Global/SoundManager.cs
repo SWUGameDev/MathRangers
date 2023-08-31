@@ -30,7 +30,8 @@ public enum effectsAudioSourceType
     SFX_CHEESE,
     SFX_HURDLE,
     SFX_TYPING,
-    SFX_CLICK
+    SFX_CLICK,
+    SFX_CHARACTER_CLICK
 }
 
 [Serializable]

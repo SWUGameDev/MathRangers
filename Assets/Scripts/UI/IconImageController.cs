@@ -14,8 +14,11 @@ public class IconImageController : MonoBehaviour
         if(PlayerPrefs.HasKey(IconSelectPanel.userIconKey))
             this.iconImage.sprite = this.iconSprites[PlayerPrefs.GetInt(IconSelectPanel.userIconKey)];
             
+        IconSelectPanel.OnProfileChanged -= this.ChangeIcon;
         IconSelectPanel.OnProfileChanged += this.ChangeIcon;
     }
+
+    
 
     private void ChangeIcon(int index)
     {

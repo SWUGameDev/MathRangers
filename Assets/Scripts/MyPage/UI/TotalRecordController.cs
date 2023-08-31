@@ -36,7 +36,7 @@ public partial class TotalRecordController : MonoBehaviour
             BarUIController barUIController = barObj.GetComponent<BarUIController>();
 
             barUIController.SetDateText(this.correctBarDataList[index].date);
-            barUIController.SetBarSize(this.correctBarDataList[index].value/100);
+            barUIController.SetBarSize(this.correctBarDataList[index].value/100f);
         }
 
         this.InitializeBarData(this.gameResultInfos);
