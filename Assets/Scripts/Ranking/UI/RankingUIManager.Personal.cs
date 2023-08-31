@@ -16,13 +16,15 @@ public partial class RankingUIManager : MonoBehaviour
 
     [SerializeField] private Transform personalContentParentTransform;
 
-    [SerializeField] private Color[] rankBackgroundColors;
+    [SerializeField] private Sprite[] rankBackgroundSprites;
 
     [SerializeField] private Color myRankHighlightBackgroundColor;
 
     private string userId = ""; 
 
     private bool isCurrentUserChecked = false;
+
+    [SerializeField] private RankingIconController iconImageController;
 
     public bool CreatePersonalRankingItem(List<UserRankInfo> infos)
     {
@@ -31,14 +33,16 @@ public partial class RankingUIManager : MonoBehaviour
 
         Transform parent = this.personalContentParentTransform;
         this.rankingItems = new List<RankingUIItem>();
+        Sprite[] iconSprite = iconImageController.GetIconSprites();
 
         for(int index = 0;index<infos.Count;index++)
         {
             GameObject item = GameObject.Instantiate<GameObject>(this.rankItemPrefab);
-            item.transform.SetParent(this.personalContentParentTransform);
+            item.transform.SetParent(this.personalContentParentTransform,false);
             RankingUIItem controller = item.GetComponent<RankingUIItem>();
 
-            controller.InitializeRankingItemController(index+1,infos[index]);
+            Sprite sprite = iconSprite[infos[index].iconId];
+            controller.InitializeRankingItemController(index+1,infos[index],sprite);
             this.SetRankBackgroundColor(index,controller);
             if(this.isCurrentUserChecked == false)
                 this.SetMyRankBackgroundColor(infos[index],controller);
@@ -54,7 +58,7 @@ public partial class RankingUIManager : MonoBehaviour
         if(index>2)
             return;
         
-        rankingItemController.SetRankBackGroundImage(this.rankBackgroundColors[index]);
+        rankingItemController.SetRankBackGroundImage(this.rankBackgroundSprites[index]);
     }
 
     private void SetMyRankBackgroundColor(UserRankInfo rankInfo,RankingUIItem rankingItemController)

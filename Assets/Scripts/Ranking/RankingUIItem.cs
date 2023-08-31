@@ -21,22 +21,23 @@ public class RankingUIItem : MonoBehaviour
 
     [SerializeField] private TMP_Text userScore;
 
-    public void InitializeRankingItemController(int rank,UserRankInfo userRankInfo)
+    public void InitializeRankingItemController(int rank,UserRankInfo userRankInfo,Sprite sprite)
     {
         this.rankText.text = rank.ToString();
         this.userName.text = userRankInfo.nickname;
         string formattedNumber =  userRankInfo.score.ToString("N0");
         this.userScore.text = formattedNumber;
+        this.userIconImage.sprite = sprite;
     }
 
-    public void SetItemBackGroundImage(Color color)
+    public void SetItemBackGroundImage(Sprite sprite)
     {
-        this.itemBackgroundImage.color = color;
+        this.itemBackgroundImage.sprite = sprite;
     }
 
-    public void SetRankBackGroundImage(Color color)
+    public void SetRankBackGroundImage(Sprite sprite)
     {
-        this.rankBackgroundImage.color = color;
+        this.rankBackgroundImage.sprite = sprite;
     }
 
     public void SetMyRankBackGroundActive(bool isActive )

@@ -17,9 +17,9 @@ public class TeamRackingUIItem : MonoBehaviour
 
     [SerializeField] private Image teamRankTextBackgroundImage;
 
-    public void SetTeamRankBackGroundColor(Color color)
+    public void SetTeamRankBackGroundColor(Sprite sprite)
     {
-        this.teamRankTextBackgroundImage.color = color;
+        this.teamRankTextBackgroundImage.sprite = sprite;
     }
 
     public void SetTeamRankText(string text)

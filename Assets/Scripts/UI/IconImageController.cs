@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class IconImageController : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
-    [SerializeField] private Sprite[] iconSprites;
 
+    [SerializeField] private Sprite[] iconSprites;
     void Start()
     {
         if(PlayerPrefs.HasKey(IconSelectPanel.userIconKey))
@@ -17,8 +17,6 @@ public class IconImageController : MonoBehaviour
         IconSelectPanel.OnProfileChanged -= this.ChangeIcon;
         IconSelectPanel.OnProfileChanged += this.ChangeIcon;
     }
-
-    
 
     private void ChangeIcon(int index)
     {

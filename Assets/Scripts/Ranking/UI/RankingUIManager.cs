@@ -9,9 +9,9 @@ using TabName = System.String;
 [Serializable]
 public class ColorOption
 {
-    [SerializeField] public Color activatedColor;
+    [SerializeField] public Sprite activatedSprite;
 
-    [SerializeField] public Color unActivatedColor;
+    [SerializeField] public Sprite unActivatedSprite;
 }
 
 [Serializable]

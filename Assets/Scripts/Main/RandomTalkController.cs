@@ -15,6 +15,14 @@ public class RandomTalkController : MonoBehaviour
     [SerializeField] private TextAsset krTextAsset;
 
     [SerializeField] private List<string> krTalkContents;
+
+    private float elapsedTime;
+
+    private int index;
+
+    private int maxIndex;
+
+    [SerializeField] private float timeInterval;
     void Start()
     {
 
@@ -22,11 +30,34 @@ public class RandomTalkController : MonoBehaviour
 
         this.krTalkContents = JsonConvert.DeserializeObject<List<string>>(this.krTextAsset.text);
         
-        if(LocalizationManager.IsSettingKorean())
+        this.maxIndex = this.engTalkContents.Count;
+
+        this.index = Random.Range(0,this.maxIndex);
+
+        if(true)
         {
-            this.talkText.text = this.krTalkContents[Random.Range(0,this.krTalkContents.Count)];
+            this.talkText.text = this.krTalkContents[this.index];
         }else{
-            this.talkText.text = this.engTalkContents[Random.Range(0,this.engTalkContents.Count)];
+            this.talkText.text = this.engTalkContents[this.index];
+        }
+    }
+
+    private void Update()
+    {
+        this.elapsedTime += Time.deltaTime;
+
+        if(this.timeInterval<=this.elapsedTime)
+        {
+            this.elapsedTime = 0;
+
+            this.index = (this.index + 1) % this.maxIndex;
+
+            if(true)
+            {
+                this.talkText.text = this.krTalkContents[this.index];
+            }else{
+                this.talkText.text = this.engTalkContents[this.index];
+            }
         }
     }
 }
