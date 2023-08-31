@@ -22,6 +22,8 @@ public class RandomTalkController : MonoBehaviour
 
     private int maxIndex;
 
+    private int languageIndex = 0;
+
     [SerializeField] private float timeInterval;
     void Start()
     {
@@ -34,7 +36,9 @@ public class RandomTalkController : MonoBehaviour
 
         this.index = Random.Range(0,this.maxIndex);
 
-        if(true)
+        this.languageIndex = LocalizationManager.Instance.GetCurrentLocalizationIndex();
+
+        if(this.languageIndex == 1)
         {
             this.talkText.text = this.krTalkContents[this.index];
         }else{
@@ -52,7 +56,7 @@ public class RandomTalkController : MonoBehaviour
 
             this.index = (this.index + 1) % this.maxIndex;
 
-            if(true)
+            if(this.languageIndex == 1)
             {
                 this.talkText.text = this.krTalkContents[this.index];
             }else{
