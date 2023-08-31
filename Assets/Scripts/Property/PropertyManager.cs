@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PropertyManager : MonoBehaviour
 {
@@ -53,13 +54,21 @@ public class PropertyManager : MonoBehaviour
         Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
     }
 
+    public void ActiveSkillUnbeat(float time)
+    {
+        player.playerProperty.Buff101UnbeatTime = time;
+
+        player.BossSceneUIManager.ActiveSkillUI(0);
+    }
+
+
+
     public void Buff213Attack(float n, float m)
     {
         player.playerProperty.Buff213Count = (int)n;
         player.playerProperty.Buff213FaintTime = m;
     }
     
-
     public void Buff214AttackIndex(int idx)
     {
         player.playerProperty.Buff214Count = idx;

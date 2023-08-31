@@ -10,6 +10,8 @@ public partial class Player : MonoBehaviour
     private static Dictionary<AbilityId, selectedAbility> playerAbilityInfoDictionary = new Dictionary<AbilityId, selectedAbility>();
     
     static List<AbilityInfo> playerAbilityInfoList;
+    public List<AbilityInfo> PlayerAbilityInfoList { get { return playerAbilityInfoList; } }
+
     public interface IAbility
     {
         void ApplyAbility(AbilityId abilityId);
@@ -25,8 +27,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("개교 기념일");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("[스킬] 개교 기념일: n초 동안 무적");
+
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[0].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.ActiveSkillUnbeat(amout);
         }
     }
 
@@ -41,7 +47,11 @@ public partial class Player : MonoBehaviour
         public void ApplyAbility(AbilityId abilityId)
         {
             Debug.Log("에너지바");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[1].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.ActiveSkillUnbeat(amout);
+
         }
     }
 
@@ -56,7 +66,10 @@ public partial class Player : MonoBehaviour
         public void ApplyAbility(AbilityId abilityId)
         {
             Debug.Log("103");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[2].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.ActiveSkillUnbeat(amout);
         }
     }
 

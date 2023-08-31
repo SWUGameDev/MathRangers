@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using Newtonsoft.Json;
 using WjChallenge;
+using UnityEngine.Events;
 
 public partial class BossSceneUIManager : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public partial class BossSceneUIManager : MonoBehaviour
     long score = 0;
     bool isEnd = false;
     [SerializeField] private Player player;
+
+    [SerializeField] GameObject Skill1;
+    [SerializeField] GameObject Skill2;
+    [SerializeField] Image Skill1Image;
+    [SerializeField] Image Skill2Image;
 
     private void Start()
     {
@@ -106,5 +112,21 @@ public partial class BossSceneUIManager : MonoBehaviour
         int eatCheeseNumber = PlayerPrefs.GetInt("eatCheeseNumber");
 
         this.gameResultUIController.SetResult(GameResultType.MissionSuccess, new GameResultData(this.score, this.deadMinionNumber, eatCheeseNumber), response_Learning_ProgressData);
+    }
+
+    public void ActiveSkillUI(int id)
+    {
+        Debug.Log("player.isSkill1Being" + player.isSkill1Being);
+        if (player.isSkill1Being == false)
+        {
+            player.isSkill1Being = true;
+            Skill1.SetActive(true);
+            Skill1Image.sprite = player.PlayerAbilityInfoList[id].abilityIcon;
+        }
+        else
+        {
+            Skill2.SetActive(true);
+            Skill2Image.sprite = player.PlayerAbilityInfoList[id].abilityIcon;
+        }
     }
 }

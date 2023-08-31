@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Player.Ability101;
@@ -17,6 +18,10 @@ public partial class Player : MonoBehaviour
     [SerializeField] private BossSceneStop bossSceneStop;
     [SerializeField] private BossSceneUIManager bossSceneUIManager;
     [SerializeField] private PlayerUIController playerUIController;
+    public BossSceneUIManager BossSceneUIManager { get {  return this.bossSceneUIManager; } }
+
+    public bool isSkill1Being = false;
+
 
     private Rigidbody2D rb;
 
@@ -32,7 +37,7 @@ public partial class Player : MonoBehaviour
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
         Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
         Player.OnBossFaint = new UnityEngine.Events.UnityEvent();
-        // 버프 테스트
+        // 버프 테스트 
         this.AddBuff();
     }
 
