@@ -10617,7 +10617,7 @@ MonoBehaviour:
   tileScrolling: {fileID: 1541570940}
   cheezeScrolling: {fileID: 996726183}
   endScrolling: {fileID: 467168106}
-  testScrolling: {fileID: 764323698}
+  testScrolling: {fileID: 1596548501}
   countdownController: {fileID: 1286087816}
   deadPanel: {fileID: 1189177725}
   AnswerRateText: {fileID: 976448701}
@@ -14663,7 +14663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467168101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 885, y: 0, z: 0}
+  m_LocalPosition: {x: 90, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -24520,7 +24520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &764323697
 Transform:
   m_ObjectHideFlags: 0
@@ -45484,14 +45484,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418295388}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475e402c244bd4e92af00a2dd607ff4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  avatarPartsList: []
   characterGameObject: {fileID: 1070676802}
+  backPrefab: {fileID: 3700186814019505501, guid: 164c442042ce841e485adab629240e51, type: 3}
+  headPrefab: {fileID: 4981316238670566967, guid: 228366992fdc24d8a87dfbaae1e3591d, type: 3}
 --- !u!4 &1420889127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8520939495168951753, guid: 61ffbe991c4e7a641a2c8e5c59317749, type: 3}
@@ -54115,7 +54116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1596548501
 MonoBehaviour:
   m_ObjectHideFlags: 0

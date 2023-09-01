@@ -17,13 +17,15 @@ public partial class Player : MonoBehaviour
 
     public void Buff101(int buttonIdx)
     {
+        Debug.Log("스킬 101");
         transparentIdx = (int)playerProperty.Buff101UnbeatTime * 2;
-        ChangeTransparent();
+        this.StartCoroutine(TransparentCycle());
         bossSceneUIManager.SkillButton[buttonIdx].interactable = false;
     }
 
     public void Buff102(int buttonIdx) 
     {
+        Debug.Log("스킬 102");
         playerProperty.Hp += playerProperty.EnergyHp;
         playerUIController.ChangePlayerHpValue();
         bossSceneUIManager.SkillButton[buttonIdx].interactable = false;
@@ -31,12 +33,13 @@ public partial class Player : MonoBehaviour
 
     public void Buff103(int buttonIdx) 
     {
+        Debug.Log("스킬 103");
         bossSceneUIManager.SkillButton[buttonIdx].interactable = false;
         playerProperty.MinAttackPower += playerProperty.Buff103MinAttackPower;
         playerProperty.MaxAttackPower += playerProperty.Buff103MaxAttackPower;
         playerProperty.AttackSpeed += playerProperty.Buff103AttackSpeed;
 
-        StartCoroutine(Waitfor103(playerProperty.Buff103Time));
+        this.StartCoroutine(Waitfor103(playerProperty.Buff103Time));
  
         playerProperty.MinAttackPower -= playerProperty.Buff103MinAttackPower;
         playerProperty.MaxAttackPower -= playerProperty.Buff103MaxAttackPower;
