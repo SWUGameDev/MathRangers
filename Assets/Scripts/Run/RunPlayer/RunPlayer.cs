@@ -22,6 +22,7 @@ public partial class RunPlayer : MonoBehaviour
     private float playerHp;
     private float enemyDamage = 300;
     private float fallDownDamage = 600;
+    private float mathDamage = 1000;
 
     [SerializeField] MathPanelUIController mathPanelUIController;
     [SerializeField] RunSceneUIManager runSceneUIManager;
@@ -74,6 +75,15 @@ public partial class RunPlayer : MonoBehaviour
         isRun = false;
         PlayerHp = MaxPlayerHp;
         playerTransform = this.transform;
+
+        MathPanelUIController.OnMathDamage.AddListener(this.MathDamagePlayer);
+        MathQuestionExtension.OnMathTimeOutDamage.AddListener(this.MathDamagePlayer);
+    }
+
+    private void OnDestroy()
+    {
+        MathPanelUIController.OnMathDamage.RemoveListener(this.MathDamagePlayer);
+        MathQuestionExtension.OnMathTimeOutDamage.RemoveListener(this.MathDamagePlayer);
     }
     void Start()
     {
@@ -106,7 +116,7 @@ public partial class RunPlayer : MonoBehaviour
             onRunPlayerDead?.Invoke();
         }
 
-        CheckFallDown();
+        this.CheckFallDown();
     }
 
     void PlayerIdle()
@@ -185,7 +195,7 @@ public partial class RunPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
         {
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
-            TakeDamageplayer(enemyDamage);
+            this.TakeDamageplayer(enemyDamage);
             animator.SetTrigger("Behit");
         }
 
@@ -227,5 +237,11 @@ public partial class RunPlayer : MonoBehaviour
         PlayerHp -= damage;
         onSetHpGauge?.Invoke();
         StartCoroutine(TransparentCycle());
+    }
+
+    void MathDamagePlayer()
+    {
+        PlayerHp -= mathDamage;
+        onSetHpGauge?.Invoke();
     }
 }

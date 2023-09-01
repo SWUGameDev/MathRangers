@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Platform.Android;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PropertyManager : MonoBehaviour
 {
@@ -8,7 +10,6 @@ public class PropertyManager : MonoBehaviour
     [SerializeField] Player player;
 
     // ex) n% 증가
-
     public void HpIncrease(float percentage)
     {
         float increaseAmount = player.playerProperty.Hp * (percentage / 100.0f);
@@ -52,5 +53,50 @@ public class PropertyManager : MonoBehaviour
     {
         player.playerProperty.LimitTime += second; 
         Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
+    }
+
+    public void ActiveSkillUnbeat(float time)
+    {
+        player.playerProperty.Buff101UnbeatTime = time;
+
+        player.BossSceneUIManager.ActiveSkillUI(0);
+    }
+
+    public void ActiveSkillEnergy(float percentage)
+    {
+        float increaseAmount = player.playerProperty.Hp * (percentage / 100.0f);
+        player.playerProperty.EnergyHp = increaseAmount;
+
+        player.BossSceneUIManager.ActiveSkillUI(1);
+    }
+
+    public void ActiveSkillSchoolNo1(int second, float attack, float speed)
+    {
+        player.playerProperty.Buff103Time = second;
+
+        float increaseAmountMin = player.playerProperty.MinAttackPower * (attack / 100.0f);
+
+        player.playerProperty.Buff103MinAttackPower = increaseAmountMin;
+
+        float increaseAmountMax = player.playerProperty.MaxAttackPower * (attack / 100.0f);
+
+        player.playerProperty.Buff103MaxAttackPower = increaseAmountMax;
+
+        float increaseAmount = player.playerProperty.AttackSpeed * (speed / 100.0f);
+
+        player.playerProperty.Buff103AttackSpeed = increaseAmount;
+
+        player.BossSceneUIManager.ActiveSkillUI(2);
+    }
+
+    public void Buff213Attack(float n, float m)
+    {
+        player.playerProperty.Buff213Count = (int)n;
+        player.playerProperty.Buff213FaintTime = m;
+    }
+    
+    public void Buff214AttackIndex(int idx)
+    {
+        player.playerProperty.Buff214Count = idx;
     }
 }

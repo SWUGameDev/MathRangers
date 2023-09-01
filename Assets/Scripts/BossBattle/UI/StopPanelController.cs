@@ -11,7 +11,6 @@ public class StopPanelController : MonoBehaviour
     [SerializeField] Image[] questionRunArr = new Image[7];
     [SerializeField] TMP_Text correctRate;
     [SerializeField] GameObject stopPanel;
-    [SerializeField] MathQuestionExtension mathQuestionExtension;
     Color green = new Color(0f, 1f, 0f);
     Color red = new Color(1f, 0f, 0f);
 

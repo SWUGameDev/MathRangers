@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Player.Ability101;
@@ -17,6 +18,9 @@ public partial class Player : MonoBehaviour
     [SerializeField] private BossSceneStop bossSceneStop;
     [SerializeField] private BossSceneUIManager bossSceneUIManager;
     [SerializeField] private PlayerUIController playerUIController;
+    public BossSceneUIManager BossSceneUIManager { get {  return this.bossSceneUIManager; } }
+
+    public bool isSkill1Being = false;
 
     private Rigidbody2D rb;
 
@@ -31,8 +35,8 @@ public partial class Player : MonoBehaviour
 
         Player.onAttackSucceeded = new UnityEngine.Events.UnityEvent<DamageType,int>();
         Player.OnBossDamaged = new UnityEngine.Events.UnityEvent<int>();
-
-        // 버프 테스트
+        Player.OnBossFaint = new UnityEngine.Events.UnityEvent();
+        // 버프 테스트 
         this.AddBuff();
     }
 
@@ -47,7 +51,8 @@ public partial class Player : MonoBehaviour
         Minion.OnReturnBullet.AddListener(this.OnReturnBullet);
         Boss.OnPlayerAttacked.AddListener(this.CalculateBossTriggerDamage);
 
-
+        attackIndexBuff213 = this.playerProperty.Buff213Count;
+        attackIndexBuff214 = this.playerProperty.Buff214Count;
     }
 
     private void Update()
@@ -87,8 +92,11 @@ public partial class Player : MonoBehaviour
             {
                 SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_JUMP2);
             }
+
             jumpCount++;
-            this.rb.AddForce(transform.up * this.jumpForce);
+
+            rb.velocity = Vector2.zero;
+            this.rb.AddForce(new Vector2(0, this.jumpForce));
         }
     }
 

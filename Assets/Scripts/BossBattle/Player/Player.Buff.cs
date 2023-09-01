@@ -10,6 +10,8 @@ public partial class Player : MonoBehaviour
     private static Dictionary<AbilityId, selectedAbility> playerAbilityInfoDictionary = new Dictionary<AbilityId, selectedAbility>();
     
     static List<AbilityInfo> playerAbilityInfoList;
+    public List<AbilityInfo> PlayerAbilityInfoList { get { return playerAbilityInfoList; } }
+
     public interface IAbility
     {
         void ApplyAbility(AbilityId abilityId);
@@ -25,8 +27,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("개교 기념일");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("[스킬] 개교 기념일: n초 동안 무적");
+
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[0].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.ActiveSkillUnbeat(amout);
         }
     }
 
@@ -40,8 +46,11 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("에너지바");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("[스킬] 에너지바: 최대 체력의 n%를 즉시 회복");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[1].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.ActiveSkillEnergy(amout);
         }
     }
 
@@ -55,8 +64,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("103");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("[스킬] 전교 1등: n초 동안 공격력이 m%, 공격 속도가 x% ");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float n = playerAbilityInfoList[2].abilityCommands[0].amountForLevel[level - 1];
+            float m = playerAbilityInfoList[2].abilityCommands[1].amountForLevel[level - 1];
+            float x = playerAbilityInfoList[2].abilityCommands[2].amountForLevel[level - 1];
+            this.propertyManager.ActiveSkillSchoolNo1((int)n, m, x);
         }
     }
 
@@ -223,8 +236,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("213");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("교내행사: 일반 공격 n번마다 보스를 m초 간 기절");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float n = playerAbilityInfoList[12].abilityCommands[0].amountForLevel[level - 1];
+            float m = playerAbilityInfoList[12].abilityCommands[1].amountForLevel[level - 1];
+
+            this.propertyManager.Buff213Attack(n, m);
         }
     }
 
@@ -238,8 +255,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("214");
-            Debug.Log(playerAbilityInfoDictionary[abilityId].selectedCount);
+            Debug.Log("복습은 철저히: 일반 공격 n번마다 위력 10 배");
+            int level = playerAbilityInfoDictionary[abilityId].selectedCount;
+            float amout = playerAbilityInfoList[13].abilityCommands[0].amountForLevel[level - 1];
+
+            this.propertyManager.Buff214AttackIndex((int)amout);
+
         }
     }
 

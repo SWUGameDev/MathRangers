@@ -32,6 +32,7 @@ public partial class MathPanelUIController : MonoBehaviour
 
     [SerializeField] private RunSceneUIManager runSceneUIManager;
     public static UnityEvent<bool> OnSolveWrong = new UnityEvent<bool>();
+    public static UnityEvent OnMathDamage = new UnityEvent();
 
     public void SetMathPanelActive(bool isActive)
     {
@@ -116,6 +117,7 @@ public partial class MathPanelUIController : MonoBehaviour
             this.transform.gameObject.SetActive(false);
 
             OnSolveWrong?.Invoke(true);
+            OnMathDamage?.Invoke();
         }
     }
 
