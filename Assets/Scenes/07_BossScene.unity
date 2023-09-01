@@ -2722,6 +2722,7 @@ MonoBehaviour:
   - {fileID: 1667340493}
   - {fileID: 324553321}
   - {fileID: 1303147810}
+  isUnbeat: 0
 --- !u!50 &210544695
 Rigidbody2D:
   serializedVersion: 4
@@ -4884,8 +4885,8 @@ Canvas:
   m_GameObject: {fileID: 798514121}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 997384374}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -11368,7 +11369,6 @@ MonoBehaviour:
   - {fileID: 0}
   correctRate: {fileID: 1000688899}
   stopPanel: {fileID: 0}
-  mathQuestionExtension: {fileID: 0}
 --- !u!4 &1437880681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1836273030299794095, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
@@ -13540,6 +13540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8de3a4fd81e4e929bfc269a1968d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionAnimController: {fileID: 0}
 --- !u!1 &1739833983
 GameObject:
   m_ObjectHideFlags: 0
