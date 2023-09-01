@@ -31,6 +31,7 @@ public partial class BossSceneUIManager : MonoBehaviour
     [SerializeField] Image Skill1Image;
     [SerializeField] Image Skill2Image;
 
+    [SerializeField] Sprite[] abilitySkillIcon;
     private void Start()
     {
         limitTimeSeconds = player.playerProperty.LimitTime;
@@ -121,12 +122,12 @@ public partial class BossSceneUIManager : MonoBehaviour
         {
             player.isSkill1Being = true;
             Skill1.SetActive(true);
-            Skill1Image.sprite = player.PlayerAbilityInfoList[id].abilityIcon;
+            Skill1Image.sprite = abilitySkillIcon[id];
         }
         else
         {
             Skill2.SetActive(true);
-            Skill2Image.sprite = player.PlayerAbilityInfoList[id].abilityIcon;
+            Skill2Image.sprite = abilitySkillIcon[id];
         }
     }
 }
