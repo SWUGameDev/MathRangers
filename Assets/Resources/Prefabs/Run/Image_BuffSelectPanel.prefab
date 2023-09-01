@@ -97,6 +97,7 @@ MonoBehaviour:
   mathPanelGameObject: {fileID: 0}
   animator: {fileID: 7917831249599809551}
   abilityInfoManager: {fileID: 6547274241171242760}
+  runSceneUIManager: {fileID: 0}
 --- !u!95 &7917831249599809551
 Animator:
   serializedVersion: 5
@@ -142,7 +143,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 601f85e40c69f4c99ae7a18cf1db4493, type: 2}
   - {fileID: 11400000, guid: 980616a1ad3f5431e80155ba6e4c513c, type: 2}
   - {fileID: 11400000, guid: 179f7d2bc738b430486da6137e4e3514, type: 2}
-  - {fileID: 11400000, guid: 36429e37e42c54630b725af1cf8ab2a4, type: 2}
   - {fileID: 11400000, guid: 52a51d9b312ce4654a7bf0ef0d0ee0cd, type: 2}
   - {fileID: 11400000, guid: 127e165903dd64f079b1ab7a395c428f, type: 2}
   - {fileID: 11400000, guid: 69ed4bfce4b964e8a846a492ffd49b22, type: 2}
