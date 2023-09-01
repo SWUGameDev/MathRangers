@@ -26,12 +26,14 @@ public partial class BossSceneUIManager : MonoBehaviour
     bool isEnd = false;
     [SerializeField] private Player player;
 
+    [Header("skill")]
     [SerializeField] GameObject Skill1;
     [SerializeField] GameObject Skill2;
     [SerializeField] Image Skill1Image;
     [SerializeField] Image Skill2Image;
-
+    [SerializeField] public Button[] SkillButton;
     [SerializeField] Sprite[] abilitySkillIcon;
+
     private void Start()
     {
         limitTimeSeconds = player.playerProperty.LimitTime;
@@ -117,16 +119,41 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     public void ActiveSkillUI(int id)
     {
+        int buttonIdx;
         if (player.isSkill1Being == false)
         {
             player.isSkill1Being = true;
             Skill1.SetActive(true);
             Skill1Image.sprite = abilitySkillIcon[id];
+            buttonIdx = 0;
         }
         else
         {
             Skill2.SetActive(true);
             Skill2Image.sprite = abilitySkillIcon[id];
+            buttonIdx = 1;
+        }
+
+        if (id == 0)
+        {
+            SkillButton[buttonIdx].onClick.AddListener(() =>
+            {
+                player.Buff101(buttonIdx);
+            });
+        }
+        else if (id == 1)
+        {
+            SkillButton[buttonIdx].onClick.AddListener(() =>
+            {
+                player.Buff102(buttonIdx);
+            });
+        }
+        else
+        {
+            SkillButton[buttonIdx].onClick.AddListener(() =>
+            {
+                player.Buff103(buttonIdx);
+            });
         }
     }
 }

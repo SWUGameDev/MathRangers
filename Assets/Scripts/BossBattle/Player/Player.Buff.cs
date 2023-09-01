@@ -46,7 +46,7 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("에너지바: 최대 체력의 n%를 즉시 회복");
+            Debug.Log("[스킬] 에너지바: 최대 체력의 n%를 즉시 회복");
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[1].abilityCommands[0].amountForLevel[level - 1];
 
@@ -64,7 +64,7 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("전교 1등: n초 동안 공격력이 m%, 공격 속도가 x% ");
+            Debug.Log("[스킬] 전교 1등: n초 동안 공격력이 m%, 공격 속도가 x% ");
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float n = playerAbilityInfoList[2].abilityCommands[0].amountForLevel[level - 1];
             float m = playerAbilityInfoList[2].abilityCommands[1].amountForLevel[level - 1];

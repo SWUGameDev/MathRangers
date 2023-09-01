@@ -76,15 +76,15 @@ public class PropertyManager : MonoBehaviour
 
         float increaseAmountMin = player.playerProperty.MinAttackPower * (attack / 100.0f);
 
-        player.playerProperty.Buff103MinAttackPower = player.playerProperty.MinAttackPower + increaseAmountMin;
+        player.playerProperty.Buff103MinAttackPower = increaseAmountMin;
 
         float increaseAmountMax = player.playerProperty.MaxAttackPower * (attack / 100.0f);
 
-        player.playerProperty.Buff103MaxAttackPower = player.playerProperty.MaxAttackPower + increaseAmountMax;
+        player.playerProperty.Buff103MaxAttackPower = increaseAmountMax;
 
         float increaseAmount = player.playerProperty.AttackSpeed * (speed / 100.0f);
 
-        player.playerProperty.Buff103AttackSpeed = player.playerProperty.AttackSpeed+ increaseAmount;
+        player.playerProperty.Buff103AttackSpeed = increaseAmount;
 
         player.BossSceneUIManager.ActiveSkillUI(2);
     }
