@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public partial class MathQuestionExtension : MonoBehaviour
 {
 
     [SerializeField] private float timerAnimTime = 2f;
+    public static UnityEvent OnMathTimeOutDamage = new UnityEvent();
 
     private void SetTimerUIAnimation(float time)
     {
@@ -20,6 +22,9 @@ public partial class MathQuestionExtension : MonoBehaviour
     private void SetTimeout()
     {
         SoundManager.Instance?.StopEffectAudioSource();
+
+        OnQuestionSolved?.Invoke(this.currentQuestionIndex + 1, false);
+        OnMathTimeOutDamage?.Invoke();
 
         this.SendLearningSelectAnswer(0,"N",false);
     }

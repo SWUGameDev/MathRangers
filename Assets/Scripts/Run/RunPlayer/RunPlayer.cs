@@ -77,6 +77,13 @@ public partial class RunPlayer : MonoBehaviour
         playerTransform = this.transform;
 
         MathPanelUIController.OnMathDamage.AddListener(this.MathDamagePlayer);
+        MathQuestionExtension.OnMathTimeOutDamage.AddListener(this.MathDamagePlayer);
+    }
+
+    private void OnDestroy()
+    {
+        MathPanelUIController.OnMathDamage.RemoveListener(this.MathDamagePlayer);
+        MathQuestionExtension.OnMathTimeOutDamage.RemoveListener(this.MathDamagePlayer);
     }
     void Start()
     {
