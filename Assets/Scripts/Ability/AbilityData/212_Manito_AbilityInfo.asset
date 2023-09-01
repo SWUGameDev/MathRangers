@@ -19,9 +19,9 @@ MonoBehaviour:
   abilityDescription:
     koreanDescription: "\uB9C8\uB2C8\uB610\uAC00 \uC218\uD559\uB808\uC778\uC800\uB97C
       \uC9C0\uCF1C\uC900\uB2E4. \uC2DC\uD5D8 \uAD34\uBB3C\uC744 \uB9CC\uB09C \uD6C4
-      \uCD5C\uCD08 {0}\uBC88\uC758 \uD53C\uACA9\uC744 \uB9C9\uC544\uC900\uB2E4."
-    englishDescription: Manito protects Mathranger. After meeting The Exam monster,
-      the manito prevents the first {0} attacks.
+      \uCD5C\uCD08 {0}\uCD08 \uAC04 \uD53C\uACA9\uB418\uC9C0 \uC54A\uB294\uB2E4."
+    englishDescription: Manito protects Mathranger. After meeting the Exam monster,
+      Mathranger is not attacked for the first {0} seconds.
   abilityIcon: {fileID: 21300000, guid: 497ebac5764d84843a5db59df22cf329, type: 3}
   abilityType: 0
   isSelected: 1
