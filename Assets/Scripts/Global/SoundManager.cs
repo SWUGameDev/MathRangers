@@ -31,7 +31,9 @@ public enum effectsAudioSourceType
     SFX_HURDLE,
     SFX_TYPING,
     SFX_CLICK,
-    SFX_CHARACTER_CLICK
+    SFX_CHARACTER_CLICK,
+    SFX_SUCCESS,
+    SFX_FAIL
 }
 
 [Serializable]
