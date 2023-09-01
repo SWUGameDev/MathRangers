@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +11,19 @@ public class LofiRoomManager : MonoBehaviour
     [SerializeField] Sprite[] moring;
     [SerializeField] Sprite[] night;
     [SerializeField] Image[] target;
+
+    [SerializeField] private TMP_Text StudyTimeText;
+    private float limitTimeSeconds;
     private void Start()
     {
         SoundManager.Instance.SetBackgroundAudioSourceMute(true);
+    }
+
+    private void Update()
+    {
+        this.limitTimeSeconds += Time.deltaTime;
+        TimeSpan time = TimeSpan.FromSeconds(this.limitTimeSeconds);
+        this.StudyTimeText.text = time.ToString(@"mm\:ss");
     }
 
     public void LofiSettingPanelOpen()
