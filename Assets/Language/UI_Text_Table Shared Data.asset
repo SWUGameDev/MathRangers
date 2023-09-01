@@ -15,70 +15,28 @@ MonoBehaviour:
   m_TableCollectionName: UI_Text_Table
   m_TableCollectionNameGuidString: 0ddabd281fe0a4311993404a2cfab6df
   m_Entries:
-  - m_Id: 110204280832
-    m_Key: Key_Email
-    m_Metadata:
-      m_Items: []
-  - m_Id: 254207320064
-    m_Key: Key_Password
-    m_Metadata:
-      m_Items: []
-  - m_Id: 344661680128
-    m_Key: Key_PasswordText
-    m_Metadata:
-      m_Items: []
-  - m_Id: 498697494528
-    m_Key: 'Key_EmailText
-
-'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1978799062245376
-    m_Key: Key_LoginText
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1982917306736640
-    m_Key: Key_LoginNoticeText
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1987363227033600
-    m_Key: Key_Register
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1987406747131904
-    m_Key: Key_Login
-    m_Metadata:
-      m_Items: []
   - m_Id: 2100134899867648
     m_Key: Key_TouchToStart
     m_Metadata:
       m_Items: []
-  - m_Id: 2134209228431360
-    m_Key: Key_Welcome
+  - m_Id: 31863135852814336
+    m_Key: Key_Language_SelectMessage
     m_Metadata:
       m_Items: []
-  - m_Id: 2134636648980480
-    m_Key: Key_NicknameLimitNotice
+  - m_Id: 31863135861202944
+    m_Key: Key_Language_English
     m_Metadata:
       m_Items: []
-  - m_Id: 2134804433723392
-    m_Key: Key_NicknameNotice
+  - m_Id: 31863135865397248
+    m_Key: Key_Language_Korean
     m_Metadata:
       m_Items: []
-  - m_Id: 2134924315320320
-    m_Key: Key_Confirm
+  - m_Id: 31863135869591552
+    m_Key: Key_LoginPanel_Login
     m_Metadata:
       m_Items: []
-  - m_Id: 2135159578025984
-    m_Key: key_NicknameNotice
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7512490521911296
-    m_Key: Key_SignUpNotice
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11862026530840576
-    m_Key: Key_AppName
+  - m_Id: 31863135869591553
+    m_Key: Key_LoginPanel_Signup
     m_Metadata:
       m_Items: []
   m_Metadata:
