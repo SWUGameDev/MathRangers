@@ -19,9 +19,9 @@ MonoBehaviour:
   abilityDescription:
     koreanDescription: "\uCCA0\uC800\uD55C \uBCF5\uC2B5\uC740 \uAC15\uB825\uD55C
       \uD6A8\uACFC\uB97C \uAC00\uC838\uC628\uB2E4. \uC77C\uBC18 \uACF5\uACA9 {0}\uBC88\uB9C8\uB2E4
-      \uC704\uB825 \uB450 \uBC30\uC758 \uAC15\uB825\uD55C \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD55C\uB2E4."
+      \uC704\uB825 \uC5F4 \uBC30\uC758 \uAC15\uB825\uD55C \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD55C\uB2E4."
     englishDescription: A thorough review lead the powerful effect. Mathranger shoots
-      the double-power attack for every {0} basic attacks.
+      the tenfold-power attack for every {0} basic attacks.
   abilityIcon: {fileID: 21300000, guid: c4baf8b066e26174bade3bd7d284e0bc, type: 3}
   abilityType: 0
   isSelected: 0

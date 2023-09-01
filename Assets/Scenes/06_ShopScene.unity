@@ -6923,6 +6923,7 @@ MonoBehaviour:
   purchaseButton: {fileID: 1308714037}
   applyButton: {fileID: 480379207}
   noticeMessageUIManager: {fileID: 1095542157}
+  moneyUIController: {fileID: 1286281839}
 --- !u!1 &1706719302
 GameObject:
   m_ObjectHideFlags: 0
@@ -7493,6 +7494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8de3a4fd81e4e929bfc269a1968d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionAnimController: {fileID: 0}
 --- !u!1001 &1813952482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9197,6 +9199,8 @@ GameObject:
   - component: {fileID: 2119858332}
   - component: {fileID: 2119858331}
   - component: {fileID: 2119858333}
+  - component: {fileID: 2119858335}
+  - component: {fileID: 2119858334}
   m_Layer: 5
   m_Name: Button_Profile
   m_TagString: Untagged
@@ -9286,6 +9290,76 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ff67b4dcce39adb4aa7cdd6188163dc2, type: 3}
   - {fileID: 21300000, guid: d271d2f3275b3014493a87ee318f9992, type: 3}
   - {fileID: 21300000, guid: 1a3cc6db794154e4485deaf0b516eed0, type: 3}
+--- !u!114 &2119858334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119858328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8485ed98e79740ccbd2645d2cab04db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyUIController: {fileID: 1286281839}
+  levelText: {fileID: 0}
+--- !u!114 &2119858335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119858328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2119858331}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2119858334}
+        m_TargetAssemblyTypeName: CheatController, Assembly-CSharp
+        m_MethodName: onProfileClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2141926044
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,6 +9462,7 @@ GameObject:
   - component: {fileID: 2146511811}
   - component: {fileID: 2146511813}
   - component: {fileID: 2146511812}
+  - component: {fileID: 2146511814}
   m_Layer: 5
   m_Name: Image_Level_Number
   m_TagString: Untagged
@@ -9454,3 +9529,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146511810}
   m_CullTransparentMesh: 1
+--- !u!114 &2146511814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146511810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5933ac926712a4c158bdd2f7e1e20cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 1852664357}

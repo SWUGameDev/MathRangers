@@ -56,6 +56,8 @@ public partial class DialogSystem : MonoBehaviour
 
     private int languageIndex;
 
+    [SerializeField] private ImageNoticeUIController imageNoticeUIController;
+
     private void Awake() {
         this.userNickname = PlayerPrefs.GetString(NicknameUIManager.NicknamePlayerPrefsKey);
         this.userNickname = this.userNickname == null? "Unknown" : this.userNickname;
@@ -150,6 +152,17 @@ public partial class DialogSystem : MonoBehaviour
                 contents.Add(this.dialogData[dataIndex][this.dialogDataIndex].content);
             }
             this.SetTextInMultipleContents(selectedUIInfo,contents,this.teamMatchManager.GetSelectedTeam());
+        }
+
+        // 이미지 팝업 하드 코딩
+        if(dataIndex==1&&index==23)
+        {
+            this.imageNoticeUIController.SetActive(this.languageIndex);
+        }
+
+        if(dataIndex==1&&index==28)
+        {
+            this.imageNoticeUIController.SetUnActive();
         }
 
         this.DoText(selectedUIInfo.contentText);

@@ -8,6 +8,8 @@ public partial class ShopUIManager : MonoBehaviour
 {
     [SerializeField] private NoticeMessageUIManager noticeMessageUIManager;
 
+    [SerializeField] private MoneyUIController moneyUIController;
+
     private int localizationIndex = 0;
 
     private Dictionary<int,bool> isInitOwnedDataDictionary; // Set 으로 할껄 ....
@@ -51,6 +53,7 @@ public partial class ShopUIManager : MonoBehaviour
     }
 
     // 나중에 절대 분리하기
+
     private void CalculateAllItemPrice()
     {
         int price = 0;
@@ -68,6 +71,7 @@ public partial class ShopUIManager : MonoBehaviour
         {
             playerMoney = playerMoney-price;
             PlayerPrefManager.SetInt(PlayerPrefManager.GameMoneyKey,playerMoney);
+            moneyUIController.SetMoneyData(playerMoney);
 
             //데이터 저장 처리
             string serializedData = PlayerPrefManager.GetString(PlayerPrefManager.PlayerItemOwnedKey);

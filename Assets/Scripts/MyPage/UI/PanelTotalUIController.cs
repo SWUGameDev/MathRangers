@@ -15,6 +15,8 @@ public class PanelTotalUIController : MonoBehaviour
     [SerializeField] private Sprite yellowSprite;
     [SerializeField] private Sprite graySprite;
 
+    [SerializeField] private GameObject character;
+
     private bool isStatisticsActive = false;
 
     void Start()
@@ -45,11 +47,15 @@ public class PanelTotalUIController : MonoBehaviour
     public void SetTotalPanelActive()
     {
         this.transform.gameObject.SetActive(true);
+
+        this.character.SetActive(false);
     }
 
     public void SetTotalPanelUnActive()
     {
         this.transform.gameObject.SetActive(false);
+
+        this.character.SetActive(true);
     }
 
 }

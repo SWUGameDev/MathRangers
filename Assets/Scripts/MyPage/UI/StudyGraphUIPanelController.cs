@@ -105,7 +105,7 @@ public class StudyGraphUIPanelController : MonoBehaviour
                 studyCountSum += this.maxQuestionCount;
                 dayCount++;
             }else{
-                string barDate = gameResultInfos[index].date.Substring(0,5);
+                string barDate = gameResultInfos[index].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,studyCountSum));
                 
                 date = gameResultInfos[index].date.Substring(0,8);
@@ -116,7 +116,7 @@ public class StudyGraphUIPanelController : MonoBehaviour
 
             if(index == gameResultInfos.Count-1)
             {
-                string barDate = gameResultInfos[index].date.Substring(0,5);
+                string barDate = gameResultInfos[index].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,studyCountSum));
             }
         

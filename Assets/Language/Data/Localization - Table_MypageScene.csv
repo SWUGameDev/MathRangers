@@ -1,0 +1,35 @@
+Key,English(en),Korean (South Korea)(to-KR)
+Key_Profile,Edit Profile,프로필 편집
+Key_Profile_Title,Choose the profile you want to change!,변경할 프로필을 선택해쮸 !
+Key_Profile_Button,Confirm,확인
+Key_MyNickname_Title,Change Nickname,닉네임 변경
+Key_MyNickname_InputField,Enter the nickname you want to change :3,닉네임을 입력해쮸 :3
+Key_MyNickname_LimitNotice,*Up to 8 characters excluding special characters,*특수문자를 제외한 8자 이내
+Key_MyNickname_Button,Back,취소
+Key_MyNickname_Button1,Confirm,확인
+Key_MyNickname_NoticePanel,! Incorrect nickname format.,! 맞지 않는 닉네임 형식입니다.
+Key_MyNickname_NoticePanel1,! This nickname already exists.,! 이미 있는 닉네임입니다.
+Key_MyNickname_Change,Do you want to change your nickname?,닉네임을 변경하시겠습니까?
+Key_MyNickname_ChangeButton,No,취소
+Key_MyNickname_ChangeButton1,Yes,확인
+Key_NextLevel,For the next level,다음 레벨까지
+Key_Mynewrecord,My new record,나의 신기록
+Key_Week_StudyTitle,The amount of Study this wiik,이번 주 공부량
+Key_Week_StudyText,Solved questions this week,이번 주에 푼 문제 수
+Key_Week_Correct,Percentage of correct answers this week,이번 주 정답률
+Key_Week_CorrectText,My Correct this week,이번 주 나의 정답률
+Key_EntireButton,View full history,전체 기록 보기
+Key_EntireRecordButton,Entire record,전체기록
+Key_EntireRecord_StudyTitle,Solved,푼 문제 수
+Key_EntireRecord_CorrectTitle,Correct,정답률
+Key_EntireRecord_StudyGraph,The amount of Study,공부량
+Key_EntireRecord_CorrectGraph,Percentage of correct answers,정답률
+Key_FullHistoryButton,Full history,전체통계
+Key_FullHistory_Title,Full history,전체통계
+Key_FullHistory_Date,Date,날짜
+Key_FullHistory_Score,Score,전투 점수
+Key_FullHistory_Accuracy,Solving Accuracy,풀이 정확도
+Key_FullHistory_Speed,Sloving Speed,풀이 속도
+Key_FullHistory_StudyState,Study state,학습 진행 상태
+Key_FullHistory_Correct,Correct,정답률
+Key_FullHistory_MissionState,Mission,임무 상태

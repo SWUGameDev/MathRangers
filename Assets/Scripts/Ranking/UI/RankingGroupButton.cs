@@ -28,13 +28,13 @@ public class RankingGroupButton : MonoBehaviour, IGroupButton
     {
         if(this.index != activatedIndex)
         {
-            this.buttonImage.color = this.colorOption.unActivatedColor;
+            this.buttonImage.sprite = this.colorOption.unActivatedSprite;
             if(this.currentTargetPanel.activeSelf == true)
                 this.currentTargetPanel?.SetActive(false);
         }
         else
         {
-            this.buttonImage.color = this.colorOption.activatedColor;
+            this.buttonImage.sprite = this.colorOption.activatedSprite;
             this.currentTargetPanel?.SetActive(true);
         }
     }

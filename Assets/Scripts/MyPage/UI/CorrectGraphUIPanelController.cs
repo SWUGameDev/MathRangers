@@ -49,7 +49,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
             BarUIController barUIController = barObj.GetComponent<BarUIController>();
 
             barUIController.SetDateText(this.barDataList[index].date);
-            barUIController.SetBarSize(this.barDataList[index].value/100);
+            barUIController.SetBarSize(this.barDataList[index].value/100f);
         }
     }
 
@@ -71,7 +71,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
             }else{
                 if(dayCount != 0)
                     correctRateSum /= dayCount;
-                string barDate = gameResultInfos[index].date.Substring(0,5);
+                string barDate = gameResultInfos[index].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,correctRateSum));
                 
                 date = gameResultInfos[index].date.Substring(0,8);
@@ -84,7 +84,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
             {
                 if(dayCount != 0)
                     correctRateSum /= dayCount;
-                string barDate = gameResultInfos[index].date.Substring(0,5);
+                string barDate = gameResultInfos[index].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,correctRateSum));
             }
         
