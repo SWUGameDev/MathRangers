@@ -7,7 +7,7 @@ public partial class Player : MonoBehaviour
     private Color changeColor;
     [SerializeField] SpriteRenderer[] playerSpriteRenderer;
     private bool isTransparent = false;
-    private bool isUnbeat = false;
+    public bool isUnbeat = false;
 
     private float transparentAlpha;
     private float transparent = 0.5f;

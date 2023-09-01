@@ -63,7 +63,7 @@ public partial class Boss : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
 
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && player.isUnbeat == false)
         {
             Boss.OnPlayerAttacked?.Invoke();
         }
