@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class VibrationController : MonoBehaviour
+public class VibrationController : MonoBehaviourSingleton<VibrationController>
 {
-    public bool isVibrationEnabled = true;
+    private bool isVibrationEnabled = true;
 
     public void ToggleVibration()
     {
@@ -14,13 +14,19 @@ public class VibrationController : MonoBehaviour
 
         if (isVibrationEnabled)
         {
-            // Áøµ¿ ¹ÝÀÀ ÄÑ±â
-            Debug.Log("Áøµ¿À» ÄÕ´Ï´Ù.");
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.");
         }
         else
         {
-            // Áøµ¿ ¹ÝÀÀ ²ô±â
-            Debug.Log("Áøµ¿À» ²ü´Ï´Ù.");
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.");
         }
+    }
+
+    public void Vibration()
+    {
+        if(this.isActiveAndEnabled)
+            Handheld.Vibrate();
     }
 }
