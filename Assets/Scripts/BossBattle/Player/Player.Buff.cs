@@ -46,12 +46,11 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("에너지바");
+            Debug.Log("에너지바: 최대 체력의 n%를 즉시 회복");
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
             float amout = playerAbilityInfoList[1].abilityCommands[0].amountForLevel[level - 1];
 
-            this.propertyManager.ActiveSkillUnbeat(amout);
-
+            this.propertyManager.ActiveSkillEnergy(amout);
         }
     }
 
@@ -65,11 +64,12 @@ public partial class Player : MonoBehaviour
         }
         public void ApplyAbility(AbilityId abilityId)
         {
-            Debug.Log("103");
+            Debug.Log("전교 1등: n초 동안 공격력이 m%, 공격 속도가 x% ");
             int level = playerAbilityInfoDictionary[abilityId].selectedCount;
-            float amout = playerAbilityInfoList[2].abilityCommands[0].amountForLevel[level - 1];
-
-            this.propertyManager.ActiveSkillUnbeat(amout);
+            float n = playerAbilityInfoList[2].abilityCommands[0].amountForLevel[level - 1];
+            float m = playerAbilityInfoList[2].abilityCommands[1].amountForLevel[level - 1];
+            float x = playerAbilityInfoList[2].abilityCommands[2].amountForLevel[level - 1];
+            this.propertyManager.ActiveSkillSchoolNo1((int)n, m, x);
         }
     }
 

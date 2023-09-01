@@ -22,7 +22,6 @@ public partial class Player : MonoBehaviour
 
     public bool isSkill1Being = false;
 
-
     private Rigidbody2D rb;
 
     private int jumpCount = 0;

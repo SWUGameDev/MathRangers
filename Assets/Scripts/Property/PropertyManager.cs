@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Platform.Android;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,7 +62,32 @@ public class PropertyManager : MonoBehaviour
         player.BossSceneUIManager.ActiveSkillUI(0);
     }
 
+    public void ActiveSkillEnergy(float percentage)
+    {
+        float increaseAmount = player.playerProperty.Hp * (percentage / 100.0f);
+        player.playerProperty.EnergyHp = increaseAmount;
 
+        player.BossSceneUIManager.ActiveSkillUI(1);
+    }
+
+    public void ActiveSkillSchoolNo1(int second, float attack, float speed)
+    {
+        player.playerProperty.Buff103Time = second;
+
+        float increaseAmountMin = player.playerProperty.MinAttackPower * (attack / 100.0f);
+
+        player.playerProperty.Buff103MinAttackPower = player.playerProperty.MinAttackPower + increaseAmountMin;
+
+        float increaseAmountMax = player.playerProperty.MaxAttackPower * (attack / 100.0f);
+
+        player.playerProperty.Buff103MaxAttackPower = player.playerProperty.MaxAttackPower + increaseAmountMax;
+
+        float increaseAmount = player.playerProperty.AttackSpeed * (speed / 100.0f);
+
+        player.playerProperty.Buff103AttackSpeed = player.playerProperty.AttackSpeed+ increaseAmount;
+
+        player.BossSceneUIManager.ActiveSkillUI(2);
+    }
 
     public void Buff213Attack(float n, float m)
     {

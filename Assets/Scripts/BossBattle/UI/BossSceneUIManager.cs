@@ -117,7 +117,6 @@ public partial class BossSceneUIManager : MonoBehaviour
 
     public void ActiveSkillUI(int id)
     {
-        Debug.Log("player.isSkill1Being" + player.isSkill1Being);
         if (player.isSkill1Being == false)
         {
             player.isSkill1Being = true;
