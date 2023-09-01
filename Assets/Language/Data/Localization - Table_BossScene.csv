@@ -1,0 +1,17 @@
+Key,English(en),Korean (South Korea)(to-KR)
+Key_BossStop_GameState,Acquired Buffs,획득한 능력
+Key_BossStop_QuestionList,Questions,문제 현황
+Key_BossStop_CorrectAnswerRate,Correct,정답률
+Key_BossStop_End,Go to lobby,그만하기
+Key_Success_Title,Mission Succeeded,임무 성공
+Key_Success_ResultTitle,Mission solving result,임무 풀이 결과
+Key_Success_ResultListResult,Solving Result,풀이 결과
+Key_Success_ResultListResult1,Solving Accuracy,풀이 정확도
+Key_Success_ResultListResult2,Sloving Speed,풀이 속도
+Key_Success_Button,Confirm,확인
+Key_Fail_Title,Mission Failed,임무 실패
+Key_Fail_ResultTitle,Mission solving result,임무 풀이 결과
+Key_Fail_ResultListResult,Solving Result,풀이 결과
+Key_Fail_ResultListResult1,Solving Accuracy,풀이 정확도
+Key_Fail_ResultListResult2,Sloving Speed,풀이 속도
+Key_Fail_Button,Confirm,확인

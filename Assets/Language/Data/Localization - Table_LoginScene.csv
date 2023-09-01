@@ -1,0 +1,8 @@
+Key,English(en),Korean (South Korea)(to-KR)
+Key_LoginText,Please login!,로그인을 해주세요!
+Key_Login_EmailText,Please enter a email,이메일을 입력해 주세요
+Key_Login_PasswordText,Please enter a password,비밀번호를 입력해 주세요
+Key_Login_NoticeText,Password must be at least 6 characters including at least one letter and one number.,"비밀번호는 영문, 숫자를 최소 한 개씩 포함하여 6자 이상 입력해 주세요."
+Key_Login_Register,Register,회원가입
+Key_Login_Login,Login,로그인
+Key_Login_NoticePanel,! Member information is not found.<br>Please check your email or password.,! 회원 정보를 찾을 수 없습니다.<br>이메일 혹은 비밀번호를 다시 확인해 주세요.
