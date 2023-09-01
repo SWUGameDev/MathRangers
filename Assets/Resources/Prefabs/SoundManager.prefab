@@ -194,6 +194,12 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 956ad2f73332544fd87365087825cc4f, type: 3}
   - backgroundAudioType: 5
     audioClip: {fileID: 8300000, guid: d8f7a78a964aa489aafb3749d805cd4b, type: 3}
+  - backgroundAudioType: 6
+    audioClip: {fileID: 8300000, guid: 39a2cc6adb96dc741b49e40eb8758096, type: 3}
+  - backgroundAudioType: 7
+    audioClip: {fileID: 8300000, guid: 8071581b34adf8842acea03020cc6f4d, type: 3}
+  - backgroundAudioType: 8
+    audioClip: {fileID: 8300000, guid: 4776f88b7a6cf7740858442c4e327112, type: 3}
   effectAudioClipArray:
   - effectAudioType: 0
     audioClip: {fileID: 8300000, guid: ef2d3c79a61fe4a17bbb3aa432e4976a, type: 3}
