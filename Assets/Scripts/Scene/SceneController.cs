@@ -93,4 +93,12 @@ public class SceneController : MonoBehaviour
         else
             this.sceneTransitionAnimController.InOut(()=>{SceneManager.LoadScene("08_MyPageScene");});
     }
+
+    public void LoadLofiRoomScene()
+    {
+        if (sceneTransitionAnimController == null)
+            SceneManager.LoadScene("05_LofiRoom");
+        else
+            this.sceneTransitionAnimController.InOut(() => { SceneManager.LoadScene("05_LofiRoom"); });
+    }
 }
