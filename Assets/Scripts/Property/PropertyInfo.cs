@@ -21,9 +21,9 @@ public class PropertyInfo : MonoBehaviour
     [SerializeField] private float buff103AttackSpeed;
 
     // 버프가 없을 때는 발동되는 것이 불가능 할만큼 큰 값으로 설정
-    [SerializeField] private float buff213FaintTime = 5000f;
-    [SerializeField] private int buff213Count = 1000;
-    [SerializeField] private int buff214Count = 1000;
+    [SerializeField] private float buff213FaintTime = 9000f;
+    [SerializeField] private int buff213Count = 9000;
+    [SerializeField] private int buff214Count = 9000;
 
     public float Hp { get { return hp; } set { hp = value; } }
     public float MaxHp { get { return maxHp; } set { maxHp = value; } }

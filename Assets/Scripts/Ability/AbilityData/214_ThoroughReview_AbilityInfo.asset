@@ -29,12 +29,12 @@ MonoBehaviour:
   - fieldName: attack
     target: player
     amountForLevel:
-    - 20
-    - 15
-    - 12
     - 10
     - 8
     - 6
+    - 5
     - 4
     - 3
+    - 2
+    - 1
     commandOperator: 4

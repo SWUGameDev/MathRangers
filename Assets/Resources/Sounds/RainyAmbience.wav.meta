@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Sounds/RainyAmbience.wav.meta
 guid: 8071581b34adf8842acea03020cc6f4d
+========
+guid: 176332b15b0c347f6abd80a5a4077da1
+>>>>>>>> main:Assets/Resources/Sounds/TalkingCrowdAtHouseshow.WAV.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

@@ -29,11 +29,11 @@ MonoBehaviour:
     target: gameManager
     amountForLevel:
     - 5
-    - 8
-    - 11
-    - 14
-    - 17
+    - 10
+    - 15
     - 20
-    - 23
-    - 26
+    - 25
+    - 30
+    - 35
+    - 40
     commandOperator: 3

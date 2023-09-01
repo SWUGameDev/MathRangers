@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Sounds/Lofi-MorningBreeze.mp3.meta
 guid: 39a2cc6adb96dc741b49e40eb8758096
+========
+guid: 26604802f76804102a18e9bdf9af29be
+>>>>>>>> main:Assets/Resources/Sounds/RainyAmbience.wav.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
