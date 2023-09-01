@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 15035556}
   - component: {fileID: 15035557}
   m_Layer: 5
-  m_Name: Animal (1)
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 51155669}
   - component: {fileID: 51155668}
   m_Layer: 5
-  m_Name: Button_Cat
+  m_Name: Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 51155669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251515764}
+        m_TargetAssemblyTypeName: LofiRoomManager, Assembly-CSharp
+        m_MethodName: SetNight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &51155669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +411,7 @@ GameObject:
   - component: {fileID: 52108030}
   - component: {fileID: 52108029}
   m_Layer: 5
-  m_Name: Button_Dog
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +481,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 52108030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251515764}
+        m_TargetAssemblyTypeName: LofiRoomManager, Assembly-CSharp
+        m_MethodName: SetMorning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &52108030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +822,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 229275778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251515764}
+        m_TargetAssemblyTypeName: LofiRoomManager, Assembly-CSharp
+        m_MethodName: SetDog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &229275778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +994,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lofiSettingPanel: {fileID: 1214426533}
+  moring:
+  - {fileID: 21300000, guid: 6fecf26316d2d6c4a87831fcdea88b19, type: 3}
+  - {fileID: 21300000, guid: 41ce72d4e6a9eb84a95b255cf11781c1, type: 3}
+  - {fileID: 21300000, guid: f9f7f193148bbe94e873b486dc60388b, type: 3}
+  - {fileID: 21300000, guid: fc699ada20d2e84478fa09464a70db17, type: 3}
+  - {fileID: 238096124, guid: 81535d4c266327e42aace7d8b469a10c, type: 3}
+  night:
+  - {fileID: 21300000, guid: 2551bfb64d684bf468ece4531d2a0202, type: 3}
+  - {fileID: 21300000, guid: ae23f72c6fc4da747a1d4e45aa85d952, type: 3}
+  - {fileID: 21300000, guid: dba05f7af57c75b47b40eebf914382e7, type: 3}
+  - {fileID: 21300000, guid: 60acb2dae3023ab4dbf7a55030a492f7, type: 3}
+  - {fileID: 1077591983, guid: 103d8574089f5294aa1aa44eab20c90c, type: 3}
+  target:
+  - {fileID: 2114293201}
+  - {fileID: 286599842}
+  - {fileID: 1184714532}
+  - {fileID: 1000071506}
+  - {fileID: 1765499606}
 --- !u!1001 &270204104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2874,7 +2928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28565, y: -202.94}
+  m_AnchoredPosition: {x: -0.00000095367, y: -224}
   m_SizeDelta: {x: 2340, y: 674.1211}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000071506
@@ -3074,7 +3128,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1098647706}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251515764}
+        m_TargetAssemblyTypeName: LofiRoomManager, Assembly-CSharp
+        m_MethodName: SetCat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1098647706
 MonoBehaviour:
   m_ObjectHideFlags: 0
