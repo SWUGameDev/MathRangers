@@ -29,24 +29,24 @@ MonoBehaviour:
   - fieldName: attack count
     target: player
     amountForLevel:
-    - 30
-    - 25
-    - 25
-    - 22
-    - 20
-    - 18
-    - 18
-    - 15
+    - 300
+    - 300
+    - 250
+    - 250
+    - 200
+    - 200
+    - 200
+    - 150
     commandOperator: 4
   - fieldName: faint time
     target: boss
     amountForLevel:
     - 5
-    - 5
-    - 8
-    - 8
     - 8
     - 8
     - 10
     - 10
+    - 12
+    - 15
+    - 20
     commandOperator: 4

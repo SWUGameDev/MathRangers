@@ -28,12 +28,12 @@ MonoBehaviour:
   - fieldName: attack speed
     target: player
     amountForLevel:
-    - 10
-    - 15
     - 20
-    - 25
     - 30
-    - 35
     - 40
-    - 45
+    - 50
+    - 60
+    - 70
+    - 80
+    - 90
     commandOperator: 0
