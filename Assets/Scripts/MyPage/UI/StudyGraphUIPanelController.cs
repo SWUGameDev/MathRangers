@@ -100,12 +100,13 @@ public class StudyGraphUIPanelController : MonoBehaviour
 
         for(int index = 0;index<gameResultInfos.Count;index++)
         {
+            Debug.Log(gameResultInfos[index].date);
             if(date == gameResultInfos[index].date.Substring(0,8))
             {
                 studyCountSum += this.maxQuestionCount;
                 dayCount++;
             }else{
-                string barDate = gameResultInfos[index].date.Substring(3,5);
+                string barDate = gameResultInfos[index-1].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,studyCountSum));
                 
                 date = gameResultInfos[index].date.Substring(0,8);

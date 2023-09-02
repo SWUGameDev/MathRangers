@@ -13,17 +13,13 @@ public class IconSelectPanel : MonoBehaviour
     [SerializeField] private GameObject character;
 
     public static readonly string userIconKey = "PlayerPrefs_userIconKey";
-    // void Start()
-    // {
-    //     for(int index = 0;index< this.iconSelectButtonArray.Length; index++)
-    //     {
-    //         this.iconSelectButtonArray[index].GetComponent<IconSelectButton>().SetIndex(index);
-
-    //         this.iconSelectButtonArray[index].onClick.AddListener(()=>{
-    //             this.transform.gameObject.SetActive(false);
-    //         });
-    //     }
-    // }
+    void Start()
+    {
+        for(int index = 0;index< this.iconSelectButtonArray.Length; index++)
+        {
+            this.iconSelectButtonArray[index].GetComponent<IconSelectButton>().SetIndex(index);
+        }
+    }
 
     public void SetIconPanelUnActive()
     {

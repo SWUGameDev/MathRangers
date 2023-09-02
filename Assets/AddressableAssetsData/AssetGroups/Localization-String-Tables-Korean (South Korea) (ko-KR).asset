@@ -59,6 +59,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ko-KR
     - Preload
+  - m_GUID: 78e6bb014f0c4438e840cfa16765e5b8
+    m_Address: Localization - Table_MypageScene_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:

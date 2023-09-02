@@ -71,7 +71,7 @@ public class CorrectGraphUIPanelController : MonoBehaviour
             }else{
                 if(dayCount != 0)
                     correctRateSum /= dayCount;
-                string barDate = gameResultInfos[index].date.Substring(3,5);
+                string barDate = gameResultInfos[index-1].date.Substring(3,5);
                 this.barDataList.Add(new BarData(barDate,correctRateSum));
                 
                 date = gameResultInfos[index].date.Substring(0,8);
