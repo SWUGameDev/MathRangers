@@ -28,6 +28,13 @@ public partial class NicknameUIManager : MonoBehaviour
 
     public static Action<bool> OnNicknameConfirmed;
 
+    private int languageIndex;
+
+    Start()
+    {
+        this.languageIndex = LocalizationManager.Instance.GetCurrentLocalizationIndex();
+    }
+
     public void ConfirmNickname()
     {
         if(this.nickname == nicknameInputField.text && this.isChecked)
@@ -37,7 +44,10 @@ public partial class NicknameUIManager : MonoBehaviour
 
         if(!IsNicknameValid(this.nickname))
         {
-            this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
+            if(this.languageIndex)
+                this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 닉네임 형식입니다.");
+            else
+                this.noticeMessageUIManager.PopUpMessage("! Incorrect nickname format.");
             return;    
         }
 
@@ -46,7 +56,10 @@ public partial class NicknameUIManager : MonoBehaviour
 
     private void OnNicknameCheckFailed()
     {
-        this.noticeMessageUIManager.PopUpMessage("! [Error] Can't Access to Firebase Service");
+        if(this.languageIndex)
+            this.noticeMessageUIManager.PopUpMessage("! [Error] 현재 서버 데이터에 접근이 불가능합니다.");
+        else
+            this.noticeMessageUIManager.PopUpMessage("! [Error] Can't Access to Firebase Service");
 
         NicknameUIManager.OnNicknameConfirmed?.Invoke(false);
 
@@ -75,7 +88,10 @@ public partial class NicknameUIManager : MonoBehaviour
 
     private void OnNicknameCheckDuplicated(string nickName)
     {
-        this.noticeMessageUIManager.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
+        if(this.languageIndex)
+            this.noticeMessageUIManager.PopUpMessage($" ! {nickName}은 이미 존재하는 닉네임 입니다. ");
+        else
+            this.noticeMessageUIManager.PopUpMessage($" ! {nickName} already exists. ");
 
         this.isChecked = true;
     }

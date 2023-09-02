@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization - Table_ShopScene_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b22633aa80c584edf86326c54fef9dff, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 94941208576
+    m_Localized: Wear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95004123136
+    m_Localized: Dressed nicely! :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317440
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317441
+    m_Localized: There are some items you can't buy because of your level among the
+      items you chose!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511744
+    m_Localized: Purchase completed! :3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511745
+    m_Localized: Selected Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511746
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95016706048
+    m_Localized: "You are short of cheese! T\u3145T"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

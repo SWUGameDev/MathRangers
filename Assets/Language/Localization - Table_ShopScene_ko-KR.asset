@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization - Table_ShopScene_ko-KR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ko-KR
+  m_SharedData: {fileID: 11400000, guid: b22633aa80c584edf86326c54fef9dff, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 94941208576
+    m_Localized: "\uC801\uC6A9\uD558\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95004123136
+    m_Localized: "\uBA4B\uC9C0\uAC8C \uAFB8\uBA84\uC5B4\uCBB8! :D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317440
+    m_Localized: "\uAD6C\uB9E4\uD558\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317441
+    m_Localized: "\uC120\uD0DD\uD55C \uBB3C\uD488 \uC911\uC5D0 \uC544\uC9C1 \uC0B4
+      \uC218 \uC5C6\uB294 \uB808\uBCA8\uC758 \uBB3C\uD488\uC774 \uC788\uC5B4\uCBB8!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511744
+    m_Localized: "\uAD6C\uB9E4\uD588\uCBB8! :3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511745
+    m_Localized: "\uC801\uC6A9\uB41C \uC544\uC774\uD15C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511746
+    m_Localized: "\uAD6C\uB9E4\uD558\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95016706048
+    m_Localized: "\uC7AC\uD654\uAC00 \uBD80\uC871\uD574\uCBB8! T\u3145T"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

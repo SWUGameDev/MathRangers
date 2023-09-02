@@ -41,9 +41,9 @@ public partial class ShopUIManager : MonoBehaviour
         if(this.IsContainLockedItem())
         {
             if(this.localizationIndex==1)
-                this.noticeMessageUIManager.PopUpMessage("선택한 물품 중에 아직 살 수 없는 레벨의 물품이 있어쮸!",new Vector2(1000,300));
+                this.noticeMessageUIManager.PopUpMessage("선택한 물품 중에 아직 살 수 없는 레벨의 물품이 있어쮸!",new Vector2(1000,300) ,new Color(1f,111/255f,111/255f,1));
             else
-                this.noticeMessageUIManager.PopUpMessage("There are some items you can't buy because of your level among the items you chose!",new Vector2(1000,400));
+                this.noticeMessageUIManager.PopUpMessage("There are some items you can't buy because of your level among the items you chose!",new Vector2(1000,400) ,new Color(1f,111/255f,111/255f,1));
             return;
         }
 
@@ -97,15 +97,15 @@ public partial class ShopUIManager : MonoBehaviour
             PlayerPrefManager.SetString(PlayerPrefManager.PlayerItemOwnedKey,JsonConvert.SerializeObject(isOwnedList));
 
             if(this.localizationIndex==1)
-                this.noticeMessageUIManager.PopUpMessage("구매했쮸! :3",new Vector2(1000,300), new Color(89/255,151/255,60/255,1));
+                this.noticeMessageUIManager.PopUpMessage("구매했쮸! :3",new Vector2(1000,300), new Color(89/255f,151/255f,60/255f,1f));
             else
-                this.noticeMessageUIManager.PopUpMessage("Purchase completed! :3",new Vector2(1000,400), new Color(89/255,151/255,60/255,1));
+                this.noticeMessageUIManager.PopUpMessage("Purchase completed! :3",new Vector2(1000,400), new Color(89/255f,151/255f,60/255f,1f));
 
         }else{
             if(this.localizationIndex==1)
-                this.noticeMessageUIManager.PopUpMessage("재화가 부족해쮸! TㅅT",new Vector2(1000,300));
+                this.noticeMessageUIManager.PopUpMessage("재화가 부족해쮸! TㅅT",new Vector2(1000,300),new Color(1f,111/255f,111/255f,1));
             else
-                this.noticeMessageUIManager.PopUpMessage("You are short of cheese! TㅅT",new Vector2(1000,400));
+                this.noticeMessageUIManager.PopUpMessage("You are short of cheese! TㅅT",new Vector2(1000,400),new Color(1f,111/255f,111/255f,1));
         }
 
     }

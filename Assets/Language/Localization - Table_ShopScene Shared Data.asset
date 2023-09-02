@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization - Table_ShopScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization - Table_ShopScene
+  m_TableCollectionNameGuidString: b22633aa80c584edf86326c54fef9dff
+  m_Entries:
+  - m_Id: 94941208576
+    m_Key: Key_Apply_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95004123136
+    m_Key: Key_Apply_Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317440
+    m_Key: Key_Buy_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95008317441
+    m_Key: Key_Buy_Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511744
+    m_Key: Key_Buy_Notice1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511745
+    m_Key: Key_Buy_PanelTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95012511746
+    m_Key: Key_Buy_PanelButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95016706048
+    m_Key: Key_Buy_PanelNotice
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1299870180515774494
+  references:
+    version: 2
+    RefIds:
+    - rid: 1299870180515774494
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693625948229

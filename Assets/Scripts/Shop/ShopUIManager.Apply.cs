@@ -26,9 +26,9 @@ public partial class ShopUIManager : MonoBehaviour
         this.localizationIndex = LocalizationManager.Instance.GetCurrentLocalizationIndex();
 
             if(this.localizationIndex==1)
-                this.noticeMessageUIManager.PopUpMessage("멋지게 꾸몄어쮸! :D",new Vector2(1000,300), new Color(89/255,151/255,60/255,1));
+                this.noticeMessageUIManager.PopUpMessage("멋지게 꾸몄어쮸! :D",new Vector2(1000,300), new Color(89/255f,151/255f,60/255f,1));
             else
-                this.noticeMessageUIManager.PopUpMessage("Dressed nicely! :D",new Vector2(1000,400), new Color(89/255,151/255,60/255,1));
+                this.noticeMessageUIManager.PopUpMessage("Dressed nicely! :D",new Vector2(1000,400), new Color(89/255f,151/255f,60/255f,1));
 
     }
 }

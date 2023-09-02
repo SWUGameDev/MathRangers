@@ -15,22 +15,30 @@ public partial class AuthManager : MonoBehaviour
     [SerializeField] TMP_InputField emailField;
     [SerializeField] TMP_InputField passwordField;
     Firebase.Auth.FirebaseAuth auth;
+    private int languageIndex = 0;
 
     void Awake()
     { 
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        this.languageIndex = LocalizationManager.Instance.GetCurrentLocalizationIndex();
     }
     public void login()
     {
         if(!this.IsEmailValid(emailField.text))
         {
-            this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
+            if(this.languageIndex)
+                this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
+            else
+                this.noticeMessageUIManager.PopUpMessage("! Incorrect nickname format.");
             return;
         }
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            if(this.languageIndex)
+                this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            else
+                this.noticeMessageUIManager.PopUpMessage("! Incorrect password format.<br>It must be at least 6 characters including at least one letter and one number.");
             return;
         }
 
@@ -74,13 +82,19 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsEmailValid(emailField.text))
         {
-            this.noticeMessageUIManager.PopUpMessage("이메일 형식이 잘못되었습니다.");
+            if(this.languageIndex)
+                this.noticeMessageUIManager.PopUpMessage("이메일 형식이 잘못되었습니다.");
+            else
+                this.noticeMessageUIManager.PopUpMessage("! Incorrect email format.");
             return;
         }
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            if(this.languageIndex)
+                this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
+            else
+                this.noticeMessageUIManager.PopUpMessage("! Incorrect password format.<br>It must be at least 6 characters including at least one letter and one number.");
             return;
         }
 
