@@ -11,14 +11,14 @@ public class IconSelectButton : MonoBehaviour
         this.button = transform.GetComponent<Button>();
     }
 
-    public void SetIndex(int index)
-    {
-        this.button.onClick.AddListener(()=>{
+    // public void SetIndex(int index)
+    // {
+    //     this.button.onClick.AddListener(()=>{
                 
-            PlayerPrefManager.SetInt(IconSelectPanel.userIconKey,index);
+    //         PlayerPrefManager.SetInt(IconSelectPanel.userIconKey,index);
 
-            IconSelectPanel.OnProfileChanged.Invoke(index);
-        });
-    }
+    //         //IconSelectPanel.OnProfileChanged.Invoke(index);
+    //     });
+    // }
 
 }

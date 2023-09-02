@@ -78,7 +78,7 @@ public partial class NicknameUIManager : MonoBehaviour
 
             string serializedData = JsonUtility.ToJson(userInfo);
 
-            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(this.userId,serializedData,this.LoadDiagnosticScene);
+            FirebaseRealtimeDatabaseManager.Instance.UploadInitializedUserInfo(serializedData,this.LoadDiagnosticScene);
         }
 
         NicknameUIManager.OnNicknameConfirmed?.Invoke(true);

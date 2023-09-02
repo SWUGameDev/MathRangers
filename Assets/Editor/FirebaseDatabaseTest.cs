@@ -18,7 +18,7 @@ public class FirebaseDatabaseTest : MonoBehaviour
     {
         UserInfo userInfo = new UserInfo("test@naver.com","MyName","",-1);
         string serializedData = JsonUtility.ToJson(userInfo);
-        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo("YGU345D2sD",serializedData);
+        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(serializedData);
     }
 
     [MenuItem("Firebase/Download")]

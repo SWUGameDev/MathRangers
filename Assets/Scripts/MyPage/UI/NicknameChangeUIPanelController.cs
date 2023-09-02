@@ -17,21 +17,25 @@ public class NicknameChangeUIPanelController : MonoBehaviour
 
     public void OpenNicknameChangePanel()
     {
+        this.nicknameField.text = "";
         this.transform.gameObject.SetActive(true);
     }
 
     public void CloseNicknameChangePanel()
     {
+        this.nicknameField.text = "";
         this.transform.gameObject.SetActive(false);
     }
 
     public void OpenNicknameConfirmPanel()
     {
+        this.nicknameField.text = "";
         this.confirmPanel.SetActive(true);
     }
 
     public void CloseNicknameConfirmPanel()
     {
+        this.nicknameField.text = "";
         this.confirmPanel.SetActive(false);
     }
 
@@ -66,12 +70,8 @@ public class NicknameChangeUIPanelController : MonoBehaviour
 
     private void SaveNickname()
     {
-            UserInfo userInfo = new UserInfo(FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserEmail(),"",this.nickname,-1);
+        PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,this.nickname);
 
-            PlayerPrefs.SetString(NicknameUIManager.NicknamePlayerPrefsKey,this.nickname);
-
-            string serializedData = JsonUtility.ToJson(userInfo);
-
-            //FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo();
+        FirebaseRealtimeDatabaseManager.Instance.UpdateUserNicknameInfo(this.nickname);
     }
 }

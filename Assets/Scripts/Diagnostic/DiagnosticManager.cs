@@ -110,7 +110,7 @@ public class DiagnosticManager : MonoBehaviour
         PlayerPrefs.SetInt(DiagnosticManager.TeamTypeKey,userInfo.teamType);
 
         string userId = FirebaseRealtimeDatabaseManager.Instance.GetCurrentUserId();
-        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(userId,serializedData);
+        FirebaseRealtimeDatabaseManager.Instance.UploadUserInfo(serializedData);
     }
 
     /// <summary>

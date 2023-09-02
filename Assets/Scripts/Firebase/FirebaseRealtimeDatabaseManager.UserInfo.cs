@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 public partial class FirebaseRealtimeDatabaseManager 
 {
-    public void UploadUserInfo(string userUID, string serializedUserInfo,Action OnCompleted = null)
+    public void UploadUserInfo(string serializedUserInfo,Action OnCompleted = null)
     {
+        string userUID = this.GetCurrentUserId();
         this.WriteData<UserInfo>($"{FirebaseRealtimeDatabaseManager.userInfoRootKey}/{userUID}",serializedUserInfo,OnCompleted);
     }
 
@@ -23,14 +24,22 @@ public partial class FirebaseRealtimeDatabaseManager
         this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/score", score, OnCompleted);
     }
 
+    public void UpdateUserNicknameInfo(string nickname, Action OnCompleted = null)
+    {
+        string userUID = this.GetCurrentUserId();
+        this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.userInfoRootKey}/{userUID}/nickname", nickname, OnCompleted);
+        this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/nickname", nickname, null);
+    }
+
     public void UpdateUserIconInfo(string team, Action OnCompleted = null)
     {
         string userUID = this.GetCurrentUserId();
         this.WriteData<UserRankInfo>($"{FirebaseRealtimeDatabaseManager.rankInfoRootKey}/{userUID}/team", team, OnCompleted);
     }
 
-    public void UploadInitializedUserInfo(string userUID, string serializedUserInfo,Action OnCompleted = null)
+    public void UploadInitializedUserInfo(string serializedUserInfo,Action OnCompleted = null)
     {
+        string userUID = this.GetCurrentUserId();
         this.WriteDataUsingMainTread<UserInfo>($"{FirebaseRealtimeDatabaseManager.userInfoRootKey}/{userUID}",serializedUserInfo,OnCompleted);
     }
 

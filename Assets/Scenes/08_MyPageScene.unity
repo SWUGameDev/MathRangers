@@ -686,6 +686,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &41273243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,6 +2879,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &249773459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3961,7 +3985,7 @@ GameObject:
   - component: {fileID: 355751862}
   - component: {fileID: 355751861}
   m_Layer: 5
-  m_Name: Button_OK
+  m_Name: Button_Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4034,7 +4058,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 186492382}
         m_TargetAssemblyTypeName: NicknameChangeUIPanelController, Assembly-CSharp
-        m_MethodName: ClickConfirmNicknameInConfirmPanel
+        m_MethodName: CloseNicknameConfirmPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5332,6 +5356,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6761,6 +6797,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &596902009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7214,6 +7262,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10188,7 +10248,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2053284348}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5070423
+  m_Size: 0.5070422
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10535,6 +10595,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10892,6 +10964,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15309,6 +15393,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 987949725}
+        m_TargetAssemblyTypeName: IconImageController, Assembly-CSharp
+        m_MethodName: ChangeIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1422684262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15687,7 +15783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -119.99994, y: -120}
+  m_AnchoredPosition: {x: -120, y: -120}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442223527
@@ -16788,7 +16884,7 @@ GameObject:
   - component: {fileID: 1616569630}
   - component: {fileID: 1616569629}
   m_Layer: 5
-  m_Name: Button_Cancel
+  m_Name: Button_Ok
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16861,7 +16957,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 186492382}
         m_TargetAssemblyTypeName: NicknameChangeUIPanelController, Assembly-CSharp
-        m_MethodName: CloseNicknameConfirmPanel
+        m_MethodName: ClickConfirmNicknameInConfirmPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
