@@ -29,6 +29,22 @@ MonoBehaviour:
     m_Address: Assets/Language/Localization - Table_MainScene Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 2cb8fc3ced35440af9c27d444807afa8
+    m_Address: Assets/Language/Localization - Table_NicknameSettingScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 2985f7a7acc3e4d469241c263fb54413
+    m_Address: Assets/Language/Localization - Table_SignupScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 3ddfebcf552954c4898bad71f84ef18c
+    m_Address: Assets/Language/Localization - Table_DiagnosticScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 41a43c7796217487dbc20f1f23e462e3
+    m_Address: Assets/Language/Localization - Table_RankingScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:

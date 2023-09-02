@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization - Table_SignupScene_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2985f7a7acc3e4d469241c263fb54413, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 75748073472
+    m_Localized: Please sign up!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75752267776
+    m_Localized: Please enter a email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75752267777
+    m_Localized: Please enter a password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75760656384
+    m_Localized: Password must be at least 6 characters including at least one letter
+      and one number.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75760656385
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75760656386
+    m_Localized: '! Incorrect email format.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75760656387
+    m_Localized: '! Incorrect password format.<br>It must be at least 6 characters
+      including at least one letter and one number.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75760656388
+    m_Localized: '! This email has already been registered.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

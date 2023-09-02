@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization - Table_NicknameSettingScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization - Table_NicknameSettingScene
+  m_TableCollectionNameGuidString: 2cb8fc3ced35440af9c27d444807afa8
+  m_Entries:
+  - m_Id: 121327575040
+    m_Key: Key_Nickname_Welcome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121382100992
+    m_Key: Key_Nickname_LimitNotice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121382100993
+    m_Key: Key_Nickname_InputField
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121382100994
+    m_Key: Key_Nickname_ButtonCheck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121390489600
+    m_Key: Key_Nickname_Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121390489601
+    m_Key: Key_Nickname_NoticePanel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121394683904
+    m_Key: Key_Nickname_NoticePanel1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188612599808
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1299870180515774473
+  references:
+    version: 2
+    RefIds:
+    - rid: 1299870180515774473
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693619475219

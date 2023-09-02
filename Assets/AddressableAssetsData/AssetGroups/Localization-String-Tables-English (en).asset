@@ -35,6 +35,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: 39960723b762a48cd9ad7522f449df09
+    m_Address: Localization - Table_NicknameSettingScene_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: aa6c60695577f4a53baae9b3c9e6c25d
+    m_Address: Localization - Table_SignupScene_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 7581eb31e3abb4cac85bbda1e78a49ea
+    m_Address: Localization - Table_DiagnosticScene_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 49f73324786fb4ba88c20bd08dd5b1ce
+    m_Address: Localization - Table_RankingScene_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:

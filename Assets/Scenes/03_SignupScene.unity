@@ -213,9 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2985f7a7acc3e4d469241c263fb54413
     m_TableEntryReference:
-      m_KeyId: 7512490521911296
+      m_KeyId: 75748073472
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2985f7a7acc3e4d469241c263fb54413
     m_TableEntryReference:
-      m_KeyId: 344661680128
+      m_KeyId: 75752267777
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1159,9 +1159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2985f7a7acc3e4d469241c263fb54413
     m_TableEntryReference:
-      m_KeyId: 1982917306736640
+      m_KeyId: 75760656384
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8de3a4fd81e4e929bfc269a1968d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionAnimController: {fileID: 0}
 --- !u!1 &731368076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,9 +2783,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2985f7a7acc3e4d469241c263fb54413
     m_TableEntryReference:
-      m_KeyId: 498697494528
+      m_KeyId: 75752267776
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -3747,9 +3748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2985f7a7acc3e4d469241c263fb54413
     m_TableEntryReference:
-      m_KeyId: 1987363227033600
+      m_KeyId: 75760656385
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
