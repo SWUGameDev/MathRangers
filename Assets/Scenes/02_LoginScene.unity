@@ -273,9 +273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 1987363227033600
+      m_KeyId: 152189263872
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -816,9 +816,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 1982917306736640
+      m_KeyId: 152180875264
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1145,9 +1145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 344661680128
+      m_KeyId: 152176680960
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1707,9 +1707,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 1987406747131904
+      m_KeyId: 152193458176
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1904,9 +1904,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 498697494528
+      m_KeyId: 152172486656
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2101,9 +2101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:0ddabd281fe0a4311993404a2cfab6df
+      m_TableCollectionName: GUID:2fb7d132126704790a15be57de19accf
     m_TableEntryReference:
-      m_KeyId: 1978799062245376
+      m_KeyId: 152105377792
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -3823,6 +3823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8de3a4fd81e4e929bfc269a1968d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionAnimController: {fileID: 0}
 --- !u!1 &2102638536
 GameObject:
   m_ObjectHideFlags: 0

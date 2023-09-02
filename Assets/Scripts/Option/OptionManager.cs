@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic; 
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,16 +13,21 @@ public class OptionManager : MonoBehaviour
     private bool isBackgroundMuted = false;
     private bool isAllMuted = false;
 
+    public static Action<bool> OnOptionPanelActive;
+
     public void OptionsPanelOpen()
     {
         optionsPanel.SetActive(true); 
         blackScreen.SetActive(true);
+        OptionManager.OnOptionPanelActive?.Invoke(true);
+
     }
 
     public void OptionsPanelClose()
     {
         optionsPanel.SetActive(false);
         blackScreen.SetActive(false);
+        OptionManager.OnOptionPanelActive?.Invoke(false);
     }
 
     public void ToggleEffects()

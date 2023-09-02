@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Assets/Language/New Table Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 2fb7d132126704790a15be57de19accf
+    m_Address: Assets/Language/Localization - Table_LoginScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 7342b56b7956045e7a31971587a6011b
+    m_Address: Assets/Language/Localization - Table_MainScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:

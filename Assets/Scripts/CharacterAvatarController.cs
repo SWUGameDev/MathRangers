@@ -31,10 +31,13 @@ public class CharacterAvatarController : MonoBehaviour
 
         this.RegisterShopEvent();
 
+        this.RegisterUIEvent();
     }
 
     private void OnDestroy() {
-        ShopUIManager.OnItemSelected -= WearItem;        
+        ShopUIManager.OnItemSelected -= WearItem;  
+
+        OptionManager.OnOptionPanelActive -= SetCharacterActive;
     }
 
     private void RegisterShopEvent()
@@ -42,6 +45,18 @@ public class CharacterAvatarController : MonoBehaviour
         ShopUIManager.OnItemSelected -= WearItem;
         ShopUIManager.OnItemSelected += WearItem;
 
+    }
+
+    private void RegisterUIEvent()
+    {
+        OptionManager.OnOptionPanelActive -= SetCharacterActive;
+        OptionManager.OnOptionPanelActive += SetCharacterActive;
+    }
+
+
+    private void SetCharacterActive(bool isUnActive)
+    {
+        this.transform.gameObject.SetActive(!isUnActive);
     }
 
     private void InitializeAvatar()
