@@ -26,7 +26,7 @@ public partial class AuthManager : MonoBehaviour
     {
         if(!this.IsEmailValid(emailField.text))
         {
-            if(this.languageIndex)
+            if(this.languageIndex==1)
                 this.noticeMessageUIManager.PopUpMessage("! 맞지 않는 이메일 형식입니다.");
             else
                 this.noticeMessageUIManager.PopUpMessage("! Incorrect nickname format.");
@@ -35,7 +35,7 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            if(this.languageIndex)
+            if(this.languageIndex==1)
                 this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
             else
                 this.noticeMessageUIManager.PopUpMessage("! Incorrect password format.<br>It must be at least 6 characters including at least one letter and one number.");
@@ -82,7 +82,7 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsEmailValid(emailField.text))
         {
-            if(this.languageIndex)
+            if(this.languageIndex==1)
                 this.noticeMessageUIManager.PopUpMessage("이메일 형식이 잘못되었습니다.");
             else
                 this.noticeMessageUIManager.PopUpMessage("! Incorrect email format.");
@@ -91,7 +91,7 @@ public partial class AuthManager : MonoBehaviour
 
         if(!this.IsPasswordValid(passwordField.text))
         {
-            if(this.languageIndex)
+            if(this.languageIndex==1)
                 this.noticeMessageUIManager.PopUpMessage("비밀번호 형식이 잘못되었습니다. \n영문자와 숫자가 포함되어야하며 5자리 이상이여야 합니다.");
             else
                 this.noticeMessageUIManager.PopUpMessage("! Incorrect password format.<br>It must be at least 6 characters including at least one letter and one number.");
