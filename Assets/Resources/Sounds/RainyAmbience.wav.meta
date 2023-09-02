@@ -1,21 +1,24 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Resources/Sounds/RainyAmbience.wav.meta
 guid: 8071581b34adf8842acea03020cc6f4d
-========
-guid: 176332b15b0c347f6abd80a5a4077da1
->>>>>>>> main:Assets/Resources/Sounds/TalkingCrowdAtHouseshow.WAV.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
   defaultSettings:
-    loadType: 0
+    loadType: 1
     sampleRateSetting: 0
-    sampleRateOverride: 44100
+    sampleRateOverride: 0
     compressionFormat: 1
     quality: 1
     conversionMode: 0
-  platformSettingOverrides: {}
-  forceToMono: 0
+  platformSettingOverrides:
+    7:
+      loadType: 0
+      sampleRateSetting: 0
+      sampleRateOverride: 0
+      compressionFormat: 1
+      quality: 0.7
+      conversionMode: 0
+  forceToMono: 1
   normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
