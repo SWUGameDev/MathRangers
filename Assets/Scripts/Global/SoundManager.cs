@@ -10,7 +10,10 @@ public enum backgroundAudioSourceType
     BGM_RUN,
     BGM_TITLE,
     BGM_PROLOGUE,
-    BGM_RANKING
+    BGM_RANKING,
+    BGM_LOFI1,
+    BGM_RAIN,
+    BGM_TALK,
 }
 
 public enum effectsAudioSourceType
@@ -33,7 +36,7 @@ public enum effectsAudioSourceType
     SFX_CLICK,
     SFX_CHARACTER_CLICK,
     SFX_SUCCESS,
-    SFX_FAIL
+    SFX_FAIL,
 }
 
 [Serializable]
