@@ -33,7 +33,7 @@ public partial class RankingUIManager : MonoBehaviour
         {
             if(this.teamRackingUIItems.ContainsKey(infos.Key) == false)
                 continue;
-                
+            
             this.teamRackingUIItems[infos.Key]?.SetTeamRankBackGroundColor(this.rankBackgroundSprites[rank]);
             this.teamRackingUIItems[infos.Key]?.SetTeamRankText((++rank).ToString());
         }

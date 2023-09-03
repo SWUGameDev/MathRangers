@@ -20,6 +20,7 @@ public partial class RankingManager : MonoBehaviour
         foreach (var user in infos)
         {
             TeamType teamType = (TeamType)user.team;
+
             if (TotalScoreByTeamDictionary.ContainsKey(teamType))
             {
                 TotalScoreByTeamDictionary[teamType] += user.score;
@@ -30,7 +31,7 @@ public partial class RankingManager : MonoBehaviour
             }
         }
         var sortedScoreByTeams = TotalScoreByTeamDictionary.OrderByDescending(pair => pair.Value);
-    
+
         return sortedScoreByTeams;
     }
 

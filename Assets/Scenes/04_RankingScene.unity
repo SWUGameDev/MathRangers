@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 711788765}
-  teamType: 0
+  teamType: 2
   teamRankText: {fileID: 68829039}
   teamRankTextBackgroundImage: {fileID: 1224642813}
 --- !u!1 &726592561
@@ -2229,7 +2229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1093446619}
-  teamType: 0
+  teamType: 1
   teamRankText: {fileID: 1360012870}
   teamRankTextBackgroundImage: {fileID: 2117418636}
 --- !u!1 &1095857939

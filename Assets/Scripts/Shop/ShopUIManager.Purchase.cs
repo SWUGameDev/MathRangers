@@ -49,7 +49,7 @@ public partial class ShopUIManager : MonoBehaviour
 
         this.CalculateAllItemPrice();
 
-        
+        this.CheckButtonCanActive();
     }
 
     // 나중에 절대 분리하기
