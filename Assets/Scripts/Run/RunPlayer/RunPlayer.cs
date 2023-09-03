@@ -30,7 +30,7 @@ public partial class RunPlayer : MonoBehaviour
     SpriteRenderer runPlayerSpriteRenderer;
     [SerializeField] Sprite slideSprite;
     [SerializeField] Sprite walkSprite;
-    [SerializeField] BoxCollider2D[] colliders;
+    // [SerializeField] BoxCollider2D[] colliders;
 
     bool isArive;
     bool isSlide;
@@ -42,6 +42,13 @@ public partial class RunPlayer : MonoBehaviour
 
     [SerializeField] Animator animator;
     string runGame = "RunGame";
+
+    [SerializeField] BoxCollider2D playerCollider;
+    private Vector3 runColliderOffset = new Vector3(0.0f, 2.7f, 1.0f);
+    private Vector3 runColliderSize = new Vector3(5.0f, 7.0f, 0.0f);
+
+    private Vector3 sliderColliderOffset = new Vector3(0.0f, 0.0f, 1.0f);
+    private Vector3 sliderColliderSize = new Vector3(5.0f, 2.0f, 0.0f);
 
     [SerializeField] SceneController sceneController;
     enum States
@@ -68,8 +75,9 @@ public partial class RunPlayer : MonoBehaviour
         
         runPlayerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        colliders[0].enabled = true;
-        colliders[1].enabled = false;
+        playerCollider.offset = runColliderOffset;
+        playerCollider.size = runColliderSize;
+
         isArive = true;
         isSlide = false;
         isRun = false;
@@ -153,8 +161,8 @@ public partial class RunPlayer : MonoBehaviour
     {
         isSlide = true;
         runPlayerSpriteRenderer.sprite = slideSprite;
-        colliders[0].enabled = false;
-        colliders[1].enabled = true;
+        playerCollider.offset = sliderColliderOffset;
+        playerCollider.size = sliderColliderSize;
 
         animator.SetInteger(runGame, (int)States.Slide);
     }
@@ -163,8 +171,8 @@ public partial class RunPlayer : MonoBehaviour
     public void Run()
     {
         runPlayerSpriteRenderer.sprite = walkSprite;
-        colliders[0].enabled = true;
-        colliders[1].enabled = false;
+        playerCollider.offset = runColliderOffset;
+        playerCollider.size = runColliderSize;
         animator.SetInteger(runGame, (int)States.Run);
     }
     
