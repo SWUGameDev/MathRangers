@@ -62,8 +62,8 @@ public partial class Player : MonoBehaviour
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         this.bulletPool.ReturnObject(bulletObj);
 
-        int minDamage = (int)this.playerProperty.MinAttackPower;
-        int maxDamage = (int)this.playerProperty.MaxAttackPower;
+        int minDamage = (int)this.playerProperty.MinAttackPower * 10;
+        int maxDamage = (int)this.playerProperty.MaxAttackPower * 10;
 
         if(bullet.isBuff214 == true)
         {

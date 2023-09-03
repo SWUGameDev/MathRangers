@@ -27,6 +27,7 @@ public class RandomTalkController : MonoBehaviour
     [SerializeField] private float timeInterval;
     void Start()
     {
+        SoundManager.Instance.SetBackgroundAudioSourceMute(false);
 
         this.engTalkContents = JsonConvert.DeserializeObject<List<string>>(this.engTextAsset.text);
 

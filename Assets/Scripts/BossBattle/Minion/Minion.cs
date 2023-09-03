@@ -69,7 +69,9 @@ public partial class Minion : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Minion.OnReturnBullet?.Invoke(collision.gameObject);
-            this.minionStateMachine.SetState("BeHit");
+            Minion.OnMinionDead?.Invoke();
+            // ±‚»π ªË¡¶
+            // this.minionStateMachine.SetState("BeHit");
         }
     }
 
