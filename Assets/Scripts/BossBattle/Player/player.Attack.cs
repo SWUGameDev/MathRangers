@@ -39,14 +39,14 @@ public partial class Player : MonoBehaviour
 
         bullet.Initialized(this);
 
-        bulletObj.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+        bulletObj.transform.localScale = new Vector3(1.0f, 1.0f, 1);
         bulletObj.transform.position = firePoint.position;
         bulletObj.transform.rotation = firePoint.rotation;
 
         if(attackCount % attackIndexBuff214 == 0)
         {
             bullet.isBuff214 = true;
-            bulletObj.transform.localScale = new Vector3(0.6f, 0.6f, 1);
+            bulletObj.transform.localScale = new Vector3(2.0f, 2.0f, 1);
         }
 
         if (attackCount % attackIndexBuff213 == 0)

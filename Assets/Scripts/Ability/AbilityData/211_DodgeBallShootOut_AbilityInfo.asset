@@ -21,7 +21,7 @@ MonoBehaviour:
       \uC2DC\uD5D8 \uAD34\uBB3C\uC5D0\uAC8C \uC704\uB825 {1}\uC758 \uACF5\uC744 \uB0A0\uB9B0\uB2E4."
     englishDescription: I caught a ball! Mathranger automatically shoots ball with
       force {0} every {1} seconds.
-  abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
+  abilityIcon: {fileID: 21300000, guid: e2333524f2eaed444a83a10e0a41e9dd, type: 3}
   abilityType: 0
   isSelected: 1
   abilityCommands:

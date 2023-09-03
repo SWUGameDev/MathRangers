@@ -22,7 +22,7 @@ MonoBehaviour:
       \uACF5\uACA9 {2}\uAC1C\uB97C \uC790\uB3D9\uC73C\uB85C \uBC1C\uC0AC\uD55C\uB2E4."
     englishDescription: What i chose is the answer. Mathranger automatically attacks
       {2} times with force {1} at random positions every {0} seconds.
-  abilityIcon: {fileID: 21300000, guid: 716dea4aa57a7854daf307f60637bbb1, type: 3}
+  abilityIcon: {fileID: 21300000, guid: e91ffbe772f93f148869b2e666de874a, type: 3}
   abilityType: 0
   isSelected: 0
   abilityCommands:
