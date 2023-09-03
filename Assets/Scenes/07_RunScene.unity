@@ -72503,27 +72503,27 @@ PrefabInstance:
       objectReference: {fileID: 571722688}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_AutoRebind
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.07931948
+      value: -0.00025999546
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -1.019077
+      value: 0.00033047795
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Center.z
-      value: 0
+      value: 0.020000458
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.5662401
+      value: 0.56623995
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 0.12785387
+      value: 0.12609006
       objectReference: {fileID: 0}
     - target: {fileID: 4520777227770606186, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_BoneTransforms.Array.data[0]
@@ -72743,7 +72743,7 @@ PrefabInstance:
       objectReference: {fileID: 1246222474}
     - target: {fileID: 8022732686784083403, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_AutoRebind
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8022732686784083403, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -72755,7 +72755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022732686784083403, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Center.z
-      value: 0
+      value: 0.010000229
       objectReference: {fileID: 0}
     - target: {fileID: 8022732686784083403, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Bounds.m_Extent.x
