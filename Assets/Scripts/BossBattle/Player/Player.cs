@@ -28,6 +28,15 @@ public partial class Player : MonoBehaviour
 
     public PropertyInfo playerProperty;
     bool isEnd = false;
+
+    enum States
+    {
+        Run = 0,
+        Jump = 1,
+    }
+
+    [SerializeField] Animator animator;
+    string runGame = "RunGame";
     private void Awake()
     {
         this.playerProperty = new PropertyInfo();
@@ -65,6 +74,7 @@ public partial class Player : MonoBehaviour
             this.isEnd = true;
             bossSceneUIManager.GameResultMissionFail();
         }
+
     }
 
     private void OnDestroy()
@@ -78,6 +88,23 @@ public partial class Player : MonoBehaviour
     private void OnProcessInput(Vector2 vdir)
     {
         transform.position += new Vector3(vdir.x, 0f, 0f) * playerSpeed * Time.deltaTime;
+
+
+
+        if(vdir.x < 0)
+        {
+            for (int i = 0; i < playerSpriteRenderer.Length; i++)
+            {
+                transform.localScale = new Vector3(-0.3f, 0.3f, 1);
+            }
+        }
+        else 
+        {
+            for (int i = 0; i < playerSpriteRenderer.Length; i++)
+            {
+                transform.localScale = new Vector3(0.3f, 0.3f, 1);
+            }
+        }
     }
 
     public void Jump()
@@ -97,6 +124,8 @@ public partial class Player : MonoBehaviour
 
             rb.velocity = Vector2.zero;
             this.rb.AddForce(new Vector2(0, this.jumpForce));
+
+            animator.SetInteger(runGame, (int)States.Jump);
         }
     }
 
@@ -105,6 +134,8 @@ public partial class Player : MonoBehaviour
         if (col.gameObject.tag == "Ground") 
         { 
             jumpCount = 0;
+
+            animator.SetInteger(runGame, (int)States.Run);
         }
     }
 }

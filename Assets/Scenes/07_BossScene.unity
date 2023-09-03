@@ -2709,6 +2709,7 @@ MonoBehaviour:
   playerUIController: {fileID: 1901364532}
   isSkill1Being: 0
   playerProperty: {fileID: 0}
+  animator: {fileID: 1644724983}
   playerSpriteRenderer:
   - {fileID: 3858102}
   - {fileID: 1298561867}
@@ -12352,7 +12353,7 @@ PrefabInstance:
     - target: {fileID: 100919240, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 965494ad4d26ba84d941676e75e7e725, type: 2}
+      objectReference: {fileID: 9100000, guid: 9915aacfc4efa284ba09d0d05673ab4a, type: 2}
     - target: {fileID: 865785433, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_SpriteKey
       value: 0.0000007576869
@@ -12962,6 +12963,11 @@ PrefabInstance:
 --- !u!1 &1644724982 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8797437404502524591, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
+  m_PrefabInstance: {fileID: 1644724981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1644724983 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 100919240, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
   m_PrefabInstance: {fileID: 1644724981}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658266860
