@@ -84,6 +84,7 @@ public partial class Player : MonoBehaviour
 
         Minion.OnReturnBullet.RemoveListener(this.OnReturnBullet);
         Boss.OnBossAttacked.RemoveListener(this.OnBulletTriggered);
+        Boss.OnPlayerAttacked.RemoveListener(this.CalculateBossTriggerDamage);
     }
 
     private void OnProcessInput(Vector2 vdir)

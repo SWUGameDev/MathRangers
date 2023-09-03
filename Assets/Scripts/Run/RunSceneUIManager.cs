@@ -47,15 +47,19 @@ public class RunSceneUIManager : UI_Base
     {
         Time.timeScale = 1f;
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
+
+        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
+
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
         runPlayer.onSetHpGauge.AddListener(this.SetHpGauge);
         runPlayer.onTriggerMath.AddListener(this.SetAllScroll);
         runPlayer.onRunPlayerDead.AddListener(this.SetDeadPanel);
-        MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
-        this.countdownController.StartCountdown(this.GameStartUISetting);
-        SoundManager.Instance.ChangeBackgroundAudioSource(backgroundAudioSourceType.BGM_RUN);
+ 
         MathPanelUIController.OnSolveWrong.AddListener(this.SetAllScroll);
         BuffSelectPanelUIController.OnSolvedCorrect.AddListener(this.SetAllScroll);
+        MathQuestionExtension.OnQuestionSolved += GetAnswerRate;
+
+        this.countdownController.StartCountdown(this.GameStartUISetting);
     }
 
     private void Start()
@@ -70,12 +74,11 @@ public class RunSceneUIManager : UI_Base
     {
         runPlayer.onEatCheese.RemoveListener(this.EatCheeseNumber);
         runPlayer.onSetHpGauge.RemoveListener(this.SetHpGauge);
-        runPlayer.onTriggerMath.RemoveAllListeners();
-        runPlayer.onRunPlayerDead.RemoveAllListeners();
+        runPlayer.onTriggerMath.RemoveListener(this.SetAllScroll);
+        runPlayer.onRunPlayerDead.RemoveListener(this.SetDeadPanel);
 
         MathPanelUIController.OnSolveWrong.RemoveListener(this.SetAllScroll);
         BuffSelectPanelUIController.OnSolvedCorrect.RemoveListener(this.SetAllScroll);
-
         MathQuestionExtension.OnQuestionSolved -= GetAnswerRate;
     }
 
