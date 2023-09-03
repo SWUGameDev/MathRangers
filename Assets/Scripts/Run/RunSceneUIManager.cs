@@ -75,6 +75,8 @@ public class RunSceneUIManager : UI_Base
 
         MathPanelUIController.OnSolveWrong.RemoveListener(this.SetAllScroll);
         BuffSelectPanelUIController.OnSolvedCorrect.RemoveListener(this.SetAllScroll);
+
+        MathQuestionExtension.OnQuestionSolved -= GetAnswerRate;
     }
 
     public void EatCheeseNumber()

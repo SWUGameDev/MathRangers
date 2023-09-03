@@ -23,6 +23,11 @@ public class StopPanelController : MonoBehaviour
         SetQuestionCorrectRate(100);
     }
 
+    void OnDestroy()
+    {
+        MathQuestionExtension.OnQuestionSolved -= SetQuestionCorrect;
+    }
+
     public void StopPanelSetActive()
     {
         stopPanel.SetActive(true);
