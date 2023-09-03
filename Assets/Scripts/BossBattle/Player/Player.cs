@@ -21,7 +21,7 @@ public partial class Player : MonoBehaviour
     public BossSceneUIManager BossSceneUIManager { get {  return this.bossSceneUIManager; } }
 
     public bool isSkill1Being = false;
-
+    public bool isSkill2Being = false;
     private Rigidbody2D rb;
 
     private int jumpCount = 0;

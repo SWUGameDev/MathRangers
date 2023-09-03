@@ -69,6 +69,15 @@ public partial class BossSceneUIManager : MonoBehaviour
     {
         Player.OnBossDamaged.RemoveListener(this.SetBossHpGauge);
         Minion.OnMinionDead.RemoveListener(this.SetMinionNumber);
+
+        if(player.isSkill1Being)
+        {
+            SkillButton[0].onClick.RemoveAllListeners();
+        }
+        else if(player.isSkill2Being)
+        {
+            SkillButton[1].onClick.RemoveAllListeners();
+        }
     }
 
     public void SetMinionNumber()
@@ -133,6 +142,7 @@ public partial class BossSceneUIManager : MonoBehaviour
         }
         else
         {
+            player.isSkill2Being = true;
             Skill2.SetActive(true);
             Skill2Image.sprite = abilityBuffIcon[id];
             buttonIdx = 1;
@@ -160,6 +170,8 @@ public partial class BossSceneUIManager : MonoBehaviour
             });
         }
     }
+
+
 
     public void ActiveBuffUI(int id)
     {
