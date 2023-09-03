@@ -35,6 +35,8 @@ public partial class RankingUIManager : MonoBehaviour
         this.rankingItems = new List<RankingUIItem>();
         Sprite[] iconSprite = iconImageController.GetIconSprites();
 
+        Debug.Log(infos.Count);
+
         for(int index = 0;index<infos.Count;index++)
         {
             GameObject item = GameObject.Instantiate<GameObject>(this.rankItemPrefab);

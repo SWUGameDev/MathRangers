@@ -10,8 +10,12 @@ public class TotalRecordUIController : MonoBehaviour
     {
         this.button.interactable = false;
 
-                UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetButtonInteractable;
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetButtonInteractable;
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetButtonInteractable;  
+    }
+
+    private void OnDestroy() {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetButtonInteractable;
     }
 
     private void SetButtonInteractable(List<GameResultInfo> gameResultInfos)

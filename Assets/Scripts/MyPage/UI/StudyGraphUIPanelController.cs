@@ -28,8 +28,13 @@ public class StudyGraphUIPanelController : MonoBehaviour
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetStudyGraphData;
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetStudyGraphData;  
     }
+
+    private void OnDestroy() {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetStudyGraphData;
+    }
     private void SetStudyGraphData(List<GameResultInfo> gameResultInfos)
     {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetStudyGraphData;
 
         if(gameResultInfos.Count==0)
             return;

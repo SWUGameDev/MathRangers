@@ -22,6 +22,11 @@ public class LevelUIController : MonoBehaviour
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetLevelUIData;  
     }
 
+    void OnDestroy()
+    {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetLevelUIData;
+    }
+
     private void SetLevelUIData(List<GameResultInfo> gameResultInfos)
     {
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetLevelUIData;

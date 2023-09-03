@@ -14,6 +14,10 @@ public class StudyUIPanelController : MonoBehaviour
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetStudyPanelData;
     }
 
+    private void OnDestroy() {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetStudyPanelData;
+    }
+
     private void SetStudyPanelData(List<GameResultInfo> gameResultInfos)
     {
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetStudyPanelData;
@@ -24,7 +28,6 @@ public class StudyUIPanelController : MonoBehaviour
 
     private void SetTotalQuestionsText(string totalCount)
     {
-        
         this.totalQuestionsText.text = totalCount;
     }
 }

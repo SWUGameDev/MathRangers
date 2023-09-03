@@ -11,6 +11,9 @@ public class CorrectUIPanelController : MonoBehaviour
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectPanelData;
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetCorrectPanelData;  
     }
+    private void OnDestroy() {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectPanelData;
+    }
     private void SetCorrectPanelData(List<GameResultInfo> gameResultInfos)
     {
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectPanelData;

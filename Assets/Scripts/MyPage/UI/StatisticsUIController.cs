@@ -17,6 +17,8 @@ public class StatisticsUIController : MonoBehaviour
     {
         this.gameResultInfos = userGameResultInfoManager.GetUserGameResultInfos();
 
+        this.gameResultInfos.Reverse();
+        
         if(gameResultInfos.Count==0)
             return;
 

@@ -28,6 +28,10 @@ public class CorrectGraphUIPanelController : MonoBehaviour
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectGraphData;
         UserGameResultInfoManager.OnUserGameResultInfoInitialized += SetCorrectGraphData;  
     }
+
+    private void OnDestroy() {
+        UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectGraphData;
+    }
     private void SetCorrectGraphData(List<GameResultInfo> gameResultInfos)
     {
         UserGameResultInfoManager.OnUserGameResultInfoInitialized -= SetCorrectGraphData;
