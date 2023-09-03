@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class LanguageManager : MonoBehaviour
 {
 
     public TextMeshProUGUI languageTexts;
     private bool isKorean;
+    bool isChanging = false;
 
     void Start()
     {
@@ -21,12 +23,30 @@ public class LanguageManager : MonoBehaviour
         if(isKorean)
         {
             languageTexts.text = "ÇÑ±¹¾î";
+            ChangeLocale(1);
         }
         else
         {
             languageTexts.text = "English";
+            ChangeLocale(0);
         }
     }
 
+    public void ChangeLocale(int index)
+    {
+        if (isChanging)
+            return;
 
+        StartCoroutine(LocaleChange(index));
+    }
+
+    IEnumerator LocaleChange(int index)
+    {
+        isChanging = true;
+
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+
+        isChanging = false;
+    }
 }

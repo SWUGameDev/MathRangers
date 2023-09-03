@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization - Table_BossScene_ko-KR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ko-KR
+  m_SharedData: {fileID: 11400000, guid: b7a02b1aa0fc98b489d5af1400d9626b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 109591605248
+    m_Localized: "\uD68D\uB4DD\uD55C \uB2A5\uB825"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936896
+    m_Localized: "\uBB38\uC81C \uD604\uD669"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936897
+    m_Localized: "\uC815\uB2F5\uB960"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936898
+    m_Localized: "\uADF8\uB9CC\uD558\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936899
+    m_Localized: "\uC784\uBB34 \uC131\uACF5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936900
+    m_Localized: "\uC784\uBB34 \uD480\uC774 \uACB0\uACFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936901
+    m_Localized: "\uD480\uC774 \uACB0\uACFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936902
+    m_Localized: "\uD480\uC774 \uC815\uD655\uB3C4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936903
+    m_Localized: "\uD480\uC774 \uC18D\uB3C4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936904
+    m_Localized: "\uD655\uC778"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936905
+    m_Localized: "\uC784\uBB34 \uC2E4\uD328"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936906
+    m_Localized: "\uC784\uBB34 \uD480\uC774 \uACB0\uACFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936907
+    m_Localized: "\uD480\uC774 \uACB0\uACFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936908
+    m_Localized: "\uD480\uC774 \uC815\uD655\uB3C4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936909
+    m_Localized: "\uD480\uC774 \uC18D\uB3C4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936910
+    m_Localized: "\uD655\uC778"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

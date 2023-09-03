@@ -27,11 +27,9 @@ public partial class Boss : MonoBehaviour
 
     public enum States
     {
-        Walk = 0,
+        Idle = 0,
         Call = 1,
         Swing = 2,
-        Faint = 3,
-        Die = 4,
         Run = 5,
     }
 
@@ -39,7 +37,7 @@ public partial class Boss : MonoBehaviour
     public string bossGame = "BossGame";
 
     private void Awake() {
-        bossNewAnimator.SetInteger(bossGame, (int)States.Walk);
+        bossNewAnimator.SetInteger(bossGame, (int)States.Idle);
         Boss.OnPlayerAttacked = new UnityEvent();
 
         Boss.OnBossAttacked = new UnityEvent<GameObject>();
@@ -92,6 +90,11 @@ public partial class Boss : MonoBehaviour
         bossNewAnimator.SetInteger(bossGame, state); ;
     }
 
+    public void setBossAnimCall()
+    {
+        bossNewAnimator.SetTrigger("Call");
+    }
+
     public float MaxBossHp
     {
         get { return maxBossHp; } 
@@ -107,4 +110,8 @@ public partial class Boss : MonoBehaviour
     {
         this.bossStateMachine.Initialize("Faint", this);
     }
+
+
+
+
 }

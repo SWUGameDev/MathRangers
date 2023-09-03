@@ -6,7 +6,7 @@ using TMPro;
 
 public class VibrationController : MonoBehaviourSingleton<VibrationController>
 {
-    private bool isVibrationEnabled = true;
+    public bool isVibrationEnabled = true;
 
     public void ToggleVibration()
     {
@@ -14,19 +14,19 @@ public class VibrationController : MonoBehaviourSingleton<VibrationController>
 
         if (isVibrationEnabled)
         {
-            // ���� ���� �ѱ�
-            Debug.Log("������ �մϴ�.");
+            // 진동 반응 켜기
+            Debug.Log("진동 반응 켜기");
         }
         else
         {
-            // ���� ���� ����
-            Debug.Log("������ ���ϴ�.");
+            // // 진동 반응 끄기
+            Debug.Log("진동 반응 끄기");
         }
     }
 
     public void Vibration()
     {
-        if(this.isActiveAndEnabled)
+        if(this.isActiveAndEnabled == true && this.isVibrationEnabled == true)
             Handheld.Vibrate();
     }
 }

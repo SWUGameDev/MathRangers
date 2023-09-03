@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization - Tablle_RunScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization - Tablle_RunScene
+  m_TableCollectionNameGuidString: 21d492c1aadcc86458d103a30bee76f3
+  m_Entries:
+  - m_Id: 30231179264
+    m_Key: Key_CorrectAnswerRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316608
+    m_Key: Key_RunStop_GameState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316609
+    m_Key: Key_RunStop_QuestionList
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316610
+    m_Key: Key_RunStop_CorrectAnswerRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316611
+    m_Key: Key_RunStop_End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316612
+    m_Key: Key_BuffSelectPanel_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316613
+    m_Key: Key_BuffSelectPanel_Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316614
+    m_Key: Key_Dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316615
+    m_Key: Key_Rescue_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316616
+    m_Key: Key_Rescue_ResultTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316617
+    m_Key: Key_Rescue_ResultListResult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316618
+    m_Key: Key_Rescue_ResultListResult1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316619
+    m_Key: Key_Rescue_ResultListResult2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30277316620
+    m_Key: Key_Rescue_Button
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 440516104775270408
+  references:
+    version: 2
+    RefIds:
+    - rid: 440516104775270408
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693719904721

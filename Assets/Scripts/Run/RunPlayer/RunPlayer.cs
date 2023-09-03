@@ -194,6 +194,7 @@ public partial class RunPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && isUnbeat == false)
         {
+            VibrationController.Instance.Vibration();
             SoundManager.Instance.PlayAffectSoundOneShot(effectsAudioSourceType.SFX_HURDLE);
             this.TakeDamageplayer(enemyDamage);
             animator.SetTrigger("Behit");

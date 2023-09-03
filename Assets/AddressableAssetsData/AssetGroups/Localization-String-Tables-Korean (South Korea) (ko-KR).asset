@@ -71,6 +71,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ko-KR
     - Preload
+  - m_GUID: 95080608d6ea2f04ebf058a2361b69ec
+    m_Address: Localization - Table_LofiRoomScene_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+  - m_GUID: 2bceda1c56704c246ad1bab8cc3fdf89
+    m_Address: Localization - Tablle_RunScene_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+  - m_GUID: 29f277ed61a94e94cb51200fe9506adf
+    m_Address: Localization - Table_BossScene_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: be3c573454942452db2310afc6d4d20b, type: 2}
   m_SchemaSet:

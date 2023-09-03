@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization - Table_BossScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization - Table_BossScene
+  m_TableCollectionNameGuidString: b7a02b1aa0fc98b489d5af1400d9626b
+  m_Entries:
+  - m_Id: 109591605248
+    m_Key: Key_BossStop_GameState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936896
+    m_Key: Key_BossStop_QuestionList
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936897
+    m_Key: Key_BossStop_CorrectAnswerRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936898
+    m_Key: Key_BossStop_End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936899
+    m_Key: Key_Success_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936900
+    m_Key: Key_Success_ResultTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936901
+    m_Key: Key_Success_ResultListResult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936902
+    m_Key: Key_Success_ResultListResult1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936903
+    m_Key: Key_Success_ResultListResult2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936904
+    m_Key: Key_Success_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936905
+    m_Key: Key_Fail_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936906
+    m_Key: Key_Fail_ResultTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936907
+    m_Key: Key_Fail_ResultListResult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936908
+    m_Key: Key_Fail_ResultListResult1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936909
+    m_Key: Key_Fail_ResultListResult2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109641936910
+    m_Key: Key_Fail_Button
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 440516104775270410
+  references:
+    version: 2
+    RefIds:
+    - rid: 440516104775270410
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693720938047
