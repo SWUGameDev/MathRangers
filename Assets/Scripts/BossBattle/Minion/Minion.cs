@@ -72,6 +72,7 @@ public partial class Minion : MonoBehaviour
             Minion.OnMinionDead?.Invoke();
             // ±‚»π ªË¡¶
             // this.minionStateMachine.SetState("BeHit");
+            this.minionStateMachine.SetState("Dead");
         }
     }
 
