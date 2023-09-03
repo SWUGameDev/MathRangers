@@ -50,8 +50,6 @@ public partial class Boss : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(this.bossStateMachine.currentState);
-
         this.TurnToTarget();
     }
 

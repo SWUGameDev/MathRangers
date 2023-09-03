@@ -65,6 +65,7 @@ public partial class RunPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         runPlayerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         this.colliders = this.GetComponents<BoxCollider2D>();

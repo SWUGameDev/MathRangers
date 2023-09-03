@@ -6,9 +6,9 @@ using TMPro;
 
 public class StopPanelController : MonoBehaviour
 {
-    [SerializeField] Image[] buffImageArr = new Image[7];
-    [SerializeField] Image[] questionImageArr = new Image[7];
-    [SerializeField] Image[] questionRunArr = new Image[7];
+    [SerializeField] Image[] buffImageArr;
+    [SerializeField] Image[] questionImageArr;
+    [SerializeField] Image[] questionRunArr;
     [SerializeField] TMP_Text correctRate;
     [SerializeField] GameObject stopPanel;
     Color green = new Color(0f, 1f, 0f);
@@ -38,6 +38,7 @@ public class StopPanelController : MonoBehaviour
     public void SetQuestionCorrect(int mathindex, bool isCorrect)
     {
         int idx = mathindex - 1;
+        Debug.Log(idx);
         if(isCorrect == true)
         {
             questionImageArr[idx].color = green;
