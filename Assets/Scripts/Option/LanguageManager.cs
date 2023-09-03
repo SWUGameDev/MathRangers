@@ -11,6 +11,7 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI languageTexts;
     private bool isKorean;
     bool isChanging = false;
+    int selectedLanguageIndex;
 
     void Start()
     {
@@ -23,11 +24,14 @@ public class LanguageManager : MonoBehaviour
         if(isKorean)
         {
             languageTexts.text = "ÇÑ±¹¾î";
+            this.selectedLanguageIndex = 1;
             ChangeLocale(1);
+
         }
         else
         {
             languageTexts.text = "English";
+            this.selectedLanguageIndex = 0;
             ChangeLocale(0);
         }
     }
@@ -46,7 +50,8 @@ public class LanguageManager : MonoBehaviour
 
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
-
+        PlayerPrefs.SetInt(LocalizationManager.userSelectedLanguageKey, this.selectedLanguageIndex);
+        PlayerPrefs.Save();
         isChanging = false;
     }
 }

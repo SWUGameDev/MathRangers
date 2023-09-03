@@ -51,18 +51,22 @@ public class RandomTalkController : MonoBehaviour
     {
         this.elapsedTime += Time.deltaTime;
 
-        if(this.timeInterval<=this.elapsedTime)
+        this.languageIndex = LocalizationManager.Instance.GetCurrentLocalizationIndex();
+
+        if (this.timeInterval<=this.elapsedTime)
         {
             this.elapsedTime = 0;
 
             this.index = (this.index + 1) % this.maxIndex;
+        }
 
-            if(this.languageIndex == 1)
-            {
-                this.talkText.text = this.krTalkContents[this.index];
-            }else{
-                this.talkText.text = this.engTalkContents[this.index];
-            }
+        if (this.languageIndex == 1)
+        {
+            this.talkText.text = this.krTalkContents[this.index];
+        }
+        else
+        {
+            this.talkText.text = this.engTalkContents[this.index];
         }
     }
 }
