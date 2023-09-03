@@ -137,7 +137,7 @@ public partial class DialogSystem : MonoBehaviour
         if(this.dialogData[dataIndex][index].isSelection)
         {
             this.nextButton.interactable = false;
-            this.SetSelectPanel(this.selectedPanelIndex);
+            this.SetSelectPanel();
             this.selectedPanel.SetActive(true);
         }
 
@@ -192,9 +192,9 @@ public partial class DialogSystem : MonoBehaviour
  
     }
 
-    private void SetSelectPanel(int selectedPanelIndex)
+    private void SetSelectPanel()
     {
-        if(this.selectPanelData[this.dataIndex].Count <= selectedPanelIndex)
+        if(this.selectPanelData[this.dataIndex].Count <= this.selectedPanelIndex)
             return;
 
         SelectInfoData selectInfoData = this.selectPanelData[this.dataIndex][this.selectedPanelIndex];
@@ -212,11 +212,14 @@ public partial class DialogSystem : MonoBehaviour
         this.nextButton.interactable = true;
     }
 
+    private int SelectButtonIndex = 0;
+
     public void SelectButton(int index)
     {
-        SelectInfoData selectInfoData = this.selectPanelData[this.dataIndex][this.selectedPanelIndex-1];
+        SelectInfoData selectInfoData = this.selectPanelData[this.dataIndex][this.SelectButtonIndex];
         int teamType = selectInfoData.selectInfoList[index].type;
         this.teamMatchManager.SetTeamMatchScore((TeamType)teamType - 1,1);
+        this.SelectButtonIndex++;
     }
 
 }

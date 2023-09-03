@@ -18,7 +18,7 @@ public class TeamMatchManager : MonoBehaviour
 {
     private static TeamMatchManager instance;
 
-    private int[] score = new int[3];
+    [SerializeField] private int[] score = new int[3];
 
     private TeamType teamType = TeamType.None;
 
