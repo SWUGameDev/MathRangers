@@ -2863,6 +2863,7 @@ MonoBehaviour:
   bossSceneUIManager: {fileID: 1286944494}
   playerUIController: {fileID: 1901364532}
   isSkill1Being: 0
+  isSkill2Being: 0
   charRed: {fileID: 1644724982}
   playerProperty: {fileID: 0}
   animator: {fileID: 1644724983}
@@ -12570,7 +12571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2117df356d874b64a9b36d08daedaa78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16424,7 +16425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 44a367581ee1ad547be4b98f823092d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

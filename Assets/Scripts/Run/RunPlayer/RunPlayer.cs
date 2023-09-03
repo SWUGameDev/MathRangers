@@ -47,8 +47,8 @@ public partial class RunPlayer : MonoBehaviour
     private Vector3 runColliderOffset = new Vector3(0.0f, 2.7f, 1.0f);
     private Vector3 runColliderSize = new Vector3(5.0f, 7.0f, 0.0f);
 
-    private Vector3 sliderColliderOffset = new Vector3(0.0f, 0.0f, 1.0f);
-    private Vector3 sliderColliderSize = new Vector3(5.0f, 2.0f, 0.0f);
+    private Vector3 sliderColliderOffset = new Vector3(0.0f, 1.0f, 1.0f);
+    private Vector3 sliderColliderSize = new Vector3(5.0f, 3.0f, 0.0f);
 
     [SerializeField] SceneController sceneController;
     enum States
