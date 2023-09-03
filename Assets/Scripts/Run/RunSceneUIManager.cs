@@ -45,6 +45,7 @@ public class RunSceneUIManager : UI_Base
     private float sum;
     private void Awake()
     {
+        Time.timeScale = 1f;
         runPlayer = playerGameObject.GetComponent<RunPlayer>();
         runPlayer.onEatCheese.AddListener(this.EatCheeseNumber);
         runPlayer.onSetHpGauge.AddListener(this.SetHpGauge);

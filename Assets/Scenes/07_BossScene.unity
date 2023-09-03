@@ -12349,6 +12349,10 @@ PrefabInstance:
       propertyPath: m_SpriteKey
       value: 1.8679172e-35
       objectReference: {fileID: 0}
+    - target: {fileID: 100919240, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 965494ad4d26ba84d941676e75e7e725, type: 2}
     - target: {fileID: 865785433, guid: 02c61eec24b85c4449b7306e9dc3245a, type: 3}
       propertyPath: m_SpriteKey
       value: 0.0000007576869
