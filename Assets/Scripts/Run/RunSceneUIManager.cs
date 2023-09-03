@@ -119,7 +119,7 @@ public class RunSceneUIManager : UI_Base
     private void SetDeadPanel()
     {
         this.StartCoroutine(this.SetDeadPanelCoroutine());
-        
+
     }
 
     public IEnumerator SetDeadPanelCoroutine()
@@ -146,7 +146,7 @@ public class RunSceneUIManager : UI_Base
 
     void SetAnswerRate()
     {
-        AnswerRateText.text = latestAnswerRate.ToString() + "%"; 
+        AnswerRateText.text = latestAnswerRate.ToString() + "%";
     }
 
     public float CalculateScreenMinY()

@@ -36,8 +36,8 @@ public partial class Boss : MonoBehaviour
     [SerializeField] public Animator bossNewAnimator;
     public string bossGame = "BossGame";
 
-    private void Awake() {
-        bossNewAnimator.SetInteger(bossGame, (int)States.Idle);
+    private void Awake()
+    {
         Boss.OnPlayerAttacked = new UnityEvent();
 
         Boss.OnBossAttacked = new UnityEvent<GameObject>();
@@ -52,7 +52,7 @@ public partial class Boss : MonoBehaviour
     void Start()
     {
         this.bossStateMachine.Initialize("Idle",this);
-        bossNewAnimator.SetInteger(bossGame, (int)States.Run);
+
         Player.onAttackSucceeded.AddListener(this.PlayDamageEffect);
         Player.OnBossFaint.AddListener(this.BossStateFaint);
 
@@ -85,15 +85,6 @@ public partial class Boss : MonoBehaviour
         }
     }
 
-    public void setBossAnim(int state)
-    {
-        bossNewAnimator.SetInteger(bossGame, state); ;
-    }
-
-    public void setBossAnimCall()
-    {
-        bossNewAnimator.SetTrigger("Call");
-    }
 
     public float MaxBossHp
     {

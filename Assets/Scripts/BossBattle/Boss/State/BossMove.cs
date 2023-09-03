@@ -19,7 +19,7 @@ public class BossMove : BossState
     {
         base.OnUpdate();
 
-        this.stateMachine.Boss.setBossAnim(5);
+        // this.stateMachine.Boss.setBossAnim(5);
 
         this.elapsedTime += Time.deltaTime;
 

@@ -15,6 +15,7 @@ public class PropertyManager : MonoBehaviour
 
         player.playerProperty.Hp += increaseAmount;
         Debug.Log("체력: " + player.playerProperty.Hp);
+        player.BossSceneUIManager.ActiveBuffUI(5);
     }
 
     public void AttackPowerIncrease(float percentage)
@@ -29,6 +30,7 @@ public class PropertyManager : MonoBehaviour
 
         Debug.Log("최소 공격력: " + player.playerProperty.MinAttackPower);
         Debug.Log("최대 공격력: " + player.playerProperty.MaxAttackPower);
+        player.BossSceneUIManager.ActiveBuffUI(3);
     }
 
     public void DefensePowerIncrease(float percentage)
@@ -37,6 +39,7 @@ public class PropertyManager : MonoBehaviour
 
         player.playerProperty.DefensePower += increaseAmount;
         Debug.Log("방어력: " + player.playerProperty.DefensePower);
+        player.BossSceneUIManager.ActiveBuffUI(4);
     }
 
     public void AttackSpeedIncrease(float percentage)
@@ -45,6 +48,7 @@ public class PropertyManager : MonoBehaviour
 
         player.playerProperty.AttackSpeed += increaseAmount;
         Debug.Log("공격 속도: " + player.playerProperty.AttackSpeed);
+        player.BossSceneUIManager.ActiveBuffUI(6);
     }
 
     // n초 증가
@@ -52,6 +56,7 @@ public class PropertyManager : MonoBehaviour
     {
         player.playerProperty.LimitTime += second; 
         Debug.Log("제한 시간: " + player.playerProperty.LimitTime);
+        player.BossSceneUIManager.ActiveBuffUI(7);
     }
 
     public void ActiveSkillUnbeat(float time)
@@ -59,6 +64,7 @@ public class PropertyManager : MonoBehaviour
         player.playerProperty.Buff101UnbeatTime = time;
 
         player.BossSceneUIManager.ActiveSkillUI(0);
+        player.BossSceneUIManager.ActiveBuffUI(0);
     }
 
     public void ActiveSkillEnergy(float percentage)
@@ -67,6 +73,7 @@ public class PropertyManager : MonoBehaviour
         player.playerProperty.EnergyHp = increaseAmount;
 
         player.BossSceneUIManager.ActiveSkillUI(1);
+        player.BossSceneUIManager.ActiveBuffUI(1);
     }
 
     public void ActiveSkillSchoolNo1(int second, float attack, float speed)
@@ -86,16 +93,19 @@ public class PropertyManager : MonoBehaviour
         player.playerProperty.Buff103AttackSpeed = increaseAmount;
 
         player.BossSceneUIManager.ActiveSkillUI(2);
+        player.BossSceneUIManager.ActiveBuffUI(2);
     }
 
     public void Buff213Attack(float n, float m)
     {
         player.playerProperty.Buff213Count = (int)n;
         player.playerProperty.Buff213FaintTime = m;
+        player.BossSceneUIManager.ActiveBuffUI(12);
     }
     
     public void Buff214AttackIndex(int idx)
     {
         player.playerProperty.Buff214Count = idx;
+        player.BossSceneUIManager.ActiveBuffUI(13);
     }
 }

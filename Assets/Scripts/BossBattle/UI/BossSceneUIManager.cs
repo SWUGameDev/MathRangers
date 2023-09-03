@@ -7,6 +7,7 @@ using TMPro;
 using Newtonsoft.Json;
 using WjChallenge;
 using UnityEngine.Events;
+using AbilityId = System.Int32;
 
 public partial class BossSceneUIManager : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public partial class BossSceneUIManager : MonoBehaviour
     [SerializeField] Image Skill2Image;
     [SerializeField] public Button[] SkillButton;
     [SerializeField] Sprite[] abilitySkillIcon;
+    [SerializeField] Sprite[] abilityBuffIcon;
+    [SerializeField] Image[] bufflistOnPlay;
+    int buttonIdx = 0;
 
     private void Start()
     {
@@ -124,13 +128,13 @@ public partial class BossSceneUIManager : MonoBehaviour
         {
             player.isSkill1Being = true;
             Skill1.SetActive(true);
-            Skill1Image.sprite = abilitySkillIcon[id];
+            Skill1Image.sprite = abilityBuffIcon[id];
             buttonIdx = 0;
         }
         else
         {
             Skill2.SetActive(true);
-            Skill2Image.sprite = abilitySkillIcon[id];
+            Skill2Image.sprite = abilityBuffIcon[id];
             buttonIdx = 1;
         }
 
@@ -155,5 +159,12 @@ public partial class BossSceneUIManager : MonoBehaviour
                 player.Buff103(buttonIdx);
             });
         }
+    }
+
+    public void ActiveBuffUI(int id)
+    {
+        bufflistOnPlay[buttonIdx].sprite = abilitySkillIcon[id];
+
+        buttonIdx++;
     }
 }
