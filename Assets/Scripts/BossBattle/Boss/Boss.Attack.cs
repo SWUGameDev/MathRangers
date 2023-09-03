@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class Boss : MonoBehaviour
 {
-    private Animator bossAnimator;
+    // private Animator bossAnimator;
 
     [SerializeField] private GameObject weapon;
 

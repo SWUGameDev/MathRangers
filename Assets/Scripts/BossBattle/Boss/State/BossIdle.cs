@@ -17,6 +17,8 @@ public class BossIdle : BossState
     }
     public override void OnUpdate()
     {
+        this.stateMachine.Boss.setBossAnim(0);
+
         base.OnUpdate();
 
         this.elapsedTime += Time.deltaTime;

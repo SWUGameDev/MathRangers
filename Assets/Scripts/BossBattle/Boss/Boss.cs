@@ -25,8 +25,21 @@ public partial class Boss : MonoBehaviour
     private float maxBossHp = 20000;
     private float bossHp;
 
-    private void Awake() {
+    public enum States
+    {
+        Walk = 0,
+        Call = 1,
+        Swing = 2,
+        Faint = 3,
+        Die = 4,
+        Run = 5,
+    }
 
+    [SerializeField] public Animator bossNewAnimator;
+    public string bossGame = "BossGame";
+
+    private void Awake() {
+        bossNewAnimator.SetInteger(bossGame, (int)States.Walk);
         Boss.OnPlayerAttacked = new UnityEvent();
 
         Boss.OnBossAttacked = new UnityEvent<GameObject>();
@@ -41,7 +54,7 @@ public partial class Boss : MonoBehaviour
     void Start()
     {
         this.bossStateMachine.Initialize("Idle",this);
-
+        bossNewAnimator.SetInteger(bossGame, (int)States.Run);
         Player.onAttackSucceeded.AddListener(this.PlayDamageEffect);
         Player.OnBossFaint.AddListener(this.BossStateFaint);
 
@@ -72,6 +85,11 @@ public partial class Boss : MonoBehaviour
         {
             Boss.OnBossAttacked?.Invoke(other.gameObject);
         }
+    }
+
+    public void setBossAnim(int state)
+    {
+        bossNewAnimator.SetInteger(bossGame, state); ;
     }
 
     public float MaxBossHp

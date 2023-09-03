@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour
 {
-    int bossTriggerDamage = 1200;
+    int bossTriggerDamage = 400;
     int minionTriggerDamage = 1000;
     int bossRushDamage = 5000;
     int bossSwingDamage = 8000;

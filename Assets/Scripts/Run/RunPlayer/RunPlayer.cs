@@ -30,7 +30,7 @@ public partial class RunPlayer : MonoBehaviour
     SpriteRenderer runPlayerSpriteRenderer;
     [SerializeField] Sprite slideSprite;
     [SerializeField] Sprite walkSprite;
-    private BoxCollider2D[] colliders;
+    [SerializeField] BoxCollider2D[] colliders;
 
     bool isArive;
     bool isSlide;
@@ -68,7 +68,6 @@ public partial class RunPlayer : MonoBehaviour
         
         runPlayerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        this.colliders = this.GetComponents<BoxCollider2D>();
         colliders[0].enabled = true;
         colliders[1].enabled = false;
         isArive = true;

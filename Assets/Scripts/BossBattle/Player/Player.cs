@@ -25,6 +25,7 @@ public partial class Player : MonoBehaviour
     private Rigidbody2D rb;
 
     private int jumpCount = 0;
+    [SerializeField] GameObject charRed;
 
     public PropertyInfo playerProperty;
     bool isEnd = false;
@@ -95,14 +96,14 @@ public partial class Player : MonoBehaviour
         {
             for (int i = 0; i < playerSpriteRenderer.Length; i++)
             {
-                transform.localScale = new Vector3(-0.3f, 0.3f, 1);
+                charRed.transform.localScale = new Vector3(-1f, 1f, 1);
             }
         }
         else 
         {
             for (int i = 0; i < playerSpriteRenderer.Length; i++)
             {
-                transform.localScale = new Vector3(0.3f, 0.3f, 1);
+                charRed.transform.localScale = new Vector3(1f, 1f, 1);
             }
         }
     }

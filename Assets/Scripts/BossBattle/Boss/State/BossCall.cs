@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.VersionControl.Asset;
 
 public class BossCall : BossState
 {
@@ -28,7 +29,9 @@ public class BossCall : BossState
     {
         base.OnUpdate();
 
-        if(this.stateMachine.Boss.isMoveToTargetPosition)
+        this.stateMachine.Boss.setBossAnim(1);
+
+        if (this.stateMachine.Boss.isMoveToTargetPosition)
         {
             if(this.isCalled == false)
             {
