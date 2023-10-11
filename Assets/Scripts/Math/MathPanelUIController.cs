@@ -12,13 +12,13 @@ public partial class MathPanelUIController : MonoBehaviour
 
     [SerializeField] private TMP_Text descriptionText; 
 
-    [SerializeField] TEXDraw  equationText;
+    [SerializeField] Text  equationText;
 
     [SerializeField] Button[] answerButtons = new Button[4]; 
 
-    [SerializeField] TEXDraw[] TEXDrawAnswerText;
+    [SerializeField] Text[] TEXDrawAnswerText;
 
-    public TEXDraw[] textAnswers {  get => this.TEXDrawAnswerText;}
+    public Text[] textAnswers {  get => this.TEXDrawAnswerText;}
 
     [SerializeField] private Image resultImage;
 
@@ -43,6 +43,7 @@ public partial class MathPanelUIController : MonoBehaviour
 
     public bool MakeQuestion(string questionDescription, string questionText, string questionAnswers, string questionWrongAnswer)
     {
+        Debug.Log(questionDescription);
         string      correctAnswer =  questionAnswers;
         string[]    wrongAnswers = questionWrongAnswer.Split(',');
 
@@ -61,6 +62,8 @@ public partial class MathPanelUIController : MonoBehaviour
         }
 
         int answerIndex = Random.Range(0, answerCount);
+
+        Debug.Log("answerIndex"+answerIndex);
 
         for(int i = 0, q = 0; i < answerCount; ++i, ++q)
         {

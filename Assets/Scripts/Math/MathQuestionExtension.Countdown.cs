@@ -34,7 +34,7 @@ public partial class MathQuestionExtension : MonoBehaviour
         isSolvingQuestion = false;
         currentQuestionIndex++;
 
-        wj_connector.Learning_SelectAnswer(currentQuestionIndex, this.mathPanelUIController.textAnswers[index].text, answerCwYn, (int)(questionSolveTime * 1000));
+        //wj_connector.Learning_SelectAnswer(currentQuestionIndex, this.mathPanelUIController.textAnswers[index].text, answerCwYn, (int)(questionSolveTime * 1000));
 
         this.mathPanelUIController.SetResultImage(isCorrect);
         this.countdownController.StopCountdown();

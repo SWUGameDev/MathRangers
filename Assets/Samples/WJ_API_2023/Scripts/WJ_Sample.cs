@@ -176,7 +176,7 @@ public class WJ_Sample : MonoBehaviour
                 isSolvingQuestion = false;
                 currentQuestionIndex++;
 
-                wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                //wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
                 wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
 
@@ -219,7 +219,7 @@ public class WJ_Sample : MonoBehaviour
         this.characterImage = this.characterAnswerImages[0];
         this.OXImage.gameObject.SetActive(false);
 
-        wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
+        //wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
     }
 
     public void DisplayCurrentState(string state, string myAnswer, string isCorrect, string svTime)
@@ -233,11 +233,11 @@ public class WJ_Sample : MonoBehaviour
     public void ButtonEvent_ChooseDifficulty(int a)
     {
         currentStatus = CurrentStatus.DIAGNOSIS;
-        wj_conn.FirstRun_Diagnosis(a);
+        //wj_conn.FirstRun_Diagnosis(a);
     }
     public void ButtonEvent_GetLearning()
     {
-        wj_conn.Learning_GetQuestion();
+        //wj_conn.Learning_GetQuestion();
         wj_displayText.SetState("문제풀이 중", "-", "-", "-");
     }
     #endregion
