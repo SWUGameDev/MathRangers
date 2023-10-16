@@ -60,13 +60,15 @@ public partial class FirebaseRealtimeDatabaseManager
         reference.KeepSynced(true);
     }
 
-    private void WriteData<T>(string key, string value,Action onCompleted = null)
+    private void WriteData<T>(string key, string value,Action onCompleted = null,Action<string> onFailed = null)
     {
         this.databaseReference.Child(key).SetRawJsonValueAsync(value).ContinueWith(task =>
         {
             if (task.IsFaulted || task.IsCanceled)
             {
                 Debug.LogError("Data write encountered an error: " + task.Exception);
+
+                onFailed?.Invoke(task.Exception.ToString());
             }else if(task.IsCompleted)
             {
                 Debug.Log("Upload Completed");

@@ -44,7 +44,11 @@ public class DiagnosticManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Setup();
+        //Setup();
+
+        currentStatus = CurrentStatus.DIAGNOSIS;
+
+        GetLearning(0);
     }
 
     private void Setup()
@@ -120,10 +124,10 @@ public class DiagnosticManager : MonoBehaviour
     {
         if (_index == 0) currentQuestionIndex = 0;
 
-        MakeQuestion(wj_conn.cLearnSet.data.qsts[_index].textCn,
-                    wj_conn.cLearnSet.data.qsts[_index].qstCn,
-                    wj_conn.cLearnSet.data.qsts[_index].qstCransr,
-                    wj_conn.cLearnSet.data.qsts[_index].qstWransr);
+        MakeQuestion("다음 뺄셈을 하세요",
+                    " 5 - 3 = ?",
+                    "2",
+                    "3,4,5");
     }
 
     /// <summary>
@@ -180,27 +184,42 @@ public class DiagnosticManager : MonoBehaviour
         switch (currentStatus)
         {
             case CurrentStatus.DIAGNOSIS:
-                isCorrect   = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                isCorrect   = textAnsr[_idx].text.CompareTo("2") == 0 ? true : false;
                 ansrCwYn    = isCorrect ? "Y" : "N";
 
                 isSolvingQuestion = false;
 
-                wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                //wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+
+                currentQuestionIndex++;
 
                 //wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
                 this.DisplayAnswer(isCorrect,_idx);
+
+                if (currentQuestionIndex >= 4) 
+                {
+                    panel_question.SetActive(false);
+                    Debug.Log("진단평가 끝! 학습 단계로 넘어갑니다.");
+                    PlayerPrefs.SetInt("DiagnosticCompleted",1);
+                    this.InitializeUserInfo();
+                    currentStatus = CurrentStatus.LEARNING;
+                    diagnosticEndPanel.SetActive(true);
+                }
+                else GetLearning(currentQuestionIndex);
 
                 questionSolveTime = 0;
                 break;
 
             case CurrentStatus.LEARNING:
-                isCorrect   = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                isCorrect   = textAnsr[_idx].text.CompareTo("2") == 0 ? true : false;
                 ansrCwYn    = isCorrect ? "Y" : "N";
 
                 isSolvingQuestion = false;
                 currentQuestionIndex++;
 
-                wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                Debug.Log("test2");
+
+                //wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
                 //wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
 
@@ -246,9 +265,7 @@ public class DiagnosticManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         this.characterImage.sprite = this.characterAnswerImages[0];
         this.OXBackgroundImage.gameObject.SetActive(false);
-        panel_question.SetActive(false);
-
-        wj_conn.Diagnosis_SelectAnswer(textAnsr[index].text, isCorrect ? "Y" : "N", (int)(questionSolveTime * 1000));
+        panel_question.SetActive(true);
     }
 
 
@@ -263,11 +280,11 @@ public class DiagnosticManager : MonoBehaviour
     public void ButtonEvent_ChooseDifficulty(int a)
     {
         currentStatus = CurrentStatus.DIAGNOSIS;
-        wj_conn.FirstRun_Diagnosis(a);
+        //wj_conn.FirstRun_Diagnosis(a);
     }
     public void ButtonEvent_GetLearning()
     {
-        wj_conn.Learning_GetQuestion();
+        //wj_conn.Learning_GetQuestion();
         //wj_displayText.SetState("문제풀이 중", "-", "-", "-");
     }
     #endregion

@@ -842,7 +842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336971956388161288}
   - component: {fileID: 1336971956388161334}
-  - component: {fileID: 1336971956388161335}
+  - component: {fileID: 6317456343414157829}
   m_Layer: 5
   m_Name: TEXDraw
   m_TagString: Untagged
@@ -878,7 +878,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336971956388161289}
   m_CullTransparentMesh: 1
---- !u!114 &1336971956388161335
+--- !u!114 &6317456343414157829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336971956388161289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -898,21 +898,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Alignment: {x: 0.5, y: 0.5}
-  m_Text: $$TEXDraw$$
-  m_Size: 36
-  m_ScrollArea:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_Padding:
-    left: 2
-    right: 2
-    top: 2
-    bottom: 2
-  m_Overflow: 5
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 56
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
 --- !u!1 &1336971956450884553
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336971956450884552}
   - component: {fileID: 1336971956450884598}
-  - component: {fileID: 1336971956450884599}
+  - component: {fileID: 8938060113472763779}
   m_Layer: 5
   m_Name: Text_Question
   m_TagString: Untagged
@@ -959,7 +958,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336971956450884553}
   m_CullTransparentMesh: 1
---- !u!114 &1336971956450884599
+--- !u!114 &8938060113472763779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -968,7 +967,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336971956450884553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -979,21 +978,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Alignment: {x: 0.5, y: 0.5}
-  m_Text: $$TEXDraw$$
-  m_Size: 64
-  m_ScrollArea:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_Padding:
-    left: 2
-    right: 2
-    top: 2
-    bottom: 2
-  m_Overflow: 5
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 56
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 56
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '-'
 --- !u!1 &1336971956599502081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336971956599502080}
   - component: {fileID: 1336971956599502094}
-  - component: {fileID: 1336971956599502095}
+  - component: {fileID: 6293164950053638832}
   m_Layer: 5
   m_Name: TEXDraw
   m_TagString: Untagged
@@ -1040,7 +1038,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336971956599502081}
   m_CullTransparentMesh: 1
---- !u!114 &1336971956599502095
+--- !u!114 &6293164950053638832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1049,7 +1047,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336971956599502081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1060,21 +1058,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Alignment: {x: 0.5, y: 0.5}
-  m_Text: $$TEXDraw$$
-  m_Size: 36
-  m_ScrollArea:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_Padding:
-    left: 2
-    right: 2
-    top: 2
-    bottom: 2
-  m_Overflow: 5
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 56
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
 --- !u!1 &1336971956603430179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336971956603430178}
   - component: {fileID: 1336971956603430176}
-  - component: {fileID: 1336971956603430177}
+  - component: {fileID: 3696552436882830407}
   m_Layer: 5
   m_Name: TEXDraw
   m_TagString: Untagged
@@ -1121,7 +1118,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336971956603430179}
   m_CullTransparentMesh: 1
---- !u!114 &1336971956603430177
+--- !u!114 &3696552436882830407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1130,7 +1127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336971956603430179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1141,21 +1138,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Alignment: {x: 0.5, y: 0.5}
-  m_Text: $$TEXDraw$$
-  m_Size: 36
-  m_ScrollArea:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_Padding:
-    left: 2
-    right: 2
-    top: 2
-    bottom: 2
-  m_Overflow: 5
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 56
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
 --- !u!1 &1336971957087953599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,23 +1407,24 @@ MonoBehaviour:
   clockText: {fileID: 1336971955808948616}
   clockAnimator: {fileID: 1725737978488507415}
   descriptionText: {fileID: 5929491185117828483}
-  equationText: {fileID: 1336971956450884599}
+  equationText: {fileID: 8938060113472763779}
   answerButtons:
   - {fileID: 1336971955935594263}
   - {fileID: 1336971955753531142}
   - {fileID: 1336971955843983282}
   - {fileID: 1336971957087953597}
   TEXDrawAnswerText:
-  - {fileID: 1336971957433931960}
-  - {fileID: 1336971956599502095}
-  - {fileID: 1336971956603430177}
-  - {fileID: 1336971956388161335}
+  - {fileID: 795937470145860245}
+  - {fileID: 6293164950053638832}
+  - {fileID: 3696552436882830407}
+  - {fileID: 6317456343414157829}
   resultImage: {fileID: 7329628310933398225}
   resultSprites:
   - {fileID: 21300000, guid: a73efe4150d2d1e409281aad3e4cfbeb, type: 3}
   - {fileID: 21300000, guid: 4ee829e6270bae340a57b276c8775378, type: 3}
   mathPanelAnimator: {fileID: 4265261527936627299}
   buffSelectPanelUIController: {fileID: 2473022553677570297}
+  runSceneUIManager: {fileID: 0}
 --- !u!95 &4265261527936627299
 Animator:
   serializedVersion: 5
@@ -1555,7 +1552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336971957433931961}
   - component: {fileID: 1336971957433931943}
-  - component: {fileID: 1336971957433931960}
+  - component: {fileID: 795937470145860245}
   m_Layer: 5
   m_Name: TEXDraw
   m_TagString: Untagged
@@ -1591,7 +1588,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336971957433931962}
   m_CullTransparentMesh: 1
---- !u!114 &1336971957433931960
+--- !u!114 &795937470145860245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1600,7 +1597,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336971957433931962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1611,21 +1608,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Alignment: {x: 0.5, y: 0.5}
-  m_Text: $$TEXDraw$$
-  m_Size: 36
-  m_ScrollArea:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_Padding:
-    left: 2
-    right: 2
-    top: 2
-    bottom: 2
-  m_Overflow: 5
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 169c5530c93621e4cb70641ed42ef8b5, type: 3}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 48
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
 --- !u!1 &1336971957586097796
 GameObject:
   m_ObjectHideFlags: 0

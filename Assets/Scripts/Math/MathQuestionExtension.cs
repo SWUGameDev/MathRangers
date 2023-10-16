@@ -23,24 +23,25 @@ public partial class MathQuestionExtension : MonoBehaviour
 
     private void Start() 
     {
-        this.Setup();
+        // this.Setup();
 
-        this.GetNewQuestionSet();
-    }
-    private void Setup()
-    {
-        if (wj_connector != null)
-        {
-            this.wj_connector.onGetLearning = new UnityEngine.Events.UnityEvent();
-            this.wj_connector.onGetLearning.AddListener(() => GetLearning(0));
-            
-        }
-    }
+        // this.GetNewQuestionSet();
 
-    private void GetNewQuestionSet()
-    {
-        this.wj_connector.GetQuestionByExtension();
+        this.GetLearning(0);
     }
+    // private void Setup()
+    // {
+    //     if (wj_connector != null)
+    //     {
+    //         this.wj_connector.onGetLearning = new UnityEngine.Events.UnityEvent();
+    //         this.wj_connector.onGetLearning.AddListener(() => GetLearning(0));
+    //     }
+    // }
+
+    // private void GetNewQuestionSet()
+    // {
+    //     this.wj_connector.GetQuestionByExtension();
+    // }
 
     private void Update()
     {
@@ -66,17 +67,23 @@ public partial class MathQuestionExtension : MonoBehaviour
 
         this.countdownController.StartCountdown(this.SetTimeout,this.SetTimerUIAnimation);
 
-        this.isSolvingQuestion =  mathPanelUIController.MakeQuestion(wj_connector.cLearnSet.data.qsts[_index].textCn,
-                    wj_connector.cLearnSet.data.qsts[_index].qstCn,
-                    wj_connector.cLearnSet.data.qsts[_index].qstCransr,
-                    wj_connector.cLearnSet.data.qsts[_index].qstWransr);
+        this.isSolvingQuestion =  mathPanelUIController.MakeQuestion("다음 뺄셈을 하세요",
+                    " 5 - 3 = ?",
+                    "2",
+                    "3,4,5");
+
+        // this.isSolvingQuestion =  mathPanelUIController.MakeQuestion(wj_connector.cLearnSet.data.qsts[_index].textCn,
+        //             wj_connector.cLearnSet.data.qsts[_index].qstCn,
+        //             wj_connector.cLearnSet.data.qsts[_index].qstCransr,
+        //             wj_connector.cLearnSet.data.qsts[_index].qstWransr);
+
     }
 
     public void SelectAnswer(int selectedIndex)
     {
         SoundManager.Instance?.StopEffectAudioSource();
 
-        bool isCorrect  = this.mathPanelUIController.textAnswers[selectedIndex].text.CompareTo(wj_connector.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+        bool isCorrect  = this.mathPanelUIController.textAnswers[selectedIndex].text.CompareTo("2") == 0 ? true : false;
         string answerCwYn = isCorrect ? "Y" : "N";
 
         this.SendLearningSelectAnswer(selectedIndex,answerCwYn,isCorrect);
